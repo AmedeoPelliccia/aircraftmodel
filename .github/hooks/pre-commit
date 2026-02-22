@@ -26,7 +26,7 @@ fi
 LC_FILES=$(git diff --cached --name-only | grep -E '^SSOT/LC(0[2-9]|1[0-4])' || true)
 for f in $LC_FILES; do
     if [ -f "$f" ]; then
-        LINES=$(wc -l < "$f")
+        LINES=$(wc -l < "$f" | tr -d ' ')
         if [ "$LINES" -gt 5 ]; then
             if ! grep -qE 'KNU-[A-Z0-9-]+' "$f"; then
                 echo "❌ $f has >5 lines but no KNU ID reference"
