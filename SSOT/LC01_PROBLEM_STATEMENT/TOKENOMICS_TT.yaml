@@ -1,4 +1,4 @@
-# ID-A360-Q100 Teknia Token (TT) Allocation Parameters
+# AMPEL360 WTW Teknia Token (TT) Allocation Parameters
 # Version: v3.14
 # Scope: Per-KNOT reward distribution
 
@@ -19,14 +19,14 @@ total_pool_tt: 1660
 currency: "TT"
 version: "3.14"
 
-# Cross-programme spillover adjacency (IBD-001 §8.3)
+# Cross-programme spillover adjacency (IBD-001 Rev B §8.3)
 # Where a KNOT in one programme produces evidence that reduces residual
 # uncertainty in a sibling KNOT, the spillover is captured here via the
 # a_k_to_j adjacency coefficient.
 cross_programme_spillover:
-  sibling_programme: "AMPEL360-Q100-BWB"
+  sibling_programme: "AMPEL360-BWB"
   adjacency_coefficients:
-    # T&W KNOT -> BWB sibling KNOT (spillover direction)
+    # WTW KNOT -> BWB sibling KNOT (spillover direction)
     - from: "KNOT-ATA28-10-00-001"
       to_sibling: "KNOT-BWB-ATA28-10-00-001"
       a_k_to_j: 0.30

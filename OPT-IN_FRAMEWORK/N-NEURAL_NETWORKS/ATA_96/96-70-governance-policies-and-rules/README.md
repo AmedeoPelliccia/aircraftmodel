@@ -2,7 +2,7 @@
 
 ## Inheritance Boundary Change Requests (IBCRs)
 
-Per AMPEL360-FAM-IBD-001 Rev A §8.4, any proposal to reclassify a SHARED
+Per AMPEL360-FAM-IBD-001 Rev B §8.4, any proposal to reclassify a SHARED
 entry as FORKED (or vice versa) in the Inheritance Boundary Declaration
 requires an IBCR reviewed by both programme Chief Engineers and approved
 by the AMPEL360 Family Programme Manager.
@@ -22,7 +22,7 @@ IBCRs are logged in this directory.
 | Rationale | [Description] |
 | Impact Assessment | [Description] |
 | CE-BWB Approval | [Pending / Approved / Rejected] |
-| CE-T&W Approval | [Pending / Approved / Rejected] |
+| CE-WTW Approval | [Pending / Approved / Rejected] |
 | Family PM Approval | [Pending / Approved / Rejected] |
 
 ### Register

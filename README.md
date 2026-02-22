@@ -59,8 +59,8 @@
 | **CO₂ posture** | Zero at tailpipe (tank-to-wake). Lifecycle CO₂ depends on H₂/NH₃ production pathway — declared in I-INFRASTRUCTURES |
 | **NOₓ target** | ≤ 5% of ICAO CAEP/8 LTO NOₓ limit (2010 baseline; re-validate at certification entry date) |
 | **Domain governance** | `aircraftmodel.eu` — aviation decarbonization boundary |
-| **Sibling program** | AMPEL360 Q100 BWB (hydrogen-electric, blended-wing-body) |
-| **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev A`](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevA.md) — shared-spine / forked-content declaration |
+| **Sibling program** | AMPEL360 BWB (quantum-enhanced, blended-wing-body) |
+| **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) — shared-spine / forked-content declaration |
 | **Repository** | `github.com/AmePelliccia/ID-A360-Q100` |
 | **Concept & Direction** | Amedeo Pelliccia |
 
@@ -383,8 +383,8 @@ Full register: `SSOT/LC01_PROBLEM_STATEMENT/KNOTS.csv`
 
 > **Critical path:** KNOT-ATA28-40-00-001 (Cracker Efficiency) is the anchor.
 > ATA 47 inerting and waste heat routing are downstream dependencies.
-> IBD open items (OI-1 through OI-5) feed the T&W viability gate per
-> [AMPEL360-FAM-IBD-001 Rev A](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevA.md).
+> IBD open items (OI-1 through OI-5) feed the WTW viability gate per
+> [AMPEL360-FAM-IBD-001 Rev B](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md).
 
 ---
 

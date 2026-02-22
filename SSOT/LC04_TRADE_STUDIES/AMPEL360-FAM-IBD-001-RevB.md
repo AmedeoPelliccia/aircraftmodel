@@ -1,45 +1,61 @@
-# AMPEL360 FAMILY — INHERITANCE BOUNDARY DECLARATION
+# AMPEL360 PROGRAMME FAMILY — INHERITANCE BOUNDARY DECLARATION
 
-## T&W vs BWB Airframe Feasibility for LH₂ Cryogenic Systems
+## WTW vs BWB Airframe Feasibility for LH₂ Cryogenic Systems
 
-**AMPEL360 Q100 BWB × ID-A360-Q100 T&W**
+<p align="center">
+  <strong>AMPEL360 WTW</strong>&ensp;(Wide Tube & Wing — Near-Term Certifiable)<br/>
+  <strong>AMPEL360 BWB</strong>&ensp;(Blended Wing Body — Quantum-Enhanced)
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Doc-IBD--001%20Rev%20B-1B3A5C" alt="Doc ID">
+  <img src="https://img.shields.io/badge/Status-CONFIRMED-brightgreen" alt="Status">
+  <img src="https://img.shields.io/badge/Framework-OPT--IN%20v1.1-purple" alt="Framework">
+  <img src="https://img.shields.io/badge/Tokenomics-TT%20v3.14-gold" alt="TT">
+  <img src="https://img.shields.io/badge/Quantum-BWB%20Enhanced-6A1B9A" alt="Quantum">
+  <img src="https://img.shields.io/badge/Publications-S1000D-teal" alt="S1000D">
+</p>
+
+---
 
 | Field | Value |
 |---|---|
-| **Document ID** | AMPEL360-FAM-IBD-001 Rev A |
+| **Document ID** | AMPEL360-FAM-IBD-001 Rev B |
 | **Classification** | Programme Governance — Concept Baseline |
 | **Date** | 2026-02-22 |
 | **Author** | Amedeo Pelliccia / AI-Assisted Engineering |
 | **Domains** | aircraftmodel.eu (both programmes) |
 | **Framework** | OPT-IN v1.1 / LC01 Uncertainty Orchestration |
-| **Status** | DRAFT — Pending LC04 Trade Study Evidence |
+| **Supersedes** | Rev A (ID-A360-Q100 → AMPEL360 WTW) |
+| **Status** | CONFIRMED — Dual-Path Development Approved |
 
 > This document declares the shared-spine and forked-content boundary between
-> the AMPEL360 Q100 (BWB) and ID-A360-Q100 (T&W) programmes, supported by a
-> first-principles volumetric analysis of LH₂ + NH₃ tank integration
-> feasibility in a conventional tube-and-wing airframe.
+> the AMPEL360 BWB (Quantum-Enhanced Blended Wing Body) and AMPEL360 WTW
+> (Wide Tube & Wing) programmes, supported by a first-principles volumetric
+> analysis of LH₂ + NH₃ tank integration feasibility in a conventional
+> wide-tube-and-wing airframe.
 
 ---
 
 ## 1. Executive Summary
 
 The AMPEL360 family currently comprises two sibling programmes targeting
-100-passenger zero-CO₂ short-haul operations. AMPEL360 Q100 explores a
-blended wing body (BWB) with PEM fuel cell primary propulsion. ID-A360-Q100
-explores a conventional tube-and-wing (T&W) with a tri-species closed-loop
-architecture (LH₂ / NH₃ / N₂).
+100-passenger zero-CO₂ short-haul operations. AMPEL360 BWB explores a
+blended wing body with PEM fuel cell primary propulsion and quantum-enhanced
+design optimisation. AMPEL360 WTW explores a conventional wide tube-and-wing
+with a tri-species closed-loop architecture (LH₂ / NH₃ / N₂).
 
 Before the programmes accumulate divergent engineering artifacts, this
 declaration establishes which content is shared (the spine) and which must fork.
 
-The central technical question is whether the T&W configuration can physically
+The central technical question is whether the WTW configuration can physically
 accommodate the cryogenic tank volumes demanded by LH₂ plus the supplementary
-NH₃ inventory required by the ID-A360-Q100 tri-species architecture.
+NH₃ inventory required by the AMPEL360 WTW tri-species architecture.
 
-**Verdict:** At 100 passengers and ≤ 1,500 km design range, T&W is viable but
+**Verdict:** At 100 passengers and ≤ 1,500 km design range, WTW is viable but
 marginal. The NH₃ dual-species addition tightens the margin further but does
 not break it. The programmes should not collapse. They serve complementary
-roles: the BWB explores the upper performance envelope, the T&W explores the
+roles: the BWB explores the upper performance envelope, the WTW explores the
 certifiable-near-term envelope.
 
 ---
@@ -78,7 +94,7 @@ the cabin, fore and aft, or in a caudal (tail-cone) arrangement.
 
 ### 2.3 Fuselage Geometry Constraints
 
-For a 100-seat T&W aircraft in the ATR 72 to Embraer E190 class, the
+For a 100-seat WTW aircraft in the ATR 72 to Embraer E190 class, the
 reference fuselage diameter is 3.0–3.5 m (external). A cylindrical LH₂ tank
 filling the full cross-section aft of the cabin (the "caudal" layout) occupies
 a fuselage slice with an effective cross-section area of approximately
@@ -102,7 +118,7 @@ cruise L/D penalty at 3–7 % for a caudal tank layout relative to the kerosene
 baseline.
 
 **Centre of gravity management.** Aft-heavy tankage shifts the CG rearward as
-fuel burns off. The ID-A360-Q100 must oversize the horizontal tail or introduce
+fuel burns off. The AMPEL360 WTW must oversize the horizontal tail or introduce
 canards/active CG management. The NH₃ cracker, positioned mid-fuselage between
 the cabin and LH₂ tanks, may act as a beneficial ballast mass.
 
@@ -120,11 +136,11 @@ cracker bay.
 
 ## 3. BWB as the Upper Bound
 
-The AMPEL360 Q100 BWB resolves the volumetric problem structurally. A BWB
+The AMPEL360 BWB resolves the volumetric problem structurally. A BWB
 provides approximately 20–30 % more usable internal volume for the same
 planform span.
 
-| Factor | BWB (AMPEL360 Q100) | T&W (ID-A360-Q100) |
+| Factor | BWB (AMPEL360 BWB) | WTW (AMPEL360 WTW) |
 |---|---|---|
 | Tank volume integration | Native advantage | Stretch penalty |
 | Cruise L/D | ~25–28 (higher) | ~18–22 (lower) |
@@ -133,23 +149,25 @@ planform span.
 | Airport gate compatibility | Wider span: Code C stress | Standard span |
 | Manufacturing readiness | TRL 3–4 | TRL 6–7 |
 | Passenger evacuation | Novel egress paths | Conventional |
+| Quantum design optimisation | Active (topology + aero) | Classical methods |
 | Time to EIS (est.) | 2042–2048 | 2035–2040 |
 
 **Verdict:** The two configurations are not competitors — they are
-complementary risk postures. The T&W trades aerodynamic efficiency for
+complementary risk postures. The WTW trades aerodynamic efficiency for
 certification confidence and speed to market. The BWB trades certification
-risk for volumetric and aerodynamic superiority.
+risk for volumetric and aerodynamic superiority, enhanced by quantum
+optimisation of topology and aerodynamic surfaces.
 
 ---
 
 ## 4. Industry Signal: Airbus ZEROe Trajectory
 
 Airbus's ZEROe programme evolution is instructive. In 2020, Airbus presented
-three concepts: a turbofan T&W, a turboprop T&W, and a BWB. By 2025, Airbus
+three concepts: a turbofan WTW, a turboprop WTW, and a BWB. By 2025, Airbus
 down-selected to a fuel-cell-powered turboprop for the first hydrogen
 aircraft, while retaining the BWB as a longer-horizon concept.
 
-The lesson: even the largest OEM concluded that a T&W is the viable near-term
+The lesson: even the largest OEM concluded that a WTW is the viable near-term
 vehicle for hydrogen, while the BWB represents the next-generation
 configuration. The AMPEL360 family's dual-programme structure mirrors this
 logic.
@@ -158,8 +176,8 @@ logic.
 
 ## 5. The Tri-Species Complication
 
-The ID-A360-Q100's NH₃ cracker architecture adds complexity unique to the
-T&W variant. The BWB variant uses PEM fuel cells without ammonia. This means
+The AMPEL360 WTW's NH₃ cracker architecture adds complexity unique to the
+WTW variant. The BWB variant uses PEM fuel cells without ammonia. This means
 ATA 28 content forks significantly between the two programmes.
 
 **Volume impact:** NH₃ stored as pressurized liquid at ~−33 °C has a density
@@ -172,14 +190,14 @@ for a given range — partially offsetting the fuselage stretch. This must be
 quantified by KNOT-ATA28-20-00-001.
 
 **Bay allocation:** The NH₃ cracker requires a dedicated thermally-managed bay
-between the aft cabin pressure bulkhead and the forward LH₂ tank. In the T&W
+between the aft cabin pressure bulkhead and the forward LH₂ tank. In the WTW
 caudal layout, this bay can be accommodated within the fuselage stretch zone.
 
 ---
 
 ## 6. Verdict: Do Not Collapse
 
-The T&W configuration is viable but not comfortable for the ID-A360-Q100
+The WTW configuration is viable but not comfortable for the AMPEL360 WTW
 design point. The physics requires:
 
 1. A widened fuselage diameter of ≥ 3.5 m (vs. standard 2.8 m turboprop
@@ -194,7 +212,7 @@ design point. The physics requires:
 None of these are physics-breaking. All are engineering problems with
 published solution paths.
 
-**Collapsing the T&W into the BWB would:**
+**Collapsing the WTW into the BWB would:**
 
 - (a) eliminate the certifiable-near-term pathway;
 - (b) double down on BWB certification risk;
@@ -219,22 +237,22 @@ both programmes. **FORKED** content diverges and is maintained independently.
 | T/A – Airframe | ATA 20, 51 | SHARED | Standard practices, materials library |
 | T/A – Structures | ATA 52–57 | FORKED | Fuselage geometry, wing planform, door placement diverge |
 | T/A – Furnishings | ATA 25, 44, 50 | SHARED (cabin) / FORKED (layout) | Cabin spec common; seat maps and egress paths differ |
-| T/M – Flight Controls | ATA 27 | FORKED | BWB: elevons/split surfaces; T&W: conventional ailerons/elevator |
+| T/M – Flight Controls | ATA 27 | FORKED | BWB: elevons/split surfaces; WTW: conventional ailerons/elevator |
 | T/M – Hydraulics | ATA 29 | SHARED | Electro-hydraulic architecture common to both |
-| T/M – Landing Gear | ATA 32 | FORKED | T&W aft-heavy CG changes gear loads and retraction geometry |
+| T/M – Landing Gear | ATA 32 | FORKED | WTW aft-heavy CG changes gear loads and retraction geometry |
 | T/E1 – ECS | ATA 21 | SHARED | Air conditioning architecture common |
-| T/E1 – Fire Protection | ATA 26 | FORKED | T&W: H₂+NH₃ dual-species zones; BWB: H₂-only zones |
+| T/E1 – Fire Protection | ATA 26 | FORKED | WTW: H₂+NH₃ dual-species zones; BWB: H₂-only zones |
 | T/E1 – Ice/Rain | ATA 30 | SHARED | Anti-ice systems common |
-| T/E1 – Inerting | ATA 47 | FORKED | T&W: N₂ from cracker; BWB: conventional NEA/OBIGGS |
-| T/E2 – Electrical | ATA 24 | FORKED | BWB: FC primary power; T&W: generator + FC auxiliary |
+| T/E1 – Inerting | ATA 47 | FORKED | WTW: N₂ from cracker; BWB: conventional NEA/OBIGGS |
+| T/E2 – Electrical | ATA 24 | FORKED | BWB: FC primary power; WTW: generator + FC auxiliary |
 | T/E2 – APU | ATA 49 | FORKED | Different architectures |
 | T/C2 – Fuel | ATA 28 | FORKED (critical path) | LH₂ tank geometry, NH₃ subsystem, distribution all differ |
-| T/P – Propulsion | ATA 60–80 | FORKED | BWB: distributed electric; T&W: turbine combustion + open fan |
+| T/P – Propulsion | ATA 60–80 | FORKED | BWB: distributed electric; WTW: turbine combustion + open fan |
 | T/D – Data | ATA 31, 45, 46 | SHARED | Indicating, CMS, info systems common framework |
 | T/A2 – Avionics | ATA 22, 34, 42 | SHARED (core) / FORKED (FBW laws) | Navigation/IMA shared; flight control laws differ |
 | T/C1 – Comms | ATA 23 | SHARED | Communications architecture identical |
 | T/I2 – AI/ML | ATA 95, 97 | SHARED | Model governance and synthetic data frameworks common |
-| I – Infrastructure | ATA 03/08/10/12 INFRA | SHARED (H₂ GSE) / FORKED (NH₃ GSE) | LH₂ ground infra common; NH₃ handling unique to T&W |
+| I – Infrastructure | ATA 03/08/10/12 INFRA | SHARED (H₂ GSE) / FORKED (NH₃ GSE) | LH₂ ground infra common; NH₃ handling unique to WTW |
 | I – H₂ Supply | IN-10 to IN-90 | SHARED (production) / FORKED (NH₃ sourcing) | Green H₂ supply chain common; NH₃ procurement separate |
 | N – Governance | ATA 96, 98 | SHARED | Traceability, DPP, ledger, tokenomics framework identical |
 
@@ -252,15 +270,15 @@ diverge irrecoverably.
 
 SHARED content resides in a common spine repository (`AMPEL360-COMMON`) that
 both programme repos inherit via Git submodule or monorepo path. FORKED
-content resides exclusively in the programme-specific repo (`AMPEL360-AIR-T`
-for BWB, `IDA360-AIR-T` for T&W).
+content resides exclusively in the programme-specific repo (`AMPEL360-BWB`
+for BWB, `AMPEL360-WTW` for WTW).
 
 ### 8.2 BREX Inheritance
 
 A family-level BREX file (`BREX-AMPEL360-FAM-v0.1`) encodes shared business
 rules. Each programme extends it with programme-specific rules:
-`BREX-AMPEL360-Q100-v0.1` (BWB-specific) and `BREX-IDA360-Q100-v0.1`
-(T&W-specific, including the `respTime` extension). CI validates against the
+`BREX-AMPEL360-BWB-v0.1` (BWB-specific) and `BREX-AMPEL360-WTW-v0.1`
+(WTW-specific, including the `respTime` extension). CI validates against the
 family BREX first, then the programme BREX.
 
 ### 8.3 KNOT Cross-References
@@ -284,14 +302,14 @@ logged in `N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/`.
 
 | Item | Question | Resolving KNOT | Target |
 |---|---|---|---|
-| OI-1 | Exact fuselage Ø for T&W: 3.5 m vs 3.76 m (6-abreast vs 5-abreast)? | KNOT-ATA53-10-00-001 | 2026-Q3 |
+| OI-1 | Exact fuselage Ø for WTW: 3.5 m vs 3.76 m (6-abreast vs 5-abreast)? | KNOT-ATA53-10-00-001 | 2026-Q3 |
 | OI-2 | NH₃ cryo-shield boil-off reduction: does ≥ 30 % hold at cruise altitude? | KNOT-ATA28-20-00-001 | 2027-Q1 |
 | OI-3 | Landing gear yehudi interference: main gear relocation mass penalty? | KNOT-ATA32-10-00-001 | 2026-Q4 |
 | OI-4 | CG envelope: T-tail vs canard for aft-tank CG management? | KNOT-ATA55-10-00-001 | 2026-Q4 |
 | OI-5 | Crashworthiness: NH₃ containment zone length between bulkhead and LH₂ tank? | KNOT-ATA25-50-00-001 | 2027-Q2 |
 
-> Resolution of these items will confirm or refine the T&W viability
-> assessment. If OI-1 through OI-4 collectively indicate that the T&W cannot
+> Resolution of these items will confirm or refine the WTW viability
+> assessment. If OI-1 through OI-4 collectively indicate that the WTW cannot
 > close its performance case within 10 % of the reference kerosene-equivalent
 > aircraft, the programme should escalate to an IBCR reassessing the boundary.
 
@@ -302,10 +320,16 @@ logged in `N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/`.
 | Role | Name | Signature | Date |
 |---|---|---|---|
 | AMPEL360 Family PM | A. Pelliccia | | |
-| CE – AMPEL360 Q100 BWB | [TBD] | | |
-| CE – ID-A360-Q100 T&W | [TBD] | | |
+| CE – AMPEL360 BWB | [TBD] | | |
+| CE – AMPEL360 WTW | [TBD] | | |
 | STK_CERT Lead | [TBD] | | |
 
 ---
 
-*DRAFT — aircraftmodel.eu*
+<p align="center">
+  <strong>AMPEL360 WTW × AMPEL360 BWB</strong><br/>
+  <em>Two paths. One family. Reshaping the sky.</em>
+</p>
+<p align="center">
+  <em>By Amedeo Pelliccia · AI-Assisted Engineering · aircraftmodel.eu</em>
+</p>
