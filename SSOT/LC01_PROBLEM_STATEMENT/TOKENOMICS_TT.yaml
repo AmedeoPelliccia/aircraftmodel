@@ -1,0 +1,20 @@
+# ID-A360-Q100 Teknia Token (TT) Allocation Parameters
+# Version: v3.14
+# Scope: Per-KNOT reward distribution
+
+allocation:
+  method: "effort_plus_impact"
+  params:
+    alpha_effort: 0.30      # 30% weight on effort
+    alpha_impact: 0.70      # 70% weight on impact
+    lambda_spillover: 0.50  # cross-KNOT spillover credit
+
+fees:
+  knu_reward: 0.005         # 0.5% distribution fee
+  transfer_pi_tier: 0.00314 # 0.314% pi-tier transfer
+  transfer_standard: 0.0099 # 0.99% standard transfer
+  transfer_large: 0.0314    # 3.14% large transfer
+
+total_pool_tt: 1260
+currency: "TT"
+version: "3.14"

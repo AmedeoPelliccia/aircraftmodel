@@ -1,0 +1,10 @@
+Milestone_ID,Title,Date,Dependencies,Status
+MS-001,Concept Baseline v0.1,2026-02-22,,COMPLETE
+MS-002,LC01 KNOT Register Frozen,2026-03-31,MS-001,PLANNED
+MS-003,LC05 Thermo Models Baselined,2026-09-30,MS-002,PLANNED
+MS-004,ATA 28 Tank Sizing Closed,2026-09-30,MS-003,PLANNED
+MS-005,NH3 Cryo-Shield Validated,2026-12-31,MS-003,PLANNED
+MS-006,Cracker Efficiency Confirmed,2027-03-31,MS-005,PLANNED
+MS-007,ATA 47 Inerting System Validated,2027-06-30,MS-006,PLANNED
+MS-008,Active Suppression Qualified,2027-09-30,MS-007,PLANNED
+MS-009,Certification Entry,2027-12-31,MS-008,PLANNED
