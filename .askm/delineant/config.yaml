@@ -1,0 +1,51 @@
+# .askm/delineant — Configuration
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+mode: DELINEANT
+
+description: >
+  Topology transformer. Proposes structural deltas to the Aircraft
+  Knowledge Graph (KG) subject to admissibility conditions, grammar
+  constraints, and certification gates.
+
+functional_form:
+  input: [S, C, Σ]
+  output: [KG', Δ]
+  definition: "D: (S, C, Σ) → (KG', Δ) where KG' = KG ∪ Δ"
+
+requires_observer_baseline: true
+observer_baseline_rule: >
+  D is valid only if S = O(KG, B). Every structural delta must cite
+  a prior LC05_ANALYSIS_STATE_CAPTURE or LC05_TRACE_SNAPSHOT artifact
+  as its input baseline (§9 of LC05-GEN-MODEL-ROLE-SPEC).
+
+admissibility_invariants:
+  - id: ADM-1
+    name: ATA Taxonomy Compliance
+    rule: "All nodes map to valid ATA chapters per iSpec 2200"
+  - id: ADM-2
+    name: Interface Contract Completeness
+    rule: "Every interface node has defined inputs and outputs"
+  - id: ADM-3
+    name: Requirement Trace Continuity
+    rule: "Every LC05 artifact traces to an LC02 requirement"
+  - id: ADM-4
+    name: Certification Mapping Preservation
+    rule: "No certified mapping is broken or orphaned"
+  - id: ADM-5
+    name: No Orphan Nodes
+    rule: "Every node is reachable from the graph root"
+
+delta_class: STRUCTURAL
+
+allowed_output_classes:
+  - MODEL_DELTA
+
+forbidden_output_classes_without_source:
+  - LC05_ANALYSIS_STATE_CAPTURE
+  - LC05_TRACE_SNAPSHOT
+
+lifecycle_stage: LC05
+
+governance_ref: LC05-GEN-MODEL-ROLE-SPEC-v0.1

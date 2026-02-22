@@ -1,0 +1,70 @@
+# .askm/delineant — Certification Gate Rules
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+# Certification coupling rules per §6 of LC05-GEN-MODEL-ROLE-SPEC.
+# When a delineant proposal affects any of the categories below,
+# the corresponding gates are activated.
+
+certification_gates:
+
+  - id: GATE-CERT-01
+    trigger: "Delta affects ATA 04 (Airworthiness Limitations)"
+    node_pattern: "ATA-04-*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [CS-25 amat 28]
+
+  - id: GATE-CERT-02
+    trigger: "Delta affects CMR (Certification Maintenance Requirements)"
+    node_pattern: "*CMR*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [CS-25 Amdt 28]
+
+  - id: GATE-CERT-03
+    trigger: "Delta affects CDDL (Critical Design Configuration Control List)"
+    node_pattern: "*CDCCL*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [CS-25 Amdt 28]
+
+  - id: GATE-CERT-04
+    trigger: "Delta affects DAL A or DAL B safety paths"
+    node_pattern: "*DAL-[AB]*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [DO-178C, DO-254]
+
+  - id: GATE-CERT-05
+    trigger: "Delta affects load-bearing topology (structural ATA chapters)"
+    node_pattern: "ATA-{51,52,53,54,55,56,57}-*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [CS-25 Amdt 28]
+
+# Default gate for non-certification-impacting deltas
+default_gate:
+  qualification_required: false
+  certification_gate: null
+  risk_class: STANDARD
+  review_authority: Engineering Lead
+
+# IBCR requirement for certified node deletion
+deletion_rule:
+  description: >
+    No deletion of nodes with active certification bindings is permitted
+    without an approved IBCR (Inheritance Boundary Change Request) per
+    ATA 96-70 governance.
+  ibcr_required: true
+  ibcr_template: OPT-IN_FRAMEWORK/N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/README.md

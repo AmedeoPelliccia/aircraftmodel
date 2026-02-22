@@ -1,0 +1,42 @@
+# .askm/observer — Allowed Artifact Classes
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+# Observer mode may only emit artifacts of the classes listed below.
+# Any attempt to produce an artifact outside this list is a governance
+# violation (GOV-1) and will be rejected by pre-commit and CI.
+
+allowed_artifacts:
+  - class: LC05_ANALYSIS_STATE_CAPTURE
+    description: >
+      Snapshot of the current model state at a specific commit.
+      Contains node counts, edge statistics, coverage metrics,
+      and margin summaries. No topology mutations.
+    format: markdown
+    placement: SSOT/LC05_ANALYSIS_MODELS/
+    naming_pattern: "LC05-STATE-CAPTURE-{DATE}-{SEQ}.md"
+    knu_required: false
+
+  - class: LC05_MARGIN_REPORT
+    description: >
+      Computed engineering margins from existing model data.
+      Read-only computation over current KG state.
+      References KNU evidence artifacts as inputs.
+    format: markdown
+    placement: SSOT/LC05_ANALYSIS_MODELS/
+    naming_pattern: "LC05-MARGIN-REPORT-{KNOT_ID}-{SEQ}.md"
+    knu_required: true
+
+  - class: LC05_TRACE_SNAPSHOT
+    description: >
+      Traceability graph extraction showing requirement-to-evidence
+      linkages at the current baseline. No edge creation or deletion.
+    format: markdown
+    placement: SSOT/LC05_ANALYSIS_MODELS/
+    naming_pattern: "LC05-TRACE-SNAPSHOT-{DATE}-{SEQ}.md"
+    knu_required: false
+
+forbidden_artifacts:
+  - class: MODEL_DELTA
+    reason: "Topology mutation is DELINEANT domain exclusively"
+    governance_rule: GOV-1
