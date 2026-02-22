@@ -8,6 +8,9 @@ on:
     paths:
       - 'PUB/CSDB/**'
 
+permissions:
+  contents: read
+
 jobs:
   brex-validate:
     runs-on: ubuntu-latest
