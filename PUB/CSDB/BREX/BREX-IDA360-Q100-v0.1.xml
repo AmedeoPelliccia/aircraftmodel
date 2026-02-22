@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  BREX-IDA360-Q100-v0.1
+  Business Rules Exchange for ID-A360-Q100
+  S1000D Issue 5.0
+
+  Five mandatory project rules for the ID-A360-Q100 program.
+-->
+<brex>
+  <brexHeader>
+    <brexCode>BREX-IDA360-Q100</brexCode>
+    <brexVersion>v0.1</brexVersion>
+    <brexTitle>ID-A360-Q100 Business Rules</brexTitle>
+    <issueDate year="2026" month="02" day="22"/>
+    <securityClassification>01</securityClassification>
+  </brexHeader>
+
+  <brexRules>
+    <!-- BREX-IDA360-001: ATA 28 DMs must reference H2 compatibility caution -->
+    <structureObjectRule>
+      <objectPath>//cautionRef</objectPath>
+      <objectUse>
+        ATA 28 Data Modules MUST include a cautionRef element referencing
+        the H2 compatibility caution. Applies to all DMs under ATA chapter 28.
+      </objectUse>
+      <brexRuleId>BREX-IDA360-001</brexRuleId>
+    </structureObjectRule>
+
+    <!-- BREX-IDA360-002: NH3 DMs must reference NH3 toxicity warning -->
+    <structureObjectRule>
+      <objectPath>//warningRef</objectPath>
+      <objectUse>
+        Any Data Module containing NH3 (ammonia) content MUST include a
+        warningRef element referencing the NH3 toxicity warning.
+      </objectUse>
+      <brexRuleId>BREX-IDA360-002</brexRuleId>
+    </structureObjectRule>
+
+    <!-- BREX-IDA360-003: ATA 47-40 procedural DMs require respTime -->
+    <structureObjectRule>
+      <objectPath>//proceduralStep/@respTime</objectPath>
+      <objectUse>
+        ATA 47-40 (Active Suppression) procedural Data Modules MUST include
+        a respTime attribute (in seconds) on all procedural steps.
+      </objectUse>
+      <brexRuleId>BREX-IDA360-003</brexRuleId>
+    </structureObjectRule>
+
+    <!-- BREX-IDA360-004: Applicability must use approved variant values -->
+    <structureObjectRule>
+      <objectPath>//applic/assert/@applicPropertyValues</objectPath>
+      <objectUse>
+        All DMs with applicability assertions MUST use only approved variant
+        values: A360-Q100-LH2, A360-Q100-NH3, A360-Q100-N2, A360-Q100-ALL.
+      </objectUse>
+      <brexRuleId>BREX-IDA360-004</brexRuleId>
+    </structureObjectRule>
+
+    <!-- BREX-IDA360-005: Safety-critical DMs require SC1 classification -->
+    <structureObjectRule>
+      <objectPath>//dmStatus/@safetyClass</objectPath>
+      <objectUse>
+        ATA 26, 28, and 47 Data Modules MUST carry safetyClass="SC1" on
+        the dmStatus element.
+      </objectUse>
+      <brexRuleId>BREX-IDA360-005</brexRuleId>
+    </structureObjectRule>
+  </brexRules>
+</brex>
