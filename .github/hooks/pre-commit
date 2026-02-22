@@ -28,7 +28,7 @@ for f in $LC_FILES; do
     if [ -f "$f" ]; then
         LINES=$(wc -l < "$f" | tr -d ' ')
         if [ "$LINES" -gt 5 ]; then
-            if ! grep -qE 'KNU-[A-Z0-9-]+' "$f"; then
+            if ! grep -qE 'KNU-[A-Z0-9]+-[0-9]+-[0-9]+' "$f"; then
                 echo "❌ $f has >5 lines but no KNU ID reference"
                 ERRORS=$((ERRORS + 1))
             fi
