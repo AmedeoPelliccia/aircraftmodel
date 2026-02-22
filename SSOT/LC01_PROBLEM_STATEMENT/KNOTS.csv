@@ -9,3 +9,7 @@ KNOT-ATA47-40-00-001,Active N2 Suppression 3s,100,5,180,2027-09-30,OPEN
 KNOT-ATA28-70-00-001,H2 Embrittlement Monitoring,100,12,90,2027-06-30,OPEN
 KNOT-ATA75-20-00-001,Waste Heat Routing to Cracker,100,15,100,2026-12-31,OPEN
 KNOT-ATA04-00-00-001,ALIs for Cryo Systems,100,10,80,2027-09-30,OPEN
+KNOT-ATA53-10-00-001,Fuselage Diameter Trade (3.5 m vs 3.76 m),100,15,100,2026-09-30,OPEN
+KNOT-ATA32-10-00-001,Landing Gear Yehudi Interference / Relocation Mass,100,15,90,2026-12-31,OPEN
+KNOT-ATA55-10-00-001,CG Envelope T-tail vs Canard for Aft-Tank Management,100,15,110,2026-12-31,OPEN
+KNOT-ATA25-50-00-001,NH3 Containment Zone Crashworthiness,100,12,100,2027-06-30,OPEN

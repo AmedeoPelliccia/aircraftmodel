@@ -60,6 +60,7 @@
 | **NOₓ target** | ≤ 5% of ICAO CAEP/8 LTO NOₓ limit (2010 baseline; re-validate at certification entry date) |
 | **Domain governance** | `aircraftmodel.eu` — aviation decarbonization boundary |
 | **Sibling program** | AMPEL360 Q100 BWB (hydrogen-electric, blended-wing-body) |
+| **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev A`](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevA.md) — shared-spine / forked-content declaration |
 | **Repository** | `github.com/AmePelliccia/ID-A360-Q100` |
 | **Concept & Direction** | Amedeo Pelliccia |
 
@@ -374,10 +375,16 @@ Full register: `SSOT/LC01_PROBLEM_STATEMENT/KNOTS.csv`
 | KNOT-ATA28-70-00-001 | H₂ Embrittlement Monitoring | 100 | 12 | 90 | 2027-06-30 |
 | KNOT-ATA75-20-00-001 | Waste Heat Routing to Cracker | 100 | 15 | 100 | 2026-12-31 |
 | KNOT-ATA04-00-00-001 | ALIs for Cryo Systems | 100 | 10 | 80 | 2027-09-30 |
-| **TOTAL** | | | | **1 260 TT** | |
+| KNOT-ATA53-10-00-001 | Fuselage Diameter Trade (IBD OI-1) | 100 | 15 | 100 | 2026-09-30 |
+| KNOT-ATA32-10-00-001 | Landing Gear Yehudi Interference (IBD OI-3) | 100 | 15 | 90 | 2026-12-31 |
+| KNOT-ATA55-10-00-001 | CG Envelope T-tail vs Canard (IBD OI-4) | 100 | 15 | 110 | 2026-12-31 |
+| KNOT-ATA25-50-00-001 | NH₃ Containment Zone Crashworthiness (IBD OI-5) | 100 | 12 | 100 | 2027-06-30 |
+| **TOTAL** | | | | **1 660 TT** | |
 
 > **Critical path:** KNOT-ATA28-40-00-001 (Cracker Efficiency) is the anchor.
 > ATA 47 inerting and waste heat routing are downstream dependencies.
+> IBD open items (OI-1 through OI-5) feed the T&W viability gate per
+> [AMPEL360-FAM-IBD-001 Rev A](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevA.md).
 
 ---
 

@@ -8,3 +8,7 @@ MS-006,Cracker Efficiency Confirmed,2027-03-31,MS-005,PLANNED
 MS-007,ATA 47 Inerting System Validated,2027-06-30,MS-006,PLANNED
 MS-008,Active Suppression Qualified,2027-09-30,MS-007,PLANNED
 MS-009,Certification Entry,2027-12-31,MS-008,PLANNED
+MS-010,IBD Rev A Issued,2026-02-22,MS-001,COMPLETE
+MS-011,Fuselage Diameter Trade Closed (OI-1),2026-09-30,MS-010,PLANNED
+MS-012,Landing Gear and CG Trades Closed (OI-3/OI-4),2026-12-31,MS-011,PLANNED
+MS-013,NH3 Containment Zone Sized (OI-5),2027-06-30,MS-012,PLANNED
