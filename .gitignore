@@ -1,0 +1,49 @@
+# Build artifacts
+dist/
+build/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+*.dylib
+*.dll
+
+# Dependencies
+node_modules/
+venv/
+env/
+.venv/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temporary files
+/tmp/
+*.tmp
+*.log
+
+# Binary deliverables (should only be in PUB/EXPORT/)
+*.pdf
+*.docx
+*.xlsx
+*.html
+!PUB/EXPORT/*.pdf
+!PUB/EXPORT/*.docx
+!PUB/EXPORT/*.xlsx
+!PUB/EXPORT/*.html
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# System files
+Thumbs.db
+Desktop.ini
