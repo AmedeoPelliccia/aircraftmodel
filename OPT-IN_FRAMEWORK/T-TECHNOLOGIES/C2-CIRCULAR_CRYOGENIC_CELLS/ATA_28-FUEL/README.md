@@ -79,7 +79,7 @@ ATA 28 C² CELL owns everything between:
 
 | Species | Formula | Role | Phase at STP | Storage Condition |
 |---|---|---|---|---|
-| Liquid Hydrogen | LH₂ | Primary PM | Gas | Cryogenic 20 K, 1–3 bar |
+| Hydrogen (stored as liquid, LH₂) | LH₂ | Primary PM | Gas | Cryogenic 20 K, 1–3 bar |
 | Ammonia | NH₃ | Secondary PM / H₂ carrier | Liquid | Pressurised 10 bar / 298 K |
 | Liquid Nitrogen | LN₂ | Inert blanket / purge | Liquid | Cryogenic 77 K |
 
