@@ -1,12 +1,12 @@
-# AMPEL360 WTW
+# AMPEL360 DB — DUAL BRANCH
 
-## IDEALE-ESG · AMPEL360 Program Family · Wide Tube & Wing · 100-Pax Configuration
+## IDEALE-ESG · AMPEL360 Program Family · Dual Branch (WTW + BWB) · 100-Pax Configuration
 
-### Zero-CO₂ Short-Haul Aircraft — LH₂ + On-Board NH₃ Cracking + Closed-Loop N₂ Inerting
+### Zero-CO₂ Short-Haul Aircraft — AMPEL360 WTW (EIS 2035–40) · AMPEL360 BWB (EIS 2042–48)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Brand-IDEALE--ESG-0066cc" alt="IDEALE-ESG">
-  <img src="https://img.shields.io/badge/Program-AMPEL360%20WTW-purple" alt="AMPEL360 WTW">
+  <img src="https://img.shields.io/badge/Program-AMPEL360%20DB%20Dual%20Branch-purple" alt="AMPEL360 DB Dual Branch">
   <img src="https://img.shields.io/badge/Config-Q100%20(100%20pax)-brightgreen" alt="Q100">
   <img src="https://img.shields.io/badge/Propulsion-LH2%20%2B%20NH3--Cracking-teal" alt="Propulsion">
   <img src="https://img.shields.io/badge/Certification-CS--25%20Amdt%2028-red" alt="CS-25 Amdt 28">
@@ -19,10 +19,11 @@
 
 <p align="center">
   <strong>
-    Certification-grade digital engineering baseline for a 100-passenger
-    zero-CO₂ short-haul aircraft powered by Liquid Hydrogen with on-board
-    Ammonia cracking and closed-loop Nitrogen inerting — managed under the
-    OPT-IN Framework, S1000D CSDB, and Teknia Token incentive system.
+    Certification-grade digital engineering baseline for the AMPEL360 dual-branch
+    programme family: AMPEL360 WTW (Wide Tube &amp; Wing, 100-pax, LH₂ + NH₃
+    cracking, EIS 2035–40) and AMPEL360 BWB (Blended Wing Body, LH₂ + PEM
+    fuel cell, EIS 2042–48) — managed under the OPT-IN Framework, S1000D CSDB,
+    and Teknia Token incentive system.
   </strong>
 </p>
 
@@ -43,25 +44,24 @@
 
 ---
 
-## 1. Program Identity
+## 1. Program Identity — AMPEL360 DB (Dual Branch)
 
 | Attribute | Value |
 |---|---|
-| **Designation** | `AMPEL360 WTW` (Wide Tube & Wing) |
+| **Programme family** | `AMPEL360 DB` — Dual Branch (WTW + BWB) |
+| **Branch A — near-term** | `AMPEL360 WTW` (Wide Tube & Wing) · EIS 2035–2040 |
+| **Branch B — long-horizon** | `AMPEL360 BWB` (Blended Wing Body) · EIS 2042–2048 |
 | **Legacy ID** | `ID-A360-Q100` (superseded by IBD-001 Rev B) |
 | **A360** | AMPEL360 program family heritage |
 | **Q100** | Configuration — 100 passengers nominal (range 50–120 pax) |
 | **AMPEL** | Program family name (see [Acknowledgments](#acknowledgments)) |
 | **ESG pillar** | Environmental — net-zero aviation decarbonization |
-| **Configuration** | Wide tube-and-wing, clean-sheet design |
 | **Range target** | ≤ 2 500 km short-haul regional |
 | **Pax nominal** | 100 (range 50–120) |
-| **EIS target** | 2035–2040 |
 | **Certification basis** | EASA CS-25 Amendment 28 / FAA Part 25 (final basis confirmed per application date) |
 | **CO₂ posture** | Zero at tailpipe (tank-to-wake). Lifecycle CO₂ depends on H₂/NH₃ production pathway — declared in I-INFRASTRUCTURES |
 | **NOₓ target** | ≤ 5% of ICAO CAEP/8 LTO NOₓ limit (2010 baseline; re-validate at certification entry date) |
 | **Domain governance** | `aircraftmodel.eu` — aviation decarbonization boundary |
-| **Sibling program** | AMPEL360 BWB (quantum-enhanced, blended-wing-body, EIS 2042–48) |
 | **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md) — shared-spine / forked-content declaration |
 | **Config selection trade** | [`AMPEL360-WTW-TS-001 Rev A`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-WTW-TS-001-Config-Selection.md) — WTW vs BWB multi-criterion trade study · **OPEN** (KNOT-CONF-00-00-001) |
 | **Repository** | `github.com/AmedeoPelliccia/aircraftmodel` |
