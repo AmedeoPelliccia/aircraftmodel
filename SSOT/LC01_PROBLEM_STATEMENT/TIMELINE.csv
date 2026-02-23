@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MILESTONE_ID,TITLE,DATE,STATUS,DEPENDENCY
 MS-001,Programme kick-off,2026-01-15,DONE,
 MS-002,ATA 28 C² CELL paradigm declaration,2026-02-22,DONE,MS-001
@@ -6,3 +7,19 @@ MS-010,LC04 trade studies open,2026-03-01,PLANNED,MS-003
 MS-011,KNOT-ATA28-10-00-001 closure target,2026-06-30,PLANNED,MS-010
 MS-012,KNOT-ATA28-20-00-001 closure target,2026-06-30,PLANNED,MS-010
 MS-013,LC05 analysis models baseline,2026-09-01,PLANNED,MS-011
+=======
+Milestone_ID,Title,Date,Dependencies,Status
+MS-001,Concept Baseline v0.1,2026-02-22,,COMPLETE
+MS-002,LC01 KNOT Register Frozen,2026-03-31,MS-001,PLANNED
+MS-003,LC05 Thermo Models Baselined,2026-09-30,MS-002,PLANNED
+MS-004,ATA 28 Tank Sizing Closed,2026-09-30,MS-003,PLANNED
+MS-005,NH3 Cryo-Shield Validated,2026-12-31,MS-003,PLANNED
+MS-006,Cracker Efficiency Confirmed,2027-03-31,MS-005,PLANNED
+MS-007,ATA 47 Inerting System Validated,2027-06-30,MS-006,PLANNED
+MS-008,Active Suppression Qualified,2027-09-30,MS-007,PLANNED
+MS-009,Certification Entry,2027-12-31,MS-008,PLANNED
+MS-010,IBD Rev B Confirmed,2026-02-22,MS-001,COMPLETE
+MS-011,Fuselage Diameter Trade Closed (OI-1),2026-09-30,MS-010,PLANNED
+MS-012,Landing Gear and CG Trades Closed (OI-3/OI-4),2026-12-31,MS-011,PLANNED
+MS-013,NH3 Containment Zone Sized (OI-5),2027-06-30,MS-012,PLANNED
+>>>>>>> origin/main
