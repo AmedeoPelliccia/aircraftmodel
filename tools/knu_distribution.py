@@ -22,7 +22,6 @@ LEDGER_PATH = os.path.join(REPO_ROOT, "finance", "ledger.json")
 
 # Default parameters from TOKENOMICS_TT.yaml
 ALPHA = 0.30
-LAMBDA_SPILLOVER = 0.50
 FEE_RATES = {
     "reward": 0.005,
     "transfer_pi": 0.00314,
