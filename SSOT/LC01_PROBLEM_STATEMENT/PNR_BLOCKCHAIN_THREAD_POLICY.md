@@ -1,13 +1,14 @@
 # PNR_BLOCKCHAIN_THREAD_POLICY.md
 # Document ID: AMPEL360-FAM-ARCH-ELC-001-PNR
-# Revision: A
+# Revision: B
 # Date: 2026-02-23
 # Parent Document: AMPEL360-FAM-ARCH-ELC-001 Rev B (§5 ELC Governance)
 # Related Document: AMPEL360-FAM-ARCH-ELC-001-DET (Determinism Contract)
+# Related Document: AMPEL360-FAM-ARCH-ELC-001-QCC (Qualifying Capacity Manifesto)
 
 # PNR Blockchain Thread Policy
 
-**AMPEL360-FAM-ARCH-ELC-001-PNR · Rev A · 2026-02-23**
+**AMPEL360-FAM-ARCH-ELC-001-PNR · Rev B · 2026-02-23**
 
 ---
 
@@ -23,18 +24,19 @@
 
 ## Revision History
 
-| Rev | Date       | Author Role           | Change Summary                          |
-|-----|------------|-----------------------|-----------------------------------------|
-| A   | 2026-02-23 | System Architect (SA) | Initial release — PNR Thread framework  |
+| Rev | Date       | Author Role           | Change Summary                                                    |
+|-----|------------|-----------------------|-------------------------------------------------------------------|
+| A   | 2026-02-23 | System Architect (SA) | Initial release — PNR Thread framework                            |
+| B   | 2026-02-23 | System Architect (SA) | Add §10: Qualifying Capacity Authorization Model (ref QCC manifesto) |
 
 ---
 
 ## §1  Purpose & Doctrinal Position
 
-This document governs the **PNR (Point of No Return) Blockchain Thread** for
+This document governs the **PNR (Part Number Registry) Blockchain Thread** for
 the AMPEL360 WTW programme. The Thread is the distributed evidence layer that
 anchors cryptographic commitments at defined governance events across the ELC
-(Engineering Lifecycle Compiler) framework.
+(Elastic Lifecycle) framework.
 
 ### §1.1  Relative Immutability
 
@@ -457,11 +459,87 @@ justifying the necessity.
 
 ---
 
+## §10  Qualifying Capacity Authorization Model
+
+This section gives operative effect within this policy to the **Qualifying
+Capacity Manifesto** (`AMPEL360-FAM-ARCH-ELC-001-QCC`). Together, §10 of
+this document and the QCC manifesto form the complete authorization framework
+for the Thread.
+
+### §10.1  Core Principle
+
+No action on the PNR Thread is legitimate unless the acting party satisfies
+the authorization formula simultaneously:
+
+> **Authorization = Delegation ∧ Skills**
+
+This applies to all Thread events: emitting, attesting, transitioning validity
+states, executing STL events, and observing records. Roles are human-readable
+labels only; the system evaluates verifiable **Qualifying Capacity Claims
+(QCC)**.
+
+### §10.2  Consensus Proof Interpretation
+
+The `consensus_proof` blocks defined throughout this policy (§4 STL events,
+§6 Consensus Policies, §7 Alphanumeric Convention) SHALL be interpreted as
+follows:
+
+- Each role identifier listed in a `consensus_proof` block MUST hold, at the
+  time of anchoring, **both** a valid `DELEGATION` QCC covering the event scope
+  AND a valid `SKILL` QCC satisfying the skill policy for the event type.
+- The role name in `consensus_proof` is a scope-resolution key for the
+  authorization evaluator, not a statement of authority in itself.
+- A `consensus_proof` entry from a role with no valid QCCs is invalid
+  regardless of the role's organisational position.
+
+### §10.3  Qualifying Capacity Claims (QCC)
+
+QCCs are defined and governed by `AMPEL360-FAM-ARCH-ELC-001-QCC`. Key
+properties:
+
+- **Two types**: `DELEGATION` (scope authority) and `SKILL` (process competence)
+- **Time-bounded**: explicit `issued_at` and `expires_at` fields; evaluated at
+  the moment of action, not at role assignment time
+- **Revocable**: issuer may revoke before expiry; revocation is anchored on-chain
+- **Cryptographically anchored**: each QCC is committed to the Thread as a
+  `QCC`-type PNR event (see §10.4)
+- **Off-chain content**: credential documents (scope details, assessment data)
+  remain off-chain; only the credential hash is on-chain
+
+### §10.4  QCC Anchoring as PNR Event
+
+The issuance and state transitions of QCCs are anchored on the PNR Thread
+using the alphanumeric convention (§7):
+
+```
+PNR:A360:<actor_role_id>:QCC:<sequence>
+```
+
+The minimal on-chain QCC anchor payload and state transition schema are defined
+in `AMPEL360-FAM-ARCH-ELC-001-QCC §6`.
+
+### §10.5  Visibility Control
+
+Visibility of Thread records is NOT a generic privilege. An actor may observe
+a Thread event only if they hold valid QCCs satisfying the `READ_POLICY` for
+the event type (defined in `AMPEL360-FAM-ARCH-ELC-001-QCC §4.3`). Absence
+of a `READ_POLICY` defaults to the `WRITE_POLICY` for maximum restriction.
+
+### §10.6  Authorization Reproducibility
+
+Every authorization evaluation MUST be deterministic and logged. Given the
+same event parameters, the same QCC credential set, and the same policy
+version, the evaluator MUST produce the same verdict. Non-determinism in
+authorization is a defect equivalent in severity to a compiler non-determinism
+defect under `AMPEL360-FAM-ARCH-ELC-001-DET`.
+
+---
+
 ## Appendix A: Glossary
 
 | Term | Definition |
 |------|-----------|
-| **PNR** | Point of No Return — the governance event after which a commitment is anchored and only supersession/revocation can alter its authoritative status |
+| **PNR** | Part Number Registry — the distributed evidence framework that anchors cryptographic commitments for part number governance events across the Elastic Lifecycle (ELC) |
 | **Thread** | The ordered sequence of PNR commitment records forming the auditable chain for a programme, family, or event scope |
 | **STL** | Supplier Thread Line — the three-event (OPEN/ATTEST/CLOSE) handshake protocol for supplier evidence capture |
 | **SEP** | Supplier Evidence Package — the off-chain document set attested by the supplier; referenced on-chain by Merkle root only |
@@ -469,7 +547,10 @@ justifying the necessity.
 | **Validity state** | The current governance status of a PNR record: `ACTIVE`, `SUPERSEDED`, `REVOKED`, or `EXPIRED` |
 | **Relative immutability** | Immutability understood as integrity detection and modification traceability under governance, not metaphysical permanence |
 | **Non-dispersive anchoring** | The principle that only cryptographic commitments are anchored on-chain; all engineering content remains off-chain |
-| **Consensus proof** | The set of role-attributed attestations required to anchor or transition a PNR record |
+| **Consensus proof** | The set of role-attributed attestations required to anchor or transition a PNR record; each attesting role must hold valid QCCs (§10) |
+| **QCC** | Qualifying Capacity Claim — a verifiable credential attesting delegation or skill for a defined actor, scope, and time window (see AMPEL360-FAM-ARCH-ELC-001-QCC) |
+| **Qualifying capacity** | The demonstrable, accredited competence of an actor to execute a specific type of action in a defined context; the primary authorization criterion |
+| **Authorization formula** | `Auth(actor, event) = Delegation(actor, scope(event)) ∧ Skills(actor, type(event), policy(event))` — the core axiom of the QCC model |
 
 ---
 

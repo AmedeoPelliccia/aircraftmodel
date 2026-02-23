@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "AMPEL360-FAM-ARCH-ELC-001-PNR/pnr_commitment.schema.json",
   "title": "PNR Commitment Payload",
-  "description": "JSON Schema for validating PNR (Point of No Return) Blockchain Thread commitment payloads. Governed by AMPEL360-FAM-ARCH-ELC-001-PNR Rev A.",
+  "description": "JSON Schema for validating PNR (Part Number Registry) Blockchain Thread commitment payloads. Governed by AMPEL360-FAM-ARCH-ELC-001-PNR Rev A.",
   "type": "object",
   "required": [
     "pnr_id",
