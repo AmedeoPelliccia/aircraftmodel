@@ -64,8 +64,10 @@ def validate_dm(filepath):
     for applic in root.iter():
         if applic.tag and "assert" in applic.tag.lower():
             vals = applic.get("applicPropertyValues", "")
-            if vals and vals not in APPROVED_VARIANTS:
-                errors.append(f"BREX-IDA360-004: {relpath} — unapproved variant value '{vals}'")
+            if vals:
+                for v in vals.split():
+                    if v not in APPROVED_VARIANTS:
+                        errors.append(f"BREX-IDA360-004: {relpath} — unapproved variant value '{v}'")
 
     # BREX-IDA360-005: ATA 26/28/47 DMs need safetyClass="SC1"
     ata_safety = any(x in relpath.lower() for x in ["ata-26", "ata_26", "ata-28", "ata_28", "ata-47", "ata_47"])
