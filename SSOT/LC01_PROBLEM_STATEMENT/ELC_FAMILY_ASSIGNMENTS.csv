@@ -1,11 +1,70 @@
 ata_chapter,ata_name,family_code,family_name,rationale
-ATA-27,Flight Controls Structures,A,Structural (In-House),Primary flight control surfaces are structural components manufactured in-house with OEM partners
-ATA-53,Fuselage Structures,A,Structural (In-House),Fuselage primary structure is the core in-house design and manufacturing domain
-ATA-71,Powerplant,B,Propulsion (Co-Development),Engine/nacelle co-developed with propulsion OEM under shared IP agreement
-ATA-72,Engine/Propulsion,B,Propulsion (Co-Development),Gas turbine core co-developed with engine OEM; shared qualification programme
-ATA-28,H2 Fuel System (C2 CELL),C,Novel Technology (H2/Cryo),Cryogenic H2/NH3/LN2 system is novel technology TRL 3-5; no mature supply chain
+ATA-00,General,D,Spec-Driven Procurement (SFE),Programme-level glossary and abbreviations; governance document; no hardware; spec-driven
+ATA-01,Maintenance Policy,D,Spec-Driven Procurement (SFE),Maintenance programme requirements defined by regulatory spec; mature process
+ATA-02,Weight & Balance,D,Spec-Driven Procurement (SFE),Mass properties and shared reference frame; mature engineering discipline; spec-driven
+ATA-03,Minimum Equipment,D,Spec-Driven Procurement (SFE),MEL/CDL definitions governed by regulatory certification spec; mature process
+ATA-04,Airworthiness Limitations,D,Spec-Driven Procurement (SFE),ALIs and CMRs driven by certification specification; mature regulatory process
+ATA-05,Time Limits / Maintenance Checks,D,Spec-Driven Procurement (SFE),Scheduled maintenance intervals; mature MRO specification-driven discipline
+ATA-06,Dimensions & Areas,D,Spec-Driven Procurement (SFE),Aircraft dimensions and station numbering; programme-level geometry spec
+ATA-07,Levelling & Weighing,D,Spec-Driven Procurement (SFE),Jacking/levelling/weighing procedures; standard GSE spec-driven process
+ATA-08,Levelling & Weighing (alt),D,Spec-Driven Procurement (SFE),Extended weighing procedures; standard GSE spec-driven process
+ATA-09,Towing & Taxiing,D,Spec-Driven Procurement (SFE),Ground movement procedures; standard GSE spec-driven process
+ATA-10,Parking / Mooring / Storage / Return to Service,D,Spec-Driven Procurement (SFE),Ground handling; standard practice; spec-driven procurement of GSE
+ATA-11,Placards & Markings,D,Spec-Driven Procurement (SFE),Required external/internal markings; regulatory spec-driven; mature supply chain
+ATA-12,Servicing — Routine Maintenance,D,Spec-Driven Procurement (SFE),Replenishing and servicing equipment; standard practice; spec-driven procurement
+ATA-20,Standard Practices — Airframe,A,Structural (In-House),Airframe standard practices and materials library; core in-house structural domain
+ATA-21,Air Conditioning / ECS,D,Spec-Driven Procurement (SFE),Environmental control system from mature suppliers; shared architecture; spec-driven procurement
+ATA-22,Auto Flight,E,DAL-Governed Avionics/SW,Autopilot and flight director are DO-178C/DO-254 scope; DAL A-B; certified avionics supplier
+ATA-23,Communications,E,DAL-Governed Avionics/SW,VHF/HF/SATCOM systems are DO-178C scope; DAL C; certified avionics supplier
 ATA-24,Electrical Power SFE,D,Spec-Driven Procurement (SFE),Electrical power generation and distribution from mature suppliers; spec-driven procurement
+ATA-25,Cabin / Passenger Accommodation,F,Airline-Selected (BFE),Cabin interior is airline-selected buyer-furnished equipment; late configuration
+ATA-26,Fire Protection,C,Novel Technology (H2/Cryo),H2+NH3 dual-species fire zones require novel detection/suppression; TRL 3-5 for cryo-specific systems
+ATA-27,Flight Controls Structures,A,Structural (In-House),Primary flight control surfaces are structural components manufactured in-house with OEM partners
+ATA-28,H2 Fuel System (C2 CELL),C,Novel Technology (H2/Cryo),Cryogenic H2/NH3/LN2 system is novel technology TRL 3-5; no mature supply chain
+ATA-29,Hydraulic Power,D,Spec-Driven Procurement (SFE),Electro-hydraulic architecture common to both programmes; mature suppliers; spec-driven procurement
+ATA-30,Ice & Rain Protection,D,Spec-Driven Procurement (SFE),Anti-ice systems common; mature supplier base; spec-driven procurement
 ATA-31,Instruments,E,DAL-Governed Avionics/SW,Flight instruments are DO-178C/DO-254 scope; DAL B-C; certified avionics supplier
+ATA-32,Landing Gear,A,Structural (In-House),Landing gear is primary structural load path; in-house design with manufacturing partner
+ATA-33,Lights,D,Spec-Driven Procurement (SFE),Interior/exterior lighting; mature COTS procurement; spec-driven
 ATA-34,Navigation,E,DAL-Governed Avionics/SW,Navigation systems are DO-178C scope; DAL A-B; certified avionics supplier
-ATA-25,Cabin/Passenger Accommodation,F,Airline-Selected (BFE),Cabin interior is airline-selected buyer-furnished equipment; late configuration
+ATA-35,Oxygen,D,Spec-Driven Procurement (SFE),Crew/passenger oxygen system; mature supplier; spec-driven procurement
+ATA-36,Pneumatic,D,Spec-Driven Procurement (SFE),Bleed air / pneumatic distribution; mature technology; spec-driven procurement
+ATA-37,Vacuum,D,Spec-Driven Procurement (SFE),Vacuum waste system; mature supplier; spec-driven procurement
+ATA-38,Water / Waste,D,Spec-Driven Procurement (SFE),Potable water and waste system; mature supplier; spec-driven procurement
+ATA-42,Integrated Modular Avionics (IMA),E,DAL-Governed Avionics/SW,IMA platform is DO-178C/DO-254 scope; DAL A; certified avionics supplier
+ATA-44,Cabin Systems,F,Airline-Selected (BFE),Cabin management and IFE systems are airline-selected buyer-furnished equipment
+ATA-45,Central Maintenance System (CMS),E,DAL-Governed Avionics/SW,On-board maintenance computer is DO-178C scope; DAL C-D; certified avionics supplier
 ATA-46,Information Systems / AI-ML,G,AI/ML Model (Data-Driven),Predictive maintenance and fleet analytics systems; AI/ML model with no established DO standard
+ATA-47,Inert Gas System,C,Novel Technology (H2/Cryo),N2 inerting sourced from cracker (WTW) or OBIGGS (BWB); novel cryo-integrated architecture; TRL 4-5
+ATA-49,Airborne Auxiliary Power (APU),B,Propulsion (Co-Development),APU/emergency power co-developed with propulsion OEM; architecture diverges between BWB and WTW
+ATA-50,Cargo & Accessory Compartments,F,Airline-Selected (BFE),Cargo compartment furnishings and ULD systems; airline-selected; late configuration
+ATA-51,Standard Practices — Structures,A,Structural (In-House),Structural standard practices and repair data; core in-house design and manufacturing domain
+ATA-52,Doors,A,Structural (In-House),Passenger/cargo/emergency doors are primary structure; in-house design with OEM partners
+ATA-53,Fuselage Structures,A,Structural (In-House),Fuselage primary structure is the core in-house design and manufacturing domain
+ATA-54,Nacelles / Pylons,B,Propulsion (Co-Development),Nacelle/pylon structures co-developed with propulsion OEM; shared structural-propulsion interface
+ATA-55,Stabilizers,A,Structural (In-House),Horizontal and vertical stabilizers are primary structure; in-house design and manufacturing
+ATA-56,Windows,A,Structural (In-House),Flight deck and cabin windows are structural pressure boundary; in-house integration
+ATA-57,Wings,A,Structural (In-House),Wing box is primary structure and main load path; core in-house structural domain
+ATA-60,Standard Practices — Propulsion,B,Propulsion (Co-Development),Propulsion standard practices co-developed with engine OEM under shared qualification programme
+ATA-61,Propellers / Propulsors,B,Propulsion (Co-Development),Open fan / propeller co-developed with propulsion OEM; shared IP agreement
+ATA-70,Standard Practices — Powerplant,B,Propulsion (Co-Development),Powerplant standard practices co-developed with engine OEM; shared qualification programme
+ATA-71,Powerplant,B,Propulsion (Co-Development),Engine/nacelle co-developed with propulsion OEM under shared IP agreement
+ATA-72,Engine / Propulsion,B,Propulsion (Co-Development),Gas turbine core co-developed with engine OEM; shared qualification programme
+ATA-73,Engine Fuel & Control,B,Propulsion (Co-Development),Engine fuel metering and FADEC co-developed with engine OEM; shared qualification programme
+ATA-74,Ignition,B,Propulsion (Co-Development),Ignition system co-developed with engine OEM; integrated with powerplant qualification
+ATA-75,Engine Bleed Air,B,Propulsion (Co-Development),Engine bleed air system co-developed with engine OEM; shared propulsion interface
+ATA-76,Engine Controls,B,Propulsion (Co-Development),FADEC/engine control co-developed with engine OEM; DO-178C DAL A; shared IP
+ATA-77,Engine Indicating,E,DAL-Governed Avionics/SW,Engine indicating parameters are DO-178C scope; DAL B; certified avionics integration
+ATA-78,Exhaust,B,Propulsion (Co-Development),Exhaust/thrust reverser co-developed with propulsion OEM; shared qualification programme
+ATA-79,Oil,B,Propulsion (Co-Development),Engine oil system co-developed with engine OEM; integrated propulsion subsystem
+ATA-80,Starting,B,Propulsion (Co-Development),Engine start system co-developed with propulsion OEM; shared qualification programme
+ATA-81,Turbines,B,Propulsion (Co-Development),Turbine modules are engine OEM core IP; co-development under shared qualification programme
+ATA-82,Water Injection,B,Propulsion (Co-Development),Water injection (if applicable) co-developed with engine OEM; shared propulsion architecture
+ATA-83,Accessory Gearboxes,B,Propulsion (Co-Development),AGB co-developed with engine OEM; shared propulsion subsystem
+ATA-85,Fuel Cell Systems,C,Novel Technology (H2/Cryo),PEM fuel cell stack is novel technology TRL 4-5; no mature aviation supply chain
+ATA-91,Charts,D,Spec-Driven Procurement (SFE),Wiring diagrams and system schematics; documentation deliverable; spec-driven
+ATA-92,Electrical Installation,D,Spec-Driven Procurement (SFE),Electrical wiring interconnection system (EWIS); mature suppliers; spec-driven procurement
+ATA-95,AI/ML Synthetic Data,G,AI/ML Model (Data-Driven),Synthetic training data generation for ML models; no established DO standard; data-driven
+ATA-96,Governance / DPP / Ledger,G,AI/ML Model (Data-Driven),Digital product passport and blockchain traceability ledger; data-driven governance framework
+ATA-97,AI/ML Model Governance,G,AI/ML Model (Data-Driven),ML model lifecycle governance; no established DO standard; data-driven validation framework
+ATA-98,Tokenomics & Incentives,G,AI/ML Model (Data-Driven),Token-based contribution incentive framework; algorithmic governance; data-driven
