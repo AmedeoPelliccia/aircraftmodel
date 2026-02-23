@@ -1,0 +1,22 @@
+# Teknia Token (TT) Configuration — v3.14
+# Programme: AMPEL360 WTW (ID-A360-Q100)
+
+version: "3.14"
+token_symbol: TT
+total_pool: 10000
+
+allocation:
+  alpha: 0.30          # 30 % effort weight, 70 % impact weight
+  formula: "w_i = alpha * E_hat_i + (1 - alpha) * I_hat_i"
+
+fee_rates:
+  transfer: 0.005      # 0.5 %
+  conversion: 0.010    # 1.0 %
+  governance_vote: 0.000
+
+spillover:
+  lambda: 0.15         # cross-programme spillover coefficient
+  adjacency:
+    ATA28_to_BWB: 0.80   # H₂ embrittlement data shared at 80 %
+    ATA47_to_BWB: 0.60   # fuel-cell stack evidence shared at 60 %
+    ATA51_to_BWB: 0.90   # cryo-structural interface shared at 90 %

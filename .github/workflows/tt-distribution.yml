@@ -1,0 +1,28 @@
+name: TT Distribution Check
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  verify:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check for KNU ID in PR
+        id: knu_check
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          BODY="${{ github.event.pull_request.body }}"
+          if echo "$TITLE $BODY" | grep -qE 'KNU-ATA[0-9]{2}-[0-9]{2}-[0-9]{3}'; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Verify TT ledger
+        if: steps.knu_check.outputs.found == 'true'
+        run: python tools/knu_distribution.py verify

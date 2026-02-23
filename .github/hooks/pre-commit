@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Pre-commit hook: enforces SSOT/PUB placement rules and KNU traceability.
+set -euo pipefail
+
+ERRORS=()
+
+# --- Rule 1: No binaries in SSOT/ ---
+BINARY_EXTS="\.pdf$|\.html$|\.docx$|\.xlsx$"
+BINARIES=$(git diff --cached --name-only | grep "^SSOT/" | grep -iE "$BINARY_EXTS" || true)
+if [ -n "$BINARIES" ]; then
+  for f in $BINARIES; do
+    ERRORS+=("SSOT binary blocked: $f (use PUB/EXPORT/ instead)")
+  done
+fi
+
+# --- Rule 2: No raw CSVs in PUB/CSDB/DM/ ---
+RAW_CSV=$(git diff --cached --name-only | grep "^PUB/CSDB/DM/.*\.csv$" || true)
+if [ -n "$RAW_CSV" ]; then
+  for f in $RAW_CSV; do
+    ERRORS+=("Raw CSV in DM dir: $f (DMs must be S1000D XML)")
+  done
+fi
+
+# --- Rule 3: KNU ID traceability in LC02-LC14 artifacts ---
+STAGED=$(git diff --cached --name-only | grep -E "^SSOT/LC(0[2-9]|1[0-4])_" || true)
+for f in $STAGED; do
+  if [ -f "$f" ]; then
+    LINES=$(wc -l < "$f")
+    if [ "$LINES" -gt 5 ]; then
+      if ! grep -qE "KNU-ATA[0-9]{2}-[0-9]{2}-[0-9]{3}" "$f"; then
+        ERRORS+=("Missing KNU ID reference: $f ($LINES lines, >5 requires KNU ref)")
+      fi
+    fi
+  fi
+done
+
+# --- Report ---
+if [ ${#ERRORS[@]} -gt 0 ]; then
+  echo "PRE-COMMIT FAILED — ${#ERRORS[@]} error(s):"
+  for e in "${ERRORS[@]}"; do
+    echo "  ✗ $e"
+  done
+  exit 1
+fi
+
+exit 0

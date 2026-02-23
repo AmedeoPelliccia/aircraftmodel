@@ -1,0 +1,7 @@
+KNU_ID,KNOT_ID,TITLE,LC_PHASE,OWNER,STATUS
+KNU-ATA28-10-001,KNOT-ATA28-10-00-001,"PM Reservoir sizing trade study",LC04,,OPEN
+KNU-ATA28-10-002,KNOT-ATA28-10-00-001,"Cryo-insulation material selection",LC04,,OPEN
+KNU-ATA28-20-001,KNOT-ATA28-20-00-001,"Distribution manifold architecture",LC04,,OPEN
+KNU-ATA28-20-002,KNOT-ATA28-20-00-001,"Tri-species flow control logic",LC05,,OPEN
+KNU-ATA28-30-001,,"Emergency discharge safe-state analysis",LC05,,OPEN
+KNU-ATA28-40-001,,"State-vector sensor suite definition",LC04,,OPEN
