@@ -80,7 +80,7 @@ across any participating family:
 | Trigger | Governing Family | Reference |
 |---------|-----------------|-----------|
 | Structural fatigue interval reached (ALI hard-time) | Family A | `family_A_structures.yaml` extension_model |
-| H2 tank re-certification interval elapsed | Family C | `family_C_novel_h2.yaml` extension_model |
+| H2 tank re-certification interval elapsed | Family C | `family_C_raw-material_h2.yaml` extension_model |
 | Engine shop visit (ESV) interval reached | Family B | `family_B_propulsion.yaml` extension_model |
 | SFE hard-time overhaul interval | Family D | `family_D_sfe.yaml` extension_model |
 | Avionics LRU hard-time or platform end-of-support | Family E | `family_E_avionics_sw.yaml` extension_model |
@@ -132,7 +132,7 @@ engine re-certified; nacelle inspection sign-off; DPP updated.
 
 ### Family C — Tank Re-certification
 
-**SLC11 scope** (from `family_C_novel_h2.yaml`):
+**SLC11 scope** (from `family_C_raw-material_h2.yaml`):
 
 - Inspect tank internal surfaces for H2 embrittlement and corrosion
 - Replace insulation if degraded (borescope inspection)

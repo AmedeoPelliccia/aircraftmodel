@@ -895,7 +895,7 @@ SSOT/
 │       ├── family_templates/
 │       │   ├── family_A_structures.yaml
 │       │   ├── family_B_propulsion.yaml
-│       │   ├── family_C_novel_h2.yaml
+│       │   ├── family_C_raw-material_h2.yaml
 │       │   ├── family_D_sfe.yaml
 │       │   ├── family_E_avionics_sw.yaml
 │       │   ├── family_F_bfe_cabin.yaml
