@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-AWARD_ID,KNU_ID,CONTRIBUTOR,TT_AMOUNT,DATE,DESCRIPTION
-=======
 Award_ID,KNU_ID,KNOT_ID,Contributor,Effort_Score,Impact_Score,Weight,TT_Awarded,Date,Ledger_Hash
->>>>>>> origin/main

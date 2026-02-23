@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-KNOT_ID,ATA,TITLE,DESCRIPTION,TT_BUDGET,STATUS
-KNOT-ATA28-10-00-001,ATA28,"LH₂ reservoir conformal vs cylindrical","Trade study on reservoir geometry for BWB vs WTW variants",200,OPEN
-KNOT-ATA28-20-00-001,ATA28,"NH₃ distribution double-containment","Double-wall containment architecture for toxic PM species",200,OPEN
-=======
 KNOT_ID,Title,Residual,Target,Pool_TT,Close_Date,Status
 KNOT-ATA28-10-00-001,LH2 Tank Structural Sizing,100,10,120,2026-09-30,OPEN
 KNOT-ATA28-20-00-001,NH3 Cryo-Shield Boil-Off Reduction,100,10,150,2026-12-31,OPEN
@@ -18,4 +13,3 @@ KNOT-ATA53-10-00-001,Fuselage Diameter Trade (3.5 m vs 3.76 m),100,15,100,2026-0
 KNOT-ATA32-10-00-001,Landing Gear Yehudi Interference / Relocation Mass,100,15,90,2026-12-31,OPEN
 KNOT-ATA55-10-00-001,CG Envelope T-tail vs Canard for Aft-Tank Management,100,15,110,2026-12-31,OPEN
 KNOT-ATA25-50-00-001,NH3 Containment Zone Crashworthiness,100,12,100,2027-06-30,OPEN
->>>>>>> origin/main

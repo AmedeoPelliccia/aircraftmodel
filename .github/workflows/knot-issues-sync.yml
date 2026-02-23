@@ -3,12 +3,7 @@ name: KNOT Issues Sync
 on:
   push:
     paths:
-<<<<<<< HEAD
-      - 'SSOT/LC01_PROBLEM_STATEMENT/KNOTS.csv'
-      - 'SSOT/LC01_PROBLEM_STATEMENT/KNU_PLAN.csv'
-=======
       - 'SSOT/LC01_PROBLEM_STATEMENT/*.csv'
->>>>>>> origin/main
   workflow_dispatch:
 
 permissions:
@@ -19,12 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-<<<<<<< HEAD
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python tools/ci/knot_issues_sync.py --dry-run
-=======
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,4 +25,3 @@ jobs:
 
       - name: Dry-run KNOT sync
         run: python tools/ci/knot_issues_sync.py --dry-run
->>>>>>> origin/main

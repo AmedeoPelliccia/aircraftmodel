@@ -1,14 +1,6 @@
 {
-<<<<<<< HEAD
-  "version": "1.0",
-  "programme": "AMPEL360-WTW",
-  "token": "TT",
-  "entries": [],
-  "hash_chain": []
-=======
   "entries": [],
   "last_hash": "0000000000000000000000000000000000000000000000000000000000000000",
   "version": "TT v3.14",
   "program": "ID-A360-Q100"
->>>>>>> origin/main
 }

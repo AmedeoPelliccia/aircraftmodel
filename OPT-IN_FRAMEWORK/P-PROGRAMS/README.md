@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# P — Programs
-
-Programme plans, milestones, and scheduling artefacts.
-
-<!-- KNU-ATA00-00-002 -->
-=======
 # P-PROGRAMS — ATA 06–12
 
 <p>
@@ -59,4 +52,3 @@ Per [IBD-001 Rev B](../../SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) 
 - Both `AMPEL360-WTW` and `AMPEL360-BWB` inherit it via submodule
 - No programme-specific forks permitted without an approved IBCR
 - Changes require a PR against `AMPEL360-COMMON` reviewed by both programme CEs
->>>>>>> origin/main

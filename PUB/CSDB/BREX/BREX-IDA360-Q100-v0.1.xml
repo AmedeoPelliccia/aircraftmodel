@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   BREX-IDA360-Q100-v0.1
-<<<<<<< HEAD
-  Project Business Rules Exchange for AMPEL360 WTW
--->
-<brex>
-  <brexRules>
-    <brexRule id="BREX-001">
-      <description>ATA 28 DMs shall include cautionRef for hydrogen hazards.</description>
-      <scope>ATA 28 — all LH₂ data modules</scope>
-    </brexRule>
-    <brexRule id="BREX-002">
-      <description>NH₃ DMs shall include warningRef for toxicity hazards.</description>
-      <scope>ATA 28 — NH₃ data modules (WTW variant)</scope>
-    </brexRule>
-    <brexRule id="BREX-003">
-      <description>ATA 47-40 procedural steps shall include respTime attribute.</description>
-      <scope>ATA 47-40 — fuel cell power plant</scope>
-    </brexRule>
-    <brexRule id="BREX-004">
-      <description>Safety-critical DMs (ATA 26, 28, 47) shall carry safetyClass="SC1".</description>
-      <scope>ATA 26, ATA 28, ATA 47</scope>
-    </brexRule>
-    <brexRule id="BREX-005">
-      <description>All ATA 28 data modules shall carry safetyClass="SC1".</description>
-      <scope>ATA 28 — all data modules</scope>
-    </brexRule>
-=======
   Business Rules Exchange for ID-A360-Q100
   S1000D Issue 5.0
 
@@ -91,6 +65,5 @@
       </objectUse>
       <brexRuleId>BREX-IDA360-005</brexRuleId>
     </structureObjectRule>
->>>>>>> origin/main
   </brexRules>
 </brex>

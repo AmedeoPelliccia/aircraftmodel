@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-# CAOS — Continuous Airworthiness
-
-Continuous Airworthiness Organisation Support artefacts.
-
-## Status
-
-This directory is a placeholder for future CAOS documentation including:
-
-- Maintenance programme development
-- Airworthiness directives tracking
-- Service bulletin management
-- Reliability programme data
-=======
 # CAOS — Continuous Airworthiness & Operations Sustainment
 
 ## ID-A360-Q100
@@ -29,4 +15,3 @@ and operational sustainment of the ID-A360-Q100 aircraft.
 ### Status
 
 CAOS artifacts will be populated as the program progresses through LC10–LC11.
->>>>>>> origin/main

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# O — Organizations
-
-Stakeholder roles, RACI matrices, and organisational structure.
-
-<!-- KNU-ATA00-00-001 -->
-=======
 # O-ORGANIZATIONS — ATA 00–05
 
 <p>
@@ -67,4 +60,3 @@ Per [IBD-001 Rev B](../../SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) 
 |---|---|---|
 | KNOT-ATA04-00-00-001 | ALIs for Cryo Systems | ATA 04 airworthiness limitations for LH₂/NH₃ cryo components |
 
->>>>>>> origin/main

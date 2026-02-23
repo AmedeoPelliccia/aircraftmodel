@@ -2,22 +2,6 @@
 
 ## Inheritance Boundary Change Requests (IBCRs)
 
-<<<<<<< HEAD
-IBCRs reclassify content between SHARED and FORKED inheritance boundaries.
-Each IBCR must specify:
-
-- **Source boundary** (SHARED or FORKED)
-- **Target boundary** (SHARED or FORKED)
-- **Affected ATA chapter(s)**
-- **Justification**
-- **Impact assessment** on sibling programme (BWB ↔ WTW)
-
-## IBCR Register
-
-| IBCR ID | ATA | From | To | Status |
-|---|---|---|---|---|
-| _none yet_ | — | — | — | — |
-=======
 Per AMPEL360-FAM-IBD-001 Rev B §8.4, any proposal to reclassify a SHARED
 entry as FORKED (or vice versa) in the Inheritance Boundary Declaration
 requires an IBCR reviewed by both programme Chief Engineers and approved
@@ -44,4 +28,3 @@ IBCRs are logged in this directory.
 ### Register
 
 No IBCRs have been filed to date.
->>>>>>> origin/main
