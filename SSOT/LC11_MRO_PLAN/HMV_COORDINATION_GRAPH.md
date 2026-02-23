@@ -6,7 +6,7 @@
 # Related Documents:
 #   AMPEL360-FAM-ARCH-ELC-001-TPL-A (Family A — Structural, SLC11)
 #   AMPEL360-FAM-ARCH-ELC-001-TPL-B (Family B — Propulsion, SLC11)
-#   AMPEL360-FAM-ARCH-ELC-001-TPL-C (Family C — Novel H2, SLC11)
+#   AMPEL360-FAM-ARCH-ELC-001-TPL-C (Family C — Raw Material, SLC11)
 #   AMPEL360-FAM-ARCH-ELC-001-TPL-D (Family D — SFE, SLC11)
 #   AMPEL360-FAM-ARCH-ELC-001-TPL-E (Family E — Avionics/SW, SLC11)
 #   AMPEL360-FAM-ARCH-ELC-001-TPL-F (Family F — BFE/Cabin, SLC11)
