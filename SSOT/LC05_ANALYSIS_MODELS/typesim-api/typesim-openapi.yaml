@@ -1,0 +1,255 @@
+# TypeSim API Contract — Industrial Consortium Digital Twin
+# Doc ID:  AMPEL360-FAM-LC05-TYPESIM-API-001 Rev A
+# Date:    2026-02-22
+# Concept: Amedeo Pelliccia / IDEALE
+# Ref:     AMPEL360-FAM-LC05-TOPLAP-MDLSP-REF-001 §8
+
+openapi: "3.0.0"
+info:
+  title:   TypeSim — TOP-LAP Consortium Digital Twin Function
+  version: "1.0.0-AMPEL360"
+  description: |
+    Federated multi-domain simulation function for consortium DT running.
+    Implements: TypeSim : (M, P, C, E, K) → (S, R, I)
+    Two modes: EXPLORATORY (pre-PNRD) and PROPAGATION (post-PNRD).
+    Every run produces a governance record with SHA-256 hash chain.
+
+paths:
+  /typesim/run:
+    post:
+      summary: Execute a TypeSim run (exploratory or propagation)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TypeSimInput'
+      responses:
+        '200':
+          description: Simulation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSimOutput'
+
+  /typesim/status:
+    get:
+      summary: Query TOPLAP state and FPAI for a given model
+      parameters:
+        - name: model_hash
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: TOPLAP status for the model
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToplapStatus'
+
+  /typesim/pnrd:
+    post:
+      summary: Declare PNRD lock (determinism freeze)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PNRDDeclaration'
+      responses:
+        '200':
+          description: PNRD declaration accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, enum: [LOCKED] }
+                  pnrd_hash: { type: string }
+                  timestamp: { type: string, format: date-time }
+
+components:
+  schemas:
+
+    TypeSimInput:
+      type: object
+      required: [model, constraints, mode, process_set_id, run_id]
+      properties:
+        run_id:
+          type: string
+          description: "Unique run identifier (UUID)"
+        mode:
+          type: string
+          enum: [EXPLORATORY, PROPAGATION]
+          description: |
+            EXPLORATORY: pre-PNRD, multi-objective search
+            PROPAGATION: post-PNRD, deterministic evaluation of x*
+        model:
+          $ref: '#/components/schemas/ModelState'
+        constraints:
+          $ref: '#/components/schemas/ConstraintSet'
+        environment:
+          $ref: '#/components/schemas/Environment'
+        knowledge_baseline:
+          type: string
+          description: "SSOT version hash"
+        process_set_id:
+          type: string
+          description: "AM-Π-{PROCESS}-{MAT}-v{N}"
+        pnrd_solution_hash:
+          type: string
+          description: "sha256(x*) — required if mode=PROPAGATION"
+
+    ModelState:
+      type: object
+      properties:
+        geometry_hash:       { type: string }
+        material_state_hash: { type: string }
+        recipe_hash:         { type: string }
+        spsc_class:
+          type: string
+          enum: [SPSC-1, SPSC-2, CENTERBODY, WING, OTHER]
+        toplap_state:
+          type: integer
+          minimum: 0
+          maximum: 6
+        mps_artifact_id:     { type: string }
+
+    ConstraintSet:
+      type: object
+      properties:
+        C_AM_hash:    { type: string, description: "sha256 of C_AM content" }
+        C_STR_hash:   { type: string }
+        C_THERM_hash: { type: string }
+        C_CERT_hash:  { type: string }
+        C_SYS_hash:   { type: string }
+
+    Environment:
+      type: object
+      properties:
+        load_case_ids:   { type: array, items: { type: string } }
+        mission_profile: { type: string }
+        thermal_boundary: { type: string }
+        production_cell_id: { type: string }
+
+    TypeSimOutput:
+      type: object
+      properties:
+        run_id:   { type: string }
+        mode:     { type: string, enum: [EXPLORATORY, PROPAGATION] }
+        state_evolution:
+          $ref: '#/components/schemas/SimulatedState'
+        risk_vector:
+          $ref: '#/components/schemas/RiskVector'
+        impact_metrics:
+          $ref: '#/components/schemas/ImpactMetrics'
+        governance_record:
+          $ref: '#/components/schemas/GovernanceRecord'
+
+    SimulatedState:
+      type: object
+      properties:
+        toplap_state:  { type: integer, minimum: 0, maximum: 6 }
+        toplap_conf:   { type: integer, minimum: 0, maximum: 100 }
+        H_TLA:         { type: number, description: "Genesis Horizon scalar" }
+        P_AM:          { type: number, description: "Producibility index [0,1]" }
+        state_vector:
+          type: object
+          properties:
+            G_geometry:      { type: string }
+            P_process:       { type: string }
+            M_material:      { type: string }
+            Q_quality:       { type: string }
+            V_viability:     { type: string }
+            T_traceability:  { type: string }
+
+    RiskVector:
+      type: object
+      properties:
+        margins:
+          type: object
+          properties:
+            m_AM:    { type: number, minimum: 0 }
+            m_STR:   { type: number }
+            m_THERM: { type: number }
+            m_CERT:  { type: number }
+            m_SYS:   { type: number }
+        violations:
+          type: array
+          items:
+            type: object
+            properties:
+              domain:   { type: string, enum: [AM, STR, THERM, CERT, SYS] }
+              severity: { type: string, enum: [WARNING, FAIL, FATAL] }
+              message:  { type: string }
+        horizon_flags:
+          type: object
+          properties:
+            AM:    { type: string, enum: [PASS, WARNING, FAIL] }
+            STR:   { type: string, enum: [PASS, WARNING, FAIL] }
+            THERM: { type: string, enum: [PASS, WARNING, FAIL] }
+            CERT:   { type: string, enum: [PASS, WARNING, FAIL] }
+            SYS:   { type: string, enum: [PASS, WARNING, FAIL] }
+
+    ImpactMetrics:
+      type: object
+      properties:
+        mass_kg:                { type: number }
+        mass_delta_pct:         { type: number }
+        manufacturing_time_hr:  { type: number }
+        distortion_risk_idx:    { type: number }
+        cryo_fatigue_margin:    { type: number }
+        cert_flag:              { type: boolean }
+        co2_lifecycle_kg:       { type: number }
+        EEI:                    { type: number, minimum: 0, maximum: 1 }
+        HORIZON_FPAI_360:       { type: integer, minimum: 0, maximum: 360 }
+        PFI_360:                { type: integer, minimum: 0, maximum: 360 }
+        cost_delta_pct:         { type: number }
+
+    GovernanceRecord:
+      type: object
+      required: [model_hash, constraints_hash, solver_versions, mode, PNRD_status]
+      properties:
+        model_hash:       { type: string }
+        constraints_hash: { type: string }
+        solver_versions:
+          type: object
+          properties:
+            AM:    { type: string }
+            STR:   { type: string }
+            THERM: { type: string }
+            SYS:   { type: string }
+            ESG:   { type: string }
+        mode:          { type: string, enum: [EXPLORATORY, PROPAGATION] }
+        PNRD_status:   { type: boolean }
+        timestamp:     { type: string, format: date-time }
+        prev_hash:     { type: string }
+        hash:          { type: string, description: "sha256 of this record" }
+
+    ToplapStatus:
+      type: object
+      properties:
+        model_hash:         { type: string }
+        TOPLAP_STATE:       { type: integer, minimum: 0, maximum: 6 }
+        TOPLAP_CONF:        { type: integer, minimum: 0, maximum: 100 }
+        HORIZON_FPAI_360:   { type: integer, minimum: 0, maximum: 360 }
+        H_TLA:              { type: number }
+        PNRD_declared:      { type: boolean }
+        last_gate_passed:   { type: string }
+        next_gate_required: { type: string }
+
+    PNRDDeclaration:
+      type: object
+      required: [selected_solution_hash, objective_hash, constraints_hash, authority]
+      properties:
+        selected_solution_hash: { type: string, description: "sha256(x*)" }
+        objective_hash:         { type: string, description: "sha256(J)" }
+        constraints_hash:       { type: string, description: "sha256(C)" }
+        allowed_changes:
+          type: string
+          enum: [PARAMETRIC_ONLY]
+          default: PARAMETRIC_ONLY
+        authority:    { type: string, description: "STK_PMO + SSOT gate authority" }
+        timestamp:    { type: string, format: date-time }
+        trade_study_artifact_id: { type: string }

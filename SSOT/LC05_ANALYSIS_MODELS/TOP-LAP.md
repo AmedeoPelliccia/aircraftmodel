@@ -432,6 +432,35 @@ TOP-LAP ensures that every `delta_residual_primary` value is:
 - Reproducible from committed model files
 - Validated against acceptance criteria before LATCH
 
+### 8.3 TypeSim — Consortium Digital Twin Function
+
+The **TypeSim** API implements TOP-LAP as a federated simulation service for
+the industrial consortium Digital Twin:
+
+```
+TypeSim : (M, P, C, E, K) → (S, R, I)
+```
+
+| Input | Description | Output | Description |
+|---|---|---|---|
+| **M** Model | Geometry, material, recipe | **S** State | TOPLAP state + confidence |
+| **P** Process | Manufacturing process set | **R** Risk | Constraint margins + violations |
+| **C** Constraints | AM/STR/THERM/CERT/SYS | **I** Impact | Mass, cost, CO₂, FPAI |
+| **E** Environment | Load cases, mission profile | | |
+| **K** Knowledge | SSOT version hash | | |
+
+TypeSim operates in two modes aligned with TOP-LAP phases:
+
+- **EXPLORATORY** (pre-PNRD) — multi-objective search during TOPO/OPER
+- **PROPAGATION** (post-PNRD) — deterministic evaluation during PROJ/LATCH
+
+Every TypeSim run produces a `GovernanceRecord` with SHA-256 hash chain,
+ensuring full reproducibility and auditability.
+
+> **API Contract:** [`AMPEL360-FAM-LC05-TYPESIM-API-001 Rev A`](typesim-api/README.md)
+> — OpenAPI 3.0.0 specification at
+> [`typesim-api/typesim-openapi.yaml`](typesim-api/typesim-openapi.yaml)
+
 ---
 
 ## 9. Programme-Specific Considerations
@@ -482,6 +511,14 @@ The following TOP-LAP analyses are **SHARED** across both programmes:
 | **Coupling tensor** | Formal description of cross-KNOT dimensional interactions |
 | **Validation gate** | Mandatory check at each phase boundary |
 | **delta_residual_primary** | Quantitative KNOT residual reduction from a single KNU |
+| **TypeSim** | Federated multi-domain simulation function: (M, P, C, E, K) → (S, R, I) |
+| **PNRD** | Point of No Return for Design — topology freeze gate |
+| **FPAI** | Full Programme Assessment Index — [0, 360] programme health scalar |
+| **PFI** | Programme Feasibility Index — [0, 360] viability gate metric |
+| **EEI** | Energy Efficiency Index — [0, 1] energy performance scalar |
+| **SPSC** | Structural Part Safety Classification (SPSC-1 = primary, SPSC-2 = secondary) |
+| **H_TLA** | Genesis Horizon scalar — timeline-adjusted readiness metric |
+| **Governance record** | SHA-256 hash-chain entry for each TypeSim run |
 
 ---
 
