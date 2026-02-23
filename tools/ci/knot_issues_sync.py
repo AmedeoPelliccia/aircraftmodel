@@ -25,7 +25,7 @@ def load_knots():
         print(f"KNOTS.csv not found at {knots_file}")
         return []
     with open(knots_file, newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        return list(csv.DictReader(f, delimiter=','))
 
 
 def load_knu_plan():
@@ -35,7 +35,7 @@ def load_knu_plan():
         print(f"KNU_PLAN.csv not found at {knu_file}")
         return []
     with open(knu_file, newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        return list(csv.DictReader(f, delimiter=','))
 
 
 def extract_ata_label(knot_id):
@@ -46,6 +46,7 @@ def extract_ata_label(knot_id):
             chapter = part[3:]
             if chapter.isdigit():
                 return f"ATA-{chapter}"
+    print(f"WARNING: could not extract ATA label from KNOT ID: {knot_id!r}")
     return None
 
 
@@ -68,7 +69,7 @@ def generate_issue_body(knot, knus):
         lines.append("| KNU_ID | Type | Title | Phase | Status |")
         lines.append("|---|---|---|---|---|")
         for k in related:
-            lines.append(f"| {k['KNU_ID']} | {k['KNU_Type']} | {k['Title']} | {k['LC_Phase']} | {k['Status']} |")
+            lines.append(f"| {k['KNU_ID']} | {k['KNU_TYPE']} | {k['Title']} | {k['LC_Phase']} | {k['Status']} |")
     else:
         lines.append("_No KNUs planned yet._")
     return "\n".join(lines)

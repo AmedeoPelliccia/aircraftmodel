@@ -15,7 +15,6 @@ import hashlib
 import json
 import os
 import sys
-from datetime import datetime, timezone
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER_PATH = os.path.join(REPO_ROOT, "finance", "ledger.json")
@@ -59,9 +58,13 @@ def load_ledger():
 def save_ledger(ledger):
     """Save the ledger to disk."""
     os.makedirs(os.path.dirname(LEDGER_PATH), exist_ok=True)
-    with open(LEDGER_PATH, "w", encoding="utf-8") as f:
-        json.dump(ledger, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    try:
+        with open(LEDGER_PATH, "w", encoding="utf-8") as f:
+            json.dump(ledger, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+    except OSError as e:
+        print(f"Error: could not write ledger to {LEDGER_PATH}: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 def verify_ledger():
