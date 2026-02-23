@@ -15,7 +15,8 @@ Usage:
 import argparse
 import os
 import sys
-import xml.etree.ElementTree as ET
+
+import defusedxml.ElementTree as ET
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -33,37 +34,42 @@ def validate_dm(filepath):
     relpath = os.path.relpath(filepath, REPO_ROOT)
 
     try:
-        tree = defusedxml.etree.ElementTree.parse(filepath)
+        tree = ET.parse(filepath)
     except ET.ParseError as e:
         errors.append(f"XML parse error in {relpath}: {e}")
         return errors
 
     root = tree.getroot()
-    text_content = ET.tostring(root, encoding="unicode", method="text").lower()
-    xml_content_lower = ET.tostring(root, encoding="unicode").lower()
+    text_content = " ".join(root.itertext()).lower()
 
     # BREX-IDA360-001: ATA 28 DMs need cautionRef for H2
     if "ata-28" in relpath.lower() or "ata_28" in relpath.lower():
-        if "cautionref" not in xml_content_lower:
+        if root.find('.//{*}cautionRef') is None:
             errors.append(f"BREX-IDA360-001: {relpath} — ATA 28 DM missing <cautionRef> for H2 compatibility")
 
     # BREX-IDA360-002: NH3 DMs need warningRef
     if "nh3" in text_content or "ammonia" in text_content:
-        if "warningref" not in xml_content_lower:
+        if root.find('.//{*}warningRef') is None:
             errors.append(f"BREX-IDA360-002: {relpath} — DM with NH3 content missing <warningRef> for NH3 toxicity")
 
     # BREX-IDA360-003: ATA 47-40 procedural DMs need respTime
     if "47-40" in relpath:
-        for step in root.iter():
-            if step.tag and "step" in step.tag.lower():
-                if not any(k.lower() == "resptime" for k in step.attrib):
-                    errors.append(f"BREX-IDA360-003: {relpath} — ATA 47-40 step missing respTime attribute")
-                    break
+        for step in root.findall('.//{*}proceduralStep'):
+            if not any(k.lower() == "resptime" for k in step.attrib):
+                errors.append(f"BREX-IDA360-003: {relpath} — ATA 47-40 step missing respTime attribute")
+
+    # BREX-IDA360-004: DMs with applicability must use approved variant values
+    for applic_elem in root.findall('.//{*}applic'):
+        applic_text = (applic_elem.text or "").strip()
+        if applic_text and applic_text not in APPROVED_VARIANTS:
+            errors.append(
+                f"BREX-IDA360-004: {relpath} — applicability value {applic_text!r} not in approved variants"
+            )
 
     # BREX-IDA360-005: ATA 26/28/47 DMs need safetyClass="SC1"
     ata_safety = any(x in relpath.lower() for x in ["ata-26", "ata_26", "ata-28", "ata_28", "ata-47", "ata_47"])
     if ata_safety:
-        if 'safetyclass="sc1"' not in xml_content_lower:
+        if not any(e.get('safetyClass') == 'SC1' for e in root.iter()):
             errors.append(f"BREX-IDA360-005: {relpath} — safety-critical DM missing safetyClass=\"SC1\"")
 
     return errors
