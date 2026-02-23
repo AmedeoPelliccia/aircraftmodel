@@ -155,3 +155,80 @@ dependencies:
 # Critical path: C(SLC01→SLC07) → LC06 → LC08
 # Total transition zone bottleneck: 18 months (Family C)
 # Freeze point sequence: FP-01 → [FP-02, FP-03] → FP-04 → FP-05
+
+# --- PNR Blockchain Thread Policy ---
+pnr_thread_policy:
+  governing_document: "AMPEL360-FAM-ARCH-ELC-001-PNR"
+  revision: "A"
+  activation_model: "on-demand"
+  anchoring_principle: "non-dispersive"
+  immutability_interpretation: "relative"
+  state_transitions_permitted: true
+  state_transition_consensus_ref: "AMPEL360-FAM-ARCH-ELC-001-PNR §6 Consensus Policies"
+
+  freeze_point_anchoring:
+
+    - freeze_point: "FP-01"
+      pnr_event_type: "FP01"
+      on_chain_payload_scope:
+        - "commitment_hash of ICD baseline artefact"
+        - "validity_state"
+        - "consensus_proof (SA + Programme Lead)"
+      off_chain_artefacts:
+        - "Interface Control Documents (ICDs)"
+        - "Interface definition YAML files in SSOT"
+        - "Review minutes and sign-off records"
+      supplier_lines_activated: true
+      supplier_line_trigger: "ICD freeze for families with supplier-provided interfaces"
+
+    - freeze_point: "FP-02"
+      pnr_event_type: "FP02"
+      on_chain_payload_scope:
+        - "commitment_hash of loads envelope convergence evidence"
+        - "validity_state"
+        - "consensus_proof (SA + Programme Lead)"
+      off_chain_artefacts:
+        - "Structural loads analysis reports"
+        - "Propulsion thrust case documentation"
+        - "Convergence evidence package"
+      supplier_lines_activated: false
+
+    - freeze_point: "FP-03"
+      pnr_event_type: "FP03"
+      on_chain_payload_scope:
+        - "commitment_hash of electrical load analysis closure evidence"
+        - "validity_state"
+        - "consensus_proof (SA + Programme Lead)"
+      off_chain_artefacts:
+        - "Electrical load analysis (ELA) report"
+        - "H2 system power demand specifications"
+        - "Avionics and SFE load budgets"
+      supplier_lines_activated: true
+      supplier_line_trigger: "Power demand agreement with H2 system suppliers (Family C)"
+
+    - freeze_point: "FP-04"
+      pnr_event_type: "FP04"
+      on_chain_payload_scope:
+        - "commitment_hash of mass properties convergence evidence"
+        - "validity_state"
+        - "consensus_proof (SA + Programme Lead)"
+      off_chain_artefacts:
+        - "Mass properties report (all families)"
+        - "Weight budget allocation records"
+        - "Component weight confirmation data"
+      supplier_lines_activated: false
+
+    - freeze_point: "FP-05"
+      pnr_event_type: "FP05"
+      on_chain_payload_scope:
+        - "commitment_hash of FHA/PSSA approval evidence"
+        - "DAL allocation record Merkle root"
+        - "validity_state"
+        - "consensus_proof (SA + Programme Lead)"
+      off_chain_artefacts:
+        - "Functional Hazard Assessment (FHA) document"
+        - "Preliminary System Safety Assessment (PSSA)"
+        - "DAL allocation records (all safety-relevant families)"
+        - "Safety review sign-off minutes"
+      supplier_lines_activated: true
+      supplier_line_trigger: "DAL-impacting supplier qualifications for Families A, B, C, D, E"
