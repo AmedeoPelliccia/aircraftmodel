@@ -9,7 +9,7 @@
 | **Date** | 2026-02-22 |
 | **Paradigm** | C² CELL — Chemical Containment & Circulation |
 | **Sub-domain** | PMM — Prime Material Management |
-| **Scope** | Q100 BWB · S2040/T1 · IDEALE family |
+| **Scope** | Q100 BWB & WTW · S2040/T1 · IDEALE family |
 | **Regulatory** | ATA iSpec 2200 compliance preserved · CS-25 SC TBD |
 | **Status** | ACTIVE — supersedes combustion-logistic framing |
 
