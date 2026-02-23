@@ -82,7 +82,9 @@ def check_dirs(dirs, label, strict=False):
     for d in dirs:
         full = os.path.join(REPO_ROOT, d)
         if not os.path.isdir(full):
-            msg = f"MISSING: {d}"
+            severity = "ERROR" if strict else "WARNING"
+            label_prefix = f"{label}: " if label else ""
+            msg = f"{severity}: {label_prefix}missing directory {d}"
             if strict:
                 errors.append(msg)
             else:
