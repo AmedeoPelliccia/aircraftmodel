@@ -194,7 +194,7 @@ ATA 28 is the **critical-path fork** between AMPEL360 BWB and AMPEL360 WTW
 
 | Ref | Document |
 |---|---|
-| [IBD-001] | AMPEL360-FAM-IBD-001 — Family Inheritance Boundary Declaration |
+| [IBD-001] | AMPEL360-FAM-IBD-001 Rev B — Family Inheritance Boundary Declaration |
 | [BREX] | BREX-IDA360-Q100-v0.1 — Project Business Rules Exchange |
 | [TT] | TOKENOMICS_TT.yaml — Teknia Token allocation & spillover |
 | [iSpec] | ATA iSpec 2200 — ATA Chapter 28 Fuel |
