@@ -60,6 +60,23 @@ def validate_dm(filepath):
                     errors.append(f"BREX-IDA360-003: {relpath} — ATA 47-40 step missing respTime attribute")
                     break
 
+    # BREX-IDA360-004: DMs with applicability must use approved variant values
+    for elem in root.iter():
+        local_tag = elem.tag.split("}")[-1].lower() if "}" in elem.tag else elem.tag.lower()
+        if local_tag == "applic":
+            for child in elem:
+                child_tag = child.tag.split("}")[-1].lower() if "}" in child.tag else child.tag.lower()
+                if child_tag == "assert":
+                    for attr_name, attr_val in child.attrib.items():
+                        local_attr = attr_name.split("}")[-1].lower() if "}" in attr_name else attr_name.lower()
+                        if local_attr == "applicpropertyvalues":
+                            for v in attr_val.split():
+                                if v not in APPROVED_VARIANTS:
+                                    errors.append(
+                                        f"BREX-IDA360-004: {relpath} — "
+                                        f"applicPropertyValues '{v}' not in approved variants"
+                                    )
+
     # BREX-IDA360-005: ATA 26/28/47 DMs need safetyClass="SC1"
     ata_safety = any(x in relpath.lower() for x in ["ata-26", "ata_26", "ata-28", "ata_28", "ata-47", "ata_47"])
     if ata_safety:
