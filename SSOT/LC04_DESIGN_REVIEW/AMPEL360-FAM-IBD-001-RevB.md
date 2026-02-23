@@ -300,18 +300,28 @@ logged in `N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/`.
 
 ## 9. Open Items for LC04 Trade Study
 
+> **⚠ Configuration Selection Trade Study:** The formal multi-criterion trade
+> study justifying WTW selection over BWB is documented in
+> **[`AMPEL360-WTW-TS-001 Rev A`](AMPEL360-WTW-TS-001-Config-Selection.md)**.
+> BWB has an inherent volumetric advantage for LH₂ accommodation; WTW is
+> selected on certification-pathway and TRL grounds. TS-001 status: OPEN
+> pending closure of KNOT-CONF-00-00-001 and KNOT-CONF-00-00-002.
+
 | Item | Question | Resolving KNOT | Target |
 |---|---|---|---|
+| OI-0 | Is WTW the correct near-term configuration? (WTW vs BWB weighted trade) | KNOT-CONF-00-00-001 | 2027-Q1 |
+| OI-0a | LH₂ stretch penalty: what is the actual WTW L/D and range impact vs BWB? | KNOT-CONF-00-00-002 | 2026-Q3 |
 | OI-1 | Exact fuselage Ø for WTW: 3.5 m vs 3.76 m (6-abreast vs 5-abreast)? | KNOT-ATA53-10-00-001 | 2026-Q3 |
 | OI-2 | NH₃ cryo-shield boil-off reduction: does ≥ 30 % hold at cruise altitude? | KNOT-ATA28-20-00-001 | 2027-Q1 |
 | OI-3 | Landing gear yehudi interference: main gear relocation mass penalty? | KNOT-ATA32-10-00-001 | 2026-Q4 |
 | OI-4 | CG envelope: T-tail vs canard for aft-tank CG management? | KNOT-ATA55-10-00-001 | 2026-Q4 |
 | OI-5 | Crashworthiness: NH₃ containment zone length between bulkhead and LH₂ tank? | KNOT-ATA25-50-00-001 | 2027-Q2 |
 
-> Resolution of these items will confirm or refine the WTW viability
-> assessment. If OI-1 through OI-4 collectively indicate that the WTW cannot
-> close its performance case within 10 % of the reference kerosene-equivalent
-> aircraft, the programme should escalate to an IBCR reassessing the boundary.
+> Resolution of OI-0 and OI-0a (via TS-001 and its KNOTs) is a **precondition
+> for design freeze**. OI-1 through OI-5 feed into OI-0. If OI-0a quantifies
+> an L/D penalty > 10 % of the kerosene-equivalent baseline, or if OI-1 through
+> OI-4 collectively indicate WTW cannot close its performance case, an IBCR
+> must be filed to reassess the programme boundary.
 
 ---
 

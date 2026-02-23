@@ -63,6 +63,7 @@
 | **Domain governance** | `aircraftmodel.eu` — aviation decarbonization boundary |
 | **Sibling program** | AMPEL360 BWB (quantum-enhanced, blended-wing-body, EIS 2042–48) |
 | **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md) — shared-spine / forked-content declaration |
+| **Config selection trade** | [`AMPEL360-WTW-TS-001 Rev A`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-WTW-TS-001-Config-Selection.md) — WTW vs BWB multi-criterion trade study · **OPEN** (KNOT-CONF-00-00-001) |
 | **Repository** | `github.com/AmedeoPelliccia/aircraftmodel` |
 | **Concept & Direction** | Amedeo Pelliccia |
 
