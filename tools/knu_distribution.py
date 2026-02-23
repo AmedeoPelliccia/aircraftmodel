@@ -20,8 +20,7 @@ from datetime import datetime, timezone
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER_PATH = os.path.join(REPO_ROOT, "finance", "ledger.json")
 
-# Default parameters from TOKENOMICS_TT.yaml
-ALPHA = 0.30
+# Fee rates (subset of parameters from TOKENOMICS_TT.yaml)
 FEE_RATES = {
     "reward": 0.005,
     "transfer_pi": 0.00314,
