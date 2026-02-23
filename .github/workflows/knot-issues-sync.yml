@@ -1,0 +1,27 @@
+name: KNOT Issues Sync
+
+on:
+  push:
+    paths:
+      - 'SSOT/LC01_PROBLEM_STATEMENT/*.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Dry-run KNOT sync
+        run: python tools/ci/knot_issues_sync.py --dry-run

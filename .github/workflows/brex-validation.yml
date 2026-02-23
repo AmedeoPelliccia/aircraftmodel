@@ -1,0 +1,29 @@
+name: BREX Validation
+
+on:
+  push:
+    paths:
+      - 'PUB/CSDB/**'
+  pull_request:
+    paths:
+      - 'PUB/CSDB/**'
+
+permissions:
+  contents: read
+
+jobs:
+  brex-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run BREX validation
+        run: python tools/ci/brex_validator.py --dm-dir PUB/CSDB/DM

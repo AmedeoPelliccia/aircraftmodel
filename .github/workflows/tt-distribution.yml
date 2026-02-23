@@ -1,0 +1,39 @@
+name: TT Distribution
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: read
+
+jobs:
+  distribute:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check for KNU ID in PR
+        id: knu-check
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          if echo "$PR_TITLE $PR_BODY" | grep -qE 'KNU-[A-Z0-9-]+'; then
+            echo "knu_found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "knu_found=false" >> "$GITHUB_OUTPUT"
+            echo "No KNU ID found in PR — skipping TT distribution"
+          fi
+
+      - name: Verify ledger integrity
+        if: steps.knu-check.outputs.knu_found == 'true'
+        run: python tools/knu_distribution.py verify
