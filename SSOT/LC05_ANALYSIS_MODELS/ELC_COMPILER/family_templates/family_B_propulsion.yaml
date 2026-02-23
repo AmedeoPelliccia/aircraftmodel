@@ -1,0 +1,380 @@
+# family_B_propulsion.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-B
+# Date: 2026-02-23
+# Description: Family B lifecycle template — Propulsion (Co-Development).
+# Applies to ATA-71 (Powerplant), ATA-72 (Engine/Propulsion), and associated
+# propulsion ATA chapters on AMPEL360. Co-developed under shared IP agreement
+# with propulsion OEM partner.
+# Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-B"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "B"
+  name: "Propulsion (Co-Development)"
+  applies_to: ["ATA-71", "ATA-72", "ATA-73", "ATA-74", "ATA-75", "ATA-76", "ATA-77", "ATA-78", "ATA-79"]
+  classification_criteria:
+    trl_range: [5, 7]              # Partially novel; engine core co-developed with OEM
+    supply_chain_maturity: "medium"  # Shared supply chain with propulsion OEM; partially established
+    make_buy: "co-develop"         # Shared IP and joint development with propulsion OEM partner
+    special_conditions_required: false  # Standard CS-E + CS-25 basis
+    certification_basis: ["CS-E", "CS-25", "EASA Engine Type Certificate", "FAR-33"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Register all known propulsion uncertainties: engine performance at
+        H2 fuel conditions (Family C interface), nacelle integration geometry
+        (Family A interface), inlet distortion, thrust-specific fuel
+        consumption targets, thermal management, exhaust emissions compliance.
+        Define shared IP boundary with propulsion OEM. Instantiate KNUs.
+        Define RACI including OEM partner roles. Seed ELC_FAMILY_ASSIGNMENTS
+        for all ATA-71/72 sub-systems.
+      compression_lever: >
+        Leverage OEM engine core heritage data to close knowledge KNOTs
+        rapidly. Prioritise novel interface topics (H2 fuel adaptation,
+        nacelle/airframe integration) for early KNOT investment. Joint
+        KNOT triage sessions with OEM partner. Target: 6 KNUs
+        ACCEPTED/month across co-development team.
+      entry_criteria: "Programme kickoff; co-development agreement (CDA) signed; OEM partner engaged"
+      exit_criteria: "All KNOTs registered; KNUs instantiated; RACI signed; shared IP boundary documented"
+      typical_duration_months: 3
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define propulsion performance requirements: thrust targets, specific
+        fuel consumption, engine pressure ratio, turbine inlet temperature
+        limits. Define propulsion/airframe integration requirements: thrust
+        vector, nacelle geometry envelope (ATA-71), pylon load interface
+        (ATA-53). Define propulsion/H2-fuel interface requirements (energy
+        demand, fuel delivery pressure/temperature — Family C FP-02 input).
+        Define emissions requirements (NOx, CO2, H2O). Decompose from
+        aircraft-level LC02.
+      compression_lever: >
+        Engine thermodynamic performance model (co-developed with OEM)
+        drives requirements. Co-develop propulsion requirements with
+        Family C (H2 fuel delivery) simultaneously to close FP-02 Loads
+        Freeze input earlier. Simulation-driven specs via TypeSim
+        EXPLORATORY mode.
+      entry_criteria: "SLC01 exit; aircraft LC02 requirements baselined; OEM performance model available"
+      exit_criteria: >
+        Propulsion requirements document baselined; thrust/performance targets
+        agreed with OEM; interface loads defined for Family A; H2 fuel
+        delivery spec agreed with Family C (FP-02 input); emissions targets
+        confirmed
+      typical_duration_months: 4
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Concept and Architecture Selection"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Engine architecture trade (turbofan variants, geared vs direct drive,
+        bypass ratio trade-off). Nacelle concept selection: inlet design,
+        thrust reverser type, acoustic treatment approach. H2 combustion
+        chamber concept trade (lean premix vs diffusion, NOx management).
+        Pylon concept: forward/rear mount configuration, load path definition.
+        Materials selection for hot section components.
+      compression_lever: >
+        OEM engine core design reuse: identify which engine sub-systems
+        can be derived from existing certified designs vs. require clean-sheet
+        development. Down-select to single engine architecture before
+        detailed design. Trade studies conducted jointly with OEM using
+        proprietary simulation tools.
+      entry_criteria: "SLC01 exit; preliminary performance requirements from SLC02 available"
+      exit_criteria: >
+        Engine architecture selected; nacelle concept agreed; H2 combustor
+        concept selected; pylon configuration defined; materials shortlist
+        frozen; joint architecture review with OEM completed
+      typical_duration_months: 5
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Detailed nacelle design: inlet cowl, fan cowl, thrust reverser,
+        pylon structure, engine mount fittings. Engine-specific ICDs:
+        ATA-71 nacelle/pylon interface (Family A), ATA-72 engine fuel
+        delivery interface (Family C), ATA-73/74 fuel/ignition systems,
+        ATA-77 engine instruments interface (Family E). FMEA initial
+        draft. Preliminary weight statement contribution (FP-04 input).
+      compression_lever: >
+        OEM proprietary MBSE tools drive nacelle parametric design.
+        Concurrent design review with Family A (pylon/fuselage interface)
+        and Family C (fuel system connection) eliminates ICD conflicts
+        before FP-01 freeze. Concurrent SLC04/SLC05 where analysis
+        is confirmatory of OEM-validated engine models.
+      entry_criteria: "SLC02 exit; SLC03 architecture selected; FP-01 ICD Freeze scheduled"
+      exit_criteria: >
+        Design definition package released; all ICDs signed (FP-01);
+        nacelle design frozen; FMEA initial issue released; weight
+        statement contribution complete (FP-04 input)
+      typical_duration_months: 6
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Nacelle structural analysis: loads, vibration, fatigue, bird
+        impact, ice throw. Thrust reverser aerodynamic analysis.
+        Engine performance analysis: thrust-specific fuel consumption,
+        altitude/temperature envelope, H2 combustion stability, NOx
+        prediction. Acoustic analysis: FAR-36 noise margins. Safety
+        analysis: FMEA, FTA, Common Cause Analysis for engine systems.
+        TypeSim integration for H2 fuel/propulsion co-simulation.
+      compression_lever: >
+        OEM provides certified engine performance model as simulation
+        credit input. TypeSim federated API used for nacelle/airframe
+        co-simulation (pressure recovery, inlet distortion mapping).
+        TOP-LAP OPER phase: multi-variable engine cycle optimisation.
+        Target 30% virtual evidence credit from OEM analysis data.
+      entry_criteria: "SLC03 architecture selected; SLC04 geometry baselined"
+      exit_criteria: >
+        All structural, performance, and safety analyses complete;
+        noise margins confirmed; FP-02 Loads Freeze input delivered;
+        FP-04 Weight Budget contribution finalised; analysis evidence
+        package assembled
+      typical_duration_months: 7
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Engine qualification test campaign (shared with OEM): endurance
+        test, altitude relight, bird ingestion, blade-off containment,
+        icing certification, acoustic emission measurement. H2 combustion
+        qualification: stability envelope, auto-ignition, flashback.
+        Nacelle qualification: fire detection/suppression test, drain/vent
+        function, thrust reverser deployment. DO-160 for nacelle avionics.
+        Engine Type Certificate (ETC) test programme with Authority.
+      compression_lever: >
+        Co-development arrangement allows shared test article costs and
+        shared simulation credit with OEM certification programme. Leverage
+        OEM ETC test data to reduce nacelle-specific qualification scope.
+        Joint test plan agreed with Authority from SLC01 to pre-define
+        simulation credit allowance.
+      entry_criteria: >
+        SLC05 exit; safety analysis approved; joint test plan agreed with
+        Authority and OEM; test articles manufactured; test cells commissioned
+      exit_criteria: >
+        Engine ETC obtained (or conditional approval); nacelle qualification
+        complete; all qualification test reports approved; qualification
+        evidence package assembled; no open safety findings
+      typical_duration_months: 14
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Propulsion system integration: engine installation on aircraft
+        pylon, fuel system connection (Family C), engine control system
+        connection (FADEC, Family E ATA-73), nacelle fit verification.
+        Ground engine runs on aircraft (static test cell configuration
+        or airframe ground test article). Vibration and resonance check.
+        Reverse thrust functional test. Fire detection/suppression
+        system integration test (ATA-26 interface).
+      compression_lever: >
+        Digital twin pre-integration (TypeSim PROPAGATION) identifies
+        integration issues before physical assembly. OEM engine installation
+        simulation reduces aircraft-level integration trial time. Concurrent
+        engine runs with Family C (H2 system) and Family E (avionics)
+        integration where test sequence permits.
+      entry_criteria: >
+        SLC06 exit; ETC or conditional approval; engine available;
+        Family C SLC07 complete (H2 fuel supply available at test rig);
+        Family A pylon structure qualified
+      exit_criteria: >
+        All ground engine runs complete; integration checks passed;
+        vibration signature accepted; fire system integration confirmed;
+        propulsion integration report released; ready for flight test
+      typical_duration_months: 7
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution: compile propulsion certification
+        dossier. CS-25 Chapter F compliance (propulsion systems).
+        Flight test evidence: performance, handling, thrust reverser,
+        engine out, abnormal procedures. Engine ETC integration into
+        aircraft TC. Conformity inspections. CRIs closure. Final
+        engine-airframe compatibility declaration.
+      compression_lever: >
+        OEM ETC early approval reduces risk to aircraft TC schedule.
+        Front-loaded simulation evidence reduces flight test scope.
+        Joint Authority engagement from SLC02 on H2 combustion novel
+        aspects accelerates CRI closure.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test commenced;
+        all ground test evidence accepted; OEM ETC obtained
+      exit_criteria: >
+        All propulsion CRIs closed; TC contribution approved;
+        engine-airframe compatibility declaration issued;
+        no open propulsion safety findings
+      typical_duration_months: 12
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production ramp-up: validate nacelle production processes
+        (composite manufacturing, thrust reverser actuation system
+        assembly). Engine delivery and acceptance test procedures.
+        MRO infrastructure definition: engine shop capability
+        requirements, borescope inspection procedures, overhaul
+        intervals (per Airworthiness Limitation Section). Tooling
+        for nacelle line maintenance. Spare parts provisioning plan.
+      compression_lever: >
+        OEM handles engine production infrastructure; nacelle and pylon
+        production qualification is primary scope. Parallelise nacelle
+        production qualification with flight test (SLC08). Leverage
+        OEM production processes where nacelle components are common.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined; OEM production committed"
+      exit_criteria: >
+        Nacelle production qualified; engine acceptance procedures agreed
+        with OEM; MRO infrastructure defined; spare parts provisioning
+        plan approved; FAI for nacelle assembly complete
+      typical_duration_months: 9
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service engine and nacelle monitoring: FADEC health monitoring
+        data, engine performance trend monitoring (gas path analysis),
+        nacelle damage inspection data. Fleet data feed to DPP and
+        Family G (ATA-46) AI/ML predictive models for engine life
+        management. Engine performance deterioration tracking.
+        ETOPS monitoring data reporting (if applicable). Update
+        propulsion digital twin with as-operated performance data.
+      compression_lever: "N/A — extension zone (maximise t_ops)"
+      entry_criteria: "EIS; aircraft LC10 commenced"
+      exit_criteria: "Engine overhaul trigger OR nacelle reconditioning trigger OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 6  # Per engine shop visit interval (typically 6-8 years)
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        Engine shop visit (ESV) and nacelle heavy maintenance: engine
+        removal, transport to OEM/MRO shop, disassembly and inspection,
+        repair/replace of life-limited parts (turbine blades, seals, discs),
+        reassembly and test cell run. Nacelle inspection: thrust reverser
+        actuation system, acoustic treatment condition, pylon structure
+        inspection. DPP update: record all replaced components with
+        traceability (including OEM-supplied life-limited parts). Engine
+        re-certification and test cell acceptance.
+      compression_lever: "N/A — extension zone (maximise reconditioning cycles)"
+      entry_criteria: "Engine overhaul trigger (hard-time or on-condition) OR nacelle hard-time interval"
+      exit_criteria: >
+        Engine ESV complete; test cell run accepted; nacelle heavy
+        maintenance complete; DPP updated; engine re-certified;
+        return-to-service sign-off
+      loop_back_to: "SLC10"
+      typical_duration_months: 3  # Per engine shop visit
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        Final engine economic viability assessment. If viable, execute SLC11
+        for additional cycle. If not viable, retire: engine removal and
+        disposition, nacelle decommissioning, DPP final state record.
+        Recover reusable materials (nickel superalloys, titanium, CFRP nacelle)
+        per DPP circularity requirements. OEM engine core may be returned
+        for rebuilding as an OEM exchange unit.
+      compression_lever: "N/A — retirement or final reconditioning cycle"
+      entry_criteria: "SLC11 exit with engine viability assessment"
+      exit_criteria: "Engine/nacelle retirement complete; DPP closed; materials recovered"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 4
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-B-01"
+      condition: "OEM engine core fully pre-certified (existing ETC valid)"
+      action: "collapse SLC03 architecture selection and SLC06 engine ETC sub-phase into OEM evidence import"
+      rationale: >
+        If the OEM engine core already holds a valid Engine Type Certificate,
+        the architecture selection trade and engine-core qualification tests
+        are replaced by an ETC import and interface compliance demonstration.
+        The co-development qualification scope reduces to nacelle/airframe
+        integration only.
+
+    - id: "PR-B-02"
+      condition: "conventional kerosene fuel (no H2 adaptation required)"
+      action: "remove H2 combustion qualification sub-phases from SLC06 and SLC08"
+      rationale: >
+        If the AMPEL360 variant uses conventional kerosene (non-H2 integration),
+        the H2 combustion-specific qualification activities are removed.
+        This is applicable to variants where Family C is not present.
+
+    - id: "PR-B-03"
+      condition: "thrust reverser not fitted (e.g., no-reverser configuration)"
+      action: "remove thrust reverser sub-phases from SLC05, SLC06, SLC07"
+      rationale: >
+        If the aircraft configuration does not include thrust reversers,
+        all reverser-specific analysis, qualification, and integration
+        activities are removed.
+
+    - id: "PR-B-04"
+      condition: "nacelle is OEM-supplied complete assembly"
+      action: "collapse SLC04 nacelle design into interface definition only"
+      rationale: >
+        If the nacelle is a complete OEM-supplied assembly (not designed
+        by AMPEL360), the nacelle detailed design is replaced by interface
+        definition (pylon attach, service connections). SLC04 scope reduces
+        to pylon structure design only.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      engine_performance_threshold_reached OR hard_time_interval_elapsed
+      (from FADEC trend monitoring, Family G predictive model, or ALS requirement)
+    max_cycles: 5
+    exit_condition: "engine_beyond_economic_repair OR aircraft_retirement"
+    design_service_goal_fh: 90000
+    reconditioning_interval_fh: 18000   # Engine shop visit every ~18,000 FH
+    digital_twin_fidelity_required: "high"
+    dpp_granularity: "component"       # Life-limited parts tracked individually
+
+  # --- Elasticity Parameters (Family B defaults) ---
+  default_elasticity:
+    eta_target: 10.0
+    tto_max_months: 42
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 30
+    concurrency_factor_target: 0.62
+    knu_velocity_target: 6
+    gate_pass_rate_target: 0.87
+    reconditioning_cycles_target: 5

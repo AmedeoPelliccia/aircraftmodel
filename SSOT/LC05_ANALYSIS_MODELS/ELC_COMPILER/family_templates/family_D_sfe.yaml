@@ -1,0 +1,371 @@
+# family_D_sfe.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-D
+# Date: 2026-02-23
+# Description: Family D lifecycle template — Spec-Driven Procurement (SFE).
+# Applies to ATA-24 (Electrical Power) and other Seller-Furnished Equipment
+# chapters where AMPEL360 writes the performance specification and qualified
+# suppliers deliver to it. Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-D"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "D"
+  name: "Spec-Driven Procurement (SFE)"
+  applies_to: ["ATA-24", "ATA-26", "ATA-29", "ATA-30", "ATA-33", "ATA-36", "ATA-38"]
+  classification_criteria:
+    trl_range: [7, 9]              # Mature; catalogue or near-catalogue products
+    supply_chain_maturity: "high"  # Established multi-source supply chain
+    make_buy: "buy"                # Specification written by AMPEL360; built by supplier
+    special_conditions_required: false  # Standard CS-25 and DO-160 basis
+    certification_basis: ["CS-25", "DO-160G", "MIL-SPEC (as applicable)"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Register all known SFE procurement uncertainties: supplier
+        qualification status, lead times, interface compatibility risks,
+        power budget allocation (ATA-24 interdependency with Family C H2
+        system and Family E avionics loads — FP-03 input), novel
+        performance requirements that may exceed catalogue capabilities.
+        Instantiate KNUs per KNOT. Seed ELC_FAMILY_ASSIGNMENTS for
+        all SFE ATA chapters. Identify long-lead items early.
+      compression_lever: >
+        SFE procurement risks are primarily schedule and interface risks,
+        not technology risks. Rapid KNOT closure via early supplier
+        engagement and RFI/RFQ processes. Target: 10 KNUs ACCEPTED/month
+        by leveraging existing supplier qualification data.
+      entry_criteria: "Programme kickoff; preliminary aircraft architecture available; budget approved"
+      exit_criteria: "All KNOTs registered; KNUs instantiated; RACI signed; long-lead items identified"
+      typical_duration_months: 2
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define SFE performance specifications: electrical power generation
+        and distribution requirements (ATA-24, FP-03 Power Budget Freeze
+        input), hydraulic system pressure/flow (ATA-29), pneumatic bleed
+        allocation (ATA-36), de-icing power budget (ATA-30), lighting
+        specification (ATA-33). Define interface requirements for each
+        SFE item: mounting envelope, connectors, fluid connections,
+        power connections. Define environmental qualification requirements
+        (DO-160G categories). Decompose from aircraft-level LC02.
+      compression_lever: >
+        Leverage existing supplier Equipment Specification templates.
+        Conduct early supplier engagement (pre-RFQ briefings) to align
+        requirements with supplier catalogue capabilities, avoiding bespoke
+        designs. Co-develop ATA-24 electrical power requirements with
+        Family C (H2 system power demands) and Family E (avionics loads)
+        simultaneously to close FP-03 input.
+      entry_criteria: "SLC01 exit; aircraft LC02 requirements baselined; power budget preliminary"
+      exit_criteria: >
+        All SFE equipment specifications issued for RFQ; interface
+        requirements defined; DO-160G categories allocated; FP-03
+        Power Budget Freeze input delivered; long-lead RFQs issued
+      typical_duration_months: 3
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Supplier Selection and Architecture"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Issue RFQs, evaluate supplier proposals, conduct make-or-buy
+        confirmation for each SFE item. Down-select to preferred supplier
+        per ATA chapter. Negotiate Equipment Specifications (EqSpec).
+        Define installation architecture: location, mounting, service
+        routing. Agree electrical harness architecture (ATA-24 bus
+        topology). Conduct interface compatibility checks with supplier
+        catalogue equipment.
+      compression_lever: >
+        Use existing approved supplier lists (ASL) to pre-qualify
+        candidates and reduce source evaluation time. Standardise on
+        supplier catalogue products where possible to eliminate bespoke
+        qualification activities. Conduct interface compatibility checks
+        virtually (supplier 3D models) before hardware availability.
+      entry_criteria: "SLC02 exit; RFQs issued; supplier proposals received"
+      exit_criteria: >
+        Preferred suppliers selected and under contract; EqSpecs signed;
+        installation architecture frozen; interface compatibility confirmed
+        from supplier 3D models; FP-03 power budget confirmed with selected
+        equipment performance data
+      typical_duration_months: 3
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Installation design: mounting brackets, harness routing, fluid line
+        routing, access panel definition. SFE-specific ICDs signed with
+        interfacing families (ATA-24 bus connections to Family E avionics,
+        ATA-29 hydraulic ports to Family A flight controls). Equipment
+        preliminary weight statement contribution (FP-04 input). Wiring
+        diagram initial issue. Installation drawing release for structural
+        interface design (Family A).
+      compression_lever: >
+        Supplier-provided installation models reduce AMPEL360 design
+        effort. Parametric harness routing tools automatically generate
+        length estimates and weight contributions (FP-04). ICDs are
+        driven by supplier ICD standard forms, reducing drafting time.
+      entry_criteria: "SLC03 exit; suppliers contracted; EqSpecs signed; installation architecture frozen"
+      exit_criteria: >
+        Installation design complete; ICDs signed (FP-01 contribution);
+        wiring diagram initial issue; weight contributions submitted
+        (FP-04 input); structural interface designs provided to Family A
+      typical_duration_months: 4
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Electrical load analysis (ELA) closure: confirm all loads within
+        generator capacity (FP-03 confirmation). Hydraulic system sizing
+        analysis. Pneumatic bleed budget analysis. Installation analysis:
+        vibration environments, thermal environments, EMI/EMC compatibility.
+        Wire and connector sizing analysis. Safety analysis: FMEA for SFE
+        systems (DAL allocation per system function criticality).
+      compression_lever: >
+        Supplier-provided performance data feeds directly into ELA and
+        system sizing models. Proprietary supplier simulation tools provide
+        system-level analysis inputs. TOP-LAP PROJ phase used to confirm
+        residual margin analysis. Target 40% virtual evidence from supplier
+        certified performance data.
+      entry_criteria: "SLC03 exit; SLC04 geometry baselined; supplier performance data received"
+      exit_criteria: >
+        ELA closed and power budget confirmed; all sizing analyses complete;
+        FMEA complete; FP-03 Power Budget Freeze formally achieved; analysis
+        package assembled for qualification
+      typical_duration_months: 4
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Supplier qualification: verify supplier has valid Equipment
+        Qualification Report (EQR) per DO-160G for all specified
+        environments. Conduct qualification inspection at supplier.
+        Where no existing EQR: conduct AMPEL360-specific qualification
+        testing. Installation qualification: EMI/EMC test of installed
+        system. Electrical bonding test. Functional acceptance test
+        of installed equipment (bench test before aircraft installation).
+      compression_lever: >
+        Maximum use of existing supplier EQRs to eliminate repeat testing.
+        Pre-agree with Authority which existing supplier qualification data
+        is acceptable as compliance evidence. Batch qualification inspections
+        across SFE suppliers to reduce travel/resource overhead.
+      entry_criteria: >
+        SLC05 exit; supplier EQRs reviewed; equipment delivered;
+        any additional qualification test plan agreed
+      exit_criteria: >
+        All supplier EQRs accepted or supplemental qualification complete;
+        installation qualification reports approved; no open non-conformances;
+        SFE qualification evidence package assembled
+      typical_duration_months: 6
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Aircraft integration: SFE equipment installed on aircraft,
+        electrical connections made (harness installation), hydraulic
+        connections, pneumatic connections. Functional ground test of
+        each SFE system. Power-up test of electrical distribution system.
+        Built-in test (BIT) verification. Interface verification with
+        interfacing families (Family E avionics, Family A flight controls).
+        Electrical bonding check on aircraft.
+      compression_lever: >
+        Bench test (SLC06) pre-validates functional performance before
+        aircraft installation, reducing aircraft ground test iterations.
+        Digital harness simulation pre-validates connectivity before
+        physical harness installation. Concurrent installation with
+        other families where work areas permit.
+      entry_criteria: >
+        SLC06 exit; SFE equipment qualification complete;
+        aircraft available for SFE installation; harnesses fabricated
+      exit_criteria: >
+        All SFE equipment functionally tested on aircraft; BIT verified;
+        interface checks complete; electrical bonding sign-off;
+        system integration report released
+      typical_duration_months: 5
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution: compile SFE certification dossier.
+        CS-25 compliance demonstration for SFE installations (Subpart F
+        for powerplant-adjacent systems, as applicable). Flight test
+        evidence for SFE systems: electrical load survey, hydraulic
+        performance, functional checks in flight. Conformity inspections.
+        CRIs closure. Final ELA and system sizing reports.
+      compression_lever: >
+        Supplier-provided EQRs and compliance matrices reduce the volume
+        of AMPEL360-generated compliance evidence. Early Authority
+        engagement on novel SFE interfaces (if any) reduces CRI closure
+        time.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test commenced;
+        all ground SFE test evidence accepted
+      exit_criteria: >
+        All SFE CRIs closed; TC contribution approved; no open
+        SFE safety findings; final ELA accepted
+      typical_duration_months: 8
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production ramp-up: establish SFE procurement and receiving
+        inspection procedures. Qualify receiving inspection for each
+        SFE item (ATP/acceptance test procedure). Define and qualify
+        installation procedures for line production. Establish stock
+        management and shelf-life tracking for SFE items. Spares
+        provisioning plan. Initial provisioning with preferred suppliers.
+        Long-lead spares orders placed.
+      compression_lever: >
+        Supplier production is independent of AMPEL360 production ramp;
+        coordinate delivery schedule only. Use existing supplier ATP
+        documents to minimise receiving inspection development effort.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined"
+      exit_criteria: >
+        SFE procurement procedures established; receiving inspection
+        qualified; installation procedures approved; initial provisioning
+        complete; long-lead spares ordered
+      typical_duration_months: 6
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service SFE monitoring: BIT data collection, reliability
+        tracking per ATA chapter, unscheduled removal rate monitoring.
+        Fleet data feed to DPP and Family G (ATA-46) AI/ML predictive
+        models for SFE reliability prediction. Vendor product obsolescence
+        monitoring and replacement planning. Configuration management
+        for Service Bulletin incorporation.
+      compression_lever: "N/A — extension zone (maximise t_ops)"
+      entry_criteria: "EIS; aircraft LC10 commenced"
+      exit_criteria: "Hard-time replacement trigger OR obsolescence retirement OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 8  # Per SFE overhaul interval (varies by equipment type)
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        SFE maintenance and overhaul: remove SFE item per maintenance
+        manual, send to approved Maintenance/Repair Organisation (MRO)
+        or return to OEM for overhaul. Accept overhaul release
+        documentation. Reinstall and functional check. Replace
+        obsolete SFE items with updated compatible equipment per
+        approved modification. DPP update: record overhaul with
+        traceability to overhaul shop and release document.
+      compression_lever: "N/A — extension zone (maximise reconditioning cycles)"
+      entry_criteria: "SFE hard-time overhaul interval OR on-condition removal trigger"
+      exit_criteria: >
+        SFE item overhauled and returned to service OR replaced with
+        updated compatible equipment; DPP updated; return-to-service
+        documentation signed
+      loop_back_to: "SLC10"
+      typical_duration_months: 1  # Per SFE item overhaul (parallel across items)
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        SFE end-of-life assessment. If viable (spare parts available,
+        no obsolescence), execute SLC11 for additional cycle. If not
+        viable (obsolescence, no MRO support), retire: remove equipment,
+        update DPP final state record, recover recyclable materials.
+        Coordinate replacement procurement if aircraft continues in service
+        with next-generation SFE item.
+      compression_lever: "N/A — retirement or replacement cycle"
+      entry_criteria: "SLC11 exit with SFE viability/obsolescence assessment"
+      exit_criteria: "SFE item retired; DPP closed; replacement procured if aircraft continues"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 2
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-D-01"
+      condition: "equipment is exact repeat from prior AMPEL programme (same part number, same DO-160 category)"
+      action: "collapse SLC05 analysis and SLC06 qualification to existing EQR import"
+      rationale: >
+        If an SFE item is an unchanged carryover from a prior programme with
+        identical DO-160 environmental categories, existing qualification data
+        is imported directly. No additional analysis or qualification testing
+        required; AMPEL360 performs a configuration confirmation only.
+
+    - id: "PR-D-02"
+      condition: "ATA chapter has no safety-significant function (DO-178C not applicable)"
+      action: "remove DAL-based FMEA sub-phase from SLC05; use simplified hazard identification"
+      rationale: >
+        Cabin convenience equipment and non-safety SFE items do not require
+        a DO-178C/DO-254 compliant FMEA. A simplified hazard identification
+        and risk assessment is substituted.
+
+    - id: "PR-D-03"
+      condition: "single-source supplier with no competition (sole source)"
+      action: "add supplier risk mitigation sub-phase to SLC03 (dual-qualification plan)"
+      rationale: >
+        Single-source SFE suppliers introduce supply chain resilience risk.
+        A dual-qualification plan (second source qualification path) is added
+        to SLC03 scope to document the risk and mitigation strategy.
+
+    - id: "PR-D-04"
+      condition: "standard off-the-shelf product with no interface modifications"
+      action: "collapse SLC04 installation design to interface check only; remove bespoke design activities"
+      rationale: >
+        Standard catalogue products with no AMPEL360-specific modifications
+        require only interface check against the standard mounting, connector,
+        and fluid interface definitions. Detailed installation design is reduced
+        to a compatibility confirmation.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      hard_time_interval_elapsed OR on_condition_removal
+      (from BIT monitoring, Family G reliability prediction model, or ALS requirement)
+    max_cycles: 6
+    exit_condition: "obsolescence_with_no_replacement OR aircraft_retirement"
+    design_service_goal_fh: 90000
+    reconditioning_interval_fh: 15000   # Overhaul every ~15,000 FH (equipment-specific)
+    digital_twin_fidelity_required: "low"
+    dpp_granularity: "equipment-item"
+
+  # --- Elasticity Parameters (Family D defaults) ---
+  default_elasticity:
+    eta_target: 5.0
+    tto_max_months: 24
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 40
+    concurrency_factor_target: 0.75
+    knu_velocity_target: 10
+    gate_pass_rate_target: 0.92
+    reconditioning_cycles_target: 6

@@ -1,0 +1,386 @@
+# family_E_avionics_sw.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-E
+# Date: 2026-02-23
+# Description: Family E lifecycle template — DAL-Governed Avionics/SW.
+# Applies to ATA-31 (Instruments), ATA-34 (Navigation), ATA-22 (Auto Flight),
+# ATA-42 (Integrated Modular Avionics), ATA-45 (Central Maintenance System)
+# on AMPEL360. Governed by DO-178C / DO-254 / DO-160G.
+# Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-E"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "E"
+  name: "DAL-Governed Avionics/SW"
+  applies_to: ["ATA-22", "ATA-31", "ATA-34", "ATA-42", "ATA-45"]
+  classification_criteria:
+    trl_range: [6, 8]              # Mature avionics platforms; software is always new
+    supply_chain_maturity: "high"  # Certified avionics suppliers with DO-178C/DO-254 processes
+    make_buy: "buy"                # Certified avionics supplier develops to AMPEL360 specification
+    special_conditions_required: false  # Standard DO-178C/DO-254/DO-160G basis
+    certification_basis: ["CS-25", "DO-178C", "DO-254", "DO-160G", "DO-330 (tools)", "AMC 20-115D"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Register all known avionics/software uncertainties: DAL allocation
+        risks (preliminary FHA outputs), novel software functions (H2 fuel
+        management interface with Family C, AI/ML integration from Family G),
+        hardware obsolescence risks for avionics platforms, integration
+        complexity on Integrated Modular Avionics (IMA) platform (ATA-42),
+        iron bird scope and schedule. Instantiate KNUs. Define RACI including
+        avionics supplier DER/DAE roles. Seed ELC_FAMILY_ASSIGNMENTS.
+      compression_lever: >
+        Leverage existing avionics supplier DO-178C/DO-254 compliant
+        development processes. Prioritise novel-function KNOTs (H2 fuel
+        management, AI/ML interface) for early investment. Rapid KNOT
+        closure via supplier architecture review workshops. Target: 8 KNUs
+        ACCEPTED/month leveraging supplier qualification heritage.
+      entry_criteria: "Programme kickoff; preliminary FHA available; avionics supplier engaged; IMA platform selected"
+      exit_criteria: "All KNOTs registered; DAL preliminary allocation complete; RACI signed; DER plan initiated"
+      typical_duration_months: 2
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define avionics system requirements: functional requirements per
+        ATA chapter, performance requirements (accuracy, latency, availability),
+        safety requirements (DAL allocation from FHA, failure condition
+        classifications). Define software requirements: top-level software
+        requirements (TLSR) per DO-178C. Define hardware requirements:
+        hardware functional requirements per DO-254. Interface requirements:
+        ARINC 429/664 data bus architecture, sensor interfaces, display
+        interface (ATA-31/34). H2 fuel management computer (FMC) requirements
+        (Family C interface — FP-01 and FP-03 input). Decompose from LC02.
+      compression_lever: >
+        Use AMPEL360 avionics system architecture template to accelerate
+        requirements decomposition. Co-develop FMC requirements with
+        Family C (H2 system) at FP-03 Power Budget Freeze to prevent
+        requirements churn. Supplier pre-RFQ workshops align requirements
+        with available hardware capabilities before formal issue.
+      entry_criteria: "SLC01 exit; aircraft LC02 requirements baselined; preliminary FHA complete"
+      exit_criteria: >
+        Avionics system requirements baselined; DAL allocations confirmed;
+        TLSRs issued; hardware functional requirements issued; FP-01 and
+        FP-03 inputs delivered; DER plan approved
+      typical_duration_months: 4
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Architecture and Platform Selection"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Avionics architecture trade: Federated vs IMA (ATA-42), ARINC 429
+        vs ARINC 664/AFDX data bus architecture, display architecture
+        (PFD/ND/MFD suite). IMA platform down-select if applicable.
+        Hardware platform selection per DO-254: processor, memory, I/O
+        standard. Select avionics supplier(s). Define Operational Software
+        (OS) and partitioning scheme for IMA. Define DO-330 tool qualification
+        plan for development toolchain. Define iron bird configuration.
+      compression_lever: >
+        Leverage existing IMA platform certifications to minimise new
+        hardware qualification. Prioritise COTS hardware with existing
+        DO-254 Design Assurance records. Define software architecture
+        before detailed design to front-load DO-178C planning activities.
+        Supplier selection uses existing AMPEL360 approved avionics supplier
+        list where possible.
+      entry_criteria: "SLC02 exit; avionics architecture trade study complete; RFQ issued"
+      exit_criteria: >
+        Avionics architecture selected; IMA platform (if applicable)
+        selected and contracted; avionics supplier(s) under contract;
+        DO-330 tool qualification plan approved; iron bird config defined
+      typical_duration_months: 4
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        High-level design (HLD) per DO-178C/DO-254: software HLD
+        (architecture, modules, interfaces), hardware HLD (board-level
+        schematics, component selection). ICDs with interfacing families:
+        ATA-22/34 data bus connections to Family D (ATA-24 power, ATA-29
+        hydraulic), FMC data interface to Family C (ATA-28 H2 system),
+        AI/ML data interface to Family G (ATA-46). IMA application
+        partitioning definition. DO-330 tool qualification execution.
+        Iron bird configuration detailed design.
+      compression_lever: >
+        Model-Based Development (MBD): auto-code generation from
+        certified models reduces manual coding effort and accelerates
+        DO-178C evidence generation. IMA partitioning design reuses
+        existing certified core software where possible (only new
+        application software requires full DO-178C compliance).
+      entry_criteria: "SLC03 exit; suppliers contracted; architecture selected; TLSRs baselined"
+      exit_criteria: >
+        HLD complete; ICDs signed (FP-01 contribution); IMA partitioning
+        defined; DO-330 tool qualifications in progress; iron bird
+        design frozen; FP-05 Safety Architecture Freeze contribution ready
+      typical_duration_months: 5
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Safety analysis: FHA, PSSA, SSA (System Safety Assessment) per
+        ARP4761. DAL confirmation from PSSA. Common Cause Analysis (CCA):
+        ZSA, PRA, CMA. Hardware design assurance analysis per DO-254.
+        Worst-Case Execution Time (WCET) analysis for real-time software.
+        Timing and scheduling analysis for IMA partitions. EMI/EMC analysis
+        for avionics installation. FP-05 Safety Architecture Freeze inputs.
+        TypeSim integration for avionics-H2 co-simulation (FMC model).
+      compression_lever: >
+        Supplier-generated safety analysis artifacts (supplier SSA) accepted
+        in lieu of AMPEL360-generated equivalents where supplier has
+        Authority-accepted DO-178C/DO-254 processes. TypeSim EXPLORATORY
+        mode used for FMC/H2-system co-simulation to validate logic before
+        code. TOP-LAP LATCH phase used to lock safety evidence at FP-05.
+      entry_criteria: "SLC04 HLD complete; FHA preliminary complete; geometry baselined for EMI/EMC"
+      exit_criteria: >
+        PSSA approved; DAL confirmed; SSA initial issue; FP-05 Safety
+        Architecture Freeze achieved; WCET analysis accepted; analysis
+        package assembled for qualification
+      typical_duration_months: 6
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Software verification and qualification per DO-178C:
+        requirements coverage, structural coverage (MC/DC for DAL A),
+        formal review and inspection records, Software Accomplishment
+        Summary (SAS). Hardware qualification per DO-254: hardware
+        verification, HALT/HASS testing, DO-160G environmental testing.
+        Iron bird testing: functional validation, integration validation,
+        fault injection testing. DO-330 tool qualification final. Family
+        G (ATA-46) AI/ML tool qualification (DO-330) if applicable.
+      compression_lever: >
+        Automated test generation from model-based design reduces manual
+        test case development. Early iron bird availability (designed from
+        SLC03) enables concurrent software verification and hardware
+        environmental qualification. Supplier DER involvement reduces
+        AMPEL360 internal review burden.
+      entry_criteria: >
+        SLC05 exit; safety analysis approved; code complete;
+        iron bird operational; DO-160G test facility committed;
+        DO-330 tool qualifications obtained
+      exit_criteria: >
+        SAS approved; all DO-178C objectives met (per applicable DAL);
+        DO-254 design assurance complete; DO-160G test reports approved;
+        iron bird qualification sign-off; Software Configuration Index (SCI)
+        frozen; no open safety-significant defects
+      typical_duration_months: 12
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Aircraft integration: avionics box installation, harness
+        connection, data bus integration testing (ARINC 429/664 traffic
+        verification). Systems Integration Laboratory (SIL) rig testing:
+        full avionics suite functional test, failure mode testing,
+        cross-system interface validation with Family C FMC, Family D
+        (ATA-24 power), Family G (ATA-46 data feeds). Iron bird to
+        aircraft migration validation. Built-in test (BIT) coverage
+        verification on aircraft.
+      compression_lever: >
+        SIL and iron bird pre-validate aircraft-level integration before
+        first aircraft availability, compressing integration test schedule.
+        Automated regression test suites run continuously during integration.
+        Family E is DEP-04 gate (iron bird certification) for LC06 entry.
+      entry_criteria: >
+        SLC06 exit; software qualified; iron bird available;
+        SIL rig configured; aircraft available for avionics installation
+      exit_criteria: >
+        All avionics systems functionally tested on aircraft; SIL/iron
+        bird to aircraft delta analysis complete; BIT coverage confirmed;
+        cross-system interfaces verified; system integration report released
+      typical_duration_months: 8
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution: compile avionics certification
+        dossier. CS-25 compliance demonstration (Subpart F, Avionics
+        functions). DO-178C/DO-254 Stage of Involvement (SOI) audits
+        completion. Flight test evidence for avionics functions: FMS
+        performance, navigation accuracy, autopilot function, display
+        legibility. Conformity inspections for avionics installations.
+        CRIs closure. Final SSA, SAS, and Hardware Accomplishment Summary
+        (HAS) submission. ETSO/TSO application for affected equipment.
+      compression_lever: >
+        Early Authority Stage of Involvement (SOI) audits from SLC04 onward
+        identify compliance issues early, reducing CRI closure time at SLC08.
+        Supplier DER involvement in SOI audits reduces AMPEL360 resource.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test commenced;
+        all SOI audits complete; ground avionics test evidence accepted
+      exit_criteria: >
+        All avionics CRIs closed; SOI audits closed; TC contribution approved;
+        ETSOs/TSOs obtained; no open DAL A/B safety findings
+      typical_duration_months: 10
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production and maintenance infrastructure: establish avionics
+        software loading procedures (loadable software part numbers,
+        Part 21 Sub-Part O compliance). Avionics shop capability:
+        test benches, software loading equipment, calibration rigs.
+        Line maintenance procedures for avionics LRU removal/replacement.
+        Software update procedures (Loadable Software Aircraft Part —
+        LSAP process). Training for avionics maintenance personnel.
+        Spare LRU provisioning plan.
+      compression_lever: >
+        Supplier-provided maintenance documentation templates and training
+        materials reduce AMPEL360 development effort. LSAP process builds
+        on DO-178C artefacts already generated in SLC06.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined; supplier production committed"
+      exit_criteria: >
+        Software loading procedures approved; avionics shop capability
+        validated; line maintenance procedures released; LSAP process
+        approved; initial spare LRU provisioning complete
+      typical_duration_months: 7
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service avionics monitoring: BIT/BITE data collection and
+        analysis, software defect monitoring (field problem reporting
+        per DO-178C), hardware obsolescence tracking for avionics
+        processors and memory. Fleet data feed to DPP and Family G
+        (ATA-46) AI/ML predictive models. Software updates management
+        (LSAP): evaluate, test, and deploy approved software updates.
+        Airworthiness Directive (AD) compliance tracking for avionics.
+        Cybersecurity vulnerability monitoring and patch management.
+      compression_lever: "N/A — extension zone (maximise t_ops)"
+      entry_criteria: "EIS; aircraft LC10 commenced"
+      exit_criteria: "Avionics platform end-of-support OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 10  # Per avionics platform lifecycle (typically 10-15 years)
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        Avionics LRU overhaul or replacement: remove LRU, send to
+        approved avionics MRO or return to OEM. Overhaul or repair per
+        Component Maintenance Manual (CMM). Software re-load to current
+        approved version. Replace obsolete hardware with updated compatible
+        LRU per approved Service Bulletin. DPP update: record overhaul
+        and any hardware changes with full traceability. Re-certification
+        if modified LRU requires Supplemental Type Certificate (STC).
+      compression_lever: "N/A — extension zone (maximise reconditioning cycles)"
+      entry_criteria: "Hard-time removal interval OR on-condition removal (BIT failure, BITE alert)"
+      exit_criteria: >
+        LRU overhauled and returned to service OR replaced with updated
+        LRU per approved modification; DPP updated; return-to-service
+        documentation complete
+      loop_back_to: "SLC10"
+      typical_duration_months: 1  # Per LRU overhaul
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        Avionics platform end-of-support assessment. If viable (parts
+        and support available), execute SLC11 for additional cycle.
+        If not viable (platform end-of-support, unacceptable cybersecurity
+        exposure), initiate avionics platform upgrade: procure next-generation
+        avionics suite under a new SLC01-SLC09 cycle (as an AMPEL360 variant
+        modification programme). DPP updated to record platform transition.
+      compression_lever: "N/A — platform upgrade or retirement cycle"
+      entry_criteria: "SLC11 exit with avionics platform viability/obsolescence assessment"
+      exit_criteria: "Avionics platform retired or upgrade programme initiated; DPP updated"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 6  # If platform upgrade programme initiation
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-E-01"
+      condition: "ATA chapter function is DAL C or lower (no autopilot/FMS interface)"
+      action: "reduce DO-178C objectives to DAL C; remove MC/DC structural coverage requirement"
+      rationale: >
+        DAL C software has fewer DO-178C objectives than DAL A/B. The MC/DC
+        structural coverage requirement is removed; decision coverage is
+        sufficient. This substantially reduces verification scope for
+        non-safety-critical avionics software functions.
+
+    - id: "PR-E-02"
+      condition: "COTS hardware with existing DO-254 design assurance record accepted by Authority"
+      action: "collapse SLC05 hardware analysis and SLC06 DO-254 qualification to COTS acceptance review"
+      rationale: >
+        COTS hardware with an existing DO-254 Design Assurance Record that
+        has been accepted by the Authority for the applicable DAL can be
+        accepted without re-executing hardware design assurance activities.
+        SLC05 and SLC06 hardware scope reduces to a compatibility review only.
+
+    - id: "PR-E-03"
+      condition: "no novel software function (all functions carryover from prior approved version)"
+      action: "apply DO-178C change impact analysis; scope verification only to changed software"
+      rationale: >
+        Changed software (modification to previously certified software)
+        allows verification scope to be bounded by the change impact analysis.
+        Only changed software components and their affected interfaces require
+        full re-verification. This is the standard DO-178C modification path.
+
+    - id: "PR-E-04"
+      condition: "no iron bird required (supplier provides SIL rig equivalent)"
+      action: "replace iron bird sub-phases with SIL rig equivalents in SLC06 and SLC07"
+      rationale: >
+        If the avionics supplier provides a Systems Integration Laboratory
+        (SIL) rig with equivalent fidelity to an iron bird, the separate
+        iron bird programme is replaced by the SIL rig equivalence
+        demonstration, reducing capital investment and schedule risk.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      hard_time_removal OR on_condition_removal OR platform_end_of_support_alert
+      (from BITE monitoring, Family G predictive model, or supplier product life notice)
+    max_cycles: 4
+    exit_condition: "platform_end_of_support_with_no_upgrade_path OR aircraft_retirement"
+    design_service_goal_fh: 90000
+    reconditioning_interval_fh: 25000   # LRU overhaul every ~25,000 FH (varies by equipment)
+    digital_twin_fidelity_required: "medium"
+    dpp_granularity: "LRU"
+
+  # --- Elasticity Parameters (Family E defaults) ---
+  default_elasticity:
+    eta_target: 7.0
+    tto_max_months: 30
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 35
+    concurrency_factor_target: 0.68
+    knu_velocity_target: 8
+    gate_pass_rate_target: 0.89
+    reconditioning_cycles_target: 4

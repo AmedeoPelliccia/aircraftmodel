@@ -1,0 +1,426 @@
+# family_G_ai_ml.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-G
+# Date: 2026-02-23
+# Description: Family G lifecycle template — AI/ML Model (Data-Driven).
+# Applies to ATA-46 (Information Systems / AI-ML) on AMPEL360.
+# AI/ML predictive maintenance and fleet analytics systems with no
+# established DO standard at programme start.
+# Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-G"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "G"
+  name: "AI/ML Model (Data-Driven)"
+  applies_to: ["ATA-46"]
+  classification_criteria:
+    trl_range: [3, 6]              # Novel; AI/ML aviation applications immature; no established DO standard
+    supply_chain_maturity: "low"   # No mature supply chain for certified AI/ML in aviation
+    make_buy: "make"               # In-house AI/ML development; specialist ML engineers
+    special_conditions_required: true   # Novel means of compliance required; no DO standard yet
+    certification_basis: ["CS-25 (scope TBD)", "EASA AI Roadmap", "DO-330 (tools)", "EASA SC-AI (when issued)"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Register all known AI/ML uncertainties: lack of established DO
+        standard for AI/ML in aviation, explainability requirements for
+        DAL-relevant AI decisions, dataset availability and quality for
+        model training (fleet data dependency on other families),
+        distribution shift risk (model performance in operational conditions
+        differing from training data), DO-330 tool qualification for ML
+        toolchains (TensorFlow, PyTorch, scikit-learn). Define AI/ML
+        use-case scope: predictive maintenance, anomaly detection, fuel
+        optimisation, Health and Usage Monitoring System (HUMS).
+        Instantiate KNUs. Seed ELC_FAMILY_ASSIGNMENTS.
+      compression_lever: >
+        Leverage EASA AI Roadmap and nascent guidance material to close
+        regulatory uncertainty KNOTs early. Establish Authority liaison
+        from SLC01 to co-develop means of compliance. Engage with
+        EUROCAE WG-114 and SAE G-34 working groups. Target: 5 KNUs
+        ACCEPTED/month — lower velocity reflects genuine novelty.
+      entry_criteria: "Programme kickoff; AI/ML use cases defined at aircraft level; Authority liaison established"
+      exit_criteria: "All KNOTs registered; AI/ML use-case scope frozen; RACI signed; Authority liaison plan agreed"
+      typical_duration_months: 3
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define AI/ML system requirements: functional requirements per
+        use case (anomaly detection accuracy, false alarm rate, prognostic
+        horizon), safety requirements (DAL allocation for AI decisions
+        per preliminary FHA — define AI function criticality), data
+        requirements (input features, training dataset size, data quality
+        standards), explainability requirements (human-interpretable
+        outputs for maintenance decisions), operational requirements
+        (inference latency, computational resource constraints on ATA-42
+        IMA or ground infrastructure). Interface requirements with data
+        source families: Family A (structural SHM data), Family B (FADEC
+        data), Family C (C2 CELL state vector), Family E (BITE data).
+        Decompose from aircraft-level LC02.
+      compression_lever: >
+        Collaborate with Authority from SLC02 to define acceptable
+        means of compliance for AI/ML requirements; prevents requirements
+        that are impossible to certify. Co-develop data requirements
+        with all data-source families simultaneously to ensure data
+        availability by SLC04 training phase.
+      entry_criteria: "SLC01 exit; AI/ML use-case scope frozen; preliminary FHA available; Authority liaison active"
+      exit_criteria: >
+        AI/ML functional and safety requirements baselined; DAL allocation
+        preliminary (from FHA); data requirements issued to data-source
+        families; explainability requirements defined; novel means of
+        compliance (NMoC) proposed to Authority
+      typical_duration_months: 4
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Algorithm Architecture and Data Strategy"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Select AI/ML algorithm families per use case: anomaly detection
+        (isolation forest, autoencoder), prognostics (LSTM, Gaussian
+        process, survival models), classification (decision trees, XGBoost
+        for explainability). Define model architecture for each use case.
+        Define data governance framework: data lineage, dataset versioning,
+        training/validation/test split strategy. Define feature engineering
+        pipeline. Define model versioning and deployment architecture.
+        DO-330 tool qualification plan for ML toolchain. Define explainability
+        method per use case (SHAP, LIME, attention maps). Agree Level of
+        Involvement (LoI) with Authority for AI/ML certification approach.
+      compression_lever: >
+        Prioritise algorithm families with existing explainability evidence
+        in aviation contexts (decision trees, gradient boosting) before
+        black-box deep learning, to accelerate certification confidence.
+        Synthetic data generation for training data augmentation where
+        operational data is scarce in early programme phases (pre-EIS).
+        Virtual fleet simulation (TypeSim) provides early training data.
+      entry_criteria: "SLC02 exit; NMoC agreed in principle with Authority; data requirements issued"
+      exit_criteria: >
+        Algorithm architecture selected per use case; data governance
+        framework approved; DO-330 tool qualification plan accepted;
+        LoI agreed with Authority; explainability method selected per use case
+      typical_duration_months: 5
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Detailed model design: neural network topology (if applicable),
+        feature selection, hyperparameter search space definition.
+        Data pipeline implementation: ingestion, pre-processing,
+        normalisation, feature extraction. Training infrastructure
+        design: GPU cluster configuration, distributed training strategy.
+        Model versioning system implementation. Model card templates
+        (documenting intended use, limitations, performance metrics,
+        fairness assessment). Software architecture for inference
+        deployment (on-board ATA-42 vs ground-based cloud inference).
+        ICDs with data-source families (ATA-28, ATA-46, ATA-31).
+        FP-05 Safety Architecture Freeze contribution: AI function
+        failure mode definitions.
+      compression_lever: >
+        Model-Based Design approach: define model mathematically before
+        implementation. Use transfer learning from public aviation datasets
+        (if any) to reduce training data requirements. Modular pipeline
+        design allows parallel development of individual model components.
+        MBD auto-generates software components for deterministic parts
+        of the pipeline.
+      entry_criteria: "SLC03 exit; algorithm architecture selected; DO-330 tool plan accepted"
+      exit_criteria: >
+        Model design documents complete; data pipeline implemented and
+        tested with synthetic data; ICDs signed; FP-05 AI failure mode
+        definitions submitted; model cards templates approved by Authority
+      typical_duration_months: 6
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Model training and validation (on synthetic and early fleet data):
+        train candidate models on available dataset, validate on held-out
+        test set. Performance analysis: accuracy, precision, recall,
+        F1-score, confusion matrix, ROC curves per use case. Robustness
+        analysis: adversarial perturbation, distribution shift sensitivity,
+        out-of-distribution detection. Explainability analysis: SHAP/LIME
+        outputs reviewed for plausibility. Safety analysis: worst-case
+        output analysis for DAL-relevant functions (FHA input). TypeSim
+        integration: use PROPAGATION mode outputs as training data proxy
+        for pre-EIS model development. Uncertainty quantification.
+      compression_lever: >
+        TypeSim fleet simulation provides representative training data
+        before real fleet data availability, enabling model development
+        pipeline completion before EIS. Automated hyperparameter
+        optimisation (Bayesian optimisation) reduces manual tuning effort.
+        TOP-LAP OPER phase: multi-model ensemble analysis for uncertainty
+        bounding (FP-05 input).
+      entry_criteria: "SLC04 pipeline implemented; TypeSim data available; preliminary real data available (if any)"
+      exit_criteria: >
+        Model performance meets requirements on validation set; robustness
+        analysis complete; worst-case output analysis accepted for FHA;
+        FP-05 Safety Architecture Freeze AI contribution delivered;
+        explainability outputs reviewed and accepted
+      typical_duration_months: 6
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        AI/ML qualification under agreed NMoC: model verification against
+        requirements (functional, performance, safety); dataset quality
+        audit (training/validation/test set independence, provenance,
+        labelling quality); explainability output review by domain experts;
+        robustness test campaign (adversarial inputs, edge cases);
+        DO-330 tool qualification final for ML toolchain; Family G DEP-05
+        (DO-330 tool qualification evidence for Family E SLC08 — iron bird
+        software qualification dependency). Concept of Operations (ConOps)
+        validation. Human factors assessment of AI output interfaces.
+      compression_lever: >
+        Leverage EASA AI-specific guidance (EASA AI Roadmap phases)
+        and any emerging equivalent of DO-178C for AI to reduce scope
+        uncertainty in qualification. Pre-agree qualification evidence
+        package structure with Authority from SLC02. DO-330 tool
+        qualifications started early (SLC03) so they are complete by
+        SLC06 entry.
+      entry_criteria: >
+        SLC05 exit; model performance validated; DO-330 tools qualified;
+        NMoC formally agreed with Authority; qualification evidence
+        structure pre-agreed; human factors test plan approved
+      exit_criteria: >
+        All NMoC qualification objectives met; dataset audit passed;
+        DO-330 tool qualifications submitted; DEP-05 evidence provided
+        to Family E; human factors assessment complete;
+        AI qualification evidence package assembled
+      typical_duration_months: 12
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        AI/ML system integration: deploy trained models to target
+        inference infrastructure (on-board ATA-42 IMA partition or
+        ground analytics platform). Integration test with live data
+        feeds from data-source families (Family A SHM, Family B FADEC,
+        Family C C2 CELL, Family E BITE). End-to-end pipeline test:
+        data ingestion → inference → output delivery. Latency and
+        throughput verification. Fail-safe behavior validation (safe
+        output on data loss or model error). Interface verification
+        with Family E avionics (AI output data bus integration).
+      compression_lever: >
+        Containerised model deployment enables rapid iteration and
+        rollback during integration testing. Automated integration
+        test suite runs continuously. Parallel integration with ground
+        infrastructure and on-board platform where test environments
+        permit.
+      entry_criteria: >
+        SLC06 exit; models qualified; target infrastructure available;
+        data feeds from source families active (or simulated)
+      exit_criteria: >
+        End-to-end pipeline tested; latency/throughput verified;
+        fail-safe behavior confirmed; data bus interface with Family E
+        verified; system integration report released
+      typical_duration_months: 6
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution (scope TBD per NMoC): compile
+        AI/ML certification dossier per agreed NMoC. CS-25 compliance
+        scope for AI/ML functions. Flight operations validation: AI
+        outputs in flight (advisory, monitoring — no direct control
+        authority functions at TC). Conformity inspections for on-board
+        AI/ML hardware. CRIs closure. AI system declaration (per EASA
+        AI Roadmap requirements): intended use, known limitations,
+        performance guarantees, human oversight requirements.
+      compression_lever: >
+        Scope AI/ML at TC to advisory and monitoring functions only
+        (no DAL A direct control authority), minimising certification
+        burden at TC. Post-TC, expand scope incrementally via approved
+        modifications. Early Authority engagement from SLC02 ensures
+        no CRI surprises at SLC08.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test commenced;
+        all ground AI/ML test evidence accepted
+      exit_criteria: >
+        All AI/ML CRIs closed; TC contribution approved;
+        AI system declaration accepted; no open AI/ML safety findings
+      typical_duration_months: 10
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production and operations infrastructure: establish ML model
+        operations (MLOps) pipeline for in-service model management
+        (monitoring, retraining triggers, deployment). Define model
+        update approval process (Part 21 Sub-Part O equivalent for
+        AI/ML updates). Fleet data collection infrastructure:
+        data agreements with airlines, data anonymisation pipeline,
+        data storage and governance. Training documentation for
+        maintenance personnel on AI output interpretation. Ground
+        analytics platform deployment.
+      compression_lever: >
+        MLOps infrastructure built from SLC04 pipeline implementation;
+        production deployment is a configuration and scale-up step,
+        not a new build. Leverage cloud infrastructure for ground
+        analytics; AMPEL360-managed for on-board inference only.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined; fleet data agreements initiated"
+      exit_criteria: >
+        MLOps pipeline operational; model update approval process approved;
+        fleet data collection infrastructure deployed; personnel trained;
+        ground analytics platform live
+      typical_duration_months: 8
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service AI/ML operations: continuous model performance monitoring
+        against defined KPIs (precision, recall, false alarm rate per use
+        case). Distribution shift detection: alert when operational data
+        distribution diverges from training distribution. Fleet data
+        accumulation and DPP update with AI-generated component life
+        predictions. Trigger model retraining when performance degrades
+        below threshold. Consume data from all families (A-F) to improve
+        cross-system predictive models. Cybersecurity monitoring for
+        on-board AI/ML components. Regulatory compliance monitoring as
+        AI certification standards evolve.
+      compression_lever: "N/A — extension zone (maximise t_ops and model improvement)"
+      entry_criteria: "EIS; aircraft LC10 commenced; fleet data flow established"
+      exit_criteria: "Model performance irrecoverable from distribution shift OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 2  # Per retraining cycle (continuous improvement)
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        Model retraining and recertification cycle: collect accumulated
+        fleet data, execute retraining pipeline with updated dataset,
+        validate retrained model against held-out test set, execute
+        change impact analysis (how does model behaviour change?),
+        obtain approval for updated model per model update approval
+        process (approved modification or Part 21 Sub-Part O),
+        deploy updated model via MLOps pipeline. DPP update: record
+        model version, training dataset version, and performance metrics.
+        Update AI system declaration if scope or limitations change.
+      compression_lever: "N/A — extension zone (maximise model improvement cycles)"
+      entry_criteria: "Retraining trigger (performance degradation) OR scheduled retraining interval"
+      exit_criteria: >
+        Retrained model validated and approved; deployed via MLOps;
+        DPP updated with new model version; AI system declaration
+        updated if required; return-to-service equivalent: model
+        active in production
+      loop_back_to: "SLC10"
+      typical_duration_months: 2  # Per retraining cycle
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        AI/ML system end-of-life assessment. If viable (data still available,
+        certification standard stable, use case still relevant), execute
+        SLC11 for another retraining cycle. If not viable (use case retired,
+        platform end-of-support, regulatory requirement change necessitating
+        ground-up redesign), initiate retirement: deactivate model in
+        production, archive training datasets and model artefacts per
+        data retention policy, update DPP final state record. A successor
+        AI/ML system may be developed under a new SLC01-SLC09 cycle.
+      compression_lever: "N/A — retirement or successor programme initiation"
+      entry_criteria: "SLC11 exit with AI/ML system viability assessment"
+      exit_criteria: "AI/ML system retired; datasets archived; DPP closed; successor programme initiated if applicable"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 3
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-G-01"
+      condition: "AI function is advisory only (no automated action, always human-in-the-loop)"
+      action: "reduce DAL allocation to DAL D or N/A; remove safety-critical qualification sub-phases from SLC06"
+      rationale: >
+        If the AI/ML function produces recommendations that a human operator
+        must explicitly accept before any action is taken (advisory-only),
+        the function does not contribute to a hazardous or catastrophic
+        failure condition. DAL D or N/A applies; the safety-critical
+        qualification sub-phases are removed or substantially reduced.
+
+    - id: "PR-G-02"
+      condition: "ground-based analytics only (no on-board AI component)"
+      action: "remove on-board installation, DO-160G, and on-board SLC07 integration sub-phases"
+      rationale: >
+        If AI/ML inference is entirely ground-based (maintenance analytics
+        platform), there is no on-board component to install, qualify to
+        DO-160G, or integrate on the aircraft. SLC06/SLC07 on-board scopes
+        are removed. The qualification scope focuses on software and data
+        governance only.
+
+    - id: "PR-G-03"
+      condition: "pre-trained model from established AI provider with existing aviation acceptance data"
+      action: "collapse SLC03 algorithm selection and SLC04 model design to provider acceptance review"
+      rationale: >
+        If a pre-trained AI/ML model from an established provider already
+        has partial EASA/FAA acceptance evidence, the algorithm architecture
+        selection and detailed model design are replaced by an acceptance
+        review (similar to COTS hardware acceptance in DO-254). SLC03
+        and SLC04 reduce to scope confirmation and interface definition.
+
+    - id: "PR-G-04"
+      condition: "TypeSim PROPAGATION data sufficient for all training (pre-EIS)"
+      action: "remove real-fleet data collection dependency from SLC05 timeline"
+      rationale: >
+        If TypeSim PROPAGATION mode provides sufficient training data fidelity
+        for the use case (e.g., structural load anomaly detection where
+        physics model is well-validated), the dependency on real fleet data
+        for initial model training is removed. SLC05 analysis proceeds on
+        TypeSim data only, decoupling Family G from EIS data availability.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      model_performance_degraded OR distribution_shift_detected OR
+      scheduled_retraining_interval_elapsed
+      (from MLOps monitoring, continuous KPI tracking)
+    max_cycles: 10  # AI/ML models retrain frequently; high cycle count expected
+    exit_condition: "use_case_retired OR aircraft_retirement OR irrecoverable_certification_standard_change"
+    design_service_goal_fh: 90000  # Aligned with aircraft DSG; model outlives hardware
+    reconditioning_interval_fh: 5000   # Retraining cycle every ~2 years / ~5,000 FH
+    digital_twin_fidelity_required: "high"  # TypeSim integration is core to Family G
+    dpp_granularity: "model-version"
+
+  # --- Elasticity Parameters (Family G defaults) ---
+  default_elasticity:
+    eta_target: 11.0
+    tto_max_months: 42
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 50    # TypeSim provides majority of early training data
+    concurrency_factor_target: 0.63
+    knu_velocity_target: 5           # Lower velocity; genuine novelty in AI/ML certification
+    gate_pass_rate_target: 0.85      # Lower gate pass rate expected; iterative nature of ML
+    reconditioning_cycles_target: 10  # Frequent retraining cycles
