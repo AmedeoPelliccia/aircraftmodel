@@ -145,15 +145,15 @@ ATA 47-40 (Fuel Cell Power Plant)
 ATA 51 (Structures)
     ↕ reservoir mounting, cryo-structural interface
 ATA 53 (Fuselage)
-    ↕ integrated tank bay geometry (BWB / T&W variant)
+    ↕ integrated tank bay geometry (BWB / WTW variant)
 ```
 
-### 4.2 Variant Fork — BWB vs T&W
+### 4.2 Variant Fork — BWB vs WTW
 
 ATA 28 is the **critical-path fork** between AMPEL360 BWB and AMPEL360 WTW
 (ref: AMPEL360-FAM-IBD-001):
 
-| Aspect | BWB (Q100) | WTW (T&W) |
+| Aspect | BWB (Q100) | WTW |
 |---|---|---|
 | Reservoir geometry | Conformal bay in centre-body | Cylindrical pod (under-wing / aft) |
 | PM species | LH₂ only | LH₂ + NH₃ + LN₂ (tri-species) |
