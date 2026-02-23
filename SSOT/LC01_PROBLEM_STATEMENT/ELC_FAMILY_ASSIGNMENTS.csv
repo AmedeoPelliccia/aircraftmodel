@@ -1,0 +1,11 @@
+ata_chapter,ata_name,family_code,family_name,rationale
+ATA-27,Flight Controls Structures,A,Structural (In-House),Primary flight control surfaces are structural components manufactured in-house with OEM partners
+ATA-53,Fuselage Structures,A,Structural (In-House),Fuselage primary structure is the core in-house design and manufacturing domain
+ATA-71,Powerplant,B,Propulsion (Co-Development),Engine/nacelle co-developed with propulsion OEM under shared IP agreement
+ATA-72,Engine/Propulsion,B,Propulsion (Co-Development),Gas turbine core co-developed with engine OEM; shared qualification programme
+ATA-28,H2 Fuel System (C2 CELL),C,Novel Technology (H2/Cryo),Cryogenic H2/NH3/LN2 system is novel technology TRL 3-5; no mature supply chain
+ATA-24,Electrical Power SFE,D,Spec-Driven Procurement (SFE),Electrical power generation and distribution from mature suppliers; spec-driven procurement
+ATA-31,Instruments,E,DAL-Governed Avionics/SW,Flight instruments are DO-178C/DO-254 scope; DAL B-C; certified avionics supplier
+ATA-34,Navigation,E,DAL-Governed Avionics/SW,Navigation systems are DO-178C scope; DAL A-B; certified avionics supplier
+ATA-25,Cabin/Passenger Accommodation,F,Airline-Selected (BFE),Cabin interior is airline-selected buyer-furnished equipment; late configuration
+ATA-46,Information Systems / AI-ML,G,AI/ML Model (Data-Driven),Predictive maintenance and fleet analytics systems; AI/ML model with no established DO standard

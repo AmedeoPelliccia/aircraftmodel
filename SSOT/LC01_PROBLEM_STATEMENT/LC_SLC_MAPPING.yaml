@@ -1,0 +1,144 @@
+# LC_SLC_MAPPING.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-MAP
+# Date: 2026-02-23
+# Description: Machine-readable mapping of Aircraft Lifecycle (LC) phases
+# to System Lifecycle (SLC) phases, as defined in §3.5 of
+# AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-MAP"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+mappings:
+
+  - lc_phase: "LC01"
+    lc_name: "Problem Statement"
+    repository_directory: "LC01_PROBLEM_STATEMENT/"
+    slc_phases: ["SLC01"]
+    slc_names: ["Uncertainty Register"]
+    zone: "Compress"
+    relationship: >
+      Aircraft LC01 instantiates system-level KNOT registers. Programme-level
+      KNOTs and KNUs are seeded here; each system family initialises its
+      SLC01 Uncertainty Register from these aircraft-level artefacts.
+
+  - lc_phase: "LC02"
+    lc_name: "Requirements"
+    repository_directory: "LC02_REQUIREMENTS/"
+    slc_phases: ["SLC02"]
+    slc_names: ["Technology Requirements"]
+    zone: "Compress"
+    relationship: >
+      Aircraft requirements decompose into system SLC02 per family.
+      Performance, safety, and interface requirements flow down from the
+      aircraft level to each system family's technology requirements baseline.
+
+  - lc_phase: "LC03"
+    lc_name: "Preliminary Design"
+    repository_directory: "LC03_PRELIMINARY_DESIGN/"
+    slc_phases: ["SLC03", "SLC04"]
+    slc_names: ["Concept/Material Selection", "Design Definition"]
+    zone: "Compress"
+    relationship: >
+      System families execute SLC03+SLC04 concurrently within LC03.
+      Concept and material selection (SLC03) run in parallel with initial
+      design definition (SLC04) to compress the development schedule.
+
+  - lc_phase: "LC04"
+    lc_name: "Design Review"
+    repository_directory: "LC04_DESIGN_REVIEW/"
+    slc_phases: ["SLC04", "SLC05"]
+    slc_names: ["Design Definition (gate)", "Analysis"]
+    zone: "Compress"
+    relationship: >
+      Aircraft design review gates aggregate system SLC04/SLC05 outputs.
+      Design definition is gated at this phase; analysis models feed
+      qualification evidence into the design review package.
+
+  - lc_phase: "LC05"
+    lc_name: "Analysis Models"
+    repository_directory: "LC05_ANALYSIS_MODELS/"
+    slc_phases: ["SLC05"]
+    slc_names: ["Analysis"]
+    zone: "Compress→Transition"
+    relationship: >
+      System analysis models feed qualification evidence. This phase bridges
+      the compress and transition zones; analysis artefacts produced here
+      become the foundation for qualification campaigns.
+
+  - lc_phase: "LC06"
+    lc_name: "Testing and PMU"
+    repository_directory: "LC06_TESTING_PMU/"
+    slc_phases: ["SLC06", "SLC07"]
+    slc_names: ["Qualification", "System Integration"]
+    zone: "Transition"
+    relationship: >
+      System qualification (SLC06) and integration testing (SLC07) executed
+      at aircraft level. Ground integration test campaigns and PMU validation
+      occur here. Family C (H2) is the pacemaker for this phase.
+
+  - lc_phase: "LC07"
+    lc_name: "Industrial Process Qualification"
+    repository_directory: "LC07_INDUSTRIAL_PROCESS_QUALIFICATION/"
+    slc_phases: ["SLC07"]
+    slc_names: ["Integration (manufacturing)"]
+    zone: "Transition"
+    relationship: >
+      Production process qualification. Manufacturing integration of all
+      system families is validated; production readiness reviews are gated
+      here before industrial ramp-up.
+
+  - lc_phase: "LC08"
+    lc_name: "Flight Test and Certification"
+    repository_directory: "LC08_FLIGHT_TEST_CERTIFICATION/"
+    slc_phases: ["SLC08"]
+    slc_names: ["Certification"]
+    zone: "Transition"
+    relationship: >
+      Aircraft-level certification aggregates system SLC08 outputs.
+      Type Certificate is the gate exit. All system family certification
+      evidence must be consolidated before TC application.
+
+  - lc_phase: "LC09"
+    lc_name: "Industrial Plan"
+    repository_directory: "LC09_INDUSTRIAL_PLAN/"
+    slc_phases: ["SLC09"]
+    slc_names: ["Infrastructure"]
+    zone: "Transition"
+    relationship: >
+      Production ramp-up. Supply chain infrastructure and production
+      planning for all system families is executed concurrently with
+      flight test (SLC08/LC08).
+
+  - lc_phase: "LC10"
+    lc_name: "Fleet Operations"
+    repository_directory: "LC10_FLEET_OPERATIONS/"
+    slc_phases: ["SLC10"]
+    slc_names: ["Operations"]
+    zone: "Extend"
+    relationship: >
+      In-service operations, monitoring, and fleet data collection.
+      Condition-based maintenance data feeds back to the digital twin
+      and LC_MEMORIES for next-programme learning.
+
+  - lc_phase: "LC11"
+    lc_name: "MRO Plan"
+    repository_directory: "LC11_MRO_PLAN/"
+    slc_phases: ["SLC11"]
+    slc_names: ["Reconditioning"]
+    zone: "Extend"
+    relationship: >
+      MRO execution per system family. Heavy maintenance visits coordinate
+      reconditioning scope across families to minimise aircraft downtime.
+
+  - lc_phase: "LC12"
+    lc_name: "Reconditioning"
+    repository_directory: "LC12_RECONDITIONING/"
+    slc_phases: ["SLC11", "SLC12"]
+    slc_names: ["Reconditioning", "Reconditioning Loop"]
+    zone: "Extend"
+    relationship: >
+      System reconditioning cycles. Modular components are reconditioned,
+      re-certified, and returned to service. Digital Product Passport (DPP)
+      circularity data is updated at each cycle.

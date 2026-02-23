@@ -1,0 +1,157 @@
+# ELC_ORCHESTRATION_GRAPH.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-ORCH
+# Date: 2026-02-23
+# Description: Cross-family dependency graph for AMPEL360 programme.
+# Defines interface freeze points, pacemaker identification, and
+# cross-family dependencies as prescribed by §6 of AMPEL360-FAM-ARCH-ELC-001.
+
+programme: "AMPEL360 WTW"
+document_id: "AMPEL360-FAM-ARCH-ELC-001-ORCH"
+revision: "A"
+date: "2026-02-23"
+
+# --- Pacemaker Identification ---
+pacemaker:
+  family_code: "C"
+  family_name: "Novel Technology (H2/Cryo)"
+  rationale: >
+    Family C (ATA-28, H2 Cryo system) has the longest transition zone
+    (~18 months) due to novel technology, special conditions approval
+    requirements, and immature supply chain (TRL 3-5). All other families
+    must align their transition zone exit to Family C's readiness.
+  transition_zone_duration_months: 18
+
+# --- Freeze Points ---
+freeze_points:
+
+  - id: "FP-01"
+    name: "ICD Freeze"
+    description: >
+      All inter-system interface definitions are baselined. No new
+      interfaces may be added after this point without an ADR.
+    families_involved: ["A", "B", "C", "E"]
+    ata_chapters: ["ATA-27", "ATA-53", "ATA-71", "ATA-72", "ATA-28", "ATA-31", "ATA-34"]
+    trigger_condition: "All interface definitions reviewed and baselined in SSOT"
+    target_aircraft_lc_phase: "LC03_PRELIMINARY_DESIGN"
+    slc_context: "SLC04 Design Definition gate"
+    downstream_freeze_points: ["FP-02", "FP-03"]
+
+  - id: "FP-02"
+    name: "Loads Freeze"
+    description: >
+      Structural loads envelope and propulsion thrust cases agreed across
+      Family A and Family B. Feeds into material and sizing analysis.
+    families_involved: ["A", "B"]
+    ata_chapters: ["ATA-27", "ATA-53", "ATA-71", "ATA-72"]
+    trigger_condition: "FP-01 complete; structural loads and thrust cases converged"
+    target_aircraft_lc_phase: "LC03_PRELIMINARY_DESIGN"
+    slc_context: "SLC05 Analysis entry"
+    downstream_freeze_points: ["FP-04"]
+
+  - id: "FP-03"
+    name: "Power Budget Freeze"
+    description: >
+      Electrical load analysis closed. H2 system power demands (Family C),
+      SFE equipment (Family D), and avionics (Family E) loads agreed.
+    families_involved: ["C", "D", "E"]
+    ata_chapters: ["ATA-28", "ATA-24", "ATA-31", "ATA-34"]
+    trigger_condition: "FP-01 complete; electrical load analysis converged"
+    target_aircraft_lc_phase: "LC03_PRELIMINARY_DESIGN"
+    slc_context: "SLC05 Analysis entry"
+    downstream_freeze_points: ["FP-04"]
+
+  - id: "FP-04"
+    name: "Weight Budget Freeze"
+    description: >
+      Mass properties converged within allocation. All families have
+      confirmed component weights within budget margins.
+    families_involved: ["A", "B", "C", "D", "E", "F", "G"]
+    ata_chapters: ["ATA-27", "ATA-53", "ATA-71", "ATA-72", "ATA-28", "ATA-24", "ATA-31", "ATA-34", "ATA-25", "ATA-46"]
+    trigger_condition: "FP-02 and FP-03 complete; mass properties converged"
+    target_aircraft_lc_phase: "LC04_DESIGN_REVIEW"
+    slc_context: "SLC05 Analysis exit"
+    downstream_freeze_points: ["FP-05"]
+
+  - id: "FP-05"
+    name: "Safety Architecture Freeze"
+    description: >
+      Functional Hazard Assessment (FHA) and Preliminary System Safety
+      Assessment (PSSA) complete. DAL allocations confirmed for all
+      safety-relevant families.
+    families_involved: ["A", "B", "C", "D", "E"]
+    ata_chapters: ["ATA-27", "ATA-53", "ATA-71", "ATA-72", "ATA-28", "ATA-24", "ATA-31", "ATA-34"]
+    trigger_condition: "FP-04 complete; FHA/PSSA approved; DAL allocated"
+    target_aircraft_lc_phase: "LC04_DESIGN_REVIEW"
+    slc_context: "SLC06 Qualification entry"
+    downstream_freeze_points: []
+
+# --- Cross-Family Dependencies ---
+dependencies:
+
+  - id: "DEP-01"
+    from_family: "A"
+    from_ata: "ATA-53"
+    from_slc_phase: "SLC04"
+    to_family: "C"
+    to_ata: "ATA-28"
+    to_slc_phase: "SLC04"
+    dependency_type: "structural_envelope"
+    description: >
+      Fuselage structural envelope (frame pitch, cutout sizes, attachment
+      interfaces) must be baselined before H2 tank integration geometry
+      can be finalised.
+    required_by_freeze_point: "FP-01"
+
+  - id: "DEP-02"
+    from_family: "B"
+    from_ata: "ATA-72"
+    from_slc_phase: "SLC05"
+    to_family: "C"
+    to_ata: "ATA-28"
+    to_slc_phase: "SLC05"
+    dependency_type: "energy_demand"
+    description: >
+      Engine fuel/energy demand profile required to size H2 distribution
+      flow rates and tank boil-off budget.
+    required_by_freeze_point: "FP-02"
+
+  - id: "DEP-03"
+    from_family: "C"
+    from_ata: "ATA-28"
+    from_slc_phase: "SLC07"
+    to_aircraft_lc: "LC06_TESTING_PMU"
+    dependency_type: "system_integration"
+    description: >
+      Family C (H2 system) SLC07 System Integration must be complete and
+      ground-tested before aircraft-level integration (LC06) can proceed.
+      Family C is the pacemaker for LC06 entry.
+
+  - id: "DEP-04"
+    from_family: "E"
+    from_ata: "ATA-31"
+    from_slc_phase: "SLC08"
+    to_aircraft_lc: "LC06_TESTING_PMU"
+    dependency_type: "iron_bird_certification"
+    description: >
+      Family E avionics iron bird testing (SLC08) must demonstrate
+      integration with H2 fuel management and engine control before
+      PMU/integration phase entry.
+
+  - id: "DEP-05"
+    from_family: "G"
+    from_ata: "ATA-46"
+    from_slc_phase: "SLC06"
+    to_family: "E"
+    to_ata: "ATA-31"
+    to_slc_phase: "SLC08"
+    dependency_type: "tool_qualification"
+    description: >
+      Family G AI/ML model outputs consumed by Family E avionics software
+      require DO-330 tool qualification. Tool qualification evidence from
+      Family G SLC06 feeds into Family E SLC08 certification.
+    required_by_freeze_point: "FP-05"
+
+# --- Programme Orchestration Summary ---
+# Critical path: C(SLC01→SLC07) → LC06 → LC08
+# Total transition zone bottleneck: 18 months (Family C)
+# Freeze point sequence: FP-01 → [FP-02, FP-03] → FP-04 → FP-05

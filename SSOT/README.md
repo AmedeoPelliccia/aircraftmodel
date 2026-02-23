@@ -80,15 +80,16 @@ graph LR
 
 | Zone | Levers | Target |
 |------|--------|--------|
-| **COMPRESS** | Concurrent phases, virtual qualification, early supplier engagement, digital twin maturation, reduce Time To Operations (TTO) | `Δt=T0-ΔT1; T0=EIS; ΔT1=DEV + CERT TIME → Global minimum` |
+| **COMPRESS** | Concurrent phases, virtual qualification, early supplier engagement, digital twin maturation, reduce Time To Operations (TTO) | `TTO = T_DEV + T_CERT` (total development + certification duration); Target: `TTO → global minimum per family` |
 | **EXTEND** | Condition-based maintenance, modular reconditioning, digital twin life extension, DPP circularity | `t_ops → maximum` |
 
 > **Total Lifecycle Value = f(1/TTO , t_ops)**
 >
-> Where `TTO = T0 - ΔT1` (Time To Operations = EIS minus development
-> and certification time). Every phase, gate, and artifact exists to either
-> **reduce TTO** or **lengthen time-in-service**. If it does neither,
-> it is overhead.
+> `TTO` is the Time To Operations, defined as the total calendar duration
+> from programme start to Entry Into Service: `TTO = T_EIS - T_start`.
+> The compression levers reduce TTO by shortening `T_DEV` and `T_CERT`
+> within it. Every phase, gate, and artifact exists to either **reduce TTO**
+> or **lengthen time-in-service**. If it does neither, it is overhead.
 
 ---
 
@@ -204,6 +205,28 @@ An uninspectable structure cannot be life-extended. A non-modular system
 cannot be reconditioned. Architecture decisions in the compression zone
 **programme** the extension zone.
 
+### 3.5  LC↔SLC Phase Mapping
+
+The repository lifecycle directories (LC01–LC12) operate at the **aircraft
+programme level**. System families execute **System Lifecycle (SLC)** phases
+within each LC phase. The table below formalises this relationship.
+Machine-readable form: `LC01_PROBLEM_STATEMENT/LC_SLC_MAPPING.yaml`.
+
+| Aircraft LC Phase | Repository Directory | System SLC Phases | Zone | Relationship |
+|---|---|---|---|---|
+| LC01 Problem Statement | `LC01_PROBLEM_STATEMENT/` | SLC01 Uncertainty Register | Compress | Aircraft LC01 instantiates system-level KNOT registers |
+| LC02 Requirements | `LC02_REQUIREMENTS/` | SLC02 Technology Requirements | Compress | Aircraft requirements decompose into system SLC02 per family |
+| LC03 Preliminary Design | `LC03_PRELIMINARY_DESIGN/` | SLC03 Concept/Material, SLC04 Design | Compress | System families execute SLC03+SLC04 concurrently within LC03 |
+| LC04 Design Review | `LC04_DESIGN_REVIEW/` | SLC04 Design (gate), SLC05 Analysis | Compress | Aircraft design review gates aggregate system SLC04/05 outputs |
+| LC05 Analysis Models | `LC05_ANALYSIS_MODELS/` | SLC05 Analysis | Compress→Transition | System analysis models feed qualification evidence |
+| LC06 Testing & PMU | `LC06_TESTING_PMU/` | SLC06 Qualification, SLC07 Integration | Transition | System qualification + integration tested at aircraft level |
+| LC07 Industrial Qualification | `LC07_INDUSTRIAL_PROCESS_QUALIFICATION/` | SLC07 Integration (manufacturing) | Transition | Production process qualification |
+| LC08 Flight Test & Cert | `LC08_FLIGHT_TEST_CERTIFICATION/` | SLC08 Certification | Transition | Aircraft-level certification aggregates system SLC08 |
+| LC09 Industrial Plan | `LC09_INDUSTRIAL_PLAN/` | SLC09 Infrastructure | Transition | Production ramp-up |
+| LC10 Fleet Operations | `LC10_FLEET_OPERATIONS/` | SLC10 Operations | Extend | In-service operations, monitoring, fleet data |
+| LC11 MRO Plan | `LC11_MRO_PLAN/` | SLC11 Reconditioning | Extend | MRO execution per system family |
+| LC12 Reconditioning | `LC12_RECONDITIONING/` | SLC11/SLC12 Reconditioning loop | Extend | System reconditioning cycles |
+
 ---
 
 ## 4  ELC Compiler: Architecture → Lifecycle
@@ -247,6 +270,41 @@ OUTPUT:  family_code ∈ {A, B, C, D, E, F, G}
 | DAL-governed software/hardware, DO-178C/254 scope | E |
 | Airline-selected, late-configuration, catalogue-based | F |
 | AI/ML model, data-driven, no established DO standard | G |
+
+#### Family G — Regulatory Framework
+
+Family G covers AI/ML models, data-driven systems, and digital services
+(e.g., ATA-46 Information Systems). The regulatory landscape for AI/ML
+in aviation is evolving. The following rules apply until formal adoption
+of a dedicated standard:
+
+1. **DAL Applicability.** Family G systems that interact with DAL A–C
+   functions inherit the DAL of the most critical function they support.
+   Standalone advisory-only Family G systems (no safety-critical output
+   path) may operate at DAL D/E.
+
+2. **DO-178C / DO-254 Interaction.** When a Family G model's output is
+   consumed by a DO-178C or DO-254 system, the model is treated as a
+   *tool* under **DO-330** (Software Tool Qualification). The Tool
+   Qualification Level (TQL) is derived from the consuming system's DAL
+   per DO-330 Table 11-1.
+
+3. **Model Training Data Governance.** Training data must be
+   configuration-controlled with traceability to data sources. Data
+   provenance records are mandatory SSOT artefacts stored under the
+   system's SLC phase directory (e.g., `SLC01/training_data_manifest.yaml`).
+
+4. **Configuration Control of Weights/Parameters.** Trained model weights
+   are treated as derived data products. Each release requires a
+   hash-verified baseline stored in the SSOT. Model retraining triggers
+   SLC recompilation per §7 (see Recompile Threshold Matrix §7.2 — treat
+   as Family code unchanged, template version updated → **MANDATORY**).
+
+5. **Applicable Standards Reference.** EASA AI Roadmap 2.0 and
+   SAE ARP6983 (*Artificial Intelligence in Aeronautical Systems*) are
+   the emerging regulatory frameworks. Until formal adoption, Family G
+   systems follow a conservative interpretation applying DO-330 tool
+   qualification as the primary compliance path.
 
 ### Step 2 — Phase Instantiation
 
@@ -625,6 +683,29 @@ flowchart TD
 | Modularity increase | Reconditioning decision | Extend extension zone; add interfaces (transition cost) |
 | Technology insertion | Mid-life upgrade | Partial recompile; new SLC for inserted technology |
 
+### 7.2  Recompile Threshold Matrix
+
+| Change Category | Change Type | Recompile Required | Justification |
+|---|---|---|---|
+| Family | Family code change (e.g., A→D) | **MANDATORY** | Entire SLC template changes |
+| Family | Family code unchanged, template version updated | **MANDATORY** | Phase definitions may differ |
+| TRL | TRL downgrade (any magnitude) | **MANDATORY** | Compression zone extends; phases added |
+| TRL | TRL upgrade | CONDITIONAL (if phases can be pruned) | Validate pruning rules apply |
+| DAL | DAL escalation | **MANDATORY** | Assurance phases added; transition zone extends |
+| DAL | DAL de-escalation | CONDITIONAL (review safety case) | May remove phases; requires safety case update |
+| Supplier | Supplier change, same specification | CONDITIONAL (re-evaluate SLC03 evidence) | Qualification evidence may not transfer |
+| Supplier | Supplier change, different specification | **MANDATORY** | Re-enter SLC03 from scratch |
+| Modularity | Modularity increase | **MANDATORY** | Extension zone deepens; new interfaces |
+| Modularity | Modularity decrease | **MANDATORY** | Extension zone shortens; interfaces removed |
+| Interface | Interface count change > 10% | **MANDATORY** | Integration test matrix changes |
+| Interface | Interface count change ≤ 10% | CONDITIONAL (if no cross-family impact) | May only affect internal test matrix |
+| Cosmetic | Documentation-only change | **NO** | No impact on SLC structure |
+| Cosmetic | Metadata update (dates, names) | **NO** | No impact on SLC structure |
+
+> **CONDITIONAL recompile rule:** CONDITIONAL recompiles require an ADR
+> with justification for why full recompile is not needed. The ADR must be
+> reviewed by the system architect and the ELC programme lead.
+
 ---
 
 ## 8  Data Model
@@ -738,7 +819,7 @@ family_template:
 
 | Metric | Formula | Target |
 |--------|---------|--------|
-| `TTO` | `T0 - ΔT1` where T0 = EIS, ΔT1 = DEV + CERT time | → Global minimum per family |
+| `TTO` | `T_EIS - T_programme_start` | → Global minimum per family |
 | `t_ops` | EIS → last reconditioning cycle end | → Maximum |
 | `η_elastic` | `t_ops / TTO` | ≥ 10 (programme), ≥ 12 (novel tech stretch) |
 | `Δ_virtual` | virtual evidence hours / total evidence hours × 100 | ≥ 40% |
