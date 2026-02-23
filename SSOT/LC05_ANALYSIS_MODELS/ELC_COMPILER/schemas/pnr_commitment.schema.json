@@ -63,14 +63,24 @@
       }
     },
     "previous_pnr_id": {
-      "type": ["string", "null"],
       "description": "PNR ID of the prior record in the hash chain, or null for genesis records.",
-      "pattern": "^PNR:[A-Z0-9]+:[A-G*]:[A-Z0-9]+:[0-9]{5}$"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^PNR:[A-Z0-9]+:[A-G*]:[A-Z0-9]+:[0-9]{5}$"
+        },
+        { "type": "null" }
+      ]
     },
     "previous_commitment_hash": {
-      "type": ["string", "null"],
       "description": "SHA-256 hex digest of the prior commitment payload, or null for genesis records.",
-      "pattern": "^[0-9a-f]{64}$"
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        { "type": "null" }
+      ]
     }
   },
   "if": {
