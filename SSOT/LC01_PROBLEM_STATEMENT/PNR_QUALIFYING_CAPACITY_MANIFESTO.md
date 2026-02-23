@@ -31,7 +31,7 @@
 ## §1  Purpose & Doctrinal Scope
 
 This document governs the **Qualifying Capacity Authorization Model** for the
-PNR (Part Number Registry) Blockchain Thread of the AMPEL360 WTW programme.
+PNR (Part Number Registry) Blockchain Thread of the AMPEL360 programme.
 
 It establishes the normative framework under which any actor — human, system,
 or organisational unit — is authorized to execute, attest, or observe events
@@ -488,7 +488,7 @@ permitted.
 
 An issuer is accepted if they hold a valid `DELEGATION` QCC with an
 `event_types` scope that includes `QCC_ISSUE` for the relevant actor scope.
-Accepted issuer roles for the AMPEL360 WTW programme include:
+Accepted issuer roles for the AMPEL360 programme include:
 
 | Issuer Role | Authority Scope |
 |-------------|----------------|
@@ -679,4 +679,4 @@ disclosure. Controlled reason codes include:
 
 ---
 
-<p align="center"><em>AMPEL360 WTW · PNR Thread Qualifying Capacity Manifesto · AMPEL360-FAM-ARCH-ELC-001-QCC Rev A</em></p>
+<p align="center"><em>AMPEL360 · PNR Thread Qualifying Capacity Manifesto · AMPEL360-FAM-ARCH-ELC-001-QCC Rev A</em></p>

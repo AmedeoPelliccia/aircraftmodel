@@ -5,7 +5,7 @@
 # Defines interface freeze points, pacemaker identification, and
 # cross-family dependencies as prescribed by §6 of AMPEL360-FAM-ARCH-ELC-001.
 
-programme: "AMPEL360 WTW"
+programme: "AMPEL360"
 document_id: "AMPEL360-FAM-ARCH-ELC-001-ORCH"
 revision: "A"
 date: "2026-02-23"

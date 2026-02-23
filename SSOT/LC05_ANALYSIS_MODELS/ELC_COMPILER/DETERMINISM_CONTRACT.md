@@ -34,7 +34,7 @@ identical outputs. Determinism is a prerequisite for:
 ## 2  Scope
 
 This contract applies to all executions of `compiler.py` against any
-system in the AMPEL360 WTW programme. It covers:
+system in the AMPEL360 programme. It covers:
 
 - The compilation of family templates into SLC instances
 - The pruning and expansion of SLC phases
@@ -347,4 +347,4 @@ prevent gate evaluation until the manifest is generated and stored.
 
 ---
 
-<p align="center"><em>AMPEL360 WTW · ELC Compiler Determinism Contract · AMPEL360-FAM-ARCH-ELC-001-DET Rev A</em></p>
+<p align="center"><em>AMPEL360 · ELC Compiler Determinism Contract · AMPEL360-FAM-ARCH-ELC-001-DET Rev A</em></p>

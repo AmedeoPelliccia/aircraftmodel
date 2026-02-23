@@ -34,7 +34,7 @@
 ## §1  Purpose & Doctrinal Position
 
 This document governs the **PNR (Part Number Registry) Blockchain Thread** for
-the AMPEL360 WTW programme. The Thread is the distributed evidence layer that
+the AMPEL360 programme. The Thread is the distributed evidence layer that
 anchors cryptographic commitments at defined governance events across the ELC
 (Elastic Lifecycle) framework.
 
@@ -357,7 +357,7 @@ PNR:<programme_id>:<family_code>:<event_type>:<sequence>
 
 | Field | Values | Description |
 |-------|--------|-------------|
-| `programme_id` | `A360` | Programme identifier (AMPEL360 WTW) |
+| `programme_id` | `A360` | Programme identifier (AMPEL360, all integrations) |
 | `family_code` | `A`–`G`, `*` | ELC family code; `*` for programme-wide events |
 | `event_type` | `FP01`–`FP05`, `COMP`, `ADR`, `GATE`, `STL`, `SQUAL`, `RECOND` | Event type code |
 | `sequence` | `00001`–`99999` | Zero-padded 5-digit sequence within event type and family |
@@ -554,4 +554,4 @@ defect under `AMPEL360-FAM-ARCH-ELC-001-DET`.
 
 ---
 
-<p align="center"><em>AMPEL360 WTW · PNR Blockchain Thread Policy · AMPEL360-FAM-ARCH-ELC-001-PNR Rev A</em></p>
+<p align="center"><em>AMPEL360 · PNR Blockchain Thread Policy · AMPEL360-FAM-ARCH-ELC-001-PNR Rev B</em></p>
