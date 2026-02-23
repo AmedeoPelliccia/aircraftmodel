@@ -13,5 +13,5 @@ Authoritative engineering evidence for the AMPEL360 COMMON programme.
 | Directory | Phase | Content |
 |---|---|---|
 | `LC01_PROBLEM_STATEMENT/` | LC01 | KNOTs, KNUs, RACI, timeline, tokenomics |
-| `LC04_TRADE_STUDIES/` | LC04 | Assestment studies, IBD declarations |
+| `LC04_DESIGN REVIEW/` | LC04 | Assestment studies, IBD declarations |
 | `LC05_ANALYSIS_MODELS/` | LC05 | Thermodynamic models, simulations |
