@@ -7,6 +7,9 @@ on:
       - 'SSOT/LC01_PROBLEM_STATEMENT/KNU_PLAN.csv'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   sync:
     runs-on: ubuntu-latest
