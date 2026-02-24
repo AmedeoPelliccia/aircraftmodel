@@ -1,0 +1,60 @@
+---
+# REQ_WTW_50_100_CARGO_COMPARTMENTS.yaml
+# AMPEL360 WTW — ATA 50-100 Cargo Compartments (WTW delta)
+programme: AMPEL360-WTW
+ata_subchapter: "50-100"
+title: Cargo Compartments
+baseline_ref: ATA50-SHARED §3
+
+requirements:
+  - req_id: WTW-50-100-001
+    shall: >
+      WTW forward and aft belly holds shall be classified to CS-25.857 Class C
+      or Class E as confirmed at LC04. Fire-containment liner panels shall
+      satisfy CS-25.855 area and seam gap limits per ICD-WTW-50-005.
+    rationale: >
+      CS-25.855/856/857 compliance is mandatory for belly holds; classification
+      drives liner material, suppression system and monitoring requirements.
+    cs25_ref: CS-25.855
+    delta_ref: DELTA-WTW-50-005
+    verification: Test (fire liner certification) + Inspection
+    lc_gate: LC04
+
+  - req_id: WTW-50-100-002
+    shall: >
+      Fire containment liner panels in WTW belly holds shall comply with
+      CS-25.856 material flammability standard. Panel attachment shall maintain
+      full seating on curved rail under 60-min fire exposure.
+    rationale: >
+      WTW curved liner panel attachment differs from SHARED flat-panel baseline;
+      the curved rail-clip system must be validated for fire resistance.
+    cs25_ref: CS-25.856
+    delta_ref: DELTA-WTW-50-005
+    verification: Test
+    lc_gate: LC04
+
+  - req_id: WTW-50-100-003
+    shall: >
+      Fire detection and suppression system interfaces in WTW belly holds shall
+      be routed per ATA 26 overlay requirements without breach of fire
+      containment liner per CS-25.857.
+    rationale: >
+      System penetrations through fire-containment liner are a certification
+      finding risk. WTW-specific routing must be validated.
+    cs25_ref: CS-25.857
+    delta_ref: DELTA-WTW-50-005
+    verification: Inspection + Analysis
+    lc_gate: LC04
+
+  - req_id: WTW-50-100-004
+    shall: >
+      Cargo restraint fittings on WTW cargo floor shall meet the load limits
+      defined in the WTW cargo floor structural analysis per CS-25.561 load
+      factors.
+    rationale: >
+      Load introduction into the circular fuselage keel differs from BWB;
+      fitting design must match WTW-specific load paths.
+    cs25_ref: CS-25.561
+    delta_ref: DELTA-WTW-50-006
+    verification: Analysis (FEA)
+    lc_gate: LC05
