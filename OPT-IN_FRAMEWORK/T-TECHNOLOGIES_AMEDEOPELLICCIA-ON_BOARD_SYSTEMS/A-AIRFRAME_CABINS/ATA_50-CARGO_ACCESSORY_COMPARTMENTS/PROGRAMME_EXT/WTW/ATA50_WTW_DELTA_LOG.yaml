@@ -1,0 +1,79 @@
+---
+# ATA50_WTW_DELTA_LOG.yaml
+# AMPEL360 WTW — ATA 50 Programme Extension Overlay Delta Log
+# Revision: LC01 scaffold
+
+log:
+  programme: AMPEL360-WTW
+  ata_chapter: "50"
+  entries:
+
+    - change_id: CHG-0001
+      delta_id: DELTA-WTW-50-001
+      title: Circular fuselage belly-hold envelope constraints
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Introduces WTW-specific cargo compartment envelope definition based on
+        circular fuselage cross-section geometry. Belly-hold width, height and
+        length constraints differ from BWB flat-floor planform.
+
+    - change_id: CHG-0002
+      delta_id: DELTA-WTW-50-002
+      title: Cargo access door geometry and latch/hinge ICD
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Defines WTW belly cargo door clear-opening dimensions, sill height above
+        ground line, hinge pin locations, and latch mechanism ICD.
+        Differs from BWB side-access configuration.
+
+    - change_id: CHG-0003
+      delta_id: DELTA-WTW-50-003
+      title: Liner attachment rail/clip pattern (circular cross-section)
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Liner attachment rail locations follow the curved fuselage skin frame
+        pitch. Clip type and spacing differ from BWB flat-panel attach scheme.
+
+    - change_id: CHG-0004
+      delta_id: DELTA-WTW-50-004
+      title: Drain and vent path routing in lower fuselage skin
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Drain mast and vent port routing runs along lowest keel of circular
+        fuselage cross-section. ΔICD defines penetration coordinates, fitting
+        type and sealing specification.
+
+    - change_id: CHG-0005
+      delta_id: DELTA-WTW-50-005
+      title: Fire containment liner interfaces (CS-25.855/856)
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Fire-containment liner panel specification for WTW belly hold per
+        CS-25.855/856. Panel area, attachment torque and sealant class defined
+        at LC04.
+
+    - change_id: CHG-0006
+      delta_id: DELTA-WTW-50-006
+      title: Belly-hold net/restraint attach interfaces
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Cargo net attachment fitting locations in forward and aft belly holds.
+        Load introduction into fuselage frames defined at LC05.

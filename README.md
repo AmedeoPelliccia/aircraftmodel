@@ -1,12 +1,12 @@
-# ID-A360-Q100
+# AMPEL360 DB — DUAL BRANCH
 
-## IDEALE-ESG · AMPEL360 Program Family · 100-Pax Configuration
+## IDEALE-ESG · AMPEL360 Program Family · Dual Branch (WTW + BWB) · 100-Pax Configuration
 
-### Zero-CO₂ Short-Haul Aircraft — LH₂ + On-Board NH₃ Cracking + Closed-Loop N₂ Inerting
+### Zero-CO₂ Short-Haul Aircraft — AMPEL360 WTW (EIS 2035–40) · AMPEL360 BWB (EIS 2042–48)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Brand-IDEALE--ESG-0066cc" alt="IDEALE-ESG">
-  <img src="https://img.shields.io/badge/Program-AMPEL360-purple" alt="AMPEL360">
+  <img src="https://img.shields.io/badge/Program-AMPEL360%20DB%20Dual%20Branch-purple" alt="AMPEL360 DB Dual Branch">
   <img src="https://img.shields.io/badge/Config-Q100%20(100%20pax)-brightgreen" alt="Q100">
   <img src="https://img.shields.io/badge/Propulsion-LH2%20%2B%20NH3--Cracking-teal" alt="Propulsion">
   <img src="https://img.shields.io/badge/Certification-CS--25%20Amdt%2028-red" alt="CS-25 Amdt 28">
@@ -19,49 +19,52 @@
 
 <p align="center">
   <strong>
-    Certification-grade digital engineering baseline for a 100-passenger
-    zero-CO₂ short-haul aircraft powered by Liquid Hydrogen with on-board
-    Ammonia cracking and closed-loop Nitrogen inerting — managed under the
-    OPT-IN Framework, S1000D CSDB, and Teknia Token incentive system.
+    Certification-grade digital engineering baseline for the AMPEL360 dual-branch
+    programme family: AMPEL360 WTW (Wide Tube &amp; Wing, 100-pax, LH₂ + NH₃
+    cracking, EIS 2035–40) and AMPEL360 BWB (Blended Wing Body, LH₂ + PEM
+    fuel cell, EIS 2042–48) — managed under the OPT-IN Framework, S1000D CSDB,
+    and Teknia Token incentive system.
   </strong>
 </p>
 
 <p align="center">
   <a href="#1-program-identity">Identity</a> •
-  <a href="#2-propulsion-architecture">Propulsion</a> •
-  <a href="#3-repo-organization">Repo</a> •
-  <a href="#4-opt-in-5-axis-topology">OPT-IN</a> •
-  <a href="#5-lc01--uncertainty-orchestration">LC01</a> •
-  <a href="#6-knot-register-seed">KNOTs</a> •
-  <a href="#7-tokenomics-tt-v314">Tokenomics</a> •
-  <a href="#8-csdb--publishing-model">CSDB</a> •
-  <a href="#9-standards--compliance">Standards</a> •
-  <a href="#10-automation--cicd">Automation</a> •
-  <a href="#11-contributing">Contributing</a>
+  <a href="#2-four-dimensional-ata-node-model">4D Model</a> •
+  <a href="#3-propulsion-architecture">Propulsion</a> •
+  <a href="#4-repo-organization">Repo</a> •
+  <a href="#5-opt-in-5-axis-topology">OPT-IN</a> •
+  <a href="#6-elastic-lifecycle">ELC</a> •
+  <a href="#7-knot-register-seed">KNOTs</a> •
+  <a href="#8-tokenomics-tt-v314">Tokenomics</a> •
+  <a href="#9-csdb--publishing-model">CSDB</a> •
+  <a href="#10-standards--compliance">Standards</a> •
+  <a href="#11-automation--cicd">Automation</a> •
+  <a href="#12-contributing">Contributing</a>
 </p>
 
 ---
 
-## 1. Program Identity
+## 1. Program Identity — AMPEL360 DB (Dual Branch)
 
 | Attribute | Value |
 |---|---|
-| **Designation** | `ID-A360-Q100` |
-| **ID** | IDEALE-ESG sub-brand prefix |
+| **Programme family** | `AMPEL360 DB` — Dual Branch (WTW + BWB) |
+| **Branch A — near-term** | `AMPEL360 WTW` (Wide Tube & Wing) · EIS 2035–2040 |
+| **Branch B — long-horizon** | `AMPEL360 BWB` (Blended Wing Body) · EIS 2042–2048 |
+| **Legacy ID** | `ID-A360-Q100` (superseded by IBD-001 Rev B) |
 | **A360** | AMPEL360 program family heritage |
 | **Q100** | Configuration — 100 passengers nominal (range 50–120 pax) |
 | **AMPEL** | Program family name (see [Acknowledgments](#acknowledgments)) |
 | **ESG pillar** | Environmental — net-zero aviation decarbonization |
-| **Configuration** | Conventional tube-and-wing, clean-sheet design |
 | **Range target** | ≤ 2 500 km short-haul regional |
 | **Pax nominal** | 100 (range 50–120) |
 | **Certification basis** | EASA CS-25 Amendment 28 / FAA Part 25 (final basis confirmed per application date) |
 | **CO₂ posture** | Zero at tailpipe (tank-to-wake). Lifecycle CO₂ depends on H₂/NH₃ production pathway — declared in I-INFRASTRUCTURES |
 | **NOₓ target** | ≤ 5% of ICAO CAEP/8 LTO NOₓ limit (2010 baseline; re-validate at certification entry date) |
 | **Domain governance** | `aircraftmodel.eu` — aviation decarbonization boundary |
-| **Sibling program** | AMPEL360 BWB (quantum-enhanced, blended-wing-body) |
-| **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) — shared-spine / forked-content declaration |
-| **Repository** | `github.com/AmePelliccia/ID-A360-Q100` |
+| **Inheritance boundary** | [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md) — shared-spine / forked-content declaration |
+| **Config selection trade** | [`AMPEL360-WTW-TS-001 Rev A`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-WTW-TS-001-Config-Selection.md) — WTW vs BWB multi-criterion trade study · **OPEN** (KNOT-CONF-00-00-001) |
+| **Repository** | `github.com/AmedeoPelliccia/aircraftmodel` |
 | **Concept & Direction** | Amedeo Pelliccia |
 
 > **⚠ Domain boundary:** This repository operates exclusively under the
@@ -71,11 +74,30 @@
 
 ---
 
-## 2. Propulsion Architecture
+## 2. Four-Dimensional ATA Node Model
 
-### 2.1 Overview — The Closed-Loop Cryogenic Ecosystem
+Every ATA chapter node in this programme carries **four orthogonal attributes**:
 
-The ID-A360-Q100 propulsion system represents the convergence of Liquid Hydrogen
+| Dimension | Attribute | Where defined | What it answers |
+|---|---|---|---|
+| **① STRUCTURE** | OPT-IN axis / cluster | [§5 OPT-IN Topology](#5-opt-in-5-axis-topology) | *Where* does this system live in the repo? |
+| **② TIME** | ELC Family code → SLC phases → zone | [§6 Elastic Lifecycle](#6-elastic-lifecycle) | *How* does it mature through the lifecycle? |
+| **③ UNCERTAINTY** | KNOT / KNU register | [§7 KNOT Register](#7-knot-register-seed) | *What* do we not yet know? |
+| **④ INCENTIVE** | TT token pool | [§8 Tokenomics](#8-tokenomics-tt-v314) | *Who* gets rewarded for closing the uncertainty? |
+
+> **OPT-IN ≠ ELC.** The OPT-IN topology is the **spatial** organization of
+> engineering content. The Elastic Lifecycle (ELC) is the **temporal** schedule
+> through which each node matures. Family codes (A–G) are a temporal attribute
+> of each ATA node derived from its physical architecture — not a competing
+> taxonomy.
+
+---
+
+## 3. Propulsion Architecture
+
+### 3.1 Overview — The Closed-Loop Cryogenic Ecosystem
+
+The AMPEL360 WTW propulsion system represents the convergence of Liquid Hydrogen
 (LH₂) and Ammonia (NH₃) into a single self-reinforcing energy ecosystem:
 
 - **LH₂** provides primary combustion energy (high energy density, zero CO₂ at tailpipe)
@@ -92,37 +114,45 @@ recovery, and generates its own inerting gas on-board.
 > **targets** until closed by LC02–LC07 evidence under the KNOT/KNU framework.
 > No claim in this document constitutes a certified or substantiated design value.
 
-```
-╔══════════════════════════════════════════════════════════════════════════╗
-║              ID-A360-Q100  CLOSED-LOOP PROPULSION ECOSYSTEM              ║
-╠═══════════════════════╦══════════════════════════╦═══════════════════════╣
-║   LH₂ CIRCUIT         ║   NH₃ CRYO-THERMAL        ║   N₂ INERTING CIRCUIT ║
-║   ATA 28 / 73         ║   ATA 28 / 75             ║   ATA 47 / 26         ║
-╠═══════════════════════╬══════════════════════════╬═══════════════════════╣
-║ Storage: −253 °C      ║ Storage: −33 °C (liq.)   ║ Source: NH₃ cracker   ║
-║ Vacuum-jacketed       ║ or ~8 bar pressurised     ║ N₂ stream quality:    ║
-║ double-wall tanks     ║                           ║ contaminant limits    ║
-║                       ║ ► Role 1: Cryo shield     ║ (NH₃/H₂/H₂O) defined ║
-║ Boil-off GH₂ →       ║   NH₃ jacket on LH₂ lines ║ per ATA 47 safety     ║
-║   PEM fuel cells      ║   reduces boil-off ≥30%   ║ case — TBD via        ║
-║   Purge burners       ║   (target)                ║ KNOT-ATA47-10-00-001  ║
-║   NH₃ sub-cooling     ║                           ║                       ║
-║                       ║ ► Role 2: H₂ source       ║ ► Tank inerting       ║
-║ Primary fuel →        ║   Engine waste heat →     ║   O₂ displaced from   ║
-║   Combustors          ║   NH₃ cracker:            ║   LH₂ + NH₃ ullage   ║
-║   Fuel cells          ║   NH₃ → ½N₂ + 3/2 H₂     ║                       ║
-║                       ║   H₂ → ATA 28 fuel bus    ║ ► Leak sniffing       ║
-║                       ║   N₂ → ATA 47 inerting    ║   N₂ purges annuli;   ║
-║                       ║                           ║   H₂/NH₃ detection    ║
-║                       ║                           ║                       ║
-║                       ║                           ║ ► Active suppression  ║
-║                       ║                           ║   N₂ flood on LH₂    ║
-║                       ║                           ║   leak (≤3 s target,  ║
-║                       ║                           ║   H₂ below LFL 4%)   ║
-╚═══════════════════════╩══════════════════════════╩═══════════════════════╝
+```mermaid
+graph TD
+    subgraph LH2["LH₂ CIRCUIT — ATA 28/73"]
+        L1["Storage −253 °C<br/>Vacuum-jacketed tanks"]
+        L2["Boil-off GH₂"]
+        L3["PEM fuel cells<br/>Purge burners<br/>NH₃ sub-cooling"]
+        L4["Primary combustion<br/>Combustors · Fuel cells"]
+        L1 --> L2 --> L3
+        L1 --> L4
+    end
+
+    subgraph NH3["NH₃ CRYO-THERMAL — ATA 28/75"]
+        N1["Storage −33 °C liq.<br/>or ~8 bar pressurised"]
+        N2["Role 1: Cryo shield<br/>NH₃ jacket on LH₂ lines<br/>Reduces boil-off ≥30% (target)"]
+        N3["Role 2: H₂ source<br/>Engine waste heat →<br/>NH₃ → ½N₂ + 3/2 H₂"]
+        N1 --> N2
+        N1 --> N3
+    end
+
+    subgraph N2SYS["N₂ INERTING CIRCUIT — ATA 47/26"]
+        G1["Source: NH₃ cracker<br/>Contaminant limits per safety case<br/>KNOT-ATA47-10-00-001"]
+        G2["Tank inerting<br/>O₂ displaced from LH₂+NH₃ ullage"]
+        G3["Leak sniffing<br/>N₂ purges annuli<br/>H₂/NH₃ detection"]
+        G4["Active suppression<br/>N₂ flood on LH₂ leak<br/>≤3 s target, H₂ below LFL 4%"]
+        G1 --> G2
+        G1 --> G3
+        G1 --> G4
+    end
+
+    N3 -- "H₂ → ATA 28 fuel bus" --> L4
+    N3 -- "N₂ → ATA 47 inerting" --> G1
+    L2 -- "cryo cooling" --> N1
+
+    style LH2 fill:#1a365d,stroke:#2b6cb0,color:#fff
+    style NH3 fill:#22543d,stroke:#38a169,color:#fff
+    style N2SYS fill:#744210,stroke:#d69e2e,color:#fff
 ```
 
-### 2.2 ATA 28 — LH₂ Fuel Management & Boil-Off Control
+### 3.2 ATA 28 — LH₂ Fuel Management & Boil-Off Control
 
 Liquid hydrogen is stored at −253 °C in vacuum-jacketed double-wall tanks.
 
@@ -145,7 +175,7 @@ jacket surrounding the LH₂ feedlines. As an intermediate refrigerant at −33 
 it intercepts parasitic heat before it reaches the LH₂ stream, reducing
 boil-off rate by ≥ 30 % (target — KNOT-ATA28-20-00-001).
 
-### 2.3 NH₃ On-Board Cracker — Dual Role
+### 3.3 NH₃ On-Board Cracker — Dual Role
 
 | Function | Mechanism | ATA Reference |
 |---|---|---|
@@ -159,7 +189,7 @@ per two moles — same stoichiometry). Engine bleed or waste heat at 400–600 �
 drives the reaction over a Ru/Al₂O₃ catalyst. Conversion efficiency target:
 ≥ 95 % at cruise conditions (target — KNOT-ATA28-40-00-001).
 
-### 2.4 ATA 47 — Inert Gas System & Safety Orchestration
+### 3.4 ATA 47 — Inert Gas System & Safety Orchestration
 
 > **Naming:** ATA 47 is scoped as an **Inert Gas System**. The N₂ is generated
 > as a means to an end (inerting + suppression), not as a product in its own right.
@@ -176,7 +206,7 @@ defined by ATA 47 safety case; target purity TBD per KNOT-ATA47-10-00-001.
 Supplemented by a conventional molecular-sieve generator as back-up when the
 cracker is not running (ground, engine-out).
 
-### 2.5 Material Compatibility — Cross-Cutting (ATA 20 / 51)
+### 3.5 Material Compatibility — Cross-Cutting (ATA 20 / 51)
 
 All material data is centralised in the
 [Material Characterization Library](OPT-IN_FRAMEWORK/T-TECHNOLOGIES/M-MECHANICS/ATA_20-STANDARD_PRACTICES/material-library/README.md).
@@ -187,7 +217,7 @@ All selections are **candidates** pending LC03/LC06 evidence.
 | **H₂** | H₂ compatibility / cryogenic material degradation | Candidate: Ti-6Al-4V for H₂-wetted surfaces (trade study open); ATA 47 O₂/H₂O/moisture exclusion; cleanliness |
 | **NH₃** | Stress-corrosion cracking (SCC) of Cu alloys; N-assisted fatigue | Candidate: Hastelloy C-276 for NH₃-wetted surfaces (trade study open); N₂ drying |
 
-### 2.6 Closed-Loop Synergy Summary
+### 3.6 Closed-Loop Synergy Summary
 
 | Function | System | Action |
 |---|---|---|
@@ -202,31 +232,32 @@ All selections are **candidates** pending LC03/LC06 evidence.
 
 ---
 
-## 3. Repo Organization
+## 4. Repo Organization
 
 ```
-ID-A360-Q100/
+AMPEL360-WTW/
 │
-├── README.md                              ← This file
+├── README.md                              ← This file          [①STRUCTURE ②TIME ③UNCERTAINTY ④INCENTIVE]
 ├── CONTRIBUTING.md                        ← Contributor loop + placement rules
 ├── requirements.txt                       ← Python toolchain
 │
-├── OPT-IN_FRAMEWORK/                      ← 5-axis engineering topology
-│   ├── O-ORGANIZATIONS/                   ATA 00–05
-│   ├── P-PROGRAMS/                        ATA 06–12
-│   ├── T-TECHNOLOGIES/                    ATA 20–99 on-board systems
-│   │   ├── C2-CIRCULAR_CRYOGENIC_CELLS/   ★ ATA 28  (LH₂ + NH₃)  PRIMARY
-│   │   ├── E1-ENVIRONMENT/                ★ ATA 47  (N₂ inerting) PRIMARY
-│   │   ├── E2-ENERGY/                     ATA 24 / 49 / fuel cells
-│   │   ├── M-MECHANICS/
+├── OPT-IN_FRAMEWORK/                      ← ①STRUCTURE: 5-axis engineering topology
+│   ├── O-ORGANIZATIONS/                   ATA 00–05  (SHARED)
+│   ├── P-PROGRAMS/                        ATA 06–12  (SHARED)
+│   ├── T-TECHNOLOGIES/                    ATA 20–98 on-board systems
+│   │   ├── C2-CIRCULAR_CRYOGENIC_CELLS/   ★★ ATA 28, 85  (FORKED — critical path)
+│   │   ├── E1-ENVIRONMENT/                ★★ ATA 26, 47  (FORKED)
+│   │   ├── E2-ENERGY/                     ATA 24, 49  (FORKED)
+│   │   ├── M-MECHANICS/                   ATA 20, 27, 29, 32  (SHARED/FORKED)
 │   │   │   └── ATA_20-STANDARD_PRACTICES/
-│   │   │       └── material-library/      ★ Centralised material data
-│   │   └── P-PROPULSION/                  ATA 71–80
+│   │   │       └── material-library/      ★ Centralised material data (SHARED)
+│   │   └── P-PROPULSION/                  ATA 54, 60–83  (FORKED)
 │   ├── I-INFRASTRUCTURES/                 H₂ / NH₃ GSE, cryo logistics
-│   └── N-NEURAL_NETWORKS/                 Traceability, DPP, ledger (ATA 96)
+│   └── N-NEURAL_NETWORKS/                 ATA 46, 91–98  (SHARED)
 │
 ├── SSOT/                                  ← Engineering truth (authoritative)
-│   ├── LC01_PROBLEM_STATEMENT/            KNOTS · KNU_PLAN · TIMELINE · RACI · TT
+│   ├── README.md                          ← ②TIME: ELC document AMPEL360-FAM-ARCH-ELC-001 Rev B
+│   ├── LC01_PROBLEM_STATEMENT/            ③UNCERTAINTY + ④INCENTIVE: KNOTS · KNU_PLAN · TT
 │   ├── LC02 – LC14 .../
 │   └── LC05_ANALYSIS_MODELS/
 │       └── thermodynamic-models/          ★ OpenModelica baselines (LH₂/NH₃/N₂)
@@ -236,10 +267,10 @@ ID-A360-Q100/
 │       ├── DM/   PM/   DML/   ICN/
 │       ├── BREX/ BREX-IDA360-Q100-v0.1.xml
 │       ├── COMMON/   APPLICABILITY/
-│       ├── EXPORT/   IETP/
+│       └── EXPORT/   IETP/
 │
 ├── CAOS/                                  Continuous Airworthiness & Ops Sustainment
-├── finance/ledger.json                    SHA-256 hash-chain TT ledger
+├── finance/ledger.json                    ④INCENTIVE: SHA-256 hash-chain TT ledger
 │
 ├── .askm/                                 ← GEN-MODEL mode definitions
 │   ├── observer/                          Read-only state extraction config
@@ -279,98 +310,388 @@ ID-A360-Q100/
 
 ---
 
-## 4. OPT-IN 5-Axis Topology
+## 5. OPT-IN 5-Axis Topology
 
-Full inheritance from AMPEL360-AIR-T baseline. ID-A360-Q100-specific
-extensions marked ★.
+Full inheritance from AMPEL360-COMMON shared spine ([`OPT-IN_FRAMEWORK/README.md`](OPT-IN_FRAMEWORK/README.md)).
+AMPEL360 WTW-specific forks and extensions marked ★★.
+IBD-001 boundary per [`AMPEL360-FAM-IBD-001 Rev B`](SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md).
 
-### C2 — CIRCULAR CRYOGENIC CELLS ★★ (Primary Innovation Node)
+### Axis O — ORGANIZATIONS (ATA 00–05) · **SHARED**
+
+All governance, maintenance policy, and airworthiness content is identical
+across both AMPEL360 WTW and AMPEL360 BWB.
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 00 | General | SHARED |
+| 01 | Maintenance Policy | SHARED |
+| 02 | Weight & Balance | SHARED |
+| 03 | Minimum Equipment | SHARED |
+| 04 | Airworthiness Limitations | SHARED |
+| 05 | Time Limits / Maintenance Checks | SHARED |
+
+### Axis P — PROGRAMS (ATA 06–12) · **SHARED**
+
+Ground handling, dimensions, servicing, and placards are common across the family.
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 06 | Dimensions & Areas | SHARED |
+| 07 | Levelling & Weighing | SHARED |
+| 08 | Levelling (alternate) | SHARED |
+| 09 | Towing & Taxiing | SHARED |
+| 10 | Parking, Mooring, Storage & Return to Service | SHARED |
+| 11 | Placards & Markings | SHARED |
+| 12 | Servicing — Routine Maintenance | SHARED |
+
+### Axis T — TECHNOLOGIES (ATA 20–98) · *Clustered*
+
+T-TECHNOLOGIES is organized into clusters. SHARED clusters are maintained in
+AMPEL360-COMMON; FORKED and MIXED clusters are maintained in this repo.
+
+#### T/S — Structures · **FORKED**
+
+Fuselage geometry, wing planform, and door placement diverge between WTW and BWB.
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 51 | Standard Practices & Structures — General | SHARED (std practices) |
+| 52 | Doors | FORKED |
+| 53 | Fuselage | FORKED |
+| 54 | Nacelles / Pylons | FORKED |
+| 55 | Stabilizers | FORKED |
+| 56 | Windows | FORKED |
+| 57 | Wings | FORKED |
+
+#### T/A — Airframe Standard Practices & Material Library · **SHARED**
 
 ```
-T-TECHNOLOGIES/C2-CIRCULAR_CRYOGENIC_CELLS/ATA_28-FUEL/ATA-28-fuel/
-├── 28-10-lh2-storage-vacuum-tank/          ★ LH₂ at −253 °C
-├── 28-20-nh3-storage-and-cryo-shield/      ★ NH₃ at −33 °C / 8 bar
-├── 28-30-boil-off-recovery-and-routing/    ★ GH₂ management loop
-├── 28-40-nh3-cracker-h2-feed/              ★ NH₃ → H₂ + N₂ catalyst
-├── 28-70-embrittlement-monitoring/         ★ H₂ + NH₃ material health
+T-TECHNOLOGIES/M-MECHANICS/ATA_20-STANDARD_PRACTICES/
+└── material-library/      ★ Centralised material data (SHARED)
+```
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 20 | Standard Practices — Airframe | SHARED |
+
+#### T/M — Mechanics · SHARED / FORKED
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 27 | Flight Controls | FORKED (WTW: conventional ailerons/elevator) |
+| 29 | Hydraulic Power | SHARED (electro-hydraulic architecture) |
+| 32 | Landing Gear | FORKED (WTW aft-heavy CG changes gear geometry) |
+
+#### T/C2 — Circular Cryogenic Cells ★★ (Primary Innovation Node) · **FORKED**
+
+```
+T-TECHNOLOGIES/C2-CIRCULAR_CRYOGENIC_CELLS/ATA_28-FUEL/
+├── 28-10-storage-reservoir/       ★★ LH₂ at −253 °C
+├── 28-20-distribution/            ★★ NH₃ cryo-shield jacket on LH₂ lines
+├── 28-30-dump-jettison/           ★★ Emergency discharge
+├── 28-40-indicating/              ★★ NH₃ cracker H₂ feed + monitoring
+├── 28-70-embrittlement-monitoring/★★ H₂ + NH₃ material health
 └── 28-90-tables-schemas-index/
 ```
 
-### E1 — ENVIRONMENT ★★ (Inert Gas System — Active Safety Orchestrator)
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 28 | Fuel (C² CELL — LH₂ + NH₃ tri-species) | FORKED (critical path) |
+| 85 | Fuel Cell System | FORKED |
+
+#### T/E1 — Environment (Inert Gas & Fire) ★★ · **FORKED**
 
 ```
-T-TECHNOLOGIES/E1-ENVIRONMENT/ATA_47-INERT_GAS_SYSTEM/ATA-47-inert-gas-system/
-├── 47-10-cracker-n2-sourcing-and-purity/   ★ Contaminant limits per safety case
-├── 47-20-tank-inerting-management/          ★ O₂ < 2 % ullage control
-├── 47-30-leak-sniff-protocol/               ★ Continuous N₂ purge/detect
-├── 47-40-active-suppression-system/         ★ ≤3 s N₂ flood on LH₂ leak (target)
-├── 47-50-backup-mol-sieve-generator/        ★ Ground / engine-out fallback
+T-TECHNOLOGIES/E1-ENVIRONMENT/ATA_47-INERT_GAS_SYSTEM/
+├── 47-10-cracker-n2-sourcing-and-purity/  ★★ Contaminant limits per safety case
+├── 47-20-tank-inerting-management/         ★★ O₂ < 2% ullage control
+├── 47-30-leak-sniff-protocol/              ★★ Continuous N₂ purge/detect
+├── 47-40-active-suppression-system/        ★★ ≤3 s N₂ flood on LH₂ leak (target)
+├── 47-50-backup-mol-sieve-generator/       ★★ Ground / engine-out fallback
 └── 47-90-tables-schemas-index/
 ```
 
-### P — PROPULSION (ATA 75 extension)
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 21 | Air Conditioning (ECS) | SHARED |
+| 25 | Equipment / Furnishings | SHARED (cabin) / FORKED (layout) |
+| 26 | Fire Protection | FORKED (WTW: H₂+NH₃ dual-species zones) |
+| 30 | Ice & Rain Protection | SHARED |
+| 33 | Lights | SHARED |
+| 35 | Oxygen | SHARED |
+| 36 | Pneumatic | SHARED |
+| 37 | Vacuum | SHARED |
+| 38 | Water / Waste | SHARED |
+| 44 | Cabin Systems | SHARED (cabin) / FORKED (layout) |
+| 47 | Inert Gas System | FORKED (WTW: N₂ from cracker) |
+| 50 | Cargo & Accessory Compartments | SHARED (cabin) / FORKED (layout) |
+
+#### T/E2 — Energy · **FORKED**
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 24 | Electrical Power | FORKED (WTW: generator + FC auxiliary) |
+| 49 | Airborne Auxiliary Power (APU) | FORKED |
+
+#### T/P — Propulsion ★★ · **FORKED**
 
 ```
-T-TECHNOLOGIES/P-PROPULSION/ATA_75-AIR/ATA-75-air/
-└── 75-20-waste-heat-routing-to-cracker/    ★ Engine bleed/exhaust → 400–600 °C
+T-TECHNOLOGIES/P-PROPULSION/ATA_75-AIR/
+└── 75-20-waste-heat-routing-to-cracker/  ★★ Engine bleed → 400–600 °C cracker
 ```
 
-### I — INFRASTRUCTURES
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 60 | Standard Practices — Propulsion | FORKED |
+| 61 | Propellers / Propulsors | FORKED |
+| 70 | Standard Practices — Engines | FORKED |
+| 71 | Power Plant — General | FORKED |
+| 72 | Engine | FORKED |
+| 73 | Engine Fuel & Control | FORKED |
+| 74 | Ignition | FORKED |
+| 75 | Air (Bleed / Cooling / Waste Heat) | FORKED |
+| 76 | Engine Controls | FORKED |
+| 77 | Engine Indicating | FORKED |
+| 78 | Exhaust | FORKED |
+| 79 | Oil | FORKED |
+| 80 | Starting | FORKED |
+| 81 | Turbines (Reciprocating) | FORKED |
+| 82 | Water Injection | FORKED |
+| 83 | Accessory Gearboxes | FORKED |
+
+#### T/D — Data · **SHARED**
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 31 | Indicating / Recording Systems | SHARED |
+| 45 | Central Maintenance System (CMS) | SHARED |
+| 46 | Information Systems | SHARED |
+
+#### T/A2 — Avionics · **SHARED (core) / FORKED (FBW laws)**
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 22 | Auto Flight | SHARED (core) / FORKED (FBW laws) |
+| 34 | Navigation | SHARED |
+| 42 | Integrated Modular Avionics (IMA) | SHARED (core) / FORKED (FBW laws) |
+
+#### T/C1 — Communications · **SHARED**
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 23 | Communications | SHARED |
+
+#### T/I2 — AI/ML · **SHARED**
+
+| ATA | Chapter | IBD-001 |
+|---|---|---|
+| 95 | Operational Dataload | SHARED |
+| 97 | Wiring Reporting System | SHARED |
+
+### Axis I — INFRASTRUCTURES · SHARED (H₂) / FORKED (NH₃)
+
+H₂ ground supply chain and common GSE are maintained in AMPEL360-COMMON.
+NH₃-specific couplings, hoses, and cracker feed interfaces are WTW-specific.
 
 ```
 I-INFRASTRUCTURES/
-├── ATA_IN_H2_GSE_AND_SUPPLY_CHAIN/
-│   └── IN-50-nh3-gse-couplings-hoses-interfaces/   ★ NH₃-specific
+├── ATA_IN_H2_GSE_AND_SUPPLY_CHAIN/         SHARED (green H₂ supply chain)
+│   └── IN-50-nh3-gse-couplings-hoses-interfaces/  ★★ NH₃-specific (FORKED)
 └── ATA_12-SERVICING_INFRA/
-    └── 12-10-replenishing-equipment-and-points/     ★ Dual-species refuelling panel
+    └── 12-10-replenishing-equipment-and-points/   ★★ Dual-species refuelling panel
 ```
 
----
+| Domain | IBD-001 |
+|---|---|
+| H₂ GSE and supply chain (production) | SHARED |
+| NH₃ sourcing, handling, and cracker feed | FORKED |
 
-## 5. LC01 — Uncertainty Orchestration
+### Axis N — NEURAL NETWORKS · **SHARED**
 
-`LC01_PROBLEM_STATEMENT` is the controlled orchestration layer at every ATA node.
+Traceability, DPP, ledger, and tokenomics framework are identical across
+both AMPEL360 WTW and AMPEL360 BWB.
 
-```
-SSOT/LC01_PROBLEM_STATEMENT/
-├── KNOTS.csv              Uncertainty register (known unknowns)
-├── KNU_PLAN.csv           Expected knowledge units per KNOT
-├── TIMELINE.csv           Milestones and dates
-├── RACI.csv               Stakeholder responsibility matrix
-├── TOKENOMICS_TT.yaml     TT reward pool and allocation parameters
-└── AWARDS_TT.csv          Actual TT distributions (populated at closure)
-```
-
-### Token Distribution Formula
-
-```
-w_i = α · Ê_i + (1 − α) · Î_i      T_i = P_k · w_i
-```
-
-| Symbol | Meaning | Default |
+| ATA | Chapter | IBD-001 |
 |---|---|---|
-| `P_k` | TT pool allocated to KNOT k | per KNOTS.csv |
-| `T_i` | Token allocation for contributor i = P_k · w_i | — |
-| `w_i` | Composite weight for contributor i | — |
-| `α` | Effort weight | 0.30 |
-| `1-α` | Impact weight | 0.70 |
-| `Ê_i` | Normalised effort = E_i / Σ E_i | — |
-| `Î_i` | Normalised impact = I_i / Σ I_i | — |
-| `I_i` | Effective impact = ΔR_k,i + λ · S_i | — |
-| `λ` | Spillover multiplier | 0.50 |
+| 46 | Information Systems | SHARED |
+| 91 | Wiring | SHARED |
+| 92 | Electrical Components | SHARED |
+| 95 | Operational Dataload | SHARED |
+| 96 | Traceability & DPP | SHARED |
+| 97 | Wiring Reporting System | SHARED |
+| 98 | Ledger & Tokenomics | SHARED |
 
-### KNOT Closure Criteria
+### Complete ATA-to-OPT-IN Mapping (all 71 chapters)
 
-1. ✅ All planned KNUs → `COMPLETE` or `ACCEPTED`
-2. ✅ Residual ≤ target (e.g. 100 → ≤ 10)
-3. ✅ All PUB artifacts pass BREX validation
-4. ✅ All trace links resolve (no dangling references)
-5. ✅ Signoffs captured in evidence pack
-6. ✅ TT rewards distributed and logged in `finance/ledger.json`
+| ATA | Chapter | OPT-IN Axis/Cluster | IBD-001 |
+|---|---|---|---|
+| 00 | General | O-ORGANIZATIONS | SHARED |
+| 01 | Maintenance Policy | O-ORGANIZATIONS | SHARED |
+| 02 | Weight & Balance | O-ORGANIZATIONS | SHARED |
+| 03 | Minimum Equipment | O-ORGANIZATIONS | SHARED |
+| 04 | Airworthiness Limitations | O-ORGANIZATIONS | SHARED |
+| 05 | Time Limits | O-ORGANIZATIONS | SHARED |
+| 06 | Dimensions | P-PROGRAMS | SHARED |
+| 07 | Levelling & Weighing | P-PROGRAMS | SHARED |
+| 08 | Levelling (alt) | P-PROGRAMS | SHARED |
+| 09 | Towing & Taxiing | P-PROGRAMS | SHARED |
+| 10 | Parking / Storage | P-PROGRAMS | SHARED |
+| 11 | Placards | P-PROGRAMS | SHARED |
+| 12 | Servicing | P-PROGRAMS | SHARED |
+| 20 | Standard Practices — Airframe | T/A Airframe | SHARED |
+| 21 | Air Conditioning | T/E1 Environment | SHARED |
+| 22 | Auto Flight | T/A2 Avionics | MIXED |
+| 23 | Communications | T/C1 Comms | SHARED |
+| 24 | Electrical Power | T/E2 Energy | FORKED |
+| 25 | Equipment / Furnishings | T/E1 Environment | MIXED |
+| 26 | Fire Protection | T/E1 Environment | FORKED |
+| 27 | Flight Controls | T/M Mechanics | FORKED |
+| 28 | Fuel (C² CELL) | T/C2 Cryo Cells ★★ | FORKED |
+| 29 | Hydraulic Power | T/M Mechanics | SHARED |
+| 30 | Ice & Rain Protection | T/E1 Environment | SHARED |
+| 31 | Indicating / Recording | T/D Data | SHARED |
+| 32 | Landing Gear | T/M Mechanics | FORKED |
+| 33 | Lights | T/E1 Environment | SHARED |
+| 34 | Navigation | T/A2 Avionics | SHARED |
+| 35 | Oxygen | T/E1 Environment | SHARED |
+| 36 | Pneumatic | T/E1 Environment | SHARED |
+| 37 | Vacuum | T/E1 Environment | SHARED |
+| 38 | Water / Waste | T/E1 Environment | SHARED |
+| 42 | Integrated Modular Avionics | T/A2 Avionics | MIXED |
+| 44 | Cabin Systems | T/E1 Environment | MIXED |
+| 45 | Central Maintenance System | T/D Data | SHARED |
+| 46 | Information Systems | T/D Data | SHARED |
+| 47 | Inert Gas System | T/E1 Environment ★★ | FORKED |
+| 49 | APU | T/E2 Energy | FORKED |
+| 50 | Cargo & Accessory Compartments | T/E1 Environment | MIXED |
+| 51 | Structures — General | T/S Structures | SHARED |
+| 52 | Doors | T/S Structures | FORKED |
+| 53 | Fuselage | T/S Structures | FORKED |
+| 54 | Nacelles / Pylons | T/S Structures | FORKED |
+| 55 | Stabilizers | T/S Structures | FORKED |
+| 56 | Windows | T/S Structures | FORKED |
+| 57 | Wings | T/S Structures | FORKED |
+| 60 | Standard Practices — Propulsion | T/P Propulsion | FORKED |
+| 61 | Propellers / Propulsors | T/P Propulsion | FORKED |
+| 70 | Standard Practices — Engines | T/P Propulsion | FORKED |
+| 71 | Power Plant — General | T/P Propulsion | FORKED |
+| 72 | Engine | T/P Propulsion | FORKED |
+| 73 | Engine Fuel & Control | T/P Propulsion | FORKED |
+| 74 | Ignition | T/P Propulsion | FORKED |
+| 75 | Air (Bleed / Cooling / Waste Heat) | T/P Propulsion ★★ | FORKED |
+| 76 | Engine Controls | T/P Propulsion | FORKED |
+| 77 | Engine Indicating | T/P Propulsion | FORKED |
+| 78 | Exhaust | T/P Propulsion | FORKED |
+| 79 | Oil | T/P Propulsion | FORKED |
+| 80 | Starting | T/P Propulsion | FORKED |
+| 81 | Turbines | T/P Propulsion | FORKED |
+| 82 | Water Injection | T/P Propulsion | FORKED |
+| 83 | Accessory Gearboxes | T/P Propulsion | FORKED |
+| 85 | Fuel Cell System | T/C2 Cryo Cells | FORKED |
+| 91 | Wiring | N-NEURAL NETWORKS | SHARED |
+| 92 | Electrical Components | N-NEURAL NETWORKS | SHARED |
+| 95 | Operational Dataload | N-NEURAL NETWORKS | SHARED |
+| 96 | Traceability & DPP | N-NEURAL NETWORKS | SHARED |
+| 97 | Wiring Reporting System | N-NEURAL NETWORKS | SHARED |
+| 98 | Ledger & Tokenomics | N-NEURAL NETWORKS | SHARED |
 
 ---
 
-## 6. KNOT Register Seed
+## 6. Elastic Lifecycle
+
+**Reference document:** [`SSOT/README.md`](SSOT/README.md)
+— *Architectural Models Programming Elastic Lifecycle*
+— **AMPEL360-FAM-ARCH-ELC-001 · Rev B · 2026-02-23**
+
+The ELC defines how architectural models *programme* the lifecycle.
+Architecture is not an input to the lifecycle — it *is* the lifecycle programme.
+
+### Three-Zone Model
+
+```mermaid
+graph LR
+    subgraph COMPRESS["COMPRESS — Reduce TTO"]
+        direction LR
+        CON["Concept"] --> CERT["Certification"] --> EIS["EIS"]
+    end
+
+    subgraph TRANSITION["TRANSITION — Sequential gate-locked"]
+        direction LR
+        QUAL["Qualification"] --> INTEG["Integration"] --> TC["Type Certificate"]
+    end
+
+    subgraph EXTEND["EXTEND — Maximize t_ops"]
+        direction LR
+        SVC["Service"] --> REC["Recondition"] --> LOOP["↻ Next Cycle"]
+    end
+
+    EIS --> QUAL
+    TC --> SVC
+
+    style COMPRESS fill:#1a365d,stroke:#2b6cb0,color:#fff
+    style TRANSITION fill:#744210,stroke:#d69e2e,color:#fff
+    style EXTEND fill:#22543d,stroke:#38a169,color:#fff
+```
+
+| Zone | Levers | Target |
+|---|---|---|
+| **COMPRESS** | Concurrent phases, virtual qualification, digital twin maturation | TTO → global minimum |
+| **TRANSITION** | Sequential gate-locked qualification + certification evidence | Gate pass rate ≥ 0.85 |
+| **EXTEND** | Condition-based maintenance, modular reconditioning, DPP circularity | `t_ops` → maximum |
+
+> **Total Lifecycle Value = f(1/TTO, t_ops)**
+
+### 11 SLC Phases
+
+| Phase | Name | Zone |
+|---|---|---|
+| SLC01 | Uncertainty Register | COMPRESS |
+| SLC02 | Technology Requirements | COMPRESS |
+| SLC03 | Concept / Material Selection | COMPRESS |
+| SLC04 | Design Definition | COMPRESS |
+| SLC05 | Analysis & Simulation | COMPRESS |
+| SLC06 | Qualification | TRANSITION |
+| SLC07 | System Integration | TRANSITION |
+| SLC08 | Certification | TRANSITION |
+| SLC09 | Infrastructure Readiness | TRANSITION |
+| SLC10 | Operations | EXTEND |
+| SLC11 | Reconditioning | EXTEND |
+
+### ELC Compiler — 6 Steps
+
+The ELC Compiler reads architectural model properties and produces an executable
+SLC instance. See [`SSOT/README.md §4`](SSOT/README.md) for the full specification.
+
+| Step | Input | Output |
+|---|---|---|
+| **Step 1** — Family Classification | Physical View → make/buy, TRL | `family_code ∈ {A–G}` |
+| **Step 2** — Phase Instantiation | family_code + Functional View | `slc_phases[]` |
+| **Step 3** — Zone Assignment | phases + TRL + cert strategy | `zone_map{phase → zone}` |
+| **Step 4** — Concurrency Map | Logical View + dependencies | DAG of phases |
+| **Step 5** — Elasticity Parameters | All views + targets | YAML config per system |
+| **Step 6** — Gate Criteria | phases + zones + cert | Entry/exit predicates |
+
+### Family A–G Classification (ELC Compiler Step 1)
+
+Family codes are a **temporal attribute** of each ATA node derived from its
+physical architecture. They are *not* a competing taxonomy with OPT-IN axes.
+
+| Family | Name | Examples |
+|---|---|---|
+| **A** | In-house structural manufacturing | ATA 51–57 (Structures) |
+| **B** | Co-development with OEM partner | ATA 71–83 (Propulsion — engine partner) |
+| **C** | Novel technology, TRL ≤ 5 | ATA 28, 47, 85 (**pacemaker family**) |
+| **D** | Spec-driven procurement, TRL ≥ 7 | ATA 22, 34 (mature avionics) |
+| **E** | DAL-governed software/hardware | ATA 22 FBW, ATA 76 engine controls |
+| **F** | Airline-selected, catalogue-based | ATA 25 cabin, ATA 44 IFE |
+| **G** | AI/ML, data-driven | ATA 95–98 (neural networks, DPP) |
+
+> **Family C (H₂/Cryo) is the integration pacemaker.** Novel technology,
+> special certification conditions, and longest transition zone (18 months
+> estimated). All other families must align their transition zone exit to
+> Family C readiness. Reference: [`SSOT/README.md §6.1`](SSOT/README.md).
+
+---
 
 Full register: `SSOT/LC01_PROBLEM_STATEMENT/KNOTS.csv`
 

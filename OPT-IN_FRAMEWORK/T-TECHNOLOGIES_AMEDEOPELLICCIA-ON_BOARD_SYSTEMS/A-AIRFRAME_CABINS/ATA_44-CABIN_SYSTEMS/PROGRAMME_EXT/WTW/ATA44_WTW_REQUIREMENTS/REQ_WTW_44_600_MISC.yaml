@@ -1,0 +1,29 @@
+id: REQ_WTW_44_600_MISC
+doc_id: T-A-ATA44-WTW-REQ-600
+ata_subchapter: "44-60"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+
+requirements:
+  - req_id: WTW-44-600-001
+    shall: "Any WTW cabin systems provisions not covered by subchapters 44-10 through 44-50
+            (e.g., galley entertainment interface, reading light control integration) shall
+            be captured as delta requirements in this file or escalated to SHARED baseline
+            if applicable to both variants."
+    rationale: "Catchall for miscellaneous WTW-specific CMS deltas not fitting a defined
+                subchapter. Prevents ungoverned requirements."
+    cs25_ref: null
+    verification: analysis
+    lc_gate: LC03
+
+  - req_id: WTW-44-600-002
+    shall: "WTW passenger address (PA) system integration with CMS shall use the dedicated
+            audio bus defined in ICD T-A-ATA44-WTW-ICD-002 (sidewall harness run) and
+            shall not share the AFDX backbone VL reserved for CMS data."
+    rationale: "PA/audio is safety-related (evacuation announcements); must be isolated
+                from entertainment/CMS data traffic."
+    cs25_ref: "CS-25.1309"
+    verification: test
+    lc_gate: LC06

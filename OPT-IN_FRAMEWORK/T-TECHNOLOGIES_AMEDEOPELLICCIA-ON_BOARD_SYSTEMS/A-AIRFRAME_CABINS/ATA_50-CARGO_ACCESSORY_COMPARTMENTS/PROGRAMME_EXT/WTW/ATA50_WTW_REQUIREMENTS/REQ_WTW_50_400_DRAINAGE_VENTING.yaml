@@ -1,0 +1,47 @@
+---
+# REQ_WTW_50_400_DRAINAGE_VENTING.yaml
+# AMPEL360 WTW — ATA 50-400 Drainage & Venting (WTW delta)
+programme: AMPEL360-WTW
+ata_subchapter: "50-400"
+title: Drainage & Venting
+baseline_ref: ATA50-SHARED §6
+
+requirements:
+  - req_id: WTW-50-400-001
+    shall: >
+      WTW belly-hold drain mast penetrations shall be located at the keel of
+      the circular fuselage at the stations defined in ICD-WTW-50-004. No fluid
+      accumulation shall exceed TBD ml (LC04) in any hold.
+    rationale: >
+      Keel positioning of drain masts is driven by circular fuselage geometry;
+      fluid accumulation limit is a fire risk and contamination control
+      requirement.
+    cs25_ref: CS-25.1001
+    delta_ref: DELTA-WTW-50-004
+    verification: Inspection + Test (drainage flow)
+    lc_gate: LC04
+
+  - req_id: WTW-50-400-002
+    shall: >
+      Drain mast penetrations through the fuselage skin shall be sealed with
+      Class B sealant per ATA 20 standard and shall maintain seal integrity
+      under pressurisation cycling for the WTW design life.
+    rationale: >
+      Penetration sealing is critical for pressure vessel integrity; Class B
+      sealant is the ATA 20 standard for structural skin penetrations.
+    cs25_ref: CS-25.571
+    delta_ref: DELTA-WTW-50-004
+    verification: Inspection + Pressure test
+    lc_gate: LC04
+
+  - req_id: WTW-50-400-003
+    shall: >
+      WTW cargo compartment vent port flow rate shall not be less than TBD l/min
+      (LC04) per CS-25.1103 to prevent accumulation of flammable vapours.
+    rationale: >
+      Ventilation adequacy for fire safety; WTW vent port area is constrained
+      by fuselage skin geometry and pressurisation requirements.
+    cs25_ref: CS-25.1103
+    delta_ref: DELTA-WTW-50-004
+    verification: Test (flow measurement)
+    lc_gate: LC04

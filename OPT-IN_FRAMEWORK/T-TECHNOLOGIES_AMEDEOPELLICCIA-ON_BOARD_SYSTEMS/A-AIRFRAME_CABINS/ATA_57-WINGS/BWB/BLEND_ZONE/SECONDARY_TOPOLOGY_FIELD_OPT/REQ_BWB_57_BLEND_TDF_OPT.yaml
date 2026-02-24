@@ -1,0 +1,85 @@
+# ATA 57 BWB — Blend Zone TDF Optimisation Requirements
+# Doc ID: T-A-ATA57-BWB-BLEND-REQ-001
+# Status: DRAFT
+
+schema_version: "1.0"
+ata_chapter: 57
+variant: BWB
+sub_area: BLEND_ZONE
+doc_id: T-A-ATA57-BWB-BLEND-REQ-001
+revision: A
+date: "2026-02-24"
+lc_registry_ref: "../../LC57_PHASE_REGISTRY.yaml"
+
+requirements:
+  - req_id: BWB-57-TDF-001
+    title: TDF encoding conformance
+    shall: >
+      The blend zone TDF optimisation module SHALL encode all structural design variables
+      as 8-bit integer registers (values 0–255) per the encoding standard defined in
+      STD_TDF_8BIT_ENCODING.md. No continuous-valued design variables are permitted in
+      the blend zone structural optimisation.
+    rationale: >
+      8-bit discretisation enables GA integer chromosome representation, ensures
+      reproducibility, and maps directly to certified ply-count combinations from the
+      approved material database. Continuous variables cannot be version-frozen and traced.
+    cs25_ref: CS-25.571, CS-25.629
+    verification: Analysis — review of register map format against encoding standard
+    lc_gate: LC57-03
+
+  - req_id: BWB-57-TDF-002
+    title: No rib/frame primitive in blend zone
+    shall: >
+      The blend zone SHALL NOT be decomposed into discrete ribs or frames. The only
+      structural primitive in the blend zone optimisation domain is the TDF patch.
+      This prohibition SHALL be enforced at the FEM model level by the stress office.
+    rationale: >
+      The BWB blend zone carries multi-directional load paths from the centre body to
+      the outboard wing. Imposing rib/frame topology creates artificial load path
+      discontinuities inconsistent with the continuously varying stiffness field
+      characteristic of a blended planform.
+    cs25_ref: CS-25.301, CS-25.305
+    verification: Inspection — FEM model review confirming no discrete rib/frame elements in blend zone domain
+    lc_gate: LC57-04
+
+  - req_id: BWB-57-TDF-003
+    title: Fatigue life constraint compliance
+    shall: >
+      The TDF register map SHALL satisfy the fatigue life constraint C-FATIGUE defined in
+      CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md: Miner damage sum D ≤ 0.5 (= 1.0 / γ, γ = 2.0)
+      for a minimum of 80,000 flight cycles at the AMPEL360 BWB design spectrum.
+    rationale: >
+      CS-25.571(a) requires damage-tolerant structure. The factor γ = 2.0 on B-basis
+      allowables provides the required scatter factor for certification.
+    cs25_ref: CS-25.571(a)
+    verification: Analysis — ANALYSIS_BLEND_FATIGUE_CHECK.md
+    lc_gate: LC57-04
+
+  - req_id: BWB-57-TDF-004
+    title: Aeroelastic divergence constraint compliance
+    shall: >
+      The TDF register map SHALL satisfy the aeroelastic divergence constraint C-DIVERGENCE
+      defined in CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md: V_div ≥ 1.15 × VD evaluated by
+      DLM eigenvalue analysis of the blend zone stiffness matrix.
+    rationale: >
+      CS-25.629(d) requires demonstration of adequate divergence speed margin. The blend zone
+      stiffness directly governs the BWB planform divergence characteristic and must be
+      included in the aeroelastic model.
+    cs25_ref: CS-25.629(d)
+    verification: Analysis — ANALYSIS_BLEND_DIVERGENCE_CHECK.md
+    lc_gate: LC57-05
+
+  - req_id: BWB-57-TDF-005
+    title: TDF optimisation determinism and reproducibility
+    shall: >
+      The TDF optimisation solver SHALL be deterministic and reproducible: identical inputs
+      (patch grid, load spectrum, constraint bounds, solver configuration) SHALL produce
+      identical register maps on repeated runs. A SHA-256 hash of the complete register map
+      SHALL be recorded per solver run and stored in the governance record.
+    rationale: >
+      Certification traceability (CS-25.629, CS-25.571) requires that the design variable set
+      be uniquely identified. A non-deterministic optimiser cannot produce a traceable register
+      map version.
+    cs25_ref: CS-25.571, CS-25.629
+    verification: Test — TEST_BLEND_DETERMINISM.md
+    lc_gate: LC57-11

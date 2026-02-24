@@ -1,0 +1,86 @@
+# ATA 57 — Wings — WTW Variant Layer Delta Change Log
+# Doc ID: T-A-ATA57-WTW-DCL-001
+# Status: DRAFT
+
+overlay:
+  ata_chapter: 57
+  variant: WTW
+  doc_id: T-A-ATA57-WTW-DCL-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+
+changes:
+  - change_id: CHG-0001
+    delta_ref: DELTA-WTW-57-001
+    title: Initial scaffold — conventional swept CFRP wing primary structure
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-01
+    description: Initial creation of WTW variant layer. Established overlay rule, ARCH delta for conventional swept wing vs BWB integrated body.
+    affected_files:
+      - README.md
+      - ATA57_WTW_INDEX.yaml
+      - LC57_PHASE_REGISTRY.yaml
+
+  - change_id: CHG-0002
+    delta_ref: DELTA-WTW-57-002
+    title: Rib spacing optimisation module scaffold
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-03
+    description: Added SECONDARY_RIB_SPACING_OPT/ module with 8-bit register encoding standard, optimisation objective, fatigue+divergence constraints, requirement pack, models, and verification evidence stubs.
+    affected_files:
+      - SECONDARY_RIB_SPACING_OPT/README.md
+      - SECONDARY_RIB_SPACING_OPT/STD_RIB_SPACING_ENCODING.md
+      - SECONDARY_RIB_SPACING_OPT/OPTIMISATION_OBJECTIVE.md
+      - SECONDARY_RIB_SPACING_OPT/CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md
+      - SECONDARY_RIB_SPACING_OPT/REQ_WTW_57_RIB_SPACING_OPT.yaml
+      - SECONDARY_RIB_SPACING_OPT/MODELS/rib_bay_definition.yaml
+      - SECONDARY_RIB_SPACING_OPT/MODELS/rib_spacing_registers.example.yaml
+      - SECONDARY_RIB_SPACING_OPT/MODELS/optimisation_config.yaml
+      - SECONDARY_RIB_SPACING_OPT/VERIFICATION_EVIDENCE/TRACE_WTW_EVIDENCE_INDEX.yaml
+      - SECONDARY_RIB_SPACING_OPT/VERIFICATION_EVIDENCE/ANALYSIS_WTW_FATIGUE_LIFE_CHECK.md
+      - SECONDARY_RIB_SPACING_OPT/VERIFICATION_EVIDENCE/ANALYSIS_WTW_DIVERGENCE_MARGIN_CHECK.md
+      - SECONDARY_RIB_SPACING_OPT/VERIFICATION_EVIDENCE/TEST_WTW_DETERMINISM_REPRODUCIBILITY.md
+
+  - change_id: CHG-0003
+    delta_ref: DELTA-WTW-57-006
+    title: Maintenance plan registry hook
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-13
+    description: Added MAINTENANCE/ directory with MAINT_PLAN_REGISTRY.yaml hook linking to SSOT maintenance plan classification.
+    affected_files:
+      - MAINTENANCE/README.md
+      - MAINTENANCE/MAINT_PLAN_REGISTRY.yaml
+
+  - change_id: CHG-0004
+    delta_ref: DELTA-WTW-57-003
+    title: Wing-fuselage attach ICD placeholder
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-03
+    description: Delta registered for WTW-specific wing-fuselage stub-spar attach philosophy. ICD content TBD pending structural freeze.
+    affected_files:
+      - ATA57_WTW_INDEX.yaml
+
+  - change_id: CHG-0005
+    delta_ref: DELTA-WTW-57-004
+    title: Control surface interface ICD placeholder
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-03
+    description: Delta registered for WTW aileron/spoileron hinge-line and actuator hard-point geometry. ICD content TBD pending aeroelastic clearance.
+    affected_files:
+      - ATA57_WTW_INDEX.yaml
+
+  - change_id: CHG-0006
+    delta_ref: DELTA-WTW-57-005
+    title: Fuel/LH2 tank integration provisions placeholder
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-05
+    description: Delta registered for WTW wet-wing CFRP tank and LH₂ variant provisions. Rib spacing register must respect tank bay boundaries. ICD TBD.
+    affected_files:
+      - ATA57_WTW_INDEX.yaml

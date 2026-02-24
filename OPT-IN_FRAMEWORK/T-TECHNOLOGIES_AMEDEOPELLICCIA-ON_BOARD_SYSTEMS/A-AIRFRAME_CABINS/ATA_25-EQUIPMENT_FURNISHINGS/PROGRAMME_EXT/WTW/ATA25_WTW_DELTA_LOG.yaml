@@ -1,0 +1,59 @@
+id: ATA25_WTW_DELTA_LOG
+doc_id: T-A-ATA25-WTW-001
+variant: WTW
+baseline_ref: T-A-ATA25-001
+
+entries:
+  - change_id: CHG-0001
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-001
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — passenger compartment"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"
+
+  - change_id: CHG-0002
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-002
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — flight compartment"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"
+
+  - change_id: CHG-0003
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-003
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — galley"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"
+
+  - change_id: CHG-0004
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-004
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — lavatory"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"
+
+  - change_id: CHG-0005
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-005
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — emergency equipment"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"
+
+  - change_id: CHG-0006
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-25-006
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffolding — cargo liners"
+    lc_gate: LC01
+    notes: "No technical limits introduced yet; structure only"

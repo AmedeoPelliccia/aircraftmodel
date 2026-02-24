@@ -1,0 +1,38 @@
+id: REQ_WTW_44_200_IFE
+doc_id: T-A-ATA44-WTW-REQ-200
+ata_subchapter: "44-20"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+delta_refs:
+  - DELTA-WTW-44-005
+
+requirements:
+  - req_id: WTW-44-200-001
+    shall: "The WTW IFE Media Server shall be installed in the FWD avionics bay per
+            ICD T-A-ATA44-WTW-ICD-004. No IFE server shall be installed in the pressurised
+            underfloor area."
+    rationale: "WTW has no pressurised underfloor IFE equipment bay — servers are E/E bay
+                resident. BWB may use distributed underfloor servers."
+    cs25_ref: "CS-25.853"
+    verification: inspection
+    lc_gate: LC04
+
+  - req_id: WTW-44-200-002
+    shall: "One Cabin Satellite Unit (CSU) shall be installed per cabin zone (4 maximum)
+            at overhead crown position per ICD T-A-ATA44-WTW-ICD-004."
+    rationale: "Per-zone CSU provides localised IFE distribution and minimises AFDX cabling
+                length within the zone."
+    cs25_ref: null
+    verification: inspection
+    lc_gate: LC04
+
+  - req_id: WTW-44-200-003
+    shall: "All IFE LRU materials shall comply with CS-25.853 flammability requirements.
+            Evidence shall be a material flammability test report per
+            TEST_WTW_IFE_FLAMMABILITY_853.md."
+    rationale: "IFE LRUs are installed in occupied and accessible areas of the cabin."
+    cs25_ref: "CS-25.853"
+    verification: test
+    lc_gate: LC07

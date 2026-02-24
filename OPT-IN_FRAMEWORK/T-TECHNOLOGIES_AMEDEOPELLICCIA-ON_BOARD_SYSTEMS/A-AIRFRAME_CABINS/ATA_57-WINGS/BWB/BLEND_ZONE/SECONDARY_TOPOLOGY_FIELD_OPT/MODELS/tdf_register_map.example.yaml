@@ -1,0 +1,106 @@
+# ATA 57 BWB — Blend Zone TDF Register Map (Example)
+# Doc ID: T-A-ATA57-BWB-BLEND-RMAP-EX-001
+# Status: EXAMPLE ONLY — not a certified register map
+# Purpose: Illustrates the register map format; actual values are TBD at LC57-03
+
+schema_version: "1.0"
+variant: BWB
+sub_area: BLEND_ZONE
+doc_id: T-A-ATA57-BWB-BLEND-RMAP-EX-001
+revision: EXAMPLE
+date: "2026-02-24"
+governance_hash: TBD  # SHA-256 hash of all hash_input=true registers
+
+notes: >
+  This is an illustrative example only. Register values are nominal and do not represent
+  a certified design. The format shown here is the target format for the version-frozen
+  register map produced at DDR-57-BWB (LC57-03).
+
+register_map:
+  # Root hard-points (fixed)
+  - patch_id: BZ-P001
+    eta_index: 0
+    xi_index: 0
+    region: spar_carry_through
+    register: 255
+    fixed: true
+    hash_input: true
+
+  - patch_id: BZ-P002
+    eta_index: 0
+    xi_index: 8
+    region: spar_carry_through
+    register: 255
+    fixed: true
+    hash_input: true
+
+  # Pressure floor hard-point (fixed)
+  - patch_id: BZ-P010
+    eta_index: 1
+    xi_index: 4
+    region: hard_point_pressure
+    register: 255
+    fixed: true
+    hash_input: true
+
+  # Typical optimisable blend zone patches (illustrative uniform map)
+  - patch_id: BZ-P020
+    eta_index: 2
+    xi_index: 2
+    region: blend_zone
+    register: 180
+    fixed: false
+    hash_input: true
+    notes: Inboard blend zone — higher thickness for load redistribution
+
+  - patch_id: BZ-P021
+    eta_index: 2
+    xi_index: 5
+    region: blend_zone
+    register: 160
+    fixed: false
+    hash_input: true
+
+  - patch_id: BZ-P030
+    eta_index: 3
+    xi_index: 2
+    region: blend_zone
+    register: 140
+    fixed: false
+    hash_input: true
+    notes: Mid blend zone — tapering thickness
+
+  - patch_id: BZ-P031
+    eta_index: 3
+    xi_index: 5
+    region: blend_zone
+    register: 130
+    fixed: false
+    hash_input: true
+
+  - patch_id: BZ-P040
+    eta_index: 4
+    xi_index: 2
+    region: blend_zone
+    register: 110
+    fixed: false
+    hash_input: true
+    notes: Outboard blend zone — lighter, aeroelastic transition
+
+  - patch_id: BZ-P041
+    eta_index: 4
+    xi_index: 5
+    region: blend_zone
+    register: 100
+    fixed: false
+    hash_input: true
+
+  # Boundary edge (compatibility constraint)
+  - patch_id: BZ-P050
+    eta_index: 5
+    xi_index: 2
+    region: boundary_edge
+    register: 90
+    fixed: false
+    hash_input: true
+    notes: Outboard boundary with WTW-style wing section (BWB η=0.40)

@@ -1,0 +1,39 @@
+id: REQ_WTW_44_500_CABIN_MONITORING
+doc_id: T-A-ATA44-WTW-REQ-500
+ata_subchapter: "44-50"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+delta_refs:
+  - DELTA-WTW-44-007
+
+requirements:
+  - req_id: WTW-44-500-001
+    shall: "The WTW cabin monitoring system shall provide at least one smoke detector per
+            cabin zone and per lavatory, using a ring/bus topology driven from the CMS
+            zone satellite unit (CSU) per zone."
+    rationale: "WTW uses conventional ring/bus sensor topology; sensor count driven by
+                the circular cross-section and linear zone layout."
+    cs25_ref: "CS-25.854"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: WTW-44-500-002
+    shall: "The WTW cabin temperature monitoring system shall provide cabin temperature
+            readings per zone with accuracy TBD ± TBD°C. Sensor positions TBD at LC03
+            from HVAC analysis (ATA 21 interface)."
+    rationale: "Cabin temperature monitoring feeds ECS (ATA 21) and CMS comfort management."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC06
+
+  - req_id: WTW-44-500-003
+    shall: "Passenger-seat occupancy sensing (if fitted) shall use a sensor system compatible
+            with WTW seat track attachment and shall interface to the CMS CSU via the
+            cabin AFDX network per ICD T-A-ATA44-WTW-ICD-003."
+    rationale: "Occupancy sensing for load management; sensor type TBD at LC03 (seat
+                weight-on-leg or PIR)."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC07

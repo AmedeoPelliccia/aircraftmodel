@@ -1,0 +1,98 @@
+---
+# ATA 22 BWB Overlay — Delta Change Log
+overlay_id: ATA22-BWB-OVERLAY-001
+doc_id: T-A2-ATA22-BWB-DELTALOG-001
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+
+delta_log:
+  - change_id: CHG-0001
+    delta_ref: DELTA-BWB-22-001
+    description: >
+      Initial identification of distributed effector allocation delta.
+      BWB trailing-edge elevon/spoileron array topology documented as
+      architectural deviation from SHARED baseline. Control allocation
+      matrix structure defined at stub level.
+    author: AmedeoPelliccia
+    date: "2026-02-24"
+    lc_phase: LC01
+    status: OPEN
+    linked_reqs:
+      - BWB-22-100-001
+      - BWB-22-100-002
+    notes: >
+      Effector map numerical parameters (deflection limits, authority
+      distribution) deferred to LC03 pending aerodynamic model maturation.
+
+  - change_id: CHG-0002
+    delta_ref: DELTA-BWB-22-002
+    description: >
+      Initial identification of NDI control law delta. Non-linear
+      pitch-heave coupling confirmed as requiring explicit model-following
+      NDI architecture. Robustness augmentation method (H∞ vs μ-synthesis)
+      remains TBD.
+    author: AmedeoPelliccia
+    date: "2026-02-24"
+    lc_phase: LC01
+    status: OPEN
+    linked_reqs:
+      - BWB-22-100-003
+      - BWB-22-100-004
+    notes: >
+      Control law stability analysis (ANALYSIS_BWB_CONTROL_LAW_STABILITY_CS25_1329.md)
+      is stub; full analysis requires non-linear aerodynamic model at LC03.
+      DO-178C DAL-B software classification confirmed.
+
+  - change_id: CHG-0003
+    delta_ref: DELTA-BWB-22-003
+    description: >
+      Initial identification of envelope protection delta. BWB swept
+      composite planform introduces different alpha/beta limits, buffet
+      boundary, and load factor constraints vs WTW. All threshold values TBD.
+    author: AmedeoPelliccia
+    date: "2026-02-24"
+    lc_phase: LC01
+    status: OPEN
+    linked_reqs:
+      - BWB-22-400-001
+      - BWB-22-400-002
+      - BWB-22-400-003
+    notes: >
+      Buffet onset margin and structural stall boundary to be derived from
+      wind-tunnel and CFD data at LC03. CS-25.253 high-speed characteristics
+      assessment required.
+
+  - change_id: CHG-0004
+    delta_ref: DELTA-BWB-22-004
+    description: >
+      Initial identification of FMS performance polar delta. BWB L/D
+      characteristic differs from WTW; ECON speed, optimum altitude, and
+      VNAV profile management require BWB-specific performance tables.
+    author: AmedeoPelliccia
+    date: "2026-02-24"
+    lc_phase: LC01
+    status: OPEN
+    linked_reqs:
+      - BWB-22-200-001
+      - BWB-22-200-002
+    notes: >
+      Performance table population requires validated aerodynamic polar data.
+      Deferred to LC03. FMS database update process to be defined at LC04.
+
+  - change_id: CHG-0005
+    delta_ref: DELTA-BWB-22-005
+    description: >
+      Initial identification of propulsion guidance coupling delta. 4×
+      distributed engine layout creates inter-engine thrust asymmetry
+      management requirements not covered by SHARED 2-engine baseline.
+    author: AmedeoPelliccia
+    date: "2026-02-24"
+    lc_phase: LC01
+    status: OPEN
+    linked_reqs:
+      - BWB-22-300-001
+      - BWB-22-300-002
+    notes: >
+      Engine thrust model and FADEC interface ICD to be matured at LC03.
+      Yaw compensation authority budget for asymmetric thrust TBD.

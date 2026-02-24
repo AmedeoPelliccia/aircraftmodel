@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ATA44 WTW Network Topology — STUB (LC01)
+     Populate with actual node/edge data at LC03 from systems architect.
+     Format: GraphML (yEd compatible)
+     Doc ID: T-A-ATA44-WTW-ARCH-003
+-->
+<graphml xmlns="http://graphml.graphdrawing.org/graphml">
+  <key id="d0" for="node" attr.name="label" attr.type="string"/>
+  <key id="d1" for="edge" attr.name="protocol" attr.type="string"/>
+
+  <graph id="WTW_CMS_Topology" edgedefault="undirected">
+
+    <!-- Controllers -->
+    <node id="CMC"><data key="d0">CMS Main Controller (CMC) — FWD E/E bay</data></node>
+    <node id="CAC"><data key="d0">CMS AFT Controller (CAC) — AFT bay</data></node>
+
+    <!-- IFE Server -->
+    <node id="IFE_SVR"><data key="d0">IFE Media Server — FWD avionics bay</data></node>
+
+    <!-- Zone Satellite Units -->
+    <node id="CSU_01"><data key="d0">Cabin Satellite Unit Z1 (CSU-01)</data></node>
+    <node id="CSU_02"><data key="d0">Cabin Satellite Unit Z2 (CSU-02)</data></node>
+    <node id="CSU_03"><data key="d0">Cabin Satellite Unit Z3 (CSU-03)</data></node>
+    <node id="CSU_04"><data key="d0">Cabin Satellite Unit Z4 (CSU-04)</data></node>
+
+    <!-- Backbone edges (ARINC 664 / AFDX) -->
+    <edge source="CMC" target="CAC"><data key="d1">ARINC664-AFDX</data></edge>
+    <edge source="CMC" target="IFE_SVR"><data key="d1">ARINC664-AFDX</data></edge>
+    <edge source="CMC" target="CSU_01"><data key="d1">ARINC664-AFDX</data></edge>
+    <edge source="CMC" target="CSU_02"><data key="d1">ARINC664-AFDX</data></edge>
+    <edge source="CAC" target="CSU_03"><data key="d1">ARINC664-AFDX</data></edge>
+    <edge source="CAC" target="CSU_04"><data key="d1">ARINC664-AFDX</data></edge>
+
+  </graph>
+</graphml>

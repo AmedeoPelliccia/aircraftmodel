@@ -1,0 +1,43 @@
+id: REQ_BWB_25_100_FLIGHT_COMPARTMENT
+doc_id: T-A-ATA25-BWB-REQ-100
+ata_subchapter: "25-10"
+variant: BWB
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-BWB-25-006
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-100-001
+    title: "Flight deck seat attachment — BWB floor grid"
+    shall: >
+      Flight deck crew seats shall be installed on BWB floor grid nodes
+      (see ICD_BWB_FLOOR_GRID_ATTACH_001.md) and demonstrate CS-25.562 dynamic
+      test compliance using BWB-specific grid geometry and load introduction points.
+    rationale: "BWB flight deck embedded in wing body with grid floor; different from WTW and from tube-and-wing."
+    verification: Analysis (CS-25.562) + Test (if analysis insufficient)
+    cs25_ref: "CS-25.562"
+    lc_gate: LC03
+
+  - req_id: BWB-25-100-002
+    title: "Flight deck emergency egress — BWB geometry"
+    shall: >
+      BWB flight deck emergency egress (door/hatch to cabin or direct exit) shall
+      provide an unobstructed path complying with CS-25 minimum dimensions.
+      BWB-specific geometry constraints (embedded deck, spar bay proximity) shall
+      be verified per ICD_BWB_EGRESS_CLEARANCES_001.md.
+    rationale: "BWB flight deck geometry differs from conventional cockpit; escape path must be re-verified."
+    verification: Dimensional inspection
+    cs25_ref: "CS-25.803"
+    lc_gate: LC03
+
+  - req_id: BWB-25-100-003
+    title: "Flight deck emergency equipment stowage — BWB"
+    shall: >
+      Emergency equipment stowage in the BWB flight deck shall be accessible
+      in ≤TBD seconds by a seated crew member with harness fastened.
+      Stowage locations constrained by BWB flight deck envelope.
+    rationale: "BWB cockpit crown is lower and forward access differs from conventional cockpit."
+    verification: Inspection / functional demonstration
+    cs25_ref: "CS-25.1411"
+    lc_gate: LC04

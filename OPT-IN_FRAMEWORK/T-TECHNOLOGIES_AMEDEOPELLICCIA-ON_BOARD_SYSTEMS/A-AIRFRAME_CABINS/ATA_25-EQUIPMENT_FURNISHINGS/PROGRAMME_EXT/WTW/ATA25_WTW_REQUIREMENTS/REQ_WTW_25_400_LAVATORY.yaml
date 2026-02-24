@@ -1,0 +1,48 @@
+id: REQ_WTW_25_400_LAVATORY
+doc_id: T-A-ATA25-WTW-REQ-400
+ata_subchapter: "25-40"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-004
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-400-001
+    title: "Lavatory envelope — WTW circular fuselage constraint"
+    shall: >
+      Lavatory module outer envelope shall fit within the WTW cabin cross-section
+      (see ICD_WTW_CABIN_GEOM_001.md) with minimum TBD mm clearance to sidewall structure.
+    rationale: "WTW circular fuselage cross-section constrains lavatory width at floor level differently than BWB."
+    verification: Dimensional inspection
+    lc_gate: LC03
+
+  - req_id: WTW-25-400-002
+    title: "Lavatory drain routing — WTW"
+    shall: >
+      Lavatory drain connections shall be routed to the WTW waste system interface
+      (ATA 38). WTW drain routing runs aft-lower; shall not penetrate floor beam
+      flange without approved penetration (ATA 53 approval required).
+    rationale: "WTW floor beam layout differs from BWB; penetration requires structural approval."
+    verification: Interface check vs ATA 38 and ATA 53 ICD
+    lc_gate: LC03
+
+  - req_id: WTW-25-400-003
+    title: "Lavatory flammability"
+    shall: >
+      All lavatory panels, liner materials, and fittings shall comply with CS-25.853
+      as registered in TEST_WTW_FLAMMABILITY_25_853.md.
+    rationale: "WTW lavatory material variants shall be tracked."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: WTW-25-400-004
+    title: "Lavatory smoke detector"
+    shall: >
+      Each WTW lavatory shall be equipped with a smoke detector meeting CS-25.854
+      and connected to the WTW cabin attendant panel (ATA 26/ATA 44 interface).
+    rationale: "CS-25.854 mandatory; WTW lavatory locations and wiring routing are variant-specific."
+    verification: Functional test
+    cs25_ref: "CS-25.854"
+    lc_gate: LC04

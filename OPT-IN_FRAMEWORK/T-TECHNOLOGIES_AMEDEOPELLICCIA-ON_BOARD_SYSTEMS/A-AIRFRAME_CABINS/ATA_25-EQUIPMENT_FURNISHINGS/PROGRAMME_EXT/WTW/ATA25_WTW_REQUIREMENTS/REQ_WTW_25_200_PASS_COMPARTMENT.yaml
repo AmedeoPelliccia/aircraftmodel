@@ -1,0 +1,50 @@
+id: REQ_WTW_25_200_PASS_COMPARTMENT
+doc_id: T-A-ATA25-WTW-REQ-200
+ata_subchapter: "25-20"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-001
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-200-001
+    title: "Passenger seat installation — WTW track geometry"
+    shall: >
+      Passenger seats shall be installed on WTW seat tracks (see ICD_WTW_ATTACH_POINTS_001.md).
+      Seat pitch, lateral position, and fitting engagement shall comply with drawing and
+      demonstrate CS-25.561 compliance using WTW floor-beam load introduction geometry.
+    rationale: "WTW floor beam spacing and seat track pitch differ from BWB distributed floor."
+    verification: Analysis (CS-25.561) + dimensional inspection
+    cs25_ref: "CS-25.561"
+    lc_gate: LC03
+
+  - req_id: WTW-25-200-002
+    title: "Overhead bin envelope — WTW frame/stringer clearance"
+    shall: >
+      Overhead bin outer envelope shall maintain minimum TBD mm clearance to fuselage
+      frame inner flange and stringer caps (see ICD_WTW_CABIN_GEOM_001.md).
+    rationale: "WTW circular fuselage frames intrude on overhead bin envelope differently to BWB."
+    verification: Dimensional inspection / drawing check
+    lc_gate: LC03
+
+  - req_id: WTW-25-200-003
+    title: "Cabin interior materials — flammability (WTW)"
+    shall: >
+      All cabin interior materials (seats, panels, bins, carpets) shall comply with
+      CS-25.853 flammability requirements. WTW-specific material qualification data
+      shall be registered in TEST_WTW_FLAMMABILITY_25_853.md.
+    rationale: "Variant-specific material variants may be used in WTW that differ from BWB."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: WTW-25-200-004
+    title: "Aisle width — WTW"
+    shall: >
+      Aisle width at armrest level shall meet CS-25 minimum (TBD mm) with all seats
+      in the upright position. WTW 9-abreast configuration shall be verified with
+      installed seat dimensions.
+    rationale: "Aisle width compliance is WTW-seating-configuration-dependent."
+    verification: Dimensional inspection
+    lc_gate: LC03

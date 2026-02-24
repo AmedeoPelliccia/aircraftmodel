@@ -1,0 +1,78 @@
+---
+# BWB Guidance Modes — Delta Stub
+doc_id: T-A2-ATA22-BWB-GMODES-001
+delta_ref: DELTA-BWB-22-002
+status: STUB
+lc_gate: LC03
+date_created: "2026-02-24"
+
+description: >
+  Delta definition of guidance modes for the AMPEL360 Q100 BWB autoflight
+  system. This file captures only BWB-specific additions or modifications
+  to the SHARED baseline guidance mode set. Modes identical to SHARED are
+  not repeated here.
+
+baseline_modes_ref: "../../.."
+delta_policy: "Document only new or modified modes. SHARED modes apply unless overridden here."
+
+bwb_delta_modes:
+  - mode_id: VNAV-BWB
+    name: "Vertical Navigation — BWB Performance Polar"
+    delta_type: MODIFICATION
+    delta_ref: DELTA-BWB-22-004
+    description: >
+      VNAV mode uses BWB-specific L/D performance tables for speed and
+      altitude optimisation. Replaces SHARED performance table reference
+      with BWB polar. Table content TBD (LC03).
+    optimum_speed_schedule: TBD  # Function of Mach, altitude, weight — LC03
+    optimum_altitude_profile: TBD  # LC03
+    status: STUB
+
+  - mode_id: NDI-ENGAGE
+    name: "NDI Inner Loop Engagement Monitor"
+    delta_type: NEW
+    delta_ref: DELTA-BWB-22-002
+    description: >
+      New monitoring mode specific to BWB NDI architecture. Monitors
+      convergence of NDI inner loop and triggers engagement/disengagement
+      logic if model inversion error exceeds threshold (TBD LC03).
+    engagement_criteria: TBD  # LC03
+    disengagement_threshold: TBD  # LC03
+    status: STUB
+
+  - mode_id: CA-RECONFIG
+    name: "Control Allocation Reconfiguration Mode"
+    delta_type: NEW
+    delta_ref: DELTA-BWB-22-001
+    description: >
+      New mode activated when one or more effectors are unavailable.
+      Autoflight control allocation reconfigures around failed surfaces.
+      Degraded authority limits TBD (LC04).
+    trigger: "Effector failure signal from ATA 27 FCS"
+    degraded_limits: TBD  # LC04
+    pilot_alert: TBD  # LC04
+    status: STUB
+
+  - mode_id: AT-4ENG
+    name: "Auto-Thrust — 4-Engine Symmetric/Asymmetric"
+    delta_type: MODIFICATION
+    delta_ref: DELTA-BWB-22-005
+    description: >
+      Auto-thrust mode extended for 4-engine management with explicit
+      asymmetric thrust compensation. Inter-engine coupling effects
+      modelled in FADEC interface. Parameters TBD (LC03).
+    engine_count: 4
+    asymmetry_compensation: TBD  # yaw/roll compensation authority — LC03
+    thrust_balance_law: TBD  # LC03
+    status: STUB
+
+open_items:
+  - id: OI-MODES-001
+    description: "Confirm whether additional new modes required for BWB beyond above"
+    lc_gate: LC04
+  - id: OI-MODES-002
+    description: "Populate VNAV performance table references once L/D polar available"
+    lc_gate: LC03
+  - id: OI-MODES-003
+    description: "Define NDI engagement/disengagement thresholds"
+    lc_gate: LC03

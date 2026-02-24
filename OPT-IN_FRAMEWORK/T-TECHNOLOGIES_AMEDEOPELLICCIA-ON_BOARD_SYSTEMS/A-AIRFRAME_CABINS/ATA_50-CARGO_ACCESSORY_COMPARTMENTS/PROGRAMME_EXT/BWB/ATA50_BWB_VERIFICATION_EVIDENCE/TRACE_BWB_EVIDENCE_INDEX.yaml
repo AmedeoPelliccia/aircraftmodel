@@ -1,0 +1,64 @@
+---
+# TRACE_BWB_EVIDENCE_INDEX.yaml
+# AMPEL360 BWB — ATA 50 Programme Extension — Evidence Traceability Index
+
+evidence_index:
+  programme: AMPEL360-BWB
+  ata_chapter: "50"
+  overlay: PROGRAMME_EXT/BWB
+  status: LC01 scaffold
+
+  entries:
+    - evidence_id: EVI-BWB-50-001
+      file: ANALYSIS_BWB_COMPARTMENT_LOADS.md
+      type: Analysis
+      delta_ref: DELTA-BWB-50-001
+      req_ids: [BWB-50-000-001, BWB-50-000-002]
+      regulation: CS-25.365
+      lc_gate: LC04
+      status: TBD
+
+    - evidence_id: EVI-BWB-50-002
+      file: ANALYSIS_BWB_CARGO_RESTRAINT_25_787.md
+      type: Analysis
+      delta_ref: DELTA-BWB-50-006
+      req_ids: [BWB-50-000-004, BWB-50-100-004]
+      regulation: CS-25.787 / CS-25.789 / CS-25.561
+      lc_gate: LC05
+      status: TBD
+
+    - evidence_id: EVI-BWB-50-003
+      file: ANALYSIS_BWB_BAY_ACCESS_SPAR_PENETRATION.md
+      type: Analysis
+      delta_ref: DELTA-BWB-50-005 / DELTA-BWB-50-007
+      req_ids: [BWB-50-100-005]
+      regulation: AMC 25.857
+      lc_gate: LC04
+      status: TBD
+
+    - evidence_id: EVI-BWB-50-004
+      file: TEST_BWB_FIRE_LINER_CS25_855.md
+      type: Test
+      delta_ref: DELTA-BWB-50-005
+      req_ids: [BWB-50-100-001, BWB-50-100-002, BWB-50-100-003]
+      regulation: CS-25.855 / CS-25.856 / CS-25.857
+      lc_gate: LC05
+      status: TBD
+
+    - evidence_id: EVI-BWB-50-005
+      file: INSPECTION_BWB_ACCESS_POINTS.md
+      type: Inspection
+      delta_ref: DELTA-BWB-50-002
+      req_ids: [BWB-50-000-005, BWB-50-300-001, BWB-50-300-003]
+      regulation: CS-25.1411 / CS-25.783
+      lc_gate: LC04
+      status: TBD
+
+    - evidence_id: EVI-BWB-50-006
+      file: INSPECTION_BWB_DRAIN_VENT.md
+      type: Inspection
+      delta_ref: DELTA-BWB-50-004
+      req_ids: [BWB-50-400-001, BWB-50-400-002, BWB-50-400-003, BWB-50-400-004]
+      regulation: CS-25.1001 / CS-25.1103
+      lc_gate: LC04
+      status: TBD

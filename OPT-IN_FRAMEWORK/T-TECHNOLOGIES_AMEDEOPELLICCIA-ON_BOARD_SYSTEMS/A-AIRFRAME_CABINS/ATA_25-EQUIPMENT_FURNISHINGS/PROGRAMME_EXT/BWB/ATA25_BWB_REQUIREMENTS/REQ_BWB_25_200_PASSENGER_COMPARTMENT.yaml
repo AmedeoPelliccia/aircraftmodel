@@ -1,0 +1,55 @@
+id: REQ_BWB_25_200_PASSENGER_COMPARTMENT
+doc_id: T-A-ATA25-BWB-REQ-200
+ata_subchapter: "25-20"
+variant: BWB
+status: DRAFT
+revision: RevA
+delta_refs: [DELTA-BWB-25-001, DELTA-BWB-25-002, DELTA-BWB-25-004]
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-200-001
+    title: "Seat installation — BWB floor grid compatibility"
+    shall: >
+      Passenger seats shall be installed on BWB floor grid nodes
+      (see ICD_BWB_FLOOR_GRID_ATTACH_001.md) with fitting engagement per
+      approved fitting PN. Seat node pitch, lateral position, and engagement depth
+      shall comply with drawing and demonstrate CS-25.561 compliance using BWB
+      distributed-grid load introduction geometry.
+    rationale: "BWB floor grid is fundamentally different from WTW seat tracks."
+    verification: Analysis (CS-25.561) + dimensional inspection
+    cs25_ref: "CS-25.561"
+    lc_gate: LC03
+
+  - req_id: BWB-25-200-002
+    title: "Overhead bin envelope — BWB spar/crown clearance"
+    shall: >
+      Overhead bin outer envelope shall maintain minimum TBD mm clearance to BWB
+      spar cap inner surface and crown composite structure
+      (see ICD_BWB_CABIN_ENVELOPE_001.md). Bins shall not bridge spar bays without
+      an approved floating interface per BWB-25-000-003.
+    rationale: "BWB crown geometry and spar bay separation differ from WTW round cross-section."
+    verification: Dimensional inspection / drawing check
+    lc_gate: LC03
+
+  - req_id: BWB-25-200-003
+    title: "Cabin interior materials — flammability (BWB)"
+    shall: >
+      All BWB cabin interior materials (seats, panels, bins, carpets) shall comply
+      with CS-25.853. BWB-specific material variants shall be registered in
+      TEST_BWB_FLAMMABILITY_25_853.md.
+    rationale: "BWB may use composite-compatible interior materials differing from WTW."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: BWB-25-200-004
+    title: "Stowage distribution — lateral CG management"
+    shall: >
+      BWB overhead stowage distribution shall comply with the zone limits in
+      ICD_BWB_STOWAGE_DISTRIBUTION_001.md. Lateral bin loading creating lateral
+      CG offset ≥ TBD kg-m shall trigger a cabin management system alert (ATA 44).
+    rationale: "BWB stowage spans planform; lateral asymmetry creates trim/balance effects unique to BWB."
+    verification: Weight and balance analysis + functional test (ATA 44 interface)
+    cs25_ref: "CS-25.785"
+    lc_gate: LC04

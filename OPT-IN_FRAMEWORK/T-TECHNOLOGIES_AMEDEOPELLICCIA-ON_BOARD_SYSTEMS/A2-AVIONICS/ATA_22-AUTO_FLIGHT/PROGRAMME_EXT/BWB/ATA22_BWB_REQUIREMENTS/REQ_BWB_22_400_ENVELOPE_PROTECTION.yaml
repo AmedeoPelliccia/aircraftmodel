@@ -1,0 +1,99 @@
+---
+# BWB ATA 22-40 — Envelope Protection Delta Requirements
+doc_id: T-A2-ATA22-BWB-REQ-22-400
+ata_sub_chapter: "22-40"
+overlay_id: ATA22-BWB-OVERLAY-001
+delta_refs: [DELTA-BWB-22-003]
+baseline_ref: "../../.."
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  Envelope protection delta requirements for the AMPEL360 Q100 BWB.
+  These requirements supplement SHARED 22-40 requirements with BWB-specific
+  alpha/beta limits, structural boundaries, and buffet margins.
+  All quantitative thresholds are TBD (LC03) pending aerodynamic and
+  structural model maturation.
+
+requirements:
+  - req_id: BWB-22-400-001
+    shall: >
+      The BWB envelope protection system shall limit angle-of-attack (AoA)
+      to a maximum of TBD degrees (LC03) below the buffet onset boundary
+      for the current Mach number, altitude, and aircraft weight, as
+      determined by the BWB aerodynamic model. This limit shall be
+      continuously updated in flight using the onboard performance model.
+    rationale: >
+      The BWB swept composite planform has a different stall/buffet onset
+      AoA versus conventional WTW. The SHARED baseline alpha limit is not
+      applicable. BWB-specific limits must be derived from wind-tunnel and
+      CFD data. This is the core delta from DELTA-BWB-22-003.
+    cs25_ref: "CS-25.143(f)"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-400-002
+    shall: >
+      The BWB envelope protection system shall limit airspeed to below
+      VMO/MMO with high-speed protection engagement at VMO minus TBD kts
+      (LC03) / MMO minus TBD (LC03), accounting for BWB aeroelastic
+      flutter clearance margins specific to the composite flying-wing
+      structure.
+    rationale: >
+      CS-25.253 requires demonstration of freedom from flutter up to VD/MD.
+      The BWB composite structure has flutter characteristics that may
+      differ from conventional metal airframes, requiring specific VMO/MMO
+      margins to be confirmed by flutter analysis at LC03.
+    cs25_ref: "CS-25.253"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-400-003
+    shall: >
+      The BWB envelope protection system shall limit normal load factor (nz)
+      to the structural design limits confirmed by the BWB structural
+      analysis: maximum TBD g (LC03, target CS-25.337 +2.5 g design limit)
+      and minimum TBD g (LC03, target CS-25.337 −1.0 g design limit), with
+      protection engagement at TBD g margin below the design limit (LC03).
+    rationale: >
+      CS-25.337 sets structural limit load factors. BWB composite panel
+      load relief characteristics may cause earlier onset of structural
+      concern than conventional aluminium structures. Structural analysis
+      must confirm the exact protection engagement threshold.
+    cs25_ref: "CS-25.337"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-400-004
+    shall: >
+      The BWB envelope protection system shall limit sideslip angle (beta)
+      to TBD degrees (LC03) to remain within the structural lateral load
+      limit of the BWB composite planform and within the directional
+      stability boundary. Beta limit shall account for the reduced
+      directional fin contribution of the BWB layout.
+    rationale: >
+      The BWB has reduced or no conventional vertical tail contribution to
+      directional stability. Beta limits must reflect this reduced fin
+      effectiveness and the lateral structural load capacity of the
+      composite structure.
+    cs25_ref: "CS-25.143"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-400-005
+    shall: >
+      Envelope protection activation shall generate: (a) a soft alert to
+      the flight crew at TBD margin before hard limit engagement (LC03);
+      (b) an unambiguous EICAS/ECAM caution upon hard limit engagement;
+      and (c) a record in the flight data recorder (FDR) of every
+      protection engagement event including parameter, limit, and duration.
+    rationale: >
+      CS-25.1302 requires timely crew alerting for abnormal conditions.
+      FDR recording of protection engagements supports post-flight
+      analysis and structural fatigue tracking, which is particularly
+      important for the composite BWB structure.
+    cs25_ref: "CS-25.1302"
+    verification: Test, Inspection
+    lc_gate: LC04

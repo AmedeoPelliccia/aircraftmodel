@@ -1,0 +1,28 @@
+id: REQ_BWB_44_000
+subchapter: "44-000"
+title: "General — BWB Applicability"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-000-001
+    shall: "The ATA 44 BWB overlay SHALL apply only to the AMPEL360 BWB variant. All requirements herein are deltas to the ATA 44 SHARED baseline."
+    rationale: "Prevent misapplication to WTW variant. WTW uses a centralised CMC/CAC topology not applicable to BWB."
+    cs25_ref: null
+    verification: analysis
+    lc_gate: LC01
+
+  - req_id: BWB-44-000-002
+    shall: "The BWB cabin systems architecture SHALL use a per-spar-bay distributed Zone Controller (ZC) topology in lieu of a centralised CMC."
+    rationale: "BWB composite planform creates multiple spar bays that impose structural constraints on harness routing. Centralised CMC is impractical."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC03
+
+  - req_id: BWB-44-000-003
+    shall: "No ATA 44 CMS harness SHALL bridge more than one spar bay structural boundary via a single uninterrupted run without a Bay Bridge Unit (BBU) at the boundary."
+    rationale: "Structural spar bay boundaries require grommet/doubler penetrations. Uninterrupted routing of large bundles across multiple boundaries is structurally impractical and maintenance-heavy."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC03

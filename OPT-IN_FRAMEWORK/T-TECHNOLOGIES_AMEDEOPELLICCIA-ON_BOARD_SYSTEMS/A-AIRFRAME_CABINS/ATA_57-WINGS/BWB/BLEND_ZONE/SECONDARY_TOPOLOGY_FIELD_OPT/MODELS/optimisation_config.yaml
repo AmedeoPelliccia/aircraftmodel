@@ -1,0 +1,56 @@
+# ATA 57 BWB — Blend Zone TDF Optimisation Solver Configuration
+# Doc ID: T-A-ATA57-BWB-BLEND-SOLV-001
+# Status: DRAFT
+
+schema_version: "1.0"
+variant: BWB
+sub_area: BLEND_ZONE
+doc_id: T-A-ATA57-BWB-BLEND-SOLV-001
+revision: A
+date: "2026-02-24"
+
+algorithm: Genetic_Algorithm_Integer
+description: >
+  GA with integer chromosome (8-bit register per patch). Population-based search
+  with tournament selection and uniform crossover. Deterministic via fixed seed.
+
+solver_parameters:
+  population_size: 200
+  generations: 500
+  random_seed: 42           # fixed for determinism/reproducibility requirement (BWB-57-TDF-005)
+  tournament_size: 3
+  crossover_rate: 0.85
+  mutation_rate: 0.02       # per-register bit-flip probability
+  mutation_type: integer_pm_step
+  mutation_step: 8           # mutation moves register by ±8 (TDF step size)
+  elitism: true
+  elite_count: 5
+
+objective:
+  type: minimise
+  metric: total_blend_zone_structural_mass
+  secondary_objective: minimise_mass_variance_across_patches  # lexicographic tiebreak
+
+constraints:
+  - id: C-FATIGUE
+    type: inequality_leq
+    expression: D_Miner(r) <= 0.5
+    ref: CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md#fatigue-life-constraint
+  - id: C-DIVERGENCE
+    type: inequality_geq
+    expression: V_div(r) / VD >= 1.15
+    ref: CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md#aeroelastic-divergence-constraint
+  - id: C-BOUNDARY
+    type: equality_range
+    expression: abs(r[boundary] - r[adjacent]) <= 32
+    ref: STD_TDF_8BIT_ENCODING.md#boundary-conditions
+  - id: C-FIXED
+    type: equality
+    expression: r[fixed_patches] == prescribed_value
+    ref: STD_TDF_8BIT_ENCODING.md#boundary-conditions
+
+governance:
+  hash_algorithm: SHA-256
+  hash_inputs: all registers where hash_input=true
+  hash_output_field: tdf_register_map.governance_hash
+  record_location: VERIFICATION_EVIDENCE/TRACE_BWB_BLEND_EVIDENCE_INDEX.yaml

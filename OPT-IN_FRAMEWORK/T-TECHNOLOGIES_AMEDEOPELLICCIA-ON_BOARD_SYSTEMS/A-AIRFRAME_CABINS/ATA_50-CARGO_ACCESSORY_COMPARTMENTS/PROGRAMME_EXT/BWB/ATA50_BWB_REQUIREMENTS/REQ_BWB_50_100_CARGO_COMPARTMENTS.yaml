@@ -1,0 +1,79 @@
+---
+# REQ_BWB_50_100_CARGO_COMPARTMENTS.yaml
+# AMPEL360 BWB — ATA 50-100 Cargo Compartment Requirements (BWB-only deltas)
+
+requirements:
+  ata_subchapter: "50-100"
+  programme: AMPEL360-BWB
+  overlay: PROGRAMME_EXT/BWB
+
+  reqs:
+    - req_id: BWB-50-100-001
+      shall: >
+        Each cargo bay fire containment liner SHALL be classified to CS-25.855
+        Class C or Class E. The required class for each bay SHALL be defined by
+        the fire protection analysis at LC04.
+      rationale: >
+        Bay-partitioned compartments require individual fire classification.
+        The spar web fire-stop provides the bay boundary; liner class determines
+        suppression system requirements.
+      cs25_ref: CS-25.855
+      verification: Test — TEST_BWB_FIRE_LINER_CS25_855.md
+      delta_ref: DELTA-BWB-50-005
+      lc_gate: LC04
+
+    - req_id: BWB-50-100-002
+      shall: >
+        Cargo bay liner panels SHALL comply with CS-25.856 and SHALL be
+        flat panels (not curved), each confined to a single structural bay
+        per BWB-50-000-003.
+      rationale: >
+        The BWB flat-deck planform has flat floor/ceiling surfaces. Using
+        flat panels simplifies manufacturing and inspection while meeting
+        CS-25.856 liner requirements.
+      cs25_ref: CS-25.856
+      verification: Test — TEST_BWB_FIRE_LINER_CS25_855.md
+      delta_ref: DELTA-BWB-50-003 / DELTA-BWB-50-005
+      lc_gate: LC04
+
+    - req_id: BWB-50-100-003
+      shall: >
+        Cargo compartment fire protection (suppression agent distribution)
+        SHALL be partitioned by bay per CS-25.857. Agent SHALL not be
+        required to cross a spar web boundary to protect an adjacent bay.
+      rationale: >
+        Bay-partitioned fire containment means suppression must be independently
+        effective within each bay without relying on agent migrating across
+        the structural spar fire-stop.
+      cs25_ref: CS-25.857
+      verification: Test — TEST_BWB_FIRE_LINER_CS25_855.md (per-bay test)
+      delta_ref: DELTA-BWB-50-005
+      lc_gate: LC04
+
+    - req_id: BWB-50-100-004
+      shall: >
+        Cargo floor/restraint structure in each bay SHALL withstand the load
+        cases defined in CS-25.561, applied independently per bay, with
+        metallic inserts at spar frame floor nodes per BWB-50-000-004.
+      rationale: >
+        Each bay must independently meet restraint requirements because
+        the BWB planform does not have a continuous floor structure transferring
+        loads between bays.
+      cs25_ref: CS-25.561
+      verification: Analysis — ANALYSIS_BWB_CARGO_RESTRAINT_25_787.md
+      delta_ref: DELTA-BWB-50-006
+      lc_gate: LC05
+
+    - req_id: BWB-50-100-005
+      shall: >
+        Spar web fire-stop sealing at spar penetrations (drain tubes, wiring,
+        access hatch perimeters) SHALL maintain the fire containment
+        classification of both adjacent bays.
+      rationale: >
+        Any penetration of the spar web fire-stop is a potential failure mode
+        for bay fire containment. All penetrations must be sealed with approved
+        fire-stop fittings.
+      cs25_ref: AMC 25.857
+      verification: Analysis + Inspection — ANALYSIS_BWB_BAY_ACCESS_SPAR_PENETRATION.md
+      delta_ref: DELTA-BWB-50-005 / DELTA-BWB-50-007
+      lc_gate: LC04

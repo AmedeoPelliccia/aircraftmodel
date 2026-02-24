@@ -1,0 +1,28 @@
+id: REQ_BWB_44_200
+subchapter: "44-20"
+title: "In-Flight Entertainment — BWB Per-Bay IFE Node Requirements"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-200-001
+    shall: "Each spar bay SHALL have at least one IFE Bay Node (IBN) providing local content distribution to seats within that bay."
+    rationale: "BWB per-bay IFE topology eliminates high-bandwidth content streaming across inter-bay bridges (BBU), which have limited bandwidth budgets."
+    cs25_ref: "CS-25.853"
+    verification: analysis
+    lc_gate: LC03
+
+  - req_id: BWB-44-200-002
+    shall: "IFE Bay Nodes SHALL synchronise content metadata across bays via the BBU at a bandwidth not exceeding TBD Mbit/s [LC04 gate]."
+    rationale: "Inter-bay bridge bandwidth is shared with CMS safety-essential data. IFE sync must be low-bandwidth (metadata only) to avoid congestion."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC04
+
+  - req_id: BWB-44-200-003
+    shall: "All IFE Bay Node materials and LRU enclosures SHALL comply with CS-25.853(a) flammability requirements."
+    rationale: "Distributed IBN LRUs are inside the pressure vessel. Flammability compliance required for all materials per certification basis."
+    cs25_ref: "CS-25.853"
+    verification: test
+    lc_gate: LC07

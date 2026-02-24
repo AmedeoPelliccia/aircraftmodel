@@ -1,0 +1,75 @@
+---
+# BWB Effector Map — Stub
+doc_id: T-A2-ATA22-BWB-EFFMAP-001
+delta_ref: DELTA-BWB-22-001
+status: STUB
+lc_gate: LC03
+date_created: "2026-02-24"
+
+description: >
+  Machine-readable stub of the AMPEL360 Q100 BWB trailing-edge effector
+  geometry and authority allocation. All numerical values are TBD pending
+  aerodynamic and structural model maturation at LC03.
+
+effector_groups:
+  - group_id: IE
+    name: "Inboard Elevons"
+    side: [LEFT, RIGHT]
+    spanwise_position_pct_TBD: TBD
+    chord_fraction_TBD: TBD
+    deflection_limit_deg_TBD: TBD
+    rate_limit_deg_per_s_TBD: TBD
+    primary_axis: PITCH
+    secondary_axis: TBD
+    autoflight_authority: TBD
+
+  - group_id: ME
+    name: "Mid Elevons"
+    side: [LEFT, RIGHT]
+    spanwise_position_pct_TBD: TBD
+    chord_fraction_TBD: TBD
+    deflection_limit_deg_TBD: TBD
+    rate_limit_deg_per_s_TBD: TBD
+    primary_axis: PITCH_ROLL
+    secondary_axis: TBD
+    autoflight_authority: TBD
+
+  - group_id: OE
+    name: "Outboard Elevons"
+    side: [LEFT, RIGHT]
+    spanwise_position_pct_TBD: TBD
+    chord_fraction_TBD: TBD
+    deflection_limit_deg_TBD: TBD
+    rate_limit_deg_per_s_TBD: TBD
+    primary_axis: ROLL
+    secondary_axis: TBD
+    autoflight_authority: TBD
+
+  - group_id: SP
+    name: "Spoilerons"
+    side: [LEFT, RIGHT]
+    spanwise_position_pct_TBD: TBD
+    chord_fraction_TBD: TBD
+    deflection_limit_deg_TBD: TBD
+    rate_limit_deg_per_s_TBD: TBD
+    primary_axis: ROLL
+    secondary_axis: SPEED_BRAKE
+    autoflight_authority: TBD
+    notes: "Speed brake interaction in autoflight TBD (LC04)"
+
+control_allocation:
+  method: TBD  # Options: weighted-pseudo-inverse | constrained-optimisation | priority-based
+  priority_order: TBD
+  saturation_handling: TBD
+  reconfiguration_on_failure: TBD
+
+open_items:
+  - id: OI-EFFMAP-001
+    description: "Populate spanwise positions from aerodynamic model"
+    lc_gate: LC03
+  - id: OI-EFFMAP-002
+    description: "Define deflection and rate limits from actuator sizing"
+    lc_gate: LC03
+  - id: OI-EFFMAP-003
+    description: "Select and validate control allocation method"
+    lc_gate: LC03

@@ -1,0 +1,56 @@
+---
+# BWB Interface Control Document List
+doc_id: T-A2-ATA22-BWB-ICDLIST-001
+overlay_id: ATA22-BWB-OVERLAY-001
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+
+description: >
+  Register of all BWB-specific ICDs for ATA 22 Auto Flight. SHARED baseline
+  ICDs are not listed here; refer to the SHARED baseline ICD list at ../../..
+
+icd_list:
+  - icd_id: ICD-BWB-22-001
+    title: "BWB Autoflight to FCS Effector Map Interface"
+    file: ICD_BWB_EFFECTOR_MAP_001.md
+    delta_ref: DELTA-BWB-22-001
+    system_a: "ATA 22 Auto Flight (FCC)"
+    system_b: "ATA 27 Flight Control System"
+    interface_type: DIGITAL
+    bus_type: TBD  # ARINC 429 / AFDX — LC02
+    data_items: "Surface demand vector (elevon/spoileron positions)"
+    status: STUB
+    lc_gate: LC03
+
+  - icd_id: ICD-BWB-22-002
+    title: "BWB Autoflight to Navigation / ADIRS Sensor Coupling"
+    file: ICD_BWB_SENSORS_NAV_COUPLING_001.md
+    delta_ref: DELTA-BWB-22-004
+    system_a: "ATA 22 Auto Flight (FCC)"
+    system_b: "ATA 34 Navigation / ADIRS"
+    interface_type: DIGITAL
+    bus_type: TBD  # ARINC 429 / AFDX — LC02
+    data_items: "Alpha, beta, IAS/TAS/Mach, altitude, position, FMS performance data"
+    status: STUB
+    lc_gate: LC03
+
+  - icd_id: ICD-BWB-22-003
+    title: "BWB Autoflight to Propulsion Guidance Coupling (FADEC)"
+    file: ICD_BWB_PROPULSION_GUIDANCE_COUPLING_001.md
+    delta_ref: DELTA-BWB-22-005
+    system_a: "ATA 22 Auto Flight (FCC / AT computer)"
+    system_b: "ATA 73/76 Engine FADEC × 4"
+    interface_type: DIGITAL
+    bus_type: TBD  # ARINC 429 / AFDX — LC02
+    data_items: "4× thrust demand, actual N1/EPR feedback, asymmetry compensation command"
+    status: STUB
+    lc_gate: LC03
+
+open_items:
+  - id: OI-ICD-001
+    description: "Confirm bus types for all interfaces (ARINC 429 vs AFDX)"
+    lc_gate: LC02
+  - id: OI-ICD-002
+    description: "Add latency and integrity requirements per interface"
+    lc_gate: LC03

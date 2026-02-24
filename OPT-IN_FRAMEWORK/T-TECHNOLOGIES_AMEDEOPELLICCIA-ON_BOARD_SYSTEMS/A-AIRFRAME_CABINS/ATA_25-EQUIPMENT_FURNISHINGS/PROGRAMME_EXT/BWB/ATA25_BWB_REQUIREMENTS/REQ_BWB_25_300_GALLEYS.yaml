@@ -1,0 +1,51 @@
+id: REQ_BWB_25_300_GALLEYS
+doc_id: T-A-ATA25-BWB-REQ-300
+ata_subchapter: "25-30"
+variant: BWB
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-BWB-25-003
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-300-001
+    title: "Galley attachment — BWB floor grid and overhead reaction"
+    shall: >
+      Galley monuments shall be attached to BWB floor grid nodes (primary load) and
+      overhead soffit fittings (reaction load, where mass > TBD kg), per
+      ICD_BWB_MONUMENT_INTERFACES_001.md. Load path analysis shall demonstrate
+      CS-25.561 compliance using BWB structural geometry.
+    rationale: "BWB galley bays attach to composite torque-box structure, not tube-and-wing floor beams."
+    verification: Analysis (CS-25.561) + dimensional inspection
+    cs25_ref: "CS-25.561"
+    lc_gate: LC03
+
+  - req_id: BWB-25-300-002
+    title: "Galley bay location — within single spar bay"
+    shall: >
+      Each galley unit shall be located within a single spar bay unless an approved
+      bay-bridging scheme is in place per BWB-25-000-003. Galley footprint shall
+      not cross a spar web without structural approval (ATA 53 coordination).
+    rationale: "Fire zone separation between spar bays; monument crossing introduces structural and fire-containment risk."
+    verification: Drawing compliance check + ATA 53 sign-off
+    lc_gate: LC03
+
+  - req_id: BWB-25-300-003
+    title: "Galley flammability (BWB)"
+    shall: >
+      All galley insert panels, curtain materials, and surrounding cabin panels
+      shall comply with CS-25.853 as registered in TEST_BWB_FLAMMABILITY_25_853.md.
+    rationale: "BWB galley materials may differ from WTW; variant-specific tracking required."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: BWB-25-300-004
+    title: "Galley water/waste interface — BWB routing"
+    shall: >
+      Galley drain and water supply connections shall be routed through the BWB
+      floor grid zones per ATA 38 BWB routing. Floor grid node penetration for
+      plumbing shall use approved sealed pass-throughs (ATA 53 coordination).
+    rationale: "BWB distributed floor grid differs from conventional tube fuselage; plumbing routing must avoid grid node fittings."
+    verification: Interface check vs ATA 38 ICD
+    lc_gate: LC03

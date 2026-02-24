@@ -1,0 +1,89 @@
+# ATA 57 Wings — WTW Maintenance Plan Registry
+# Doc ID: T-A-ATA57-WTW-MAINT-REG-001
+# Status: DRAFT
+# Scope: WTW wing repair/spare/supplier/circularity classification (SSOT hook)
+
+programme: AMPEL360_WTW
+ata_chapter: 57
+variant: WTW
+doc_id: T-A-ATA57-WTW-MAINT-REG-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+ssot_classification_ref: "I-INFRASTRUCTURES/.../STD_MAINT_PLAN_CLASSIFICATION/"
+
+repair_classifications:
+  - repair_id: REP-WTW-57-001
+    description: CFRP skin panel superficial damage (scratches, paint loss, gelcoat crazing)
+    category: COSMETIC
+    max_area_cm2: 100
+    method_ref: "ATA 20 / REPAIR_ACCEPTABILITY.md §3.1"
+    supplier_responsibility: AIRLINE
+    circularity_tier: TIER-3  # repair-in-place, no replacement
+
+  - repair_id: REP-WTW-57-002
+    description: CFRP skin panel through-damage (impact dent, delamination boundary < 50 cm²)
+    category: STRUCTURAL_MINOR
+    max_area_cm2: 50
+    method_ref: "ATA 51 / Structural Repair Manual (SRM-57-001)"
+    supplier_responsibility: MRO_APPROVED
+    circularity_tier: TIER-2  # patch repair, original part retained
+
+  - repair_id: REP-WTW-57-003
+    description: CFRP skin panel major damage (> 50 cm² delamination or through-penetration)
+    category: STRUCTURAL_MAJOR
+    max_area_cm2: TBD
+    method_ref: "OEM Engineering Order required"
+    supplier_responsibility: OEM
+    circularity_tier: TIER-1  # panel replacement, old panel to circular recovery stream
+
+  - repair_id: REP-WTW-57-004
+    description: Rib-to-spar fastener replacement (single fastener, standard oversize)
+    category: FASTENER
+    max_count_per_event: 3
+    method_ref: "ATA 20 / STANDARDS_FASTENERS_TORQUE.md §2"
+    supplier_responsibility: AIRLINE
+    circularity_tier: TIER-3
+
+  - repair_id: REP-WTW-57-005
+    description: Wing-fuselage attach fitting replacement
+    category: STRUCTURAL_CRITICAL
+    method_ref: "OEM Engineering Order required; LC57-09 test report reference mandatory"
+    supplier_responsibility: OEM
+    circularity_tier: TIER-1
+
+spare_classifications:
+  - part_class: WTW-SPARE-A
+    description: CFRP skin panel (standard production)
+    lead_time_weeks: TBD
+    supplier: TBD
+    circularity_disposition: REMANUFACTURE_OR_RECYCLE
+
+  - part_class: WTW-SPARE-B
+    description: Aluminium rib (inner bay, standard pitch)
+    lead_time_weeks: TBD
+    supplier: TBD
+    circularity_disposition: RECYCLE_ALUMINIUM
+
+  - part_class: WTW-SPARE-C
+    description: Ti-6Al-4V wing-fuselage attach fitting
+    lead_time_weeks: TBD
+    supplier: TBD
+    circularity_disposition: RECYCLE_TITANIUM
+
+  - part_class: WTW-SPARE-D
+    description: CFRP spar cap (front or rear, standard length)
+    lead_time_weeks: TBD
+    supplier: TBD
+    circularity_disposition: DOWNCYCLE_CHOPPED_FIBRE
+
+circularity_tiers:
+  TIER-1:
+    description: Full replacement; retired part enters circular recovery stream (recycle, remanufacture, or downcycle)
+    required_documentation: Waste transfer record + material passport
+  TIER-2:
+    description: Patch repair retaining original part; repair materials tracked for content reporting
+    required_documentation: Repair record + material content log
+  TIER-3:
+    description: In-place minor repair; no separate part tracking required
+    required_documentation: Work order only

@@ -1,0 +1,40 @@
+id: ATA44_WTW_ICD_LIST
+doc_id: T-A-ATA44-WTW-001
+variant: WTW
+status: DRAFT
+
+icds:
+  - icd_id: T-A-ATA44-WTW-ICD-001
+    file: ICD_WTW_CONTROLLER_PLACEMENT_001.md
+    delta_ref: DELTA-WTW-44-001
+    ata_subchapter: "44-10"
+    subject: "CMS controller (CMC/CAC) location, mounting envelope, connector face"
+    status: DRAFT
+
+  - icd_id: T-A-ATA44-WTW-ICD-002
+    file: ICD_WTW_WIRING_ROUTE_ENVELOPES_001.md
+    delta_ref: DELTA-WTW-44-003
+    ata_subchapter: "44-10"
+    subject: "Cabin harness routing envelopes — crown run + sidewall run"
+    status: DRAFT
+
+  - icd_id: T-A-ATA44-WTW-ICD-003
+    file: ICD_WTW_NETWORK_ENDPOINTS_001.md
+    delta_ref: DELTA-WTW-44-004
+    ata_subchapter: "44-10"
+    subject: "ARINC 664 Part 7 endpoint register (VL, port, IP allocation)"
+    status: DRAFT
+
+  - icd_id: T-A-ATA44-WTW-ICD-004
+    file: ICD_WTW_IFE_PLACEMENT_001.md
+    delta_ref: DELTA-WTW-44-005
+    ata_subchapter: "44-20"
+    subject: "IFE media server and cabin satellite unit placement / envelope"
+    status: DRAFT
+
+  - icd_id: T-A-ATA44-WTW-ICD-005
+    file: ICD_WTW_ANTENNA_PLACEMENT_001.md
+    delta_ref: DELTA-WTW-44-006
+    ata_subchapter: "44-30"
+    subject: "External communication antenna locations on WTW fuselage"
+    status: DRAFT

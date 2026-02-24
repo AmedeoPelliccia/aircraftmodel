@@ -1,0 +1,103 @@
+id: ATA44_BWB_INDEX
+doc_id: T-A-ATA44-BWB-001
+status: DRAFT
+revision: RevA
+lifecycle_state: DRAFT
+variant: BWB
+baseline_ref: T-A-ATA44-001
+
+items:
+  - delta_id: DELTA-BWB-44-001
+    ata_subchapter: "44-10"
+    title: "BWB distributed Zone Controller (ZC) placement per spar bay"
+    type: [ICD, REQ, ARCH]
+    files:
+      - ATA44_BWB_ARCHITECTURE/ARCH_BWB_TOPOLOGY_OVERVIEW.md
+      - ATA44_BWB_INTERFACES/ICD_BWB_CONTROLLER_PLACEMENT_001.md
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_100_CABIN_CORE.yaml
+    rationale: "BWB has no single E/E bay; CMS controllers distributed per spar bay to minimise inter-bay cabling mass and latency"
+    impact:
+      safety: medium
+      certification: "CS-25.1309, ED-14G (DO-160G)"
+      publications: "AMM ATA 44 section"
+
+  - delta_id: DELTA-BWB-44-002
+    ata_subchapter: "44-10"
+    title: "BWB radial + bay cabin zone definition"
+    type: [ARCH, REQ]
+    files:
+      - ATA44_BWB_ARCHITECTURE/ARCH_BWB_ZONAL_DISTRIBUTION.md
+      - ATA44_BWB_ARCHITECTURE/MODELS/zone_map.yaml
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_100_CABIN_CORE.yaml
+    rationale: "BWB zones defined by spar bay (structural) boundaries AND radial angular segments; differs from WTW linear zone topology"
+    impact:
+      safety: low
+      certification: "CS-25.1309"
+      publications: "Cabin crew procedures / MEL"
+
+  - delta_id: DELTA-BWB-44-003
+    ata_subchapter: "44-10"
+    title: "BWB ARINC 664 network segmentation (per-bay AFDX + inter-bay bridges)"
+    type: [ARCH, ICD, REQ]
+    files:
+      - ATA44_BWB_ARCHITECTURE/ARCH_BWB_NETWORK_SEGMENTATION.md
+      - ATA44_BWB_ARCHITECTURE/MODELS/network_topology.graphml
+      - ATA44_BWB_INTERFACES/ICD_BWB_NETWORK_SEGMENTATION_001.md
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_100_CABIN_CORE.yaml
+    rationale: "Spar bay structural boundaries require AFDX network segmentation per bay with dedicated inter-bay bridge switches; increases latency budget complexity"
+    impact:
+      safety: medium
+      certification: "CS-25.1309, ARINC 664 Part 7"
+      publications: "Network ICD, AMM ATA 44"
+
+  - delta_id: DELTA-BWB-44-004
+    ata_subchapter: "44-10"
+    title: "BWB inter-bay harness routing envelope (spar bay penetrations)"
+    type: [ICD]
+    files:
+      - ATA44_BWB_INTERFACES/ICD_BWB_HARNESS_ROUTING_001.md
+    rationale: "BWB harness must penetrate spar bay structures at defined doubler/grommet locations; routing envelope per bay differs from WTW continuous run"
+    impact:
+      safety: low
+      certification: "CS-25.1353"
+      publications: "WDM ATA 44"
+
+  - delta_id: DELTA-BWB-44-005
+    ata_subchapter: "44-10"
+    title: "BWB network endpoint register (per-bay AFDX, inter-bay bridge topology)"
+    type: [ICD, REQ]
+    files:
+      - ATA44_BWB_INTERFACES/ICD_BWB_NETWORK_ENDPOINTS_001.md
+      - ATA44_BWB_ARCHITECTURE/MODELS/endpoint_map.yaml
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_100_CABIN_CORE.yaml
+    rationale: "VL allocation, port assignment, and bridge switch addresses are BWB-specific; cannot share WTW endpoint register"
+    impact:
+      safety: low
+      certification: "ARINC 664 Part 7"
+      publications: "Network ICD"
+
+  - delta_id: DELTA-BWB-44-006
+    ata_subchapter: "44-20"
+    title: "BWB distributed IFE node placement (per-bay)"
+    type: [ICD, REQ]
+    files:
+      - ATA44_BWB_INTERFACES/ICD_BWB_IFE_PLACEMENT_001.md
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_200_IFE.yaml
+    rationale: "BWB has no single IFE server bay; per-bay IFE distribution nodes required to avoid cross-spar-bay content streaming over inter-bay bridge"
+    impact:
+      safety: low
+      certification: "CS-25.853, ED-14G"
+      publications: "IFE installation manual"
+
+  - delta_id: DELTA-BWB-44-007
+    ata_subchapter: "44-50"
+    title: "BWB bay-partitioned cabin monitoring topology"
+    type: [ICD, REQ, EVI]
+    files:
+      - ATA44_BWB_REQUIREMENTS/REQ_BWB_44_500_CABIN_MONITORING.yaml
+      - ATA44_BWB_VERIFICATION_EVIDENCE/TEST_BWB_CMS_FUNCTIONAL_44_10.md
+    rationale: "BWB smoke/temp sensor loops partitioned per spar bay; smoke event must be localised to bay without relying on inter-bay bridge availability"
+    impact:
+      safety: medium
+      certification: "CS-25.854, CS-25.1309"
+      publications: "AMM ATA 44-50"
