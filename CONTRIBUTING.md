@@ -17,6 +17,8 @@
 | Authoritative engineering evidence | `SSOT/` |
 | Publishable or deliverable | `PUB/` |
 | Formatted output (PDF, HTML, DOCX) | `PUB/EXPORT/` — **never** `SSOT/` |
+| GEN-MODEL mode configs (observer/delineant) | `.askm/` — YAML configs |
+| Agent registrations & enforcement rules | `.asit/` — agent bindings, operator rules |
 
 ## Format Rules
 

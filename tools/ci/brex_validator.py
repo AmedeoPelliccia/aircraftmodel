@@ -33,7 +33,7 @@ def validate_dm(filepath):
     relpath = os.path.relpath(filepath, REPO_ROOT)
 
     try:
-        tree = ET.parse(filepath)
+        tree = defusedxml.etree.ElementTree.parse(filepath)
     except ET.ParseError as e:
         errors.append(f"XML parse error in {relpath}: {e}")
         return errors

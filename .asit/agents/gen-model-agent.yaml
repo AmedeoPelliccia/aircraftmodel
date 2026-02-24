@@ -1,0 +1,64 @@
+# .asit/agents — GEN-MODEL Agent Registration
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+agent_id: GEN-MODEL-AGENT-001
+name: GEN-MODEL LC05 Agent
+description: >
+  Unified agent operating under observer/delineant mode separation
+  for LC05 Analysis Models. Mode is determined per-invocation, not
+  per-agent. A single agent instance switches modes but never
+  combines them in a single operation.
+
+programme: ID-A360-Q100
+lifecycle_stage: LC05
+
+# Mode bindings — references to .askm/ configurations
+modes:
+  - mode: OBSERVER
+    config_ref: .askm/observer/config.yaml
+    artifacts_ref: .askm/observer/allowed-artifacts.yaml
+    description: "Read-only state extraction (no topology mutation)"
+
+  - mode: DELINEANT
+    config_ref: .askm/delineant/config.yaml
+    gates_ref: .askm/delineant/gate-rules.yaml
+    description: "Structural write with admissibility gates"
+
+# Constraints on mode switching
+mode_switching:
+  allowed: true
+  constraint: >
+    Mode is set at the start of each operation and cannot change
+    mid-operation. An operation that begins as OBSERVER must complete
+    as OBSERVER. Switching to DELINEANT requires a new operation
+    invocation with explicit mode declaration.
+
+# Procedure bindings (DWGE integration)
+procedures:
+  - procedure_id: PROC-ATA28-REFINE-TOPO-v1
+    allowed_mode: DELINEANT
+    delta_class: STRUCTURAL
+    invariance_test_required: true
+    certification_impact_scan: true
+
+  - procedure_id: PROC-ATA28-MARGIN-SNAPSHOT-v2
+    allowed_mode: OBSERVER
+    delta_class: NONE
+    invariance_test_required: false
+    certification_impact_scan: false
+
+  - procedure_id: PROC-ATA47-INERTING-REVIEW-v1
+    allowed_mode: OBSERVER
+    delta_class: NONE
+    invariance_test_required: false
+    certification_impact_scan: false
+
+  - procedure_id: PROC-ATA47-TOPOLOGY-EXTEND-v1
+    allowed_mode: DELINEANT
+    delta_class: STRUCTURAL
+    invariance_test_required: true
+    certification_impact_scan: true
+
+enforcement_ref: .asit/operator/enforcement-rules.yaml
+governance_spec_ref: SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md

@@ -1,0 +1,43 @@
+# .askm/observer — Configuration
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+mode: OBSERVER
+
+description: >
+  Read-only state extractor. Projects the Aircraft Knowledge Graph (KG)
+  into observable state snapshots without mutating topology, schema,
+  or certification bindings.
+
+functional_form:
+  input: [KG, B]
+  output: S_t
+  definition: "O: (KG, B) → S_t where S_t ⊂ KG"
+
+invariants:
+  - id: INV-O1
+    name: Idempotence
+    rule: "O(O(KG, B), B) = O(KG, B)"
+  - id: INV-O2
+    name: No Topology Mutation
+    rule: "Nodes(KG)_after = Nodes(KG)_before; Edges(KG)_after = Edges(KG)_before"
+  - id: INV-O3
+    name: No Schema Drift
+    rule: "Σ_after = Σ_before"
+  - id: INV-O4
+    name: Ledger Write Constraint
+    rule: "Only STATE_CAPTURE, MARGIN_REPORT, TRACE_SNAPSHOT permitted"
+
+allowed_output_classes:
+  - LC05_ANALYSIS_STATE_CAPTURE
+  - LC05_MARGIN_REPORT
+  - LC05_TRACE_SNAPSHOT
+
+forbidden_output_classes:
+  - MODEL_DELTA
+
+delta_class: NONE
+
+lifecycle_stage: LC05
+
+governance_ref: LC05-GEN-MODEL-ROLE-SPEC-v0.1

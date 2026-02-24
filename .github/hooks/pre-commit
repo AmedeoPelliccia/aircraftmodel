@@ -26,15 +26,36 @@ fi
 LC_FILES=$(git diff --cached --name-only | grep -E '^SSOT/LC(0[2-9]|1[0-4])' || true)
 for f in $LC_FILES; do
     if [ -f "$f" ]; then
-        LINES=$(wc -l < "$f")
+        LINES=$(wc -l < "$f" | tr -d ' ')
         if [ "$LINES" -gt 5 ]; then
-            if ! grep -qE 'KNU-[A-Z0-9-]+' "$f"; then
+            if ! grep -qE 'KNU-[A-Z0-9]+-[0-9]+-[0-9]+' "$f"; then
                 echo "❌ $f has >5 lines but no KNU ID reference"
                 ERRORS=$((ERRORS + 1))
             fi
         fi
     fi
 done
+
+# Rule 4: Observer mode cannot declare structural deltas
+OBSERVER_FILES=$(git diff --cached --name-only | grep -E '^\.askm/observer/' || true)
+for f in $OBSERVER_FILES; do
+    if [ -f "$f" ]; then
+        if grep -qE 'delta_class:\s*STRUCTURAL' "$f" || grep -qE 'MODEL_DELTA' "$f" && grep -qE 'allowed_output_classes' "$f"; then
+            echo "❌ Observer mode cannot declare structural deltas or emit MODEL_DELTA: $f"
+            ERRORS=$((ERRORS + 1))
+        fi
+    fi
+done
+
+# Rule 5: Delineant config modified without prior observer baseline in LC05
+DELINEANT_FILES=$(git diff --cached --name-only | grep -E '^\.askm/delineant/' || true)
+if [ -n "$DELINEANT_FILES" ]; then
+    BASELINE_EXISTS=$(find SSOT/LC05_ANALYSIS_MODELS/ -name '*STATE_CAPTURE*' -o -name '*TRACE_SNAPSHOT*' 2>/dev/null | head -1 || true)
+    if [ -z "$BASELINE_EXISTS" ]; then
+        echo "⚠️  Delineant config modified without prior observer baseline in LC05"
+        echo "   (No LC05_ANALYSIS_STATE_CAPTURE or LC05_TRACE_SNAPSHOT found in SSOT/LC05_ANALYSIS_MODELS/)"
+    fi
+fi
 
 if [ "$ERRORS" -gt 0 ]; then
     echo ""
