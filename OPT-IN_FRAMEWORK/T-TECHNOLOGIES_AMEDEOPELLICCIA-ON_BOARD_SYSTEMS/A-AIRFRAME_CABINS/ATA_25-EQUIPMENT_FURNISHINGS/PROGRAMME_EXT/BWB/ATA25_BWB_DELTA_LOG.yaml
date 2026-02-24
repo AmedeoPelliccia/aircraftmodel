@@ -1,0 +1,68 @@
+id: ATA25_BWB_DELTA_LOG
+doc_id: T-A-ATA25-BWB-001
+variant: BWB
+baseline_ref: T-A-ATA25-001
+
+entries:
+  - change_id: CHG-0001
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-001
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold for ATA 25 — cabin envelope and monuments"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0002
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-002
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — floor grid attach philosophy"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0003
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-003
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — monument load paths"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0004
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-004
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — stowage distribution"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0005
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-005
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — emergency egress clearances"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0006
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-006
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — flight compartment integration"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
+
+  - change_id: CHG-0007
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-25-007
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — cargo liner attachment"
+    lc_gate: LC01
+    notes: "No quantitative installation limits introduced yet"
