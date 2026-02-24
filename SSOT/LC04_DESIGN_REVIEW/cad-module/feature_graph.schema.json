@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ampel360.aircraftmodel.eu/schemas/feature_graph.schema.json",
   "title": "FeatureGraph — Canonical CAD Feature/Constraint Representation",
-  "description": "JSON Schema for the FeatureGraph artifact produced by .askm/operator/observer in CAD mode. Represents geometric features, parametric constraints, topological relationships, and design intent extracted from CAD source files. Part of AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A.",
+  "description": "JSON Schema for the FeatureGraph artifact produced by .askm/operator/observer in CAD mode. Represents geometric features, parametric constraints, topological relationships, and design intent extracted from CAD source files. Part of AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A.",
   "type": "object",
   "required": [
     "schema_version",

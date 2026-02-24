@@ -53,7 +53,7 @@ certification_gates:
     review_authority: Chief Engineer
     standards: [CS-25 Amdt 28]
 
-# --- CAD Module Gates (STD-LC05-ASKM-CAD-001 Rev A) ---
+# --- CAD Module Gates (STD-LC04-ASKM-CAD-001 Rev A) ---
 
   - id: GATE-CAD-01
     trigger: "Delineant produces CAD candidate artifacts (3D/2D)"

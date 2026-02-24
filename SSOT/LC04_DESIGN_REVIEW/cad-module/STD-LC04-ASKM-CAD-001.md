@@ -1,10 +1,10 @@
-# STD-LC05-ASKM-CAD-001 — CAD Module Observer / Delineant Standard
+# STD-LC04-ASKM-CAD-001 — CAD Module Observer / Delineant Standard
 
-    doc_id: AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A
+    doc_id: AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A
     knot_id: KNOT-ATA96-70-00-001
     knu_id: KNU-ATA96-70-003
     title: CAD Module — Observer/Delineant Roles, Output Contracts & Gates
-    lifecycle_stage: LC05
+    lifecycle_stage: LC04
     version: 1.0
     date: 2026-02-24
     status: PLANNED
@@ -68,7 +68,7 @@ The observer produces **exactly three** canonical artifact types:
 
 | Artifact | Format | Schema | Placement |
 |---|---|---|---|
-| `feature_graph.json` | JSON | `feature_graph.schema.json` | `SSOT/LC05_ANALYSIS_MODELS/cad-module/` |
+| `feature_graph.json` | JSON | `feature_graph.schema.json` | `SSOT/LC04_DESIGN_REVIEW/cad-module/` |
 | `geometry_params.yaml` | YAML | Inline (§3.4) | Same |
 | `cad_semantics.yaml` | YAML | Inline (§3.5) | Same |
 
@@ -273,12 +273,12 @@ For the CAD module to satisfy "only improves" semantics:
 
 ---
 
-## 9 — Lifecycle Integration (LC05 GEN-MODEL)
+## 9 — Lifecycle Integration
 
-| Role | LC05 Function |
+| Role | Function |
 |---|---|
-| Observer | Produces state and semantic model → LC05 analysis models |
-| Delineant | Produces candidate artifacts → LC05 synthesis candidates |
+| Observer | Produces state and semantic model → LC04 design models |
+| Delineant | Produces candidate artifacts → LC04 synthesis candidates |
 | Promotion | SSOT update occurs at LC08/LC09 per programme governance |
 
 ---
@@ -298,7 +298,7 @@ For the CAD module to satisfy "only improves" semantics:
 
 | Artifact | Reference |
 |---|---|
-| This standard | AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A |
+| This standard | AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A |
 | Parent specification | LC05-GEN-MODEL-ROLE-SPEC-v0.1 (KNU-ATA96-70-001) |
 | Topology invariance proof | KNU-ATA96-70-002 |
 | FeatureGraph schema | `feature_graph.schema.json` (this module) |
@@ -309,7 +309,7 @@ For the CAD module to satisfy "only improves" semantics:
 
 ---
 
-*Document ID: AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A*
+*Document ID: AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A*
 *Programme: ID-A360-Q100 · AMPEL360*
-*Classification: Engineering Governance — LC05 Analysis Models / CAD Module*
+*Classification: Engineering Governance — LC04 Design Review / CAD Module*
 *Applicable Standards: CS-25 Amdt 28, ISO 1101, ASME Y14.5, ATA iSpec 2200*

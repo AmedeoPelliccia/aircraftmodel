@@ -1,11 +1,11 @@
 # PROC-CAD-BUILD-DET-v1.0 — Build-from-FeatureGraph Procedure
-# AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A
+# AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A
 # Programme: ID-A360-Q100 · AMPEL360
 # Parent Spec: LC05-GEN-MODEL-ROLE-SPEC-v0.1 (KNU-ATA96-70-001)
 
 procedure_id: PROC-CAD-BUILD-DET-v1.0
 title: "Deterministic CAD Build from FeatureGraph"
-lifecycle_stage: LC05
+lifecycle_stage: LC04
 allowed_mode: DELINEANT
 delta_class: STRUCTURAL
 version: "1.0"
@@ -113,12 +113,12 @@ steps:
       - "drawing_2d.dxf"
       - "drawing_meta.yaml"
     deterministic: true
-    template_ref: "approved title-block template per STD-LC05-ASKM-CAD-001 §4.3 ADM-CAD-4"
+    template_ref: "approved title-block template per STD-LC04-ASKM-CAD-001 §4.3 ADM-CAD-4"
 
   - id: STEP-06
     name: "Run Gate Pipeline"
     description: >
-      Execute all WDG gates in order (§5 of STD-LC05-ASKM-CAD-001).
+      Execute all WDG gates in order (§5 of STD-LC04-ASKM-CAD-001).
       Collect pass/fail verdicts into validation_report.json.
     input:
       - "feature_graph.json"
@@ -321,7 +321,7 @@ governance:
   certification_impact_scan: true
   observer_baseline_required: true
   parent_spec: "LC05-GEN-MODEL-ROLE-SPEC-v0.1"
-  cad_standard: "STD-LC05-ASKM-CAD-001"
+  cad_standard: "STD-LC04-ASKM-CAD-001"
   enforcement_ref: ".asit/operator/enforcement-rules.yaml"
 
 # ---------------------------------------------------------------------------
@@ -329,7 +329,7 @@ governance:
 # ---------------------------------------------------------------------------
 traceability:
   doc_id: "PROC-CAD-BUILD-DET-v1.0"
-  parent_standard: "AMPEL360-FAM-LC05-ASKM-CAD-001 Rev A"
+  parent_standard: "AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A"
   parent_spec: "LC05-GEN-MODEL-ROLE-SPEC-v0.1 (KNU-ATA96-70-001)"
   parent_knot: "KNOT-ATA96-70-00-001"
   schema_ref: "feature_graph.schema.json"
