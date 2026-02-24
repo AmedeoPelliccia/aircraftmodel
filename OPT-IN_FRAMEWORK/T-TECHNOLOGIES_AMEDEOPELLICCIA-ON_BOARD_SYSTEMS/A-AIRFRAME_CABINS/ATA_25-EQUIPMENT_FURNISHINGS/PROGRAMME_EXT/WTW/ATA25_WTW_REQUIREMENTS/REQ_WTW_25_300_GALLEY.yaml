@@ -1,0 +1,38 @@
+id: REQ_WTW_25_300_GALLEY
+doc_id: T-A-ATA25-WTW-REQ-300
+ata_subchapter: "25-30"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-003
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-300-001
+    title: "Galley bay locations — WTW fuselage section breaks"
+    shall: >
+      Galley bays shall be positioned within fuselage section TBD–TBD (per Type Design
+      structural layout). Floor sill fittings for galley structural attachment shall be
+      per ICD_WTW_ATTACH_POINTS_001.md.
+    rationale: "WTW galley bay geometry is constrained by fuselage section joints and floor beam spacing."
+    verification: Dimensional inspection + drawing compliance
+    lc_gate: LC03
+
+  - req_id: WTW-25-300-002
+    title: "Galley flammability"
+    shall: >
+      All galley insert (GAIN) panels, curtain materials, and surrounding cabin panels
+      shall comply with CS-25.853 as registered in TEST_WTW_FLAMMABILITY_25_853.md.
+    rationale: "WTW-specific galley configurations may use different materials than BWB."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: WTW-25-300-003
+    title: "Galley water/waste interface"
+    shall: >
+      Galley drain and water supply connections shall be compatible with the WTW
+      ATA 38 plumbing routing (drain path runs aft on WTW; differs from BWB central drain).
+    rationale: "WTW lower lobe drain routing differs from BWB distributed bilge."
+    verification: Interface check vs ATA 38 ICD
+    lc_gate: LC03

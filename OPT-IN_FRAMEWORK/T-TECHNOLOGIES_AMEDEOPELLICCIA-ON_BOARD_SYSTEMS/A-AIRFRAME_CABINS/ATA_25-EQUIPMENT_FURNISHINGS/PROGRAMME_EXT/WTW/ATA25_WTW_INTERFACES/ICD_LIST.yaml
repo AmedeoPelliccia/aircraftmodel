@@ -1,0 +1,30 @@
+id: ATA25_WTW_ICD_LIST
+doc_id: T-A-ATA25-WTW-ICD-000
+variant: WTW
+status: DRAFT
+revision: RevA
+
+icds:
+  - icd_id: T-A-ATA25-WTW-ICD-001
+    title: "WTW Cabin Geometry Envelope"
+    file: ICD_WTW_CABIN_GEOM_001.md
+    delta_ref: DELTA-WTW-25-001
+    ata_subchapter: "25-20"
+    interfaces_with:
+      - ATA_53  # Fuselage structure (cabin floor, sidewall panels)
+      - ATA_21  # ECS ducting routing
+      - ATA_44  # Cabin systems bus locations
+    status: DRAFT
+    lc_gate_for_data: LC03
+
+  - icd_id: T-A-ATA25-WTW-ICD-002
+    title: "WTW Seat/Monument Attach Points"
+    file: ICD_WTW_ATTACH_POINTS_001.md
+    delta_ref: DELTA-WTW-25-002
+    ata_subchapter: "25-10"
+    interfaces_with:
+      - ATA_53  # Floor beam seat track installation
+      - ATA_24  # Electrical seat power outlets
+      - ATA_38  # Plumbing/drain monument connections
+    status: DRAFT
+    lc_gate_for_data: LC03

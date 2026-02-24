@@ -1,0 +1,28 @@
+id: REQ_WTW_25_000_GENERAL
+doc_id: T-A-ATA25-WTW-REQ-000
+ata_subchapter: "25-00"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-000-001
+    title: "Overlay non-duplication"
+    shall: >
+      WTW-specific ATA 25 content shall supplement, not duplicate, SHARED baseline
+      content in the ATA_25 root. Where WTW-specific thresholds differ from SHARED,
+      the WTW threshold governs for AMPEL360 WTW.
+    rationale: "Prevents configuration drift between SHARED and variant-specific content."
+    verification: Configuration audit (CM)
+    lc_gate: LC01
+
+  - req_id: WTW-25-000-002
+    title: "CS-25 applicability"
+    shall: >
+      All WTW ATA 25 equipment installations shall comply with applicable CS-25
+      regulations (as listed in ATA25_WTW_COMPLIANCE_MATRIX.md) and any special
+      conditions applicable to the AMPEL360 WTW type design basis.
+    rationale: "Type certification basis governs per normative hierarchy."
+    verification: Compliance matrix review
+    lc_gate: LC01

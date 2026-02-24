@@ -1,0 +1,40 @@
+id: REQ_WTW_25_500_CARGO_LINERS
+doc_id: T-A-ATA25-WTW-REQ-500
+ata_subchapter: "25-50"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-006
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-500-001
+    title: "Cargo liner attachment — WTW lower lobe frame/stringer"
+    shall: >
+      Cargo compartment liner panels shall be attached to WTW lower-lobe frames
+      and stringers per approved attachment scheme (attachment PN and spacing TBD at LC03).
+      Liner attachment shall not penetrate pressure vessel skin without an approved
+      sealed fastener scheme.
+    rationale: "WTW circular fuselage lower lobe liner attachment is frame/stringer based, unlike BWB distributed floor panels."
+    verification: Dimensional inspection + assembly compliance check
+    lc_gate: LC03
+
+  - req_id: WTW-25-500-002
+    title: "Cargo liner flammability"
+    shall: >
+      All cargo compartment liner materials shall meet CS-25.853 class C (or as specified
+      in Type Design for WTW). Material qualification records shall be registered in
+      TEST_WTW_FLAMMABILITY_25_853.md.
+    rationale: "WTW may use different liner materials than BWB; variant-specific tracking required."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: WTW-25-500-003
+    title: "Cargo door liner clearance — WTW"
+    shall: >
+      Cargo liner panels shall maintain minimum TBD mm clearance to cargo door hinge
+      and latch mechanism throughout full door travel (ATA 52 interface).
+    rationale: "WTW aft lower lobe cargo door geometry is variant-specific."
+    verification: Dimensional inspection with door cycled
+    lc_gate: LC03
