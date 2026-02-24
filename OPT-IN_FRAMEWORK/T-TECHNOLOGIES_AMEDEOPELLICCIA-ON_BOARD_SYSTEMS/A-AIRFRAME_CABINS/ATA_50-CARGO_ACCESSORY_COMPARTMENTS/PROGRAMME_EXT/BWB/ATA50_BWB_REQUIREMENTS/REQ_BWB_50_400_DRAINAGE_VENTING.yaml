@@ -1,0 +1,64 @@
+---
+# REQ_BWB_50_400_DRAINAGE_VENTING.yaml
+# AMPEL360 BWB — ATA 50-400 Drainage & Venting Requirements (BWB-only deltas)
+
+requirements:
+  ata_subchapter: "50-400"
+  programme: AMPEL360-BWB
+  overlay: PROGRAMME_EXT/BWB
+
+  reqs:
+    - req_id: BWB-50-400-001
+      shall: >
+        Each structural cargo bay SHALL have an independent drain collect
+        point at the lowest point of the bay floor, routing through a
+        dedicated spar penetration fitting to a lower wing skin drain mast
+        per ICD-BWB-50-004.
+      rationale: >
+        Distributed bay architecture requires per-bay drain provisions.
+        A single keel-line drain (WTW) is not applicable; each bay must
+        drain independently to prevent water accumulation at spar boundaries.
+      cs25_ref: CS-25.1001
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04
+
+    - req_id: BWB-50-400-002
+      shall: >
+        Drain capacity per bay SHALL meet TBD L/min as defined by CS-25.1001.
+        Drain capacity confirmed at LC04 after aircraft system sizing.
+      rationale: >
+        Per-bay drain must have sufficient capacity to clear maximum expected
+        water ingress rate from door seals, condensation and spillage.
+      cs25_ref: CS-25.1001
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04
+
+    - req_id: BWB-50-400-003
+      shall: >
+        Spar penetration drain fittings SHALL be sealed with an approved
+        sealant per ATA 20 SHARED §6 (wet-installed faying surface) to
+        prevent pressurisation leakage at the fitting interface.
+      rationale: >
+        Spar penetrations are structural boundaries in a pressurised section.
+        Sealant class must match the pressurisation differential and service
+        life requirements.
+      cs25_ref: N/A
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04
+
+    - req_id: BWB-50-400-004
+      shall: >
+        Ventilation of each cargo bay SHALL be provided via a per-bay vent
+        path maintaining air change rate per CS-25.1103. Vent routing SHALL
+        be routed through the spar penetration fitting per ICD-BWB-50-004
+        or via a dedicated vent path approved at LC04.
+      rationale: >
+        Bay-partitioned compartments require independent ventilation paths.
+        The vent path design avoids cross-bay contamination in a fire scenario.
+      cs25_ref: CS-25.1103
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04

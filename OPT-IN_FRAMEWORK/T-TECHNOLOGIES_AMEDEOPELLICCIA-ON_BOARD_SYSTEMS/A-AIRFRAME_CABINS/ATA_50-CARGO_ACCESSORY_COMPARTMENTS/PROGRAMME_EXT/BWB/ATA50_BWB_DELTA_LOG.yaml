@@ -1,0 +1,100 @@
+---
+# ATA50_BWB_DELTA_LOG.yaml
+# AMPEL360 BWB — ATA 50 Programme Extension Overlay Delta Log
+# Revision: LC01 scaffold
+
+log:
+  programme: AMPEL360-BWB
+  ata_chapter: "50"
+  entries:
+
+    - change_id: CHG-0001
+      delta_id: DELTA-BWB-50-001
+      title: Multi-bay flat-deck cargo compartment envelope
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Introduces BWB-specific cargo compartment envelope definition for the
+        distributed multi-bay flat-deck cargo architecture. Each structural bay
+        bounded by consecutive spar webs has its own envelope: floor node
+        coordinates, usable width/height, and net usable volume.
+        Differs fundamentally from WTW circular belly-hold constraint.
+
+    - change_id: CHG-0002
+      delta_id: DELTA-BWB-50-002
+      title: Side-access cargo door geometry and latch/hinge ICD (per bay)
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Defines BWB side-access (wing lower surface) cargo door clear-opening
+        dimensions, sill height above lower skin, hinge pin locations and
+        latch mechanism ICD per bay. Configuration differs from WTW
+        upward-opening belly plug door.
+
+    - change_id: CHG-0003
+      delta_id: DELTA-BWB-50-003
+      title: Flat-panel liner attachment scheme (spar-boundary aware)
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Liner attachment rail locations follow composite spar frame pitch in
+        the flat-floor BWB deck. Rail type and clip spacing differ from the
+        WTW curved fuselage rail/clip scheme. No panel may span a spar bay
+        boundary; each panel is self-contained within one bay.
+
+    - change_id: CHG-0004
+      delta_id: DELTA-BWB-50-004
+      title: Distributed drain/vent routing via spar bay penetrations
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Drain and vent paths route through dedicated spar penetration fittings
+        (grommet/doubler per structural boundary) to a lower wing skin exit
+        point per bay. Each bay has its own collect point and drain mast.
+        Differs from WTW keel-line routing.
+
+    - change_id: CHG-0005
+      delta_id: DELTA-BWB-50-005
+      title: Bay-partitioned fire containment liner interfaces
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Fire containment liner is partitioned per structural bay using spar
+        web fire-stops as bay boundaries. Panel seam gap at spar-adjacent
+        joints and spar penetration fire-stop geometry define fire
+        classification per CS-25.855/856.
+
+    - change_id: CHG-0006
+      delta_id: DELTA-BWB-50-006
+      title: Cargo net/restraint attach interfaces at spar bay frames
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Restraint attach fittings are located on composite spar frame floor
+        nodes within each bay. Metallic insert design for load introduction
+        into composite spar web defined at LC05 after FEA.
+
+    - change_id: CHG-0007
+      delta_id: DELTA-BWB-50-007
+      title: Bay-to-bay access provisions through spar penetrations
+      author: TBD
+      date: TBD
+      lc_gate: LC01
+      status: OPEN
+      description: >
+        Inter-bay access requires spar penetration openings (manholes or
+        hatches) reinforced per composite spar repair manual. Opening geometry,
+        reinforcement doublers and fire/pressure sealing are BWB-only
+        requirements not present in WTW.
