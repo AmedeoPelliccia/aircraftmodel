@@ -1,0 +1,21 @@
+id: REQ_BWB_44_300
+subchapter: "44-30"
+title: "External Communication — BWB Antenna Placement"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-300-001
+    shall: "External communication antennas SHALL be placed on the BWB lower surface consistent with BWB fuselage envelope constraints. Placement SHALL avoid structural spar bay attachment points."
+    rationale: "BWB outer mould line differs from WTW circular fuselage. Antenna positions must be derived from BWB structural and aerodynamic surface definitions."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC05
+
+  - req_id: BWB-44-300-002
+    shall: "RF emissions from external communication antennas SHALL comply with ETSI EN 303 360 at all BWB antenna installation positions."
+    rationale: "BWB composite skin may have different shielding effectiveness than WTW metallic fuselage. RF compliance must be re-verified for BWB geometry."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC07

@@ -1,0 +1,21 @@
+id: REQ_BWB_44_600
+subchapter: "44-60"
+title: "Miscellaneous — BWB CMS Deltas"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-600-001
+    shall: "CMS software SHALL support dynamic zone reconfiguration to reassign sensor monitoring from a failed ZC to an adjacent bay ZC via BBU, without requiring physical access."
+    rationale: "Distributed ZC architecture increases the likelihood of partial system degradation. Software reconfiguration reduces crew workload and maintenance costs."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC05
+
+  - req_id: BWB-44-600-002
+    shall: "All BWB CMS LRUs (ZC, BBU, IBN) SHALL be compliant with ED-14G (DO-160G) environmental conditions applicable to the installed bay environment."
+    rationale: "Per-bay environmental conditions may differ from centralised E/E bay used in WTW. Environmental qualification per bay required."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC07

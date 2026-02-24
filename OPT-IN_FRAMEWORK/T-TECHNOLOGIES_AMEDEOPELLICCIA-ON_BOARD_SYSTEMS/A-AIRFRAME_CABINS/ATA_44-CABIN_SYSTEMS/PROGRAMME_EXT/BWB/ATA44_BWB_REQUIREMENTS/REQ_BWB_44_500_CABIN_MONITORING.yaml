@@ -1,0 +1,28 @@
+id: REQ_BWB_44_500
+subchapter: "44-50"
+title: "Cabin Monitoring — BWB Bay-Partitioned Monitoring Topology"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-500-001
+    shall: "Smoke and temperature sensor loops SHALL be partitioned per spar bay. A sensor event in Bay N SHALL be locally processed by ZC-N without requiring BBU availability."
+    rationale: "Fire/smoke detection is safety-essential. BBU failure must not prevent detection or alert in the affected bay."
+    cs25_ref: "CS-25.854, CS-25.1309"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: BWB-44-500-002
+    shall: "Upon detection of a smoke event in Bay N, ZC-N SHALL transmit an inter-bay alert to all other ZCs via BBU within TBD ms [LC04 gate] when BBU is available."
+    rationale: "Crew situational awareness requires multi-bay smoke alert even if source bay is identified. Inter-bay propagation is best-effort (not safety-essential path)."
+    cs25_ref: "CS-25.854"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: BWB-44-500-003
+    shall: "The cabin monitoring system SHALL uniquely identify the bay and zone of origin for all smoke and temperature events to crew display."
+    rationale: "Crew must be able to identify the physical location of a cabin event for effective fire/smoke response in the multi-bay BWB layout."
+    cs25_ref: "CS-25.854"
+    verification: test
+    lc_gate: LC07

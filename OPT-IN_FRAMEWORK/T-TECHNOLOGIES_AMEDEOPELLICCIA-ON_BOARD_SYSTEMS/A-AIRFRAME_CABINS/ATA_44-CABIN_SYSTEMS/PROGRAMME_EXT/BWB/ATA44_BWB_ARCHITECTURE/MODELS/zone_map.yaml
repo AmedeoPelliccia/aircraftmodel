@@ -1,0 +1,67 @@
+id: ATA44_BWB_ZONE_MAP
+doc_id: T-A-ATA44-BWB-ARCH-002
+variant: BWB
+status: DRAFT
+revision: RevA
+note: "Zone ID format: Z<bay_id>-<radial_sector>. FS values TBD at LC03."
+
+zones:
+  - zone_id: Z1-A
+    bay_id: Bay1
+    radial_sector: Port
+    zc_id: ZC-01
+    csu_id: CSU-01A
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: FWD_PORT
+
+  - zone_id: Z1-B
+    bay_id: Bay1
+    radial_sector: Starboard
+    zc_id: ZC-01
+    csu_id: CSU-01B
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: FWD_STBD
+
+  - zone_id: Z2-A
+    bay_id: Bay2
+    radial_sector: Port
+    zc_id: ZC-02
+    csu_id: CSU-02A
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: null
+
+  - zone_id: Z2-B
+    bay_id: Bay2
+    radial_sector: Starboard
+    zc_id: ZC-02
+    csu_id: CSU-02B
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: null
+
+  - zone_id: Z3-A
+    bay_id: Bay3
+    radial_sector: Port
+    zc_id: ZC-03
+    csu_id: CSU-03A
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: null
+
+  - zone_id: Z3-B
+    bay_id: Bay3
+    radial_sector: Starboard
+    zc_id: ZC-03
+    csu_id: CSU-03B
+    fs_fwd: TBD
+    fs_aft: TBD
+    pax_nominal: TBD
+    galley: AFT_STBD

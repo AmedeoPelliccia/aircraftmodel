@@ -1,0 +1,103 @@
+id: ATA44_BWB_ENDPOINT_MAP
+doc_id: T-A-ATA44-BWB-ICD-005
+variant: BWB
+status: DRAFT
+revision: RevA
+protocol: "ARINC 664 Part 7 (AFDX) — per-bay segments"
+note: "VL IDs and port numbers TBD at LC03 from ARINC 664 network design tool. N_bays TBD."
+
+segments:
+  - segment_id: SEG-01
+    bay_id: Bay1
+    switches: [SW-01A, SW-01B]
+    endpoints:
+      - node_id: ZC-01
+        role: ZoneController
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-01A
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-01B
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: IBN-01
+        role: IFE_BayNode
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: BBU-01_SEG01_port
+        role: BayBridgeUnit_Port
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+
+  - segment_id: SEG-02
+    bay_id: Bay2
+    switches: [SW-02A, SW-02B]
+    endpoints:
+      - node_id: ZC-02
+        role: ZoneController
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-02A
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-02B
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: IBN-02
+        role: IFE_BayNode
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: BBU-01_SEG02_port
+        role: BayBridgeUnit_Port
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: BBU-02_SEG02_port
+        role: BayBridgeUnit_Port
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+
+  - segment_id: SEG-03
+    bay_id: Bay3
+    switches: [SW-03A, SW-03B]
+    endpoints:
+      - node_id: ZC-03
+        role: ZoneController
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-03A
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: CSU-03B
+        role: CabinSatelliteUnit
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: IBN-03
+        role: IFE_BayNode
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
+      - node_id: BBU-02_SEG03_port
+        role: BayBridgeUnit_Port
+        vl_id: TBD
+        port: TBD
+        ip_address: TBD
