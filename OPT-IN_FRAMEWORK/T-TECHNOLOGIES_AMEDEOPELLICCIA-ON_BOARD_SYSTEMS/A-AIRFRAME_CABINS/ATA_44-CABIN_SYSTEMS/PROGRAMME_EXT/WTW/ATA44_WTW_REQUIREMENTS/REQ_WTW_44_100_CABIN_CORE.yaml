@@ -1,0 +1,61 @@
+id: REQ_WTW_44_100_CABIN_CORE
+doc_id: T-A-ATA44-WTW-REQ-100
+ata_subchapter: "44-10"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+delta_refs:
+  - DELTA-WTW-44-001
+  - DELTA-WTW-44-002
+  - DELTA-WTW-44-003
+  - DELTA-WTW-44-004
+
+requirements:
+  - req_id: WTW-44-100-001
+    shall: "The CMS Main Controller (CMC) shall be located in the FWD E/E bay in the LRU
+            cabinet row defined by ICD T-A-ATA44-WTW-ICD-001."
+    rationale: "WTW FWD E/E bay provides controlled environment, short harness run to avionics,
+                and access via standard E/E bay access panels."
+    cs25_ref: "CS-25.1309"
+    verification: inspection
+    lc_gate: LC03
+
+  - req_id: WTW-44-100-002
+    shall: "A redundant CMS AFT Controller (CAC) shall be located in the AFT equipment bay
+            per ICD T-A-ATA44-WTW-ICD-001. The CAC shall assume full CMS primary functionality
+            within TBD s of CMC failure."
+    rationale: "Failover requirement for cabin core system loss (Category III failure condition)."
+    cs25_ref: "CS-25.1309"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: WTW-44-100-003
+    shall: "The WTW cabin shall be divided into 2–4 longitudinal zones per ARCH document
+            T-A-ATA44-WTW-ARCH-002. Zone boundaries shall align with structural bulkheads
+            or seat-row breaks."
+    rationale: "Longitudinal zone topology is specific to WTW tube fuselage. BWB uses
+                radial zones driven by bay geometry."
+    cs25_ref: null
+    verification: analysis
+    lc_gate: LC03
+
+  - req_id: WTW-44-100-004
+    shall: "The WTW cabin ARINC 664 Part 7 backbone shall run as a continuous longitudinal
+            harness from FS_start to FS_end per ICD T-A-ATA44-WTW-ICD-002, with no
+            inter-bay bridge units required."
+    rationale: "Δ WTW: No structural spar bay interrupts the harness run. BWB requires
+                bridge units at each spar bay penetration."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC04
+
+  - req_id: WTW-44-100-005
+    shall: "ARINC 664 Virtual Link (VL) IDs and port allocations for all WTW ATA 44
+            endpoints shall be defined in ICD T-A-ATA44-WTW-ICD-003 and
+            MODELS/icd_endpoints.yaml, populated by LC03."
+    rationale: "Early VL allocation prevents conflicts with ATA 46 and other cabin avionics
+                sharing the cabin AFDX domain."
+    cs25_ref: null
+    verification: analysis
+    lc_gate: LC03

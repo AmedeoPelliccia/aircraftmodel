@@ -1,0 +1,39 @@
+id: REQ_WTW_44_300_EXTERNAL_COMM
+doc_id: T-A-ATA44-WTW-REQ-300
+ata_subchapter: "44-30"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+delta_refs:
+  - DELTA-WTW-44-006
+
+requirements:
+  - req_id: WTW-44-300-001
+    shall: "The WTW satcom antenna (ANT-44-01) shall be installed on the fuselage crown at
+            the FS position defined in ICD T-A-ATA44-WTW-ICD-005. The installation shall not
+            encroach upon the AFDX crown harness envelope per ICD T-A-ATA44-WTW-ICD-002."
+    rationale: "Crown harness run and satcom antenna occupy the same crown zone; geometric
+                co-existence must be verified."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC04
+
+  - req_id: WTW-44-300-002
+    shall: "The CFRP crown panels in the satcom antenna aperture zone shall demonstrate
+            RF transparency within the Ka/Ku band (10.7–14.5 GHz) with maximum attenuation
+            TBD dB. Evidence: RF transparency test on representative panel samples."
+    rationale: "CFRP is conductive and may attenuate satcom signals; attenuation limit TBD
+                at LC04 from antenna supplier RF budget."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC07
+
+  - req_id: WTW-44-300-003
+    shall: "All external communication systems shall comply with applicable ETSI or FCC
+            radio frequency regulations (ETSI EN 303 360 for satcom). Evidence: RF
+            compliance test per TEST_WTW_RF_COMPLIANCE.md."
+    rationale: "Regulatory compliance for passenger connectivity services."
+    cs25_ref: null
+    verification: test
+    lc_gate: LC07

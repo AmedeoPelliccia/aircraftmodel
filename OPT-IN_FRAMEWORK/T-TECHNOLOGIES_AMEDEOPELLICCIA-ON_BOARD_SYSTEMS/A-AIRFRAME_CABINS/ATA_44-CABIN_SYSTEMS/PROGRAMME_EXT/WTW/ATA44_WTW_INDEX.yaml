@@ -1,0 +1,102 @@
+id: ATA44_WTW_INDEX
+doc_id: T-A-ATA44-WTW-001
+status: DRAFT
+revision: RevA
+lifecycle_state: DRAFT
+variant: WTW
+baseline_ref: T-A-ATA44-001
+
+items:
+  - delta_id: DELTA-WTW-44-001
+    ata_subchapter: "44-10"
+    title: "CMS controller placement and LRU cabinet layout (WTW)"
+    type: [ICD, REQ, ARCH]
+    files:
+      - ATA44_WTW_ARCHITECTURE/ARCH_WTW_TOPOLOGY_OVERVIEW.md
+      - ATA44_WTW_INTERFACES/ICD_WTW_CONTROLLER_PLACEMENT_001.md
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_100_CABIN_CORE.yaml
+    rationale: "WTW E/E bay geometry and LRU cabinet positions differ from BWB distributed architecture"
+    impact:
+      safety: medium
+      certification: "CS-25.1309, ED-14G (DO-160G) environmental"
+      publications: "AMM ATA 44 section"
+
+  - delta_id: DELTA-WTW-44-002
+    ata_subchapter: "44-10"
+    title: "WTW cabin zone definition and network topology"
+    type: [ARCH, REQ]
+    files:
+      - ATA44_WTW_ARCHITECTURE/ARCH_WTW_ZONE_DEFINITION.md
+      - ATA44_WTW_ARCHITECTURE/MODELS/zone_map.yaml
+      - ATA44_WTW_ARCHITECTURE/MODELS/network_topology.graphml
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_100_CABIN_CORE.yaml
+    rationale: "WTW uses 2–4 longitudinal cabin zones; zone boundary definition differs from BWB multi-bay zoning"
+    impact:
+      safety: low
+      certification: "CS-25.1309"
+      publications: "Cabin crew procedures / MEL"
+
+  - delta_id: DELTA-WTW-44-003
+    ata_subchapter: "44-10"
+    title: "WTW wiring route envelopes (longitudinal harness)"
+    type: [ICD]
+    files:
+      - ATA44_WTW_INTERFACES/ICD_WTW_WIRING_ROUTE_ENVELOPES_001.md
+    rationale: "WTW uses longitudinal harness runs along fuselage crown and sidewall; routing envelope differs from BWB spar-bay routing"
+    impact:
+      safety: low
+      certification: "CS-25.1353 wiring separation"
+      publications: "WDM ATA 44"
+
+  - delta_id: DELTA-WTW-44-004
+    ata_subchapter: "44-10"
+    title: "WTW network endpoint definitions (AFDX/passenger network)"
+    type: [ICD, REQ]
+    files:
+      - ATA44_WTW_INTERFACES/ICD_WTW_NETWORK_ENDPOINTS_001.md
+      - ATA44_WTW_ARCHITECTURE/MODELS/icd_endpoints.yaml
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_100_CABIN_CORE.yaml
+    rationale: "WTW ARINC 664 cabin domain endpoint addresses and seat/unit location mapping specific to WTW floor grid / cabin layout"
+    impact:
+      safety: low
+      certification: "ED-14G (DO-160G), ARINC 664 Pt7"
+      publications: "IFE SDD, network ICD"
+
+  - delta_id: DELTA-WTW-44-005
+    ata_subchapter: "44-20"
+    title: "WTW IFE server and satellite unit placement"
+    type: [ICD, REQ]
+    files:
+      - ATA44_WTW_INTERFACES/ICD_WTW_IFE_PLACEMENT_001.md
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_200_IFE.yaml
+    rationale: "WTW IFE server in FWD avionics bay; satellite units at seat-group nodes per WTW seat track layout"
+    impact:
+      safety: low
+      certification: "CS-25.853 (flammability of LRUs), ED-14G"
+      publications: "IFE installation manual"
+
+  - delta_id: DELTA-WTW-44-006
+    ata_subchapter: "44-30"
+    title: "WTW external communication antenna placement"
+    type: [ICD, REQ]
+    files:
+      - ATA44_WTW_INTERFACES/ICD_WTW_ANTENNA_PLACEMENT_001.md
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_300_EXTERNAL_COMM.yaml
+    rationale: "WTW fuselage antenna locations for satcom/Wi-Fi/cellular differ from BWB composite planform (RF transparency, structural penetration)"
+    impact:
+      safety: low
+      certification: "CS-25.1353, ETSI EN 303 360"
+      publications: "AMM ATA 44-30"
+
+  - delta_id: DELTA-WTW-44-007
+    ata_subchapter: "44-50"
+    title: "WTW cabin monitoring sensor topology"
+    type: [ICD, REQ, EVI]
+    files:
+      - ATA44_WTW_REQUIREMENTS/REQ_WTW_44_500_CABIN_MONITORING.yaml
+      - ATA44_WTW_VERIFICATION_EVIDENCE/TEST_WTW_CMS_FUNCTIONAL_44_10.md
+    rationale: "WTW uses conventional zone-based smoke/temp/pax sensor topology; sensor count and placement driven by circular cross-section"
+    impact:
+      safety: medium
+      certification: "CS-25.854 (smoke detection), CS-25.1309"
+      publications: "AMM ATA 44-50"
