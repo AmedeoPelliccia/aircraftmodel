@@ -1,0 +1,137 @@
+# ATA 57 Wings — WTW Rib Spacing Register Example Pack
+# Doc ID: T-A-ATA57-WTW-RIBOPT-REG-EX-001
+# Status: EXAMPLE ONLY — Not a design-freeze register pack
+# Scope: Illustrates nominal WTW inner wing register values for validation and testing.
+#        All quantitative values are illustrative placeholders.
+
+run_metadata:
+  run_id: EXAMPLE-RUN-001
+  description: Nominal uniform spacing example for encoding validation
+  encoding_ref: "STD_RIB_SPACING_ENCODING.md"
+  s_min_mm: 200.0
+  s_max_mm: 455.0
+  delta_s_mm_per_lsb: 1.0  # (455 - 200) / 255 ≈ 1.0 mm/LSB
+  status: EXAMPLE
+  note: "This is a non-optimised uniform spacing pack for encoding validation only."
+
+optimised_registers:
+  # Fixed bays: register_value = null, spacing determined by external ICD
+  - bay_id: RB-001
+    fixed: true
+    register_value: null
+    spacing_mm: TBD
+    fatigue_life_margin_pct: N/A
+    divergence_contribution: N/A
+
+  # Optimisable bays: illustrative uniform spacing at register 127 (~327 mm)
+  - bay_id: RB-002
+    fixed: false
+    register_value: 127
+    spacing_mm: 327.0  # 200 + 127 × 1.0 = 327 mm (illustrative)
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-003
+    fixed: false
+    register_value: 127
+    spacing_mm: 327.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-004
+    fixed: false
+    register_value: 127
+    spacing_mm: 327.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-005
+    fixed: true
+    register_value: null
+    spacing_mm: TBD
+    fatigue_life_margin_pct: N/A
+    divergence_contribution: N/A
+
+  - bay_id: RB-006
+    fixed: false
+    register_value: 127
+    spacing_mm: 327.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-007
+    fixed: false
+    register_value: 127
+    spacing_mm: 327.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-008
+    fixed: true
+    register_value: null
+    spacing_mm: TBD
+    fatigue_life_margin_pct: N/A
+    divergence_contribution: N/A
+
+  - bay_id: RB-009
+    fixed: false
+    register_value: 100  # slightly tighter in outer for divergence
+    spacing_mm: 300.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-010
+    fixed: false
+    register_value: 100
+    spacing_mm: 300.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-011
+    fixed: false
+    register_value: 90
+    spacing_mm: 290.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-012
+    fixed: false
+    register_value: 80
+    spacing_mm: 280.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-013
+    fixed: true
+    register_value: null
+    spacing_mm: TBD
+    fatigue_life_margin_pct: N/A
+    divergence_contribution: N/A
+
+  - bay_id: RB-014
+    fixed: false
+    register_value: 70  # tightest in outboard for divergence
+    spacing_mm: 270.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-015
+    fixed: false
+    register_value: 60
+    spacing_mm: 260.0
+    fatigue_life_margin_pct: TBD
+    divergence_contribution: TBD
+
+  - bay_id: RB-016
+    fixed: true
+    register_value: null
+    spacing_mm: TBD
+    fatigue_life_margin_pct: N/A
+    divergence_contribution: N/A
+
+summary:
+  optimisation_status: EXAMPLE_NOT_OPTIMISED
+  predicted_structural_mass_kg: TBD
+  wing_divergence_margin_pct: TBD
+  min_bay_fatigue_life_margin_pct: TBD
+  constraints_satisfied: TBD

@@ -1,0 +1,48 @@
+# ATA 57 Wings — WTW Rib Spacing Optimisation Evidence Index
+# Doc ID: T-A-ATA57-WTW-RIBOPT-EVI-IDX-001
+# Status: DRAFT
+
+module: WTW_RIB_SPACING_OPTIMISATION
+variant: WTW
+doc_id: T-A-ATA57-WTW-RIBOPT-EVI-IDX-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+delta_ref: DELTA-WTW-57-002
+
+evidence_objects:
+  - evi_id: EVI-WTW-57-RIBOPT-001
+    type: ANALYSIS
+    title: WTW Wing Rib Spacing — Fatigue Life Check
+    file: ANALYSIS_WTW_FATIGUE_LIFE_CHECK.md
+    requirements_addressed:
+      - REQ-WTW-57-RIBOPT-003  # minimum fatigue life constraint
+      - REQ-WTW-57-RIBOPT-006  # skin panel buckling constraint
+    cs25_ref:
+      - CS-25 Appendix J
+      - CS-25.305
+    lc_gate: LC57-04
+    status: STUB
+
+  - evi_id: EVI-WTW-57-RIBOPT-002
+    type: ANALYSIS
+    title: WTW Wing Rib Spacing — Aeroelastic Divergence Margin Check
+    file: ANALYSIS_WTW_DIVERGENCE_MARGIN_CHECK.md
+    requirements_addressed:
+      - REQ-WTW-57-RIBOPT-004  # divergence margin constraint
+    cs25_ref:
+      - CS-25.629(d)
+    lc_gate: LC57-05
+    status: STUB
+
+  - evi_id: EVI-WTW-57-RIBOPT-003
+    type: TEST
+    title: WTW Rib Spacing Optimisation — Determinism and Reproducibility Test
+    file: TEST_WTW_DETERMINISM_REPRODUCIBILITY.md
+    requirements_addressed:
+      - REQ-WTW-57-RIBOPT-001  # 8-bit register encoding
+      - REQ-WTW-57-RIBOPT-002  # deterministic reproducibility
+      - REQ-WTW-57-RIBOPT-005  # boundary condition integrity
+    cs25_ref: N/A  # analysis tool qualification
+    lc_gate: LC57-03
+    status: STUB

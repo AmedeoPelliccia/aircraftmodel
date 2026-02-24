@@ -1,0 +1,110 @@
+# ATA 57 Wings — WTW Rib Spacing Optimisation Requirements
+# Doc ID: T-A-ATA57-WTW-RIBOPT-REQ-001
+# Status: DRAFT
+# Lifecycle gate: LC57-03
+
+module: WTW_RIB_SPACING_OPTIMISATION
+ata_chapter: 57
+variant: WTW
+doc_id: T-A-ATA57-WTW-RIBOPT-REQ-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+baseline_ref: "ATA57_WTW_INDEX.yaml::DELTA-WTW-57-002"
+
+requirements:
+  - req_id: REQ-WTW-57-RIBOPT-001
+    title: 8-bit register encoding
+    shall: >
+      The rib spacing optimisation module SHALL represent each rib bay spacing as an
+      8-bit unsigned integer register value in the range [0, 255], mapped linearly
+      to a physical spacing range [S_min, S_max] as defined in STD_RIB_SPACING_ENCODING.md.
+    rationale: >
+      Deterministic integer encoding eliminates floating-point non-determinism and enables
+      integer optimisation solvers. 8-bit resolution provides < 1 mm step size for typical
+      wing rib pitch ranges of 200–455 mm, which is sufficient for structural differentiation.
+    cs25_ref: N/A
+    verification: TEST_WTW_DETERMINISM_REPRODUCIBILITY.md
+    lc_gate: LC57-03
+
+  - req_id: REQ-WTW-57-RIBOPT-002
+    title: Deterministic reproducibility
+    shall: >
+      The optimisation algorithm SHALL produce bit-for-bit identical output register vectors
+      when executed with identical input configurations (config file, random seed, model data).
+      Non-deterministic solvers are prohibited unless a fixed random seed is mandatory.
+    rationale: >
+      Determinism is required for certification traceability (DO-178C, DO-254 principles applied
+      to analysis tools) and for audit-reproducibility under the programme change control framework.
+    cs25_ref: N/A (analysis tool qualification)
+    verification: TEST_WTW_DETERMINISM_REPRODUCIBILITY.md
+    lc_gate: LC57-03
+
+  - req_id: REQ-WTW-57-RIBOPT-003
+    title: Minimum fatigue life constraint
+    shall: >
+      For every rib bay in the optimised register vector, the predicted fatigue life SHALL be
+      ≥ 80,000 flight cycles, evaluated using Miner's rule with the AMPEL360 WTW gust spectrum
+      and CFRP B-basis scatter factors as defined in CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md §2.
+    rationale: >
+      CS-25 Appendix J requires damage-tolerance and fatigue substantiation throughout the
+      operational life of the aeroplane. The 80,000-cycle objective covers the AMPEL360 WTW
+      design service goal with retirement reserve.
+    cs25_ref: CS-25 Appendix J
+    verification: VERIFICATION_EVIDENCE/ANALYSIS_WTW_FATIGUE_LIFE_CHECK.md
+    lc_gate: LC57-04
+
+  - req_id: REQ-WTW-57-RIBOPT-004
+    title: Aeroelastic divergence margin constraint
+    shall: >
+      The wing torsional divergence speed for any optimised rib spacing register vector SHALL
+      be ≥ 1.15 × VD at all altitudes (divergence margin ≥ 15% above VD/MD), as defined in
+      CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md §3.
+    rationale: >
+      CS-25.629(d) requires the divergence speed to be not less than 1.15 VD. This constraint
+      is binding in the outer wing where rib spacing directly affects torsional rigidity.
+    cs25_ref: CS-25.629(d)
+    verification: VERIFICATION_EVIDENCE/ANALYSIS_WTW_DIVERGENCE_MARGIN_CHECK.md
+    lc_gate: LC57-05
+
+  - req_id: REQ-WTW-57-RIBOPT-005
+    title: Boundary condition integrity
+    shall: >
+      Register values for fixed structural ribs (root rib, tip rib, tank boundary ribs,
+      access panel bay ribs) SHALL be held at their prescribed fixed values and SHALL NOT
+      be modified by the optimisation algorithm. The set of fixed ribs SHALL be defined in
+      MODELS/rib_bay_definition.yaml with attribute fixed: true.
+    rationale: >
+      Structural boundary ribs serve as load-path anchors and system interface points.
+      Their positions are determined by external constraints (wing-body attach, fuel system,
+      access requirements) not governed by the rib spacing optimisation.
+    cs25_ref: N/A
+    verification: VERIFICATION_EVIDENCE/TEST_WTW_DETERMINISM_REPRODUCIBILITY.md
+    lc_gate: LC57-03
+
+  - req_id: REQ-WTW-57-RIBOPT-006
+    title: Skin panel buckling constraint
+    shall: >
+      For any optimised register vector, the skin panel buckling load factor SHALL be ≥ 1.0
+      at design limit load (DLL) for all rib bays. Panel buckling is assessed using classical
+      plate theory or FEM as appropriate, with CFRP knockdown factors per approved material data.
+    rationale: >
+      Skin panel buckling at DLL is inadmissible per CS-25.305. Wider rib spacing increases
+      skin panel unsupported length and thus reduces the buckling load factor.
+    cs25_ref: CS-25.305
+    verification: VERIFICATION_EVIDENCE/ANALYSIS_WTW_FATIGUE_LIFE_CHECK.md (combined with fatigue analysis)
+    lc_gate: LC57-04
+
+  - req_id: REQ-WTW-57-RIBOPT-007
+    title: Output traceability record
+    shall: >
+      Each optimisation run SHALL produce a traceable output record containing: the full
+      register vector, decoded physical spacings, predicted structural mass, per-bay fatigue
+      life margin, and wing-level divergence margin. The record SHALL be stored in version
+      control with a unique run identifier (SHA-256 of config + model inputs).
+    rationale: >
+      Auditability of optimisation output is required under the programme change control
+      framework (ATA57_WTW_DELTA_LOG.yaml) and for certification evidence linking.
+    cs25_ref: CS-25.1529 (ICA traceability)
+    verification: VERIFICATION_EVIDENCE/TRACE_WTW_EVIDENCE_INDEX.yaml
+    lc_gate: LC57-03
