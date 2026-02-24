@@ -1,0 +1,106 @@
+---
+# ATA 22 BWB Overlay — Machine-Readable Index
+overlay_id: ATA22-BWB-OVERLAY-001
+variant: BWB
+ata_chapter: "22"
+programme: AMPEL360-Q100-BWB
+baseline_ref: "../.."
+doc_id: T-A2-ATA22-BWB-INDEX-001
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  Delta-overlay index for ATA 22 Auto Flight BWB programme extension.
+  This overlay covers only BWB-specific deviations from the SHARED baseline.
+  All entries are stub-level; quantitative values deferred to LC03+.
+
+deltas:
+  - id: DELTA-BWB-22-001
+    title: "Distributed Elevon/Spoileron Effector Allocation for Autoflight"
+    type: ΔARCH
+    status: DRAFT
+    lc_gate: LC01
+    description: >
+      BWB replaces conventional elevator and aileron with a distributed
+      trailing-edge array of elevons and spoilerons. Auto-flight commands
+      must be translated through a control allocation matrix rather than
+      direct surface deflection. Differs from SHARED baseline assumption
+      of conventional surface geometry.
+    affected_files:
+      - ATA22_BWB_ARCHITECTURE/ARCH_BWB_CONTROL_ALLOCATION_AND_EFFS.md
+      - ATA22_BWB_ARCHITECTURE/MODELS/effector_map.yaml
+      - ATA22_BWB_INTERFACES/ICD_BWB_EFFECTOR_MAP_001.md
+      - ATA22_BWB_REQUIREMENTS/REQ_BWB_22_100_AUTOPILOT_AND_FD.yaml
+
+  - id: DELTA-BWB-22-002
+    title: "Non-Linear Dynamic Inversion (NDI) Control Laws"
+    type: ΔARCH
+    status: DRAFT
+    lc_gate: LC01
+    description: >
+      BWB pitch-heave coupling is non-linear due to the swept flying-wing
+      planform. The SHARED baseline linear control law architecture is
+      insufficient. BWB requires explicit model-following NDI with robustness
+      augmentation (H∞ or μ-synthesis TBD at LC03).
+    affected_files:
+      - ATA22_BWB_ARCHITECTURE/ARCH_BWB_AUTOFLIGHT_TOPOLOGY_OVERVIEW.md
+      - ATA22_BWB_ARCHITECTURE/MODELS/guidance_modes.yaml
+      - ATA22_BWB_REQUIREMENTS/REQ_BWB_22_100_AUTOPILOT_AND_FD.yaml
+      - ATA22_BWB_VERIFICATION_EVIDENCE/ANALYSIS_BWB_CONTROL_LAW_STABILITY_CS25_1329.md
+
+  - id: DELTA-BWB-22-003
+    title: "Envelope Protection Strategy — Swept Composite Planform"
+    type: ΔREQ
+    status: DRAFT
+    lc_gate: LC01
+    description: >
+      Stall, buffet, alpha/beta limits, and structural load factor boundaries
+      are specific to the BWB swept composite planform and differ substantially
+      from WTW values. All thresholds are TBD pending aerodynamic model
+      maturation at LC03.
+    affected_files:
+      - ATA22_BWB_ARCHITECTURE/ARCH_BWB_ENVELOPE_PROTECTION_STRATEGY.md
+      - ATA22_BWB_REQUIREMENTS/REQ_BWB_22_400_ENVELOPE_PROTECTION.yaml
+      - ATA22_BWB_VERIFICATION_EVIDENCE/TEST_BWB_ENVELOPE_PROTECTION.md
+      - ATA22_BWB_VERIFICATION_EVIDENCE/ANALYSIS_BWB_AUTOFLIGHT_SAFETY_CS25_1309.md
+
+  - id: DELTA-BWB-22-004
+    title: "FMS Performance Polar — BWB L/D Characteristics"
+    type: ΔREQ
+    status: DRAFT
+    lc_gate: LC01
+    description: >
+      BWB has a different aerodynamic polar (L/D vs Mach/altitude) compared
+      to WTW. FMS guidance modes (VNAV, ECON speed, optimum altitude) must
+      use BWB-specific performance tables. Tables are TBD at LC03.
+    affected_files:
+      - ATA22_BWB_REQUIREMENTS/REQ_BWB_22_200_FMS_GUIDANCE.yaml
+      - ATA22_BWB_INTERFACES/ICD_BWB_SENSORS_NAV_COUPLING_001.md
+
+  - id: DELTA-BWB-22-005
+    title: "Propulsion Guidance Coupling — 4× Distributed Engine Management"
+    type: ΔARCH
+    status: DRAFT
+    lc_gate: LC01
+    description: >
+      The AMPEL360 Q100 BWB has 4 engines distributed symmetrically about
+      the fuselage centreline. Auto-thrust must manage asymmetric thrust
+      conditions and inter-engine coupling effects not present in the SHARED
+      baseline (which assumes 2-engine conventional layout).
+    affected_files:
+      - ATA22_BWB_REQUIREMENTS/REQ_BWB_22_300_AUTO_THRUST.yaml
+      - ATA22_BWB_INTERFACES/ICD_BWB_PROPULSION_GUIDANCE_COUPLING_001.md
+
+folders:
+  - path: ATA22_BWB_ARCHITECTURE/
+    description: "Architecture topology, control allocation, envelope strategy"
+  - path: ATA22_BWB_INTERFACES/
+    description: "Interface control documents (ICDs) for BWB-specific couplings"
+  - path: ATA22_BWB_REQUIREMENTS/
+    description: "Delta requirements by ATA 22 sub-chapter"
+  - path: ATA22_BWB_ACCEPTABILITY/
+    description: "Dispatch and degraded-mode acceptability criteria"
+  - path: ATA22_BWB_VERIFICATION_EVIDENCE/
+    description: "Analysis, test, and inspection evidence stubs"
