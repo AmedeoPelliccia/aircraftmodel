@@ -1,0 +1,80 @@
+# ATA 57 — Wings — BWB Blend Zone Delta Index
+# Doc ID: T-A-ATA57-BWB-BLEND-IDX-001
+# Status: DRAFT
+# Scope: SSOT for all BLEND_ZONE-specific deviations from ATA 57 SHARED baseline
+
+overlay:
+  ata_chapter: 57
+  variant: BWB
+  sub_area: BLEND_ZONE
+  doc_id: T-A-ATA57-BWB-BLEND-IDX-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+  shared_baseline_ref: "../../README.md"
+  lc_registry_ref: "../LC57_PHASE_REGISTRY.yaml"
+
+overlay_rule: |
+  This index is the Single Source of Truth (SSOT) for all BLEND_ZONE deviations
+  from the ATA 57 SHARED baseline. No SHARED content shall be duplicated.
+  The blend zone is a transition structural field; "rib/frame" primitives do not apply.
+  All structural variables are expressed as Topological Design Field (TDF) registers.
+
+deltas:
+  - delta_id: DELTA-BWB-57-BZ-001
+    title: Blend zone treated as Topological Design Field (TDF)
+    type: ΔARCH
+    description: >
+      The BWB blend zone — the transition region between the centre body and the
+      outboard wing — is not decomposed into ribs and frames. Instead, it is modelled
+      as a continuous Topological Design Field (TDF) discretised into a patch grid.
+      Each patch carries an 8-bit material/thickness register. This is fundamentally
+      different from WTW rib spacing optimisation and the SHARED baseline (which is
+      neutral). The TDF approach is mandated by the load-path complexity in the blend zone.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-BZ-002
+    title: TDF 8-bit register encoding standard
+    type: ΔREQ
+    description: >
+      Each TDF patch register is encoded as an 8-bit integer (0–255) representing
+      a normalised structural density/thickness parameter. The encoding standard
+      (see STD_TDF_8BIT_ENCODING.md) defines the mapping from register value to
+      physical parameter, boundary conditions (fixed registers at structural
+      hard-points), and version-freeze rules.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-BZ-003
+    title: TDF fatigue life constraint
+    type: ΔREQ
+    description: >
+      The TDF optimisation is subject to a fatigue life constraint: every TDF patch
+      shall sustain a minimum of 80,000 flight cycles at AMPEL360 BWB design spectrum
+      loads (Miner's Rule, CFRP B-basis γ = 2.0). This overrides the SHARED ATA 57
+      fatigue methodology where a fixed rib pitch defines the fatigue load spectrum.
+    lc_gate: LC57-04
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-BZ-004
+    title: TDF aeroelastic divergence constraint
+    type: ΔREQ
+    description: >
+      The TDF optimisation is additionally constrained by aeroelastic divergence:
+      divergence speed V_div / VD ≥ 1.15 (CS-25.629(d)) evaluated via Doublet
+      Lattice Method (DLM) eigenvalue analysis on the blend zone stiffness matrix.
+      The blend zone stiffness is a function of the TDF register map.
+    lc_gate: LC57-05
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-BZ-005
+    title: TDF optimisation determinism and reproducibility requirement
+    type: ΔREQ
+    description: >
+      The TDF register map produced by the optimisation solver shall be deterministic
+      and reproducible: the same input (patch grid, load spectrum, constraint bounds)
+      shall produce the same register map on repeated runs. A SHA-256 hash of the
+      register map is recorded per run. This is required for certification traceability.
+    lc_gate: LC57-11
+    status: OPEN

@@ -1,0 +1,41 @@
+# ATA 57 BWB — Blend Zone TDF Evidence Trace Index
+# Doc ID: T-A-ATA57-BWB-BLEND-VE-IDX-001
+# Status: DRAFT
+
+schema_version: "1.0"
+variant: BWB
+sub_area: BLEND_ZONE
+doc_id: T-A-ATA57-BWB-BLEND-VE-IDX-001
+revision: A
+date: "2026-02-24"
+
+evidence_items:
+  - evidence_id: EVI-BWB-57-BZ-001
+    title: Blend zone TDF fatigue life check analysis
+    type: Analysis
+    req_ref: BWB-57-TDF-003
+    regulation: CS-25.571(a)
+    delta_ref: DELTA-BWB-57-BZ-003
+    file: ANALYSIS_BLEND_FATIGUE_CHECK.md
+    status: OPEN
+    lc_gate: LC57-04
+
+  - evidence_id: EVI-BWB-57-BZ-002
+    title: Blend zone TDF aeroelastic divergence check analysis
+    type: Analysis
+    req_ref: BWB-57-TDF-004
+    regulation: CS-25.629(d)
+    delta_ref: DELTA-BWB-57-BZ-004
+    file: ANALYSIS_BLEND_DIVERGENCE_CHECK.md
+    status: OPEN
+    lc_gate: LC57-05
+
+  - evidence_id: EVI-BWB-57-BZ-003
+    title: TDF optimisation determinism and reproducibility test
+    type: Test
+    req_ref: BWB-57-TDF-005
+    regulation: CS-25.571, CS-25.629
+    delta_ref: DELTA-BWB-57-BZ-005
+    file: TEST_BLEND_DETERMINISM.md
+    status: OPEN
+    lc_gate: LC57-11

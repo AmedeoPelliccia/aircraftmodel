@@ -1,0 +1,78 @@
+# ATA 57 — Wings — BWB Winglets Delta Index
+# Doc ID: T-A-ATA57-BWB-WGLT-IDX-001
+# Status: DRAFT
+# Scope: SSOT for all WINGLETS-specific deviations from ATA 57 SHARED baseline
+
+overlay:
+  ata_chapter: 57
+  variant: BWB
+  sub_area: WINGLETS
+  doc_id: T-A-ATA57-BWB-WGLT-IDX-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+  shared_baseline_ref: "../../README.md"
+  lc_registry_ref: "../LC57_PHASE_REGISTRY.yaml"
+
+overlay_rule: |
+  This index is the Single Source of Truth (SSOT) for all WINGLETS deviations
+  from the ATA 57 SHARED baseline. No SHARED content shall be duplicated.
+  The winglet uses neutral member primitives (member_spanwise = rib alias,
+  member_chordwise = stringer alias) with region: outboard aliasing.
+
+deltas:
+  - delta_id: DELTA-BWB-57-WG-001
+    title: Winglet structural member topology (neutral primitives with outboard aliasing)
+    type: ΔARCH
+    description: >
+      BWB winglets use neutral structural member primitives instead of geometry-specific
+      rib/stringer naming. Members are classified as member_spanwise (rib alias) and
+      member_chordwise (stringer alias) with region: outboard enabling geometry-neutral
+      expression. This allows the same optimisation framework to apply regardless of the
+      final winglet planform (blended, split-tip, canted).
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-WG-002
+    title: Member spacing discretised to 8-bit registers
+    type: ΔREQ
+    description: >
+      Winglet member spacing is optimised via discrete 8-bit integer registers (0–255)
+      per member bay. The encoding standard (STD_MEMBER_SPACING_8BIT_ENCODING.md) maps
+      each register value to a physical spacing interval. Constraints are fatigue life
+      (≥ 80,000 cycles) and aeroelastic divergence margin (≥ 15% above VD).
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-WG-003
+    title: Winglet fatigue life constraint
+    type: ΔREQ
+    description: >
+      Each winglet member bay SHALL sustain a minimum of 80,000 flight cycles at the
+      AMPEL360 BWB winglet load spectrum. Miner's Rule with CFRP B-basis γ = 2.0 applies.
+      The winglet tip load spectrum differs from the main wing spectrum due to the winglet
+      dihedral and twist (TBD at LC57-04).
+    lc_gate: LC57-04
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-WG-004
+    title: Winglet aeroelastic divergence constraint
+    type: ΔREQ
+    description: >
+      Winglet member spacing SHALL produce a divergence speed V_div ≥ 1.15 × VD
+      (CS-25.629(d)). The winglet aeroelastic divergence is evaluated by DLM eigenvalue
+      analysis of the winglet bending/torsion stiffness matrix parameterised by member
+      spacing registers. The outboard boundary condition uses the blend zone stiffness
+      from BLEND_ZONE/ sub-area as the inboard constraint.
+    lc_gate: LC57-05
+    status: OPEN
+
+  - delta_id: DELTA-BWB-57-WG-005
+    title: Member spacing optimisation determinism requirement
+    type: ΔREQ
+    description: >
+      The winglet member spacing optimiser SHALL be deterministic and reproducible:
+      identical inputs (bay definitions, load spectrum, constraint bounds, solver config)
+      SHALL produce identical member spacing register maps. SHA-256 hash per run recorded.
+    lc_gate: LC57-11
+    status: OPEN

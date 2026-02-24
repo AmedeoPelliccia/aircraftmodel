@@ -1,0 +1,71 @@
+# ATA 57 BWB — Winglet Member Spacing Register Pack (Example)
+# Doc ID: T-A-ATA57-BWB-WGLT-SREG-EX-001
+# Status: EXAMPLE ONLY — not a certified register pack
+# Purpose: Illustrates the register pack format; actual values are TBD at LC57-03
+
+schema_version: "1.0"
+variant: BWB
+sub_area: WINGLETS
+doc_id: T-A-ATA57-BWB-WGLT-SREG-EX-001
+revision: EXAMPLE
+date: "2026-02-24"
+governance_hash: TBD  # SHA-256 hash of all hash_input=true registers
+
+notes: >
+  This is an illustrative example only. Register values are nominal and do not represent
+  a certified design. Values taper from root (fixed 255) to tip (fixed 0) as a guide.
+  Actual optimised values will be determined at LC57-03 DDR-57-BWB.
+
+register_pack:
+  - bay_id: WG-B01
+    region: root_attach
+    register: 255
+    fixed: true
+    hash_input: true
+    notes: Root attach — fixed maximum
+
+  - bay_id: WG-B02
+    region: outboard
+    register: 200
+    fixed: false
+    hash_input: true
+    notes: Illustrative — inner optimisable bay, high stiffness
+
+  - bay_id: WG-B03
+    region: outboard
+    register: 170
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B04
+    region: outboard
+    register: 140
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B05
+    region: access_panel_bay
+    register: 200
+    fixed: false
+    hash_input: true
+    notes: Access panel bay — illustrative value ≥ 192
+
+  - bay_id: WG-B06
+    region: outboard
+    register: 100
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B07
+    region: outboard
+    register: 60
+    fixed: false
+    hash_input: true
+    notes: Outboard — tapered spacing for aeroelastic efficiency
+
+  - bay_id: WG-B08
+    region: tip_cap
+    register: 0
+    fixed: true
+    hash_input: true
+    notes: Tip cap — fixed minimum

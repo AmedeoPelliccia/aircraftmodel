@@ -1,0 +1,62 @@
+# ATA 57 — Wings — BWB Blend Zone Delta Change Log
+# Doc ID: T-A-ATA57-BWB-BLEND-DCL-001
+# Status: DRAFT
+
+overlay:
+  ata_chapter: 57
+  variant: BWB
+  sub_area: BLEND_ZONE
+  doc_id: T-A-ATA57-BWB-BLEND-DCL-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+
+changes:
+  - change_id: CHG-0001
+    delta_ref: DELTA-BWB-57-BZ-001
+    title: Initial scaffold — blend zone TDF architecture
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-01
+    description: Initial creation of BLEND_ZONE sub-area. Established overlay rule, ARCH delta for TDF-based blend zone vs WTW rib-based approach.
+    affected_files:
+      - README.md
+      - ATA57_BWB_BLEND_INDEX.yaml
+      - "../LC57_PHASE_REGISTRY.yaml"
+
+  - change_id: CHG-0002
+    delta_ref: DELTA-BWB-57-BZ-002
+    title: TDF 8-bit encoding standard
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-03
+    description: Added SECONDARY_TOPOLOGY_FIELD_OPT/ module with TDF 8-bit encoding standard, patch grid definition, example register map, and optimisation configuration.
+    affected_files:
+      - SECONDARY_TOPOLOGY_FIELD_OPT/STD_TDF_8BIT_ENCODING.md
+      - SECONDARY_TOPOLOGY_FIELD_OPT/MODELS/tdf_patch_definition.yaml
+      - SECONDARY_TOPOLOGY_FIELD_OPT/MODELS/tdf_register_map.example.yaml
+      - SECONDARY_TOPOLOGY_FIELD_OPT/MODELS/optimisation_config.yaml
+
+  - change_id: CHG-0003
+    delta_ref: DELTA-BWB-57-BZ-003
+    title: Fatigue life constraint definition
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-04
+    description: Added fatigue and aeroelastic divergence constraints document and requirements pack.
+    affected_files:
+      - SECONDARY_TOPOLOGY_FIELD_OPT/CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md
+      - SECONDARY_TOPOLOGY_FIELD_OPT/REQ_BWB_57_BLEND_TDF_OPT.yaml
+
+  - change_id: CHG-0004
+    delta_ref: DELTA-BWB-57-BZ-005
+    title: Verification evidence stubs
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-11
+    description: Added verification evidence stubs for fatigue check, divergence check, and determinism/reproducibility test.
+    affected_files:
+      - SECONDARY_TOPOLOGY_FIELD_OPT/VERIFICATION_EVIDENCE/TRACE_BWB_BLEND_EVIDENCE_INDEX.yaml
+      - SECONDARY_TOPOLOGY_FIELD_OPT/VERIFICATION_EVIDENCE/ANALYSIS_BLEND_FATIGUE_CHECK.md
+      - SECONDARY_TOPOLOGY_FIELD_OPT/VERIFICATION_EVIDENCE/ANALYSIS_BLEND_DIVERGENCE_CHECK.md
+      - SECONDARY_TOPOLOGY_FIELD_OPT/VERIFICATION_EVIDENCE/TEST_BLEND_DETERMINISM.md

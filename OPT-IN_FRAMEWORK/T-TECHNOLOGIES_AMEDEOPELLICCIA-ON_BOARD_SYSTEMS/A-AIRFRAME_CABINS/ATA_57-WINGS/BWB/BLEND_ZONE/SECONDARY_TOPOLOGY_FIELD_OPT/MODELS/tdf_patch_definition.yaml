@@ -1,0 +1,63 @@
+# ATA 57 BWB — Blend Zone TDF Patch Grid Definition
+# Doc ID: T-A-ATA57-BWB-BLEND-PDG-001
+# Status: DRAFT
+# Scope: Defines the TDF patch grid for the BWB blend zone optimisation domain
+
+schema_version: "1.0"
+variant: BWB
+sub_area: BLEND_ZONE
+doc_id: T-A-ATA57-BWB-BLEND-PDG-001
+revision: A
+date: "2026-02-24"
+
+patch_grid:
+  description: >
+    BWB blend zone TDF patch grid. The blend zone is divided into a 2D patch array
+    spanning from the centreline (y = 0) to the outboard wing spar line.
+    Spanwise (η) and chordwise (ξ) patch indices define each patch.
+    Total optimisable patches: TBD (to be determined at LC57-02 preliminary design).
+  coordinate_system: normalised_wing_planform
+  eta_range: [0.0, 0.40]   # normalised semi-span; blend zone = 0.0 to 0.40
+  xi_range: [0.05, 0.90]   # normalised chord; excludes LE/TE hard-points
+  patch_count_eta: TBD      # number of spanwise patch strips
+  patch_count_xi: TBD       # number of chordwise patch strips
+
+boundary_condition_classes:
+  - class: HARD_POINT_SPAR
+    description: Spar carry-through attach region — register fixed at 255 (maximum thickness)
+    locations: [eta=0.00..0.05, xi_spar_front, eta=0.00..0.05, xi_spar_rear]
+    register_constraint: fixed_255
+
+  - class: HARD_POINT_PRESSURE
+    description: Pressure floor attach region — register fixed at 255
+    locations: [eta=0.00..0.10, xi=0.40..0.60]
+    register_constraint: fixed_255
+
+  - class: HARD_POINT_SYSTEMS
+    description: Systems routing hard-point — register ≥ 128
+    locations: TBD (defined at LC57-03)
+    register_constraint: min_128
+
+  - class: BOUNDARY_EDGE
+    description: Patch at boundary with adjacent structural zone — register within ±32 of adjacent patch
+    locations: eta_max_edge, eta_min_edge
+    register_constraint: compatibility_pm32
+
+example_patches:
+  - patch_id: BZ-P001
+    eta_index: 0
+    xi_index: 0
+    region: spar_carry_through
+    register: 255
+    fixed: true
+    hash_input: true
+    notes: Root spar carry-through hard-point
+
+  - patch_id: BZ-P010
+    eta_index: 2
+    xi_index: 4
+    region: blend_zone
+    register: TBD
+    fixed: false
+    hash_input: true
+    notes: Typical optimisable blend zone patch

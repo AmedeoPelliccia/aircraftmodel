@@ -1,0 +1,97 @@
+# ATA 57 BWB — Winglet Member Bay Definition
+# Doc ID: T-A-ATA57-BWB-WGLT-MBAY-001
+# Status: DRAFT
+# Scope: Defines winglet member bays for the BWB winglet spacing optimisation
+
+schema_version: "1.0"
+variant: BWB
+sub_area: WINGLETS
+doc_id: T-A-ATA57-BWB-WGLT-MBAY-001
+revision: A
+date: "2026-02-24"
+
+primitive_aliasing:
+  region: outboard
+  member_spanwise_alias: rib        # for documentation only; programming uses member_spanwise
+  member_chordwise_alias: stringer  # for documentation only
+
+winglet_geometry:
+  description: >
+    Winglet spans from η = 0.85 (blend zone interface) to η = 1.00 (tip cap).
+    Approximate winglet semi-span: TBD mm (defined at LC57-02).
+    Sweep angle: TBD deg.
+    Dihedral: TBD deg.
+  eta_root: 0.85   # normalised semi-span, blend zone interface
+  eta_tip:  1.00   # normalised semi-span, tip cap
+
+total_bays: 8      # preliminary estimate; final count defined at LC57-02
+optimisable_bays: 6
+fixed_bays: 2      # tip_cap + root_attach
+
+bays:
+  - bay_id: WG-B01
+    eta_inboard: 0.850
+    eta_outboard: 0.875
+    region: root_attach
+    register: 255   # fixed — maximum spacing at root for load transfer
+    fixed: true
+    hash_input: true
+    notes: Winglet root attach zone; fixed at maximum stiffness
+
+  - bay_id: WG-B02
+    eta_inboard: 0.875
+    eta_outboard: 0.900
+    region: outboard
+    register: TBD   # optimisable
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B03
+    eta_inboard: 0.900
+    eta_outboard: 0.925
+    region: outboard
+    register: TBD
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B04
+    eta_inboard: 0.925
+    eta_outboard: 0.950
+    region: outboard
+    register: TBD
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B05
+    eta_inboard: 0.950
+    eta_outboard: 0.965
+    region: access_panel_bay
+    register: TBD   # optimisable but constrained ≥ 192
+    fixed: false
+    hash_input: true
+    notes: Access panel bay — register constrained ≥ 192
+
+  - bay_id: WG-B06
+    eta_inboard: 0.965
+    eta_outboard: 0.975
+    region: outboard
+    register: TBD
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B07
+    eta_inboard: 0.975
+    eta_outboard: 0.988
+    region: outboard
+    register: TBD
+    fixed: false
+    hash_input: true
+
+  - bay_id: WG-B08
+    eta_inboard: 0.988
+    eta_outboard: 1.000
+    region: tip_cap
+    register: 0   # fixed — minimum spacing for tip cap closure
+    fixed: true
+    hash_input: true
+    notes: Tip cap closure bay; fixed at minimum spacing
