@@ -1,0 +1,336 @@
+# PROC-CAD-BUILD-DET-v1.0 — Build-from-FeatureGraph Procedure
+# AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A
+# Programme: ID-A360-Q100 · AMPEL360
+# Parent Spec: LC05-GEN-MODEL-ROLE-SPEC-v0.1 (KNU-ATA96-70-001)
+
+procedure_id: PROC-CAD-BUILD-DET-v1.0
+title: "Deterministic CAD Build from FeatureGraph"
+lifecycle_stage: LC04
+allowed_mode: DELINEANT
+delta_class: STRUCTURAL
+version: "1.0"
+date: "2026-02-24"
+status: PLANNED
+
+# ---------------------------------------------------------------------------
+# 1. Purpose
+# ---------------------------------------------------------------------------
+purpose: >
+  Deterministic procedure to generate 3D parametric geometry and 2D drawings
+  from a canonical FeatureGraph + geometry_params.yaml produced by
+  .askm/operator/observer.  The procedure ensures that every build is
+  reproducible, auditable, and gated before SSOT promotion.
+
+# ---------------------------------------------------------------------------
+# 2. Pre-conditions
+# ---------------------------------------------------------------------------
+preconditions:
+  - id: PRE-01
+    description: "A committed feature_graph.json exists and validates against feature_graph.schema.json"
+    artifact: "feature_graph.json"
+    check: "WDG-GEOM-SCHEMA-VALIDATE"
+
+  - id: PRE-02
+    description: "A committed geometry_params.yaml exists with all required parameters"
+    artifact: "geometry_params.yaml"
+
+  - id: PRE-03
+    description: "A committed cad_semantics.yaml exists with units, datums, and material references"
+    artifact: "cad_semantics.yaml"
+
+  - id: PRE-04
+    description: "Observer baseline is hash-verifiable against current SSOT baseline"
+    governance_rule: "GOV-4 (§9 of LC05-GEN-MODEL-ROLE-SPEC)"
+
+# ---------------------------------------------------------------------------
+# 3. Build Steps
+# ---------------------------------------------------------------------------
+steps:
+  - id: STEP-01
+    name: "Load FeatureGraph"
+    description: >
+      Parse feature_graph.json.  Validate schema.  Resolve all feature
+      IDs, constraint targets, and datum references.
+    input:
+      - "feature_graph.json"
+    output:
+      - "in-memory FeatureGraph object"
+    deterministic: true
+
+  - id: STEP-02
+    name: "Load Parameters"
+    description: >
+      Parse geometry_params.yaml.  Bind parameter values to FeatureGraph
+      nodes.  Verify units match source (INV-CAD-O2).
+    input:
+      - "geometry_params.yaml"
+    output:
+      - "in-memory parameterised FeatureGraph"
+    deterministic: true
+
+  - id: STEP-03
+    name: "Generate CAD Build Script"
+    description: >
+      Traverse the parameterised FeatureGraph in topological order.
+      For each feature, emit the corresponding CAD kernel call
+      (OCCT / FreeCAD Python API).  Constraint enforcement is
+      inline in the script.
+    input:
+      - "parameterised FeatureGraph"
+      - "cad_semantics.yaml"
+    output:
+      - "cad_build_script.py"
+    deterministic: true
+    reproducibility_rule: >
+      Same FeatureGraph + same parameters → identical script content
+      (byte-for-byte after normalisation of whitespace and timestamps).
+
+  - id: STEP-04
+    name: "Execute Build Script"
+    description: >
+      Run cad_build_script.py in a sandboxed OCCT/FreeCAD environment.
+      Capture the resulting B-Rep and compute the geometry hash.
+    input:
+      - "cad_build_script.py"
+    output:
+      - "geometry (B-Rep, internal)"
+      - "geometry_hash: sha256 of STEP export"
+    deterministic: true
+    reproducibility_rule: >
+      Same script + same CAD kernel version → identical geometry
+      (hash-verifiable within floating-point tolerance ≤ 1e-12).
+
+  - id: STEP-05
+    name: "Generate 2D Drawing"
+    description: >
+      Project B-Rep onto standard orthographic views.  Apply title
+      block template, layer naming, dimension callouts, and GD&T
+      symbols per cad_semantics.yaml.
+    input:
+      - "geometry (B-Rep)"
+      - "cad_semantics.yaml"
+    output:
+      - "drawing_2d.dxf"
+      - "drawing_meta.yaml"
+    deterministic: true
+    template_ref: "approved title-block template per STD-LC04-ASKM-CAD-001 §4.3 ADM-CAD-4"
+
+  - id: STEP-06
+    name: "Run Gate Pipeline"
+    description: >
+      Execute all WDG gates in order (§5 of STD-LC04-ASKM-CAD-001).
+      Collect pass/fail verdicts into validation_report.json.
+    input:
+      - "feature_graph.json"
+      - "geometry_params.yaml"
+      - "cad_build_script.py"
+      - "drawing_2d.dxf"
+      - "drawing_meta.yaml"
+    output:
+      - "validation_report.json"
+    gates:
+      - "WDG-GEOM-SCHEMA-VALIDATE"
+      - "WDG-CONSTRAINT-ENVELOPE"
+      - "WDG-DIMENSIONAL-CHECK"
+      - "WDG-DRAWING-COMPLIANCE"
+      - "WDG-DIFF-BASELINE"
+      - "WDG-EXPORT-CONTROL-IP"
+
+  - id: STEP-07
+    name: "Record Provenance"
+    description: >
+      Write heading.yaml with PATH → MTL provenance chain.
+      If all gates pass, write ledger_tx.json for Teknia ledger.
+    input:
+      - "validation_report.json"
+    output:
+      - "heading.yaml"
+      - "ledger_tx.json  (only if all gates PASS)"
+
+# ---------------------------------------------------------------------------
+# 4. Post-conditions
+# ---------------------------------------------------------------------------
+postconditions:
+  - id: POST-01
+    description: "validation_report.json exists and all gates report PASS"
+    check: "All WDG verdicts = PASS"
+
+  - id: POST-02
+    description: "geometry_hash in validation_report matches sha256 of exported STEP"
+    check: "Hash comparison"
+
+  - id: POST-03
+    description: "ledger_tx.json is consistent with Teknia ledger hash-chain"
+    check: "knu_distribution.py verify"
+
+  - id: POST-04
+    description: "No orphan artifacts — every output traces to an input"
+    check: "Provenance graph is connected"
+
+# ---------------------------------------------------------------------------
+# 5. Envelope Constraints
+# ---------------------------------------------------------------------------
+envelope:
+  max_feature_count: 10000
+  max_constraint_count: 50000
+  max_build_script_lines: 100000
+  max_drawing_layers: 256
+  geometry_hash_algorithm: "sha256"
+  floating_point_tolerance: 1.0e-12
+  supported_cad_kernels:
+    - name: "OpenCASCADE (OCCT)"
+      min_version: "7.7.0"
+    - name: "FreeCAD"
+      min_version: "0.21"
+
+# ---------------------------------------------------------------------------
+# 6. Test Cases
+# ---------------------------------------------------------------------------
+test_cases:
+  - id: TC-01
+    name: "Empty FeatureGraph"
+    description: >
+      An empty feature_graph.json (features: [], constraints: []) must
+      produce a valid but trivial build script that generates no geometry.
+      All gates pass (trivially).
+    input:
+      feature_graph:
+        schema_version: "1.0.0"
+        source:
+          file_name: "empty.step"
+          file_hash: "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          format: "STEP"
+        features: []
+        constraints: []
+        topology:
+          faces: 0
+          edges: 0
+          loops: 0
+    expected:
+      gates_pass: true
+      geometry_hash: "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+  - id: TC-02
+    name: "Single Cylinder Feature"
+    description: >
+      A feature_graph with one cylinder (diameter 12 mm, height 50 mm)
+      must produce a build script that generates a single solid body.
+    input:
+      feature_graph:
+        schema_version: "1.0.0"
+        source:
+          file_name: "cylinder.step"
+          file_hash: "sha256:aaaa000000000000000000000000000000000000000000000000000000000001"
+          format: "STEP"
+        features:
+          - id: "F-0001"
+            type: "cylinder"
+            status: "complete"
+            parameters:
+              diameter:
+                value: 12.0
+                unit: "mm"
+              height:
+                value: 50.0
+                unit: "mm"
+        constraints: []
+        topology:
+          faces: 3
+          edges: 2
+          loops: 2
+    expected:
+      gates_pass: true
+      topology_solids: 1
+
+  - id: TC-03
+    name: "Constraint Violation"
+    description: >
+      A feature_graph where a distance constraint value falls outside
+      the declared tolerance envelope.  WDG-CONSTRAINT-ENVELOPE must
+      report FAIL.
+    input:
+      feature_graph:
+        schema_version: "1.0.0"
+        source:
+          file_name: "bracket.step"
+          file_hash: "sha256:bbbb000000000000000000000000000000000000000000000000000000000002"
+          format: "STEP"
+        features:
+          - id: "F-0001"
+            type: "plane"
+            status: "complete"
+          - id: "F-0002"
+            type: "plane"
+            status: "complete"
+        constraints:
+          - id: "C-0001"
+            type: "distance"
+            targets: ["F-0001", "F-0002"]
+            value: 999.0
+            unit: "mm"
+            status: "violated"
+        topology:
+          faces: 2
+          edges: 0
+          loops: 0
+    expected:
+      gates_pass: false
+      failing_gate: "WDG-CONSTRAINT-ENVELOPE"
+
+  - id: TC-04
+    name: "Missing Feature Status"
+    description: >
+      A feature_graph with status 'unknown' triggers conservative parse
+      warning (INV-CAD-O1) but still passes schema validation.
+    input:
+      feature_graph:
+        schema_version: "1.0.0"
+        source:
+          file_name: "partial.step"
+          file_hash: "sha256:cccc000000000000000000000000000000000000000000000000000000000003"
+          format: "STEP"
+        features:
+          - id: "F-0001"
+            type: "unknown"
+            status: "unknown"
+        constraints: []
+        topology:
+          faces: 0
+          edges: 0
+          loops: 0
+    expected:
+      gates_pass: true
+      warnings:
+        - "INV-CAD-O1: Feature F-0001 has status 'unknown'"
+
+  - id: TC-05
+    name: "Reproducibility Check"
+    description: >
+      Running the build procedure twice with identical inputs must
+      produce identical geometry hashes (ADM-CAD-1).
+    input: "Same as TC-02"
+    expected:
+      geometry_hash_run_1: "equals geometry_hash_run_2"
+      gates_pass: true
+
+# ---------------------------------------------------------------------------
+# 7. Governance
+# ---------------------------------------------------------------------------
+governance:
+  invariance_test_required: true
+  certification_impact_scan: true
+  observer_baseline_required: true
+  parent_spec: "LC05-GEN-MODEL-ROLE-SPEC-v0.1"
+  cad_standard: "STD-LC04-ASKM-CAD-001"
+  enforcement_ref: ".asit/operator/enforcement-rules.yaml"
+
+# ---------------------------------------------------------------------------
+# 8. Traceability
+# ---------------------------------------------------------------------------
+traceability:
+  doc_id: "PROC-CAD-BUILD-DET-v1.0"
+  parent_standard: "AMPEL360-FAM-LC04-ASKM-CAD-001 Rev A"
+  parent_spec: "LC05-GEN-MODEL-ROLE-SPEC-v0.1 (KNU-ATA96-70-001)"
+  parent_knot: "KNOT-ATA96-70-00-001"
+  schema_ref: "feature_graph.schema.json"
+  programme: "ID-A360-Q100"

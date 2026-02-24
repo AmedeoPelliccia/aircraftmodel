@@ -60,5 +60,22 @@ procedures:
     invariance_test_required: true
     certification_impact_scan: true
 
+  # --- CAD Module procedures (STD-LC04-ASKM-CAD-001 Rev A) ---
+
+  - procedure_id: PROC-CAD-BUILD-DET-v1.0
+    allowed_mode: DELINEANT
+    delta_class: STRUCTURAL
+    invariance_test_required: true
+    certification_impact_scan: true
+    cad_standard_ref: STD-LC04-ASKM-CAD-001
+
+  - procedure_id: PROC-CAD-OBSERVE-FEATURES-v1.0
+    allowed_mode: OBSERVER
+    delta_class: NONE
+    invariance_test_required: false
+    certification_impact_scan: false
+    cad_standard_ref: STD-LC04-ASKM-CAD-001
+
 enforcement_ref: .asit/operator/enforcement-rules.yaml
 governance_spec_ref: SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md
+cad_standard_ref: SSOT/LC04_DESIGN_REVIEW/cad-module/STD-LC04-ASKM-CAD-001.md
