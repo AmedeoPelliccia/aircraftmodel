@@ -1,0 +1,90 @@
+# .asit/operator — Enforcement Rules
+# KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
+# Programme: ID-A360-Q100
+
+# Cross-mode enforcement rules derived from §5.2 of
+# LC05-GEN-MODEL-ROLE-SPEC-v0.1
+
+enforcement_rules:
+
+  # GOV-1: Observer cannot produce structural deltas
+  - id: GOV-1
+    name: OBSERVER_cannot_emit_MODEL_DELTA
+    description: >
+      An operation running in OBSERVER mode is forbidden from
+      producing any artifact of class MODEL_DELTA. This includes
+      node additions, edge modifications, or certification binding
+      changes.
+    source_mode: OBSERVER
+    forbidden_output: MODEL_DELTA
+    enforcement_points:
+      - pre-commit  # Rule 4 in .github/hooks/pre-commit
+      - ci          # gen-model-validation.yml
+    violation_action: REJECT_COMMIT
+    severity: CRITICAL
+
+  # GOV-2: Delineant cannot produce state captures without source
+  - id: GOV-2
+    name: DELINEANT_cannot_emit_STATE_CAPTURE_without_source
+    description: >
+      An operation running in DELINEANT mode cannot produce
+      LC05_ANALYSIS_STATE_CAPTURE or LC05_TRACE_SNAPSHOT artifacts
+      unless it cites a prior observer baseline as the source.
+    source_mode: DELINEANT
+    constrained_output:
+      - LC05_ANALYSIS_STATE_CAPTURE
+      - LC05_TRACE_SNAPSHOT
+    condition: "Must reference a prior observer baseline artifact"
+    enforcement_points:
+      - ci          # gen-model-validation.yml
+    violation_action: WARN
+    severity: HIGH
+
+  # GOV-3: Grammar freeze within baseline
+  - id: GOV-3
+    name: NO_MODE_can_modify_grammar
+    description: >
+      Neither OBSERVER nor DELINEANT may modify the structural
+      grammar Σ (ATA taxonomy, OPT-IN axes, LC schema) within a
+      baseline version. Grammar changes require a baseline
+      transition.
+    source_mode: ALL
+    forbidden_action: GRAMMAR_MODIFICATION
+    enforcement_points:
+      - ci          # option_structure_validator.py
+    violation_action: REJECT_COMMIT
+    severity: CRITICAL
+
+  # §9: Delineant requires observer baseline
+  - id: GOV-4
+    name: DELINEANT_requires_observer_baseline
+    description: >
+      A delineant operation D is valid only if S = O(KG, B).
+      Every structural delta must cite a committed
+      LC05_ANALYSIS_STATE_CAPTURE or LC05_TRACE_SNAPSHOT artifact.
+    source_mode: DELINEANT
+    required_input: OBSERVER_BASELINE
+    enforcement_points:
+      - pre-commit  # Rule 5 in .github/hooks/pre-commit (warning)
+      - ci          # gen-model-validation.yml
+    violation_action: WARN
+    severity: HIGH
+
+# Forbidden cross-mode operations (summary)
+forbidden_cross_mode_operations:
+  - OBSERVER_cannot_emit_MODEL_DELTA
+  - DELINEANT_cannot_emit_STATE_CAPTURE_without_source
+
+# DWGE procedure validation rule
+procedure_validation:
+  rule: >
+    Every procedure registered under lifecycle_stage LC05 must declare
+    allowed_mode as exactly one of OBSERVER or DELINEANT. Mixed-mode
+    procedures are inadmissible.
+  enforcement_point: ci
+  reference: "LC05-GEN-MODEL-ROLE-SPEC §8.3"
+
+# Certification coupling (references .askm/delineant/gate-rules.yaml)
+certification_coupling_ref: .askm/delineant/gate-rules.yaml
+
+governance_spec_ref: SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md

@@ -14,6 +14,11 @@ import argparse
 import os
 import sys
 
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 REQUIRED_AXES = [
@@ -54,6 +59,16 @@ PUB_DIRS = [
     "PUB/CSDB/ICN",
 ]
 
+ASKM_DIRS = [
+    ".askm/observer",
+    ".askm/delineant",
+]
+
+ASIT_DIRS = [
+    ".asit/agents",
+    ".asit/operator",
+]
+
 CHAPTER_MAP = {
     "28": ATA28_DIRS,
     "47": ATA47_DIRS,
@@ -67,7 +82,9 @@ def check_dirs(dirs, label, strict=False):
     for d in dirs:
         full = os.path.join(REPO_ROOT, d)
         if not os.path.isdir(full):
-            msg = f"MISSING: {d}"
+            severity = "ERROR" if strict else "WARNING"
+            label_prefix = f"{label}: " if label else ""
+            msg = f"{severity}: {label_prefix}missing directory {d}"
             if strict:
                 errors.append(msg)
             else:
@@ -89,6 +106,119 @@ def check_ssot_no_binaries():
                 rel = os.path.relpath(os.path.join(root, f), REPO_ROOT)
                 errors.append(f"FORBIDDEN binary in SSOT: {rel}")
     return errors
+
+
+def check_askm_governance():
+    """Validate .askm/ governance configuration consistency."""
+    errors = []
+    warnings = []
+
+    # Check that config.yaml exists in each .askm/ subdirectory
+    for subdir in ["observer", "delineant"]:
+        config_path = os.path.join(REPO_ROOT, ".askm", subdir, "config.yaml")
+        if not os.path.isfile(config_path):
+            errors.append(f"MISSING: .askm/{subdir}/config.yaml")
+            continue
+
+        if yaml is None:
+            warnings.append("PyYAML not installed — skipping YAML content checks")
+            continue
+
+        try:
+            with open(config_path) as f:
+                config = yaml.safe_load(f)
+        except yaml.YAMLError as exc:
+            errors.append(f"INVALID YAML in .askm/{subdir}/config.yaml: {exc}")
+            continue
+
+        if not isinstance(config, dict):
+            errors.append(f"INVALID: .askm/{subdir}/config.yaml is not a YAML mapping")
+            continue
+
+        # Observer must not declare delta_class: STRUCTURAL
+        if subdir == "observer":
+            delta_class = config.get("delta_class", "NONE")
+            if delta_class == "STRUCTURAL":
+                errors.append(
+                    "GOVERNANCE VIOLATION: .askm/observer/config.yaml declares "
+                    "delta_class: STRUCTURAL — observer cannot produce structural deltas"
+                )
+
+        # Delineant must declare requires_observer_baseline: true
+        if subdir == "delineant":
+            if not config.get("requires_observer_baseline", False):
+                errors.append(
+                    "GOVERNANCE VIOLATION: .askm/delineant/config.yaml must declare "
+                    "requires_observer_baseline: true"
+                )
+
+    return errors, warnings
+
+
+def check_asit_consistency():
+    """Validate .asit/ agent and operator enforcement consistency."""
+    errors = []
+    warnings = []
+
+    if yaml is None:
+        warnings.append("PyYAML not installed — skipping .asit/ content checks")
+        return errors, warnings
+
+    # Check that agent configs reference valid modes from .askm/
+    agents_dir = os.path.join(REPO_ROOT, ".asit", "agents")
+    if os.path.isdir(agents_dir):
+        for fname in os.listdir(agents_dir):
+            if not fname.endswith(".yaml"):
+                continue
+            fpath = os.path.join(agents_dir, fname)
+            try:
+                with open(fpath) as f:
+                    agent = yaml.safe_load(f)
+            except yaml.YAMLError as exc:
+                errors.append(f"INVALID YAML in .asit/agents/{fname}: {exc}")
+                continue
+
+            if not isinstance(agent, dict):
+                continue
+
+            modes = agent.get("modes", [])
+            for mode_entry in modes:
+                if not isinstance(mode_entry, dict):
+                    continue
+                mode_name = mode_entry.get("mode", "")
+                config_ref = mode_entry.get("config_ref", "")
+                if config_ref:
+                    ref_path = os.path.join(REPO_ROOT, config_ref)
+                    if not os.path.isfile(ref_path):
+                        errors.append(
+                            f"BROKEN REF in .asit/agents/{fname}: "
+                            f"mode {mode_name} references {config_ref} which does not exist"
+                        )
+
+    # Check enforcement rules cover required forbidden operations
+    enforcement_path = os.path.join(REPO_ROOT, ".asit", "operator", "enforcement-rules.yaml")
+    if os.path.isfile(enforcement_path):
+        try:
+            with open(enforcement_path) as f:
+                enforcement = yaml.safe_load(f)
+        except yaml.YAMLError as exc:
+            errors.append(f"INVALID YAML in .asit/operator/enforcement-rules.yaml: {exc}")
+            return errors, warnings
+
+        if isinstance(enforcement, dict):
+            forbidden_ops = enforcement.get("forbidden_cross_mode_operations", [])
+            required_ops = [
+                "OBSERVER_cannot_emit_MODEL_DELTA",
+                "DELINEANT_cannot_emit_STATE_CAPTURE_without_source",
+            ]
+            for op in required_ops:
+                if op not in forbidden_ops:
+                    errors.append(
+                        f"GOVERNANCE GAP: .asit/operator/enforcement-rules.yaml "
+                        f"missing required forbidden operation: {op}"
+                    )
+
+    return errors, warnings
 
 
 def main():
@@ -116,6 +246,8 @@ def main():
             ("ATA 47", ATA47_DIRS),
             ("SSOT", SSOT_DIRS),
             ("PUB", PUB_DIRS),
+            (".askm governance", ASKM_DIRS),
+            (".asit enforcement", ASIT_DIRS),
         ]:
             e, w = check_dirs(dirs, label, args.strict)
             all_errors.extend(e)
@@ -123,6 +255,15 @@ def main():
 
     bin_errors = check_ssot_no_binaries()
     all_errors.extend(bin_errors)
+
+    # GEN-MODEL governance checks
+    askm_errors, askm_warnings = check_askm_governance()
+    all_errors.extend(askm_errors)
+    all_warnings.extend(askm_warnings)
+
+    asit_errors, asit_warnings = check_asit_consistency()
+    all_errors.extend(asit_errors)
+    all_warnings.extend(asit_warnings)
 
     for w in all_warnings:
         print(f"  WARN: {w}")
@@ -133,7 +274,9 @@ def main():
         print(f"\n❌ Validation FAILED — {len(all_errors)} error(s), {len(all_warnings)} warning(s)")
         sys.exit(1)
     else:
-        total_checked = len(REQUIRED_AXES) + len(ATA28_DIRS) + len(ATA47_DIRS) + len(SSOT_DIRS) + len(PUB_DIRS)
+        total_checked = (len(REQUIRED_AXES) + len(ATA28_DIRS) + len(ATA47_DIRS)
+                        + len(SSOT_DIRS) + len(PUB_DIRS)
+                        + len(ASKM_DIRS) + len(ASIT_DIRS))
         if args.chapter:
             total_checked = len(CHAPTER_MAP.get(args.chapter, []))
         print(f"✅ Validation PASSED — {total_checked} directories checked, {len(all_warnings)} warning(s)")

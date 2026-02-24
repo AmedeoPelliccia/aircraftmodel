@@ -272,6 +272,14 @@ AMPEL360-WTW/
 ├── CAOS/                                  Continuous Airworthiness & Ops Sustainment
 ├── finance/ledger.json                    ④INCENTIVE: SHA-256 hash-chain TT ledger
 │
+├── .askm/                                 ← GEN-MODEL mode definitions
+│   ├── observer/                          Read-only state extraction config
+│   └── delineant/                         Structural write (gated) config
+│
+├── .asit/                                 ← Agent & operator enforcement
+│   ├── agents/                            Agent-to-mode bindings
+│   └── operator/                          Cross-mode enforcement rules
+│
 ├── tools/
 │   ├── ci/
 │   │   ├── optin_structure_validator.py   ★ Structure + traceability linter
@@ -286,7 +294,8 @@ AMPEL360-WTW/
     └── workflows/
         ├── brex-validation.yml            ★ BREX CI on PUB/CSDB/** changes
         ├── tt-distribution.yml            ★ Auto TT award on PR merge
-        └── knot-issues-sync.yml           ★ CSV → GitHub Issues on push
+        ├── knot-issues-sync.yml           ★ CSV → GitHub Issues on push
+        └── gen-model-validation.yml       ★ GEN-MODEL governance enforcement
 ```
 
 **Placement rule:**
@@ -296,6 +305,8 @@ AMPEL360-WTW/
 | Authoritative engineering evidence | `SSOT/` |
 | Publishable or deliverable | `PUB/` |
 | Formatted output (PDF, HTML, DOCX) | `PUB/EXPORT/` — **never** `SSOT/` |
+| GEN-MODEL mode configs (observer/delineant) | `.askm/` |
+| Agent registrations & enforcement rules | `.asit/` |
 
 ---
 
@@ -809,6 +820,23 @@ python tools/knu_distribution.py verify
 
 `SSOT/LC05_ANALYSIS_MODELS/thermodynamic-models/` defines OpenModelica 1D
 simulation standard — one folder per KNOT, `KNU_EVIDENCE.md` template with
+
+### GEN-MODEL Observer / Delineant Governance (LC05)
+
+The GEN-MODEL layer formalises two operational modes for LC05 analysis:
+
+| Mode | Config | Function |
+|---|---|---|
+| **Observer** | `.askm/observer/` | Read-only state extraction — idempotent, no topology mutation |
+| **Delineant** | `.askm/delineant/` | Structural write — gated by admissibility invariants + certification coupling |
+
+**Key invariants:** No delineation without observer baseline (§9 of spec). Certified
+node deletion requires IBCR (ATA 96-70). Cross-mode operations are forbidden (GOV-1, GOV-2).
+
+**Formal spec:** `SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md` (KNU-ATA96-70-001)
+**Proof sketch:** `SSOT/LC05_ANALYSIS_MODELS/LC05-TOPOLOGY-INVARIANCE-PROOF.md` (KNU-ATA96-70-002)
+**Agent registry:** `.asit/agents/gen-model-agent.yaml`
+**Enforcement:** `.asit/operator/enforcement-rules.yaml`
 `delta_residual_primary` field feeding directly into the TT formula, and CI
 integration for automated acceptance criteria checking.
 

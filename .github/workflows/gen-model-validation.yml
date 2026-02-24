@@ -1,0 +1,77 @@
+name: GEN-MODEL Governance Validation
+on:
+  push:
+    paths: ['.askm/**', '.asit/**', 'SSOT/LC05_ANALYSIS_MODELS/**']
+  pull_request:
+    paths: ['.askm/**', '.asit/**', 'SSOT/LC05_ANALYSIS_MODELS/**']
+permissions:
+  contents: read
+jobs:
+  gen-model-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r requirements.txt
+      - name: Validate structure (including .askm/.asit)
+        run: python tools/ci/optin_structure_validator.py --check --strict
+      - name: Validate YAML syntax in .askm/
+        run: |
+          python -c "
+          import yaml, sys, pathlib
+          errors = 0
+          for p in pathlib.Path('.askm').rglob('*.yaml'):
+              try:
+                  yaml.safe_load(p.read_text())
+                  print(f'  ✅ {p}')
+              except yaml.YAMLError as e:
+                  print(f'  ❌ {p}: {e}')
+                  errors += 1
+          sys.exit(1 if errors else 0)
+          "
+      - name: Validate YAML syntax in .asit/
+        run: |
+          python -c "
+          import yaml, sys, pathlib
+          errors = 0
+          for p in pathlib.Path('.asit').rglob('*.yaml'):
+              try:
+                  yaml.safe_load(p.read_text())
+                  print(f'  ✅ {p}')
+              except yaml.YAMLError as e:
+                  print(f'  ❌ {p}: {e}')
+                  errors += 1
+          sys.exit(1 if errors else 0)
+          "
+      - name: Cross-mode consistency check
+        run: |
+          python -c "
+          import yaml, sys, pathlib
+
+          # Check observer does not declare STRUCTURAL
+          obs_cfg = yaml.safe_load(pathlib.Path('.askm/observer/config.yaml').read_text())
+          if obs_cfg.get('delta_class') == 'STRUCTURAL':
+              print('❌ Observer declares delta_class: STRUCTURAL')
+              sys.exit(1)
+
+          # Check delineant requires observer baseline
+          del_cfg = yaml.safe_load(pathlib.Path('.askm/delineant/config.yaml').read_text())
+          if not del_cfg.get('requires_observer_baseline', False):
+              print('❌ Delineant missing requires_observer_baseline: true')
+              sys.exit(1)
+
+          # Check enforcement rules cover required operations
+          enf = yaml.safe_load(pathlib.Path('.asit/operator/enforcement-rules.yaml').read_text())
+          forbidden = enf.get('forbidden_cross_mode_operations', [])
+          required = [
+              'OBSERVER_cannot_emit_MODEL_DELTA',
+              'DELINEANT_cannot_emit_STATE_CAPTURE_without_source',
+          ]
+          for op in required:
+              if op not in forbidden:
+                  print(f'❌ Missing forbidden operation: {op}')
+                  sys.exit(1)
+
+          print('✅ Cross-mode governance consistency verified')
+          "
