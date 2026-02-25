@@ -1,9 +1,9 @@
-# family_C_novel_h2.yaml
+# family_C_raw-material_h2.yaml
 # Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-C
 # Date: 2026-02-23
-# Description: Family C lifecycle template — Novel Technology Development
-# (Cryogenic / H2). Applies to ATA-28 (C2 CELL H2 fuel system) and
-# any other novel cryogenic/hydrogen technology on the AMPEL360 WTW.
+# Description: Family C lifecycle template — Raw Material (H2/Cryogenic)
+# Applies to ATA-28 (C2 CELL H2 fuel system) and
+# any other raw-material cryogenic/hydrogen technology on the AMPEL360 programme.
 # Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
 
 document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-C"

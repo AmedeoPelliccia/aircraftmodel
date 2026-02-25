@@ -1,0 +1,391 @@
+# family_F_bfe_cabin.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-F
+# Date: 2026-02-23
+# Description: Family F lifecycle template — Airline-Selected (BFE).
+# Applies to ATA-25 (Cabin/Passenger Accommodation) and related BFE chapters.
+# Buyer-Furnished Equipment selected by airlines; late configuration lock
+# is the defining characteristic of this family.
+# Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-F"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "F"
+  name: "Airline-Selected (BFE)"
+  applies_to: ["ATA-25", "ATA-35", "ATA-36"]
+  classification_criteria:
+    trl_range: [7, 9]              # Mature; catalogue cabin products from approved suppliers
+    supply_chain_maturity: "high"  # Large established cabin equipment supply chain
+    make_buy: "buy"                # Airline selects from approved supplier catalogue
+    special_conditions_required: false  # Standard CS-25 cabin safety basis
+    certification_basis: ["CS-25", "CS-25 Subpart D (cabin)", "DO-160G (cabin electronics)", "FAR-25.853 (flammability)"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Register all known BFE/cabin uncertainties: airline configuration
+        variability scope (number of BFE line items, selection lead times),
+        structural interface variability (seat track patterns, sidewall
+        attachment points), BFE supplier qualification status, weight
+        uncertainty per configuration class (FP-04 impact), emergency
+        egress compliance across all configuration variants.
+        Instantiate KNUs. Define RACI including airline customisation
+        management team. Define approved BFE catalogue structure.
+      compression_lever: >
+        Cabin uncertainties are primarily configuration and schedule
+        risks, not technology risks. Rapid KNOT closure by defining
+        envelope-based structural interfaces (one structural design
+        supports all airline configurations). Target: 12 KNUs
+        ACCEPTED/month for well-understood cabin interface topics.
+      entry_criteria: "Programme kickoff; preliminary cabin architecture defined; first airline customer discussions commenced"
+      exit_criteria: "All KNOTs registered; BFE catalogue structure defined; RACI signed; structural interface envelope defined"
+      typical_duration_months: 2
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define cabin structural interface requirements: seat track
+        pattern, sidewall/overhead attachment grid, structural floor
+        load limits per seat class, emergency exit location constraints.
+        Define cabin system requirements: ECS (ATA-21) ducting interfaces,
+        oxygen system (ATA-35) distribution envelope, IFE power outlet
+        density (ATA-24/46 interface). Define BFE envelope requirements:
+        maximum seat dimensions, galley envelope, lavatory envelope.
+        Define flammability and toxicity requirements. FP-04 weight
+        envelope per cabin zone. Decompose from aircraft-level LC02.
+      compression_lever: >
+        Define requirements as envelopes, not fixed configurations,
+        to accommodate airline selection variability. Reuse requirements
+        templates from prior AMPEL cabin programmes. Co-develop weight
+        requirements with FP-04 Weight Budget Freeze contribution.
+      entry_criteria: "SLC01 exit; aircraft LC02 requirements baselined; preliminary airline customer requirements known"
+      exit_criteria: >
+        Cabin structural interface requirements baselined; BFE envelope
+        requirements frozen; flammability/toxicity requirements defined;
+        FP-04 weight envelope contribution delivered
+      typical_duration_months: 3
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Cabin Architecture and Catalogue Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define cabin architecture: floor plan options, galley/lavatory
+        position options, emergency exit row constraints. Define Approved
+        BFE Catalogue: enumerate all BFE line items (seats, galleys,
+        lavatories, IFE, overhead bins) with approved supplier list per
+        item. Define configuration control rules: which BFE items are
+        independently selectable, which are interdependent. Define
+        Passenger Service Unit (PSU) standard interface. Structural
+        interface verification model to confirm any catalogue combination
+        is within the structural envelope.
+      compression_lever: >
+        Early airline engagement workshops drive catalogue definition
+        to match actual customer demand, avoiding over-engineering of
+        configurations that no airline will select. Parametric cabin
+        layout tool enables rapid virtual evaluation of all configuration
+        combinations.
+      entry_criteria: "SLC02 exit; preliminary airline requirements received; BFE supplier RFI responses received"
+      exit_criteria: >
+        Approved BFE catalogue initial issue; cabin architecture floor
+        plan options frozen; structural interface verification model
+        validated; configuration control rules documented
+      typical_duration_months: 4
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Structural interface design: seat track installation, sidewall
+        attachment structure, overhead bin structure, galley/lavatory
+        attachment fittings. Cabin systems installation design: ECS
+        duct routing, oxygen system distribution, IFE wiring conduit
+        routing. PSU standard design. Emergency lighting installation.
+        Evacuation slide fitting installation. ICD with Family A
+        (structural floor attachment), Family D (ATA-24 power outlets,
+        ATA-35/36 systems). Weight statement per configuration class
+        (FP-04 input, envelope-based).
+      compression_lever: >
+        Envelope-based design approach: one structural design accommodates
+        all catalogue configurations. Parametric seat track pattern and
+        overhead bin structure designs automatically validate against all
+        catalogue items. Minimise unique structural parts per configuration
+        to reduce line production complexity.
+      entry_criteria: "SLC03 exit; catalogue defined; structural interface requirements from SLC02 baselined"
+      exit_criteria: >
+        Structural interface design released; cabin systems installation
+        design complete; ICDs signed; weight envelope per configuration
+        class submitted (FP-04); evacuation fitting locations frozen
+      typical_duration_months: 4
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Structural analysis: seat track attachment loads (ultimate/limit
+        per CS-25 §§ 25.561/25.562 dynamic seat loading), overhead bin
+        drop test analysis, galley attachment loads. Evacuation analysis:
+        90-second evacuation demonstration compliance (CS-25 §25.803).
+        Flammability and toxicity analysis: confirm all BFE catalogue
+        items meet FAR-25.853 (heat release, smoke density). Cabin
+        pressurisation analysis (ATA-21 interface). Emergency oxygen
+        analysis (ATA-35). Weight analysis per configuration class
+        (envelope confirmation for FP-04).
+      compression_lever: >
+        Envelope-based analysis approach: demonstrate compliance at
+        envelope extremes (heaviest configuration, highest seat density)
+        to cover all catalogue combinations. Supplier-provided BFE
+        flammability test reports accepted in lieu of AMPEL360 testing.
+        TypeSim PROJ phase for evacuation simulation model credit.
+      entry_criteria: "SLC04 geometry baselined; BFE flammability data received from suppliers"
+      exit_criteria: >
+        Structural analysis complete for worst-case configuration envelope;
+        evacuation compliance confirmed; all BFE catalogue items confirmed
+        flammability-compliant; FP-04 weight envelope analysis confirmed
+      typical_duration_months: 4
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Structural qualification: seat track dynamic test (16g forward,
+        14g down per CS-25.562), overhead bin drop test, galley attachment
+        pull-out test. BFE supplier qualification review: verify all
+        approved BFE suppliers have valid qualification per applicable
+        standards (seats per FAA/EASA TSO-C127, galleys per NAS 3610).
+        Emergency lighting qualification (DO-160G). Evacuation demonstration
+        planning. Full-scale cabin mockup for ergonomics and evacuation
+        route validation.
+      compression_lever: >
+        Seat track dynamic testing covers all catalogue seat combinations
+        by envelope test approach. Supplier TSO qualifications accepted
+        as compliance evidence for BFE items, minimising AMPEL360-conducted
+        tests. Full-scale mockup double-duties as training and
+        evacuation demonstration facility.
+      entry_criteria: >
+        SLC05 exit; structural analysis approved; seat track design frozen;
+        BFE supplier qualification status confirmed; mockup facility available
+      exit_criteria: >
+        Seat track and overhead bin qualification complete; all BFE catalogue
+        suppliers confirmed qualified (TSO/ETSO or AMPEL360 qualification);
+        emergency lighting DO-160G qualification complete; mockup approved
+      typical_duration_months: 8
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Aircraft cabin installation integration: seat track installation
+        verification, PSU fit check, galley and lavatory structure fit,
+        evacuation slide rigging. Cabin systems integration: ECS duct
+        connection, oxygen system connection, IFE power and data
+        connection. Full cabin installation with representative BFE items
+        (first airline customer configuration if available). Functional
+        cabin ground test: lighting, oxygen, IFE. Interface verification
+        with Family D (ATA-24/35/36). Emergency door/slide functional test.
+      compression_lever: >
+        Full-scale mockup pre-validates cabin installation before aircraft
+        availability, reducing aircraft cabin installation time.
+        Concurrent BFE installation with other aircraft installation
+        activities where work-zone access permits.
+      entry_criteria: >
+        SLC06 exit; aircraft available for cabin installation;
+        representative BFE items available; cabin systems qualified
+      exit_criteria: >
+        All cabin systems functionally tested; evacuation routes verified;
+        emergency slides rigged and functioned; BFE first-article
+        installation accepted; cabin integration report released
+      typical_duration_months: 5
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution: cabin certification dossier.
+        CS-25 Subpart D compliance (cabin safety). Evacuation
+        demonstration: 90-second full-scale test with representative
+        passenger mix. CS-25.853 flammability compliance final
+        submission. Conformity inspections for cabin installations.
+        CRIs closure. Approve Approved Configuration List (ACL):
+        document all approved BFE combinations for operator selection.
+        Supplemental Type Certificate (STC) basis for future BFE
+        changes post-TC.
+      compression_lever: >
+        Envelope-based certification covers all ACL configurations
+        in a single certification effort; individual airline
+        configurations do not require separate TC-level approvals.
+        Evacuation demonstration with worst-case cabin layout
+        covers all denser configurations.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test commenced;
+        ACL preliminary issue; evacuation demonstration ready
+      exit_criteria: >
+        Evacuation demonstration passed; all cabin CRIs closed;
+        ACL approved; TC contribution approved; STC basis established
+        for post-TC BFE changes; no open cabin safety findings
+      typical_duration_months: 8
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production and delivery infrastructure: establish airline
+        customisation order management process (BFE selection,
+        delivery schedule coordination). BFE receiving inspection
+        procedures. Cabin installation procedures for line production.
+        BFE supplier delivery schedule management. Training for
+        cabin installation personnel. Initial BFE provisioning
+        coordination with launch airline customers.
+      compression_lever: >
+        Supplier-managed BFE delivery; AMPEL360 coordinates receiving
+        inspection and installation procedures only. Cabin installation
+        can proceed in parallel with other installation activities on
+        aircraft production line.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined; launch airline BFE selections received"
+      exit_criteria: >
+        BFE order management process established; receiving inspection
+        procedures approved; cabin installation procedures released;
+        launch airline BFE delivery confirmed; personnel trained
+      typical_duration_months: 5
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service cabin monitoring: seat serviceability tracking,
+        BFE reliability reports from operators, IFE system availability.
+        Fleet data feed to DPP for cabin component traceability.
+        Cabin modification management: operator-requested BFE changes
+        managed via ACL update or STC process. Obsolescence monitoring
+        for IFE and cabin electronics. Airworthiness Directive compliance
+        for BFE (seat TSO revocations, emergency equipment ADs).
+      compression_lever: "N/A — extension zone (maximise t_ops)"
+      entry_criteria: "EIS; aircraft LC10 commenced"
+      exit_criteria: "Heavy cabin refurbishment trigger OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 8  # Per cabin refurbishment cycle (typically 8-10 years)
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        Cabin heavy refurbishment: seat replacement (new BFE selection
+        opportunity for operator), galley refurbishment, lavatory
+        refurbishment, IFE system upgrade, carpet and sidewall panel
+        replacement. Update DPP for all replaced BFE items and structural
+        components. Re-confirm ACL compliance for new BFE selection.
+        Structural inspection of seat tracks, overhead bin structure,
+        attachment fittings. Emergency slide repack and hydrostatic test
+        of oxygen systems.
+      compression_lever: "N/A — extension zone (maximise reconditioning cycles)"
+      entry_criteria: "Cabin refurbishment trigger (operator-initiated at heavy maintenance visit)"
+      exit_criteria: >
+        Cabin refurbishment complete; ACL compliance confirmed for new
+        BFE selection; structural inspection complete; emergency equipment
+        serviced; DPP updated; return-to-service sign-off
+      loop_back_to: "SLC10"
+      typical_duration_months: 2  # Per cabin refurbishment at heavy maintenance visit
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        Final cabin viability assessment (aircraft life extension decision).
+        If viable, execute SLC11 for additional refurbishment cycle.
+        If not viable (aircraft retirement), decommission: remove all
+        operator-owned BFE, update DPP final state record, recover
+        recyclable materials (textiles, aluminium, CFRP cabin panels)
+        per DPP circularity requirements.
+      compression_lever: "N/A — retirement or final refurbishment cycle"
+      entry_criteria: "SLC11 exit with aircraft life extension / retirement decision"
+      exit_criteria: "Aircraft retired; cabin decommissioned; DPP closed; materials recovered"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 3
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-F-01"
+      condition: "single airline customer (no variability in BFE catalogue)"
+      action: "collapse SLC03 catalogue definition to single-configuration design; remove variability management"
+      rationale: >
+        For a single launch customer with fixed BFE selections, the
+        catalogue variability management and envelope-based design approach
+        collapse to a single configuration. SLC03 reduces to confirming
+        the specific BFE selection against structural and systems interfaces.
+
+    - id: "PR-F-02"
+      condition: "no IFE system fitted (BFE exclusion by airline)"
+      action: "remove IFE-related scope from SLC02, SLC04, SLC05, SLC07, SLC10"
+      rationale: >
+        If the airline configuration excludes In-Flight Entertainment,
+        all IFE-related requirements, design, analysis, installation, and
+        monitoring activities are removed from all phases.
+
+    - id: "PR-F-03"
+      condition: "no evacuation slide fitted (overwater routes only, no slide requirement)"
+      action: "remove evacuation slide sub-phases from SLC06, SLC07, SLC08, SLC11"
+      rationale: >
+        Certain route-specific configurations may not require evacuation
+        slides (e.g., for short overwater operations with approved life
+        raft substitution). This removes the slide-specific qualification,
+        installation, and maintenance activities.
+
+    - id: "PR-F-04"
+      condition: "BFE item has existing STC approval on identical aircraft type"
+      action: "collapse SLC05/SLC06 qualification of that BFE item to STC import review"
+      rationale: >
+        BFE items already approved under an STC on the same aircraft type
+        do not require re-qualification. SLC05 analysis and SLC06 testing
+        for that item are replaced by an STC import review and configuration
+        confirmation check.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      cabin_refurbishment_interval_reached OR operator_requested_reconfiguration
+      (from airline maintenance planning OR BFE obsolescence OR regulatory AD)
+    max_cycles: 5
+    exit_condition: "aircraft_retirement OR uneconomic_refurbishment"
+    design_service_goal_fh: 90000
+    reconditioning_interval_fh: 20000   # Cabin refurbishment every ~8-10 years / ~20,000 FH
+    digital_twin_fidelity_required: "low"
+    dpp_granularity: "BFE-item"
+
+  # --- Elasticity Parameters (Family F defaults) ---
+  default_elasticity:
+    eta_target: 4.0
+    tto_max_months: 18
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 40
+    concurrency_factor_target: 0.78
+    knu_velocity_target: 12
+    gate_pass_rate_target: 0.93
+    reconditioning_cycles_target: 5

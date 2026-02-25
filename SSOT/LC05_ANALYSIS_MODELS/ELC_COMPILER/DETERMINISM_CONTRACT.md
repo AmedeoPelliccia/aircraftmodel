@@ -34,7 +34,7 @@ identical outputs. Determinism is a prerequisite for:
 ## 2  Scope
 
 This contract applies to all executions of `compiler.py` against any
-system in the AMPEL360 WTW programme. It covers:
+system in the AMPEL360 programme. It covers:
 
 - The compilation of family templates into SLC instances
 - The pruning and expansion of SLC phases
@@ -192,8 +192,16 @@ Every compilation **must** produce a **compilation manifest** that is:
 
 1. Stored alongside the compiled `ELC_INSTANCE.yaml` in the system's SSOT
    directory
-2. Immutable after creation (append-only; mutations require a new compilation)
-3. Signed (or at minimum, hash-chained) so tampering is detectable
+2. Non-destructively versioned: any correction SHALL be emitted as a new
+   manifest that SUPERSEDES the prior one; the prior manifest remains
+   referenceable unless a governed suppression policy applies
+   (see AMPEL360-FAM-ARCH-ELC-001-PNR §5 Validity State Model).
+3. Hash-chained and/or signed so tampering is detectable (integrity +
+   traceability; not a claim of absolute immutability — see
+   AMPEL360-FAM-ARCH-ELC-001-PNR §1.1 Relative Immutability).
+4. (Optional) Anchored to a ledger-neutral PNR Thread as a commitment
+   hash when the Thread is active for the compilation event
+   (see AMPEL360-FAM-ARCH-ELC-001-PNR §3 Activation Model).
 
 ### 6.2  Compilation Manifest Schema
 
@@ -256,6 +264,28 @@ manifest_hash = SHA-256(
 This allows detection of post-creation tampering without requiring a
 cryptographic signature infrastructure.
 
+### 6.4  PNR Thread Anchoring (Optional)
+
+When the PNR Blockchain Thread (AMPEL360-FAM-ARCH-ELC-001-PNR) is active for
+a compilation event, the `compile_hash` **may** be anchored on-chain as a
+`COMP`-type PNR commitment. This provides a ledger-neutral, externally
+verifiable proof of the compilation event without placing any engineering
+content on-chain.
+
+The on-chain payload for a compilation anchor is the **minimal PNR commitment
+payload** (see AMPEL360-FAM-ARCH-ELC-001-PNR §7.2) where:
+
+- `event_type` = `"COMP"`
+- `commitment_hash` = the `compile_hash` value from this manifest (§4.1)
+- `validity_state` = `"ACTIVE"` at anchoring time
+- `consensus_proof` = CI/CD pipeline attestation + SA sign-off (per PNR §6)
+
+Anchoring is **optional** and does not affect the determinism guarantees of
+this contract. A compilation is fully valid and auditable without PNR Thread
+anchoring. PNR anchoring provides an additional, externally verifiable
+attestation layer when the programme elects to activate the Thread for
+compilation events.
+
 ---
 
 ## 7  Governance Rules
@@ -317,4 +347,4 @@ prevent gate evaluation until the manifest is generated and stored.
 
 ---
 
-<p align="center"><em>AMPEL360 WTW · ELC Compiler Determinism Contract · AMPEL360-FAM-ARCH-ELC-001-DET Rev A</em></p>
+<p align="center"><em>AMPEL360 · ELC Compiler Determinism Contract · AMPEL360-FAM-ARCH-ELC-001-DET Rev A</em></p>

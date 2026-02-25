@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "AMPEL360-FAM-ARCH-ELC-001-QCC/qualifying_capacity_claim.schema.json",
+  "title": "Qualifying Capacity Claim (QCC)",
+  "description": "JSON Schema for validating Qualifying Capacity Claims — the verifiable credentials that back the authorization formula Auth(actor, event) = Delegation(actor, scope) ∧ Skills(actor, type, policy). Governed by AMPEL360-FAM-ARCH-ELC-001-QCC Rev A.",
+  "type": "object",
+  "required": [
+    "qcc_id",
+    "qcc_type",
+    "actor_role_id",
+    "validity_state",
+    "issued_at",
+    "expires_at",
+    "issuer_id",
+    "issuer_signature_ref",
+    "credential_hash",
+    "prior_qcc_id",
+    "prior_credential_hash"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "qcc_id": {
+      "type": "string",
+      "description": "Unique QCC identifier. Format: QCC:<programme_id>:<actor_role_id>:<type>:<sequence>",
+      "pattern": "^QCC:[A-Z0-9]+:[A-Za-z0-9_-]+:[DS]:[0-9]{5}$",
+      "examples": [
+        "QCC:A360:SA-001:D:00001",
+        "QCC:A360:OEM-QA-001:S:00003",
+        "QCC:A360:SUP-ROLE-ATA28-001:S:00001"
+      ]
+    },
+    "qcc_type": {
+      "type": "string",
+      "description": "Type of the Qualifying Capacity Claim: DELEGATION (where/for whom) or SKILL (what/how).",
+      "enum": ["DELEGATION", "SKILL"]
+    },
+    "actor_role_id": {
+      "type": "string",
+      "description": "Role identifier for whom this claim is issued. Must be a role identifier, not a personal name.",
+      "minLength": 1
+    },
+    "validity_state": {
+      "type": "string",
+      "description": "Current validity state of this credential.",
+      "enum": ["ACTIVE", "SUPERSEDED", "REVOKED", "EXPIRED"]
+    },
+    "issued_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp of when this credential was issued.",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp of when this credential expires. Must be after issued_at.",
+      "format": "date-time"
+    },
+    "issuer_id": {
+      "type": "string",
+      "description": "Role identifier of the accepted authority that issued this credential.",
+      "minLength": 1
+    },
+    "issuer_signature_ref": {
+      "type": "string",
+      "description": "Reference to the issuer's signature or attestation token (e.g., a cryptographic signature reference or notary attestation ID). The signature itself is off-chain.",
+      "minLength": 1
+    },
+    "delegation_scope": {
+      "type": "object",
+      "description": "Required for DELEGATION type. Defines the scope within which this delegation is valid.",
+      "required": ["programme_id", "family_codes", "event_types", "ata_chapters", "suppliers", "facilities"],
+      "additionalProperties": false,
+      "properties": {
+        "programme_id": {
+          "type": "string",
+          "description": "Programme identifier this delegation applies to.",
+          "examples": ["A360"]
+        },
+        "family_codes": {
+          "type": "array",
+          "description": "ELC family codes in scope. Use [\"*\"] for all families.",
+          "items": {
+            "type": "string",
+            "pattern": "^([A-G]|\\*)$"
+          },
+          "minItems": 1
+        },
+        "event_types": {
+          "type": "array",
+          "description": "PNR event types in scope. Use [\"*\"] for all event types.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "ata_chapters": {
+          "type": "array",
+          "description": "ATA chapters in scope. Use [\"*\"] for all chapters.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "suppliers": {
+          "type": "array",
+          "description": "Supplier scope identifiers. Use [\"*\"] for all suppliers.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "facilities": {
+          "type": "array",
+          "description": "Facility scope identifiers. Use [\"*\"] for all facilities.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "skill_reference": {
+      "type": "object",
+      "description": "Required for SKILL type. References the qualification standard and assessment for this skill.",
+      "required": ["skill_code", "process_type", "qualification_standard", "assessment_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "skill_code": {
+          "type": "string",
+          "description": "Unique skill code from the programme skill catalogue.",
+          "minLength": 1
+        },
+        "process_type": {
+          "type": "string",
+          "description": "Type of process this skill covers.",
+          "enum": ["inspection", "release", "change_disposition", "repair", "compilation", "attestation", "qualification", "gate_evaluation", "supplier_verification"]
+        },
+        "method_reference": {
+          "type": "string",
+          "description": "Optional reference to the specific method document or procedure covered by this skill."
+        },
+        "qualification_standard": {
+          "type": "string",
+          "description": "The standard under which this skill was assessed (e.g., EN 9100 §8.4.3, DO-330, EASA Part 66).",
+          "minLength": 1
+        },
+        "assessment_ref": {
+          "type": "string",
+          "description": "Reference to the off-chain assessment document or record. The assessment content remains off-chain; only this reference is stored.",
+          "minLength": 1
+        }
+      }
+    },
+    "credential_hash": {
+      "type": "string",
+      "description": "SHA-256 hex digest of the canonical form of this QCC document (computed with this field zeroed). Used to verify credential integrity and as the commitment_hash in the on-chain QCC anchor.",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "prior_qcc_id": {
+      "description": "QCC ID of the prior credential in the chain for this actor/type, or null for genesis credentials.",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^QCC:[A-Z0-9]+:[A-Za-z0-9_-]+:[DS]:[0-9]{5}$"
+        },
+        { "type": "null" }
+      ]
+    },
+    "prior_credential_hash": {
+      "description": "SHA-256 hex digest of the prior credential, or null for genesis credentials.",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        { "type": "null" }
+      ]
+    }
+  },
+  "if": {
+    "properties": {
+      "qcc_type": { "const": "DELEGATION" }
+    }
+  },
+  "then": {
+    "required": ["delegation_scope"],
+    "properties": {
+      "skill_reference": false
+    }
+  },
+  "else": {
+    "required": ["skill_reference"],
+    "properties": {
+      "delegation_scope": false
+    }
+  }
+}
