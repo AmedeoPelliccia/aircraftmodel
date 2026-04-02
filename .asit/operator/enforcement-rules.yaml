@@ -1,3 +1,5 @@
+---
+
 # .asit/operator — Enforcement Rules
 # KNU-ATA96-70-001 | KNOT-ATA96-70-00-001
 # Programme: ID-A360-Q100
@@ -88,3 +90,4 @@ procedure_validation:
 certification_coupling_ref: .askm/delineant/gate-rules.yaml
 
 governance_spec_ref: SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md
+---
