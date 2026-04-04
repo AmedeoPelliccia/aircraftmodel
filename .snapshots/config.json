@@ -1,0 +1,36 @@
+{
+  "program": "ID-A360-Q100",
+  "version": "0.1",
+  "defaultPrompt": {
+    "mode": "OBSERVER",
+    "lifecycleStage": "LC05",
+    "outputClasses": [
+      "STATE_CAPTURE",
+      "MARGIN_REPORT",
+      "TRACE_SNAPSHOT"
+    ],
+    "governanceRef": "LC05-GEN-MODEL-ROLE-SPEC-v0.1"
+  },
+  "projectStructure": {
+    "includePaths": [
+      "OPT-IN_FRAMEWORK",
+      "SSOT",
+      "PUB",
+      "CAOS",
+      "finance"
+    ],
+    "excludePaths": [
+      "PUB/EXPORT",
+      ".venv",
+      "dist",
+      "build"
+    ],
+    "requiredAxes": [
+      "O-ORGANIZATIONS",
+      "P-PROGRAMS",
+      "T-TECHNOLOGIES",
+      "I-INFRASTRUCTURES",
+      "N-NEURAL_NETWORKS"
+    ]
+  }
+}
