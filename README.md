@@ -547,7 +547,7 @@ See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full contributor loop.
 
 ## License
 
-Creative Commons Zero v1.0 Universal — see [LICENSE](./LICENSE).
+GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](./LICENSE).
 
 ---
 
