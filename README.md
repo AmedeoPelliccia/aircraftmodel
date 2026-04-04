@@ -336,7 +336,7 @@ SSOT/LC01_PROBLEM_STATEMENT/
 ├── KNOTS.csv              Uncertainty register (known unknowns)
 ├── KNU_PLAN.csv           Expected knowledge units per KNOT
 ├── TIMELINE.csv           Milestones and dates
-├── RACI.csv               Stakeholder responsibility matrix
+├── RACI.csv               Stakeholder responsibility matrix (includes GiudAlex party)
 ├── TOKENOMICS_TT.yaml     TT reward pool and allocation parameters
 └── AWARDS_TT.csv          Actual TT distributions (populated at closure)
 ```
@@ -560,6 +560,7 @@ Creative Commons Zero v1.0 Universal — see [LICENSE](./LICENSE).
 - **Framework:** OPT-IN Framework Standard v1.1
 - **Tokenomics:** Teknia Token (TT) v3.14
 - **Domain:** aircraftmodel.eu — aviation decarbonization
+- **Interested Parties:** GiudAlex — registered under `OPT-IN_FRAMEWORK/O-ORGANIZATIONS/GiudAlex/`
 
 ---
 
