@@ -54,6 +54,15 @@ Per [IBD-001 Rev B](../../SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) 
 
 ---
 
+## Governance Authority
+
+The **GIUDILEI PAPA** supreme governance authority is defined under ATA 00 — General
+and applies to all AMPEL360 programme variants:
+
+- [`ATA_00-GENERAL/giudilei-papa-authority.md`](ATA_00-GENERAL/giudilei-papa-authority.md) — Role definition, authority matrix, and activation conditions
+
+---
+
 ## Related KNOTs
 
 | KNOT ID | Title | Relevance |
