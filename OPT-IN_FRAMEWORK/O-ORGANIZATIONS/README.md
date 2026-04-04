@@ -60,3 +60,11 @@ Per [IBD-001 Rev B](../../SSOT/LC04_TRADE_STUDIES/AMPEL360-FAM-IBD-001-RevB.md) 
 |---|---|---|
 | KNOT-ATA04-00-00-001 | ALIs for Cryo Systems | ATA 04 airworthiness limitations for LH₂/NH₃ cryo components |
 
+---
+
+## Registered Interested Parties
+
+| Party ID | Type | Registration | Status |
+|---|---|---|---|
+| [GIUDILEO](GIUDILEO/README.md) | Interested Party | 2026-04-04 | REGISTERED |
+
