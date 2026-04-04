@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "ID-A360-Q100 — Zero-CO₂ Short-Haul Aircraft (LH₂ + NH₃ Cracking)"
+message: >-
+  If you use this project, or any part of it, you must cite it as below.
+  Citation is mandatory under the terms of this repository's license.
+type: software
+authors:
+  - family-names: Pelliccia
+    given-names: Amedeo
+repository-code: "https://github.com/AmedeoPelliccia/aircraftmodel"
+url: "https://aircraftmodel.eu"
+abstract: >-
+  Certification-grade digital engineering baseline for a 100-passenger
+  zero-CO₂ short-haul aircraft powered by Liquid Hydrogen with on-board
+  Ammonia cracking and closed-loop Nitrogen inerting — managed under the
+  OPT-IN Framework, S1000D CSDB, and Teknia Token incentive system.
+keywords:
+  - zero-emission-aviation
+  - liquid-hydrogen
+  - ammonia-cracking
+  - aircraft-design
+  - AMPEL360
+  - IDEALE-ESG
+license: AGPL-3.0-only

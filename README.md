@@ -549,6 +549,8 @@ See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full contributor loop.
 
 GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](./LICENSE).
 
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. **Citation is mandatory** — see [CITATION.cff](./CITATION.cff).
+
 ---
 
 ## Acknowledgments
