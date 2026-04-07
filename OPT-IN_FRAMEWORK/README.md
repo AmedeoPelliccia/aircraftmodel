@@ -1,3 +1,13 @@
+---
+title: "OPT-IN Framework"
+id: OPTIN-FRAMEWORK-README
+type: framework-overview
+programme: AMPEL360
+topology: "O-ORGANIZATIONS / P-PROGRAMS / T-TECHNOLOGIES / I-INFRASTRUCTURES / N-NEURAL_NETWORKS"
+status: active
+version: "1.0"
+---
+
 # OPT-IN Framework
 
 The OPT-IN Framework provides a 5-axis topology for organizing aircraft design and development:

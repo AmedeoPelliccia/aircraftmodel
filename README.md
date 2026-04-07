@@ -1,3 +1,12 @@
+---
+title: "aircraftmodel — AMPEL360 Repository"
+id: REPO-ROOT-README
+type: repository-overview
+programme: AMPEL360
+status: active
+version: "1.0"
+---
+
 # aircraftmodel
 
 A repository for a new aircraft concept based on the AMPEL360 family architecture.

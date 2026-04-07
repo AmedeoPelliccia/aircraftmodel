@@ -1,3 +1,18 @@
+---
+title: "ATA 28 — Fuel System"
+id: OPTIN-ATA28-FUEL-README
+type: ata-chapter-overview
+ata_chapter: "28"
+ata_title: Fuel
+axis: T-TECHNOLOGIES
+group: C2-CIRCULAR_CRYOGENIC_CELLS
+safety_class: SC1
+knu_ref: KNU-ATA28-00-000
+programme: AMPEL360
+status: active
+version: "1.0"
+---
+
 # ATA 28 — Fuel System
 
 ATA Chapter 28 covers the fuel system, including fuel storage, distribution, indication, and jettison systems.

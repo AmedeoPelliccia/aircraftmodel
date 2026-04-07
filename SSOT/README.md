@@ -1,3 +1,16 @@
+---
+title: "SSOT — Single Source of Truth"
+id: SSOT-ROOT-README
+type: ssot-overview
+programme: AMPEL360
+placement_rules:
+  - "No binary deliverables (.pdf, .html, .docx, .xlsx) in SSOT/"
+  - "Formatted outputs belong in PUB/EXPORT/"
+  - "Artifacts longer than 5 lines must include KNU ID references"
+status: active
+version: "1.0"
+---
+
 # SSOT — Single Source of Truth
 
 This directory contains authoritative engineering evidence for the aircraft model project.

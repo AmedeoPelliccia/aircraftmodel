@@ -1,3 +1,16 @@
+---
+title: "LC01 — Problem Statement"
+id: SSOT-LC01-README
+type: lifecycle-phase-overview
+lifecycle_phase: LC01
+phase_name: Problem Statement
+programme: AMPEL360
+knu_id_format: "KNU-ATAxx-xx-xxx"
+knot_id_format: "KNOT-ATAxx-xx-xx-xxx"
+status: active
+version: "1.0"
+---
+
 # LC01 — Problem Statement
 
 This directory contains problem statements, requirements, and program definitions.

@@ -1,3 +1,17 @@
+---
+title: "LC04 — Trade Studies"
+id: SSOT-LC04-README
+type: lifecycle-phase-overview
+lifecycle_phase: LC04
+phase_name: Trade Studies
+programme: AMPEL360
+key_documents:
+  - "AMPEL360-FAM-IBD-001: SHARED vs FORKED boundary definitions"
+  - "ATA 28: Critical-path fork between BWB and WTW variants"
+status: active
+version: "1.0"
+---
+
 # LC04 — Trade Studies
 
 This directory contains trade studies, design decisions, and architectural documentation.

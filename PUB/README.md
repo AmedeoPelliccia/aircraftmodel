@@ -1,3 +1,15 @@
+---
+title: "PUB — Publication Directory"
+id: PUB-ROOT-README
+type: publication-directory-overview
+programme: AMPEL360
+structure:
+  EXPORT: "Formatted output files (PDF, HTML, DOCX)"
+  CSDB: "S1000D compliant data modules"
+status: active
+version: "1.0"
+---
+
 # PUB — Publication Directory
 
 This directory contains deliverables and formatted outputs.
