@@ -65,6 +65,6 @@ python tools/knu_distribution.py verify
 
 GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](./LICENSE).
 
-Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. **Citation is mandatory** — see [CITATION.cff](./CITATION.cff).
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. If you use or reference this project, please cite it when practical — see [CITATION.cff](./CITATION.cff).
 
-**Notification and signature certification:** When this project or any derivative is represented publicly, the originating author must be notified in writing and that notification must be certified by the signatures of all interested parties being represented. See [NOTICE](./NOTICE) for the full requirements.
+**Notification:** If you publicly represent this project or a derivative work, please notify the maintainers or originating author when practical. This is a request for coordination and attribution, not an additional license condition. See [NOTICE](./NOTICE) for project guidance.
