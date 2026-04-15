@@ -1,4 +1,4 @@
-# AMPEL360-COMMON
+# OPT-IN_FRAMEWORK — AMPEL360
 
 <p>
   <img src="https://img.shields.io/badge/Doc-IBD--001%20Rev%20B-1B3A5C" alt="Doc ID">
@@ -16,30 +16,95 @@
   <code>AMPEL360-BWB</code> (Quantum-Enhanced Blended Wing Body, EIS 2042–48).
 </p>
 
+> **AMPEL360 is structured per axis, and each axis separates common content from BWB- and WTB-specific content.**
+
+---
+
+## Structure
+
+In `OPT-IN_FRAMEWORK`, the `AMPEL360` structure is applied consistently across all main axes:
+`I-INFRASTRUCTURES`, `N-NEURAL_NETWORKS`, `O-ORGANIZATIONS`, `P-PROGRAMS`, and `T-TECHNOLOGIES`.
+Each axis is divided into `COMMON` and `SPECIFICS`, where `COMMON` contains the shared AMPEL360
+baseline and `SPECIFICS` contains the two main architectural differentiations: `BWB` and `WTB`.
+
+```text
+OPT-IN_FRAMEWORK/
+├── I-INFRASTRUCTURES/
+│   └── AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/
+│           ├── BWB/
+│           └── WTB/
+│
+├── N-NEURAL_NETWORKS/
+│   └── AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/
+│           ├── BWB/
+│           └── WTB/
+│
+├── O-ORGANIZATIONS/
+│   └── AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/
+│           ├── BWB/
+│           └── WTB/
+│
+├── P-PROGRAMS/
+│   └── AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/
+│           ├── BWB/
+│           └── WTB/
+│
+├── T-TECHNOLOGIES/
+│   └── AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/
+│           ├── BWB/
+│           └── WTB/
+│
+└── README.md
+```
+
+### Logic per axis
+
+| Axis | COMMON | SPECIFICS |
+|---|---|---|
+| **I-INFRASTRUCTURES** | Ground systems & support equipment common to AMPEL360 | BWB / WTB infrastructure differentiations |
+| **N-NEURAL_NETWORKS** | AI/ML rules, governance models common to AMPEL360 | BWB / WTB neural network differentiations |
+| **O-ORGANIZATIONS** | Governance, roles, interfaces common to AMPEL360 | BWB / WTB organizational differentiations |
+| **P-PROGRAMS** | Baseline programmatic content common to AMPEL360 | BWB / WTB programme differentiations |
+| **T-TECHNOLOGIES** | Cross-cutting technologies common to AMPEL360 | BWB / WTB technology differentiations |
+
 ---
 
 ## What This Repository Is
 
-`AMPEL360-COMMON` is the **single authoritative source** for all OPT-IN content
+`OPT-IN_FRAMEWORK` is the **single authoritative source** for all OPT-IN content
 classified as **SHARED** under `IBD-001 Rev B`. It is consumed by both programme
 branches as a Git submodule (or monorepo path). No content in this repository
 may be modified by a programme branch directly — all changes flow through Pull
-Requests against `AMPEL360-COMMON` and are governed by the IBCR process.
+Requests and are governed by the IBCR process.
 
 ```
-AMPEL360-COMMON/           ← This repository (you are here)
-├── O-ORGANIZATIONS/       ATA 00–05
-├── P-PROGRAMS/            ATA 06–12
-├── T-TECHNOLOGIES/
-│   ├── A-AIRFRAME/        ATA 20, 51 (std practices + material library)
-│   ├── M-MECHANICS/       ATA 29 (hydraulics — shared EHA architecture)
-│   ├── E1-ENVIRONMENT/    ATA 21, 30, 36 (ECS, anti-ice, pneumatic)
-│   ├── D-DATA/            ATA 31, 45 (indicating, CMS)
-│   ├── A2-AVIONICS/       ATA 22, 34, 42 (comms, nav, IMA — shared core)
-│   └── C1-COMMS/          ATA 23
-├── I-INFRASTRUCTURES/
-│   └── H2-COMMON/         IN-10–50 (green H₂ supply chain — shared)
-└── N-NEURAL_NETWORKS/     ATA 96, 98 (traceability, DPP, tokenomics)
+OPT-IN_FRAMEWORK/                 ← This repository (you are here)
+├── O-ORGANIZATIONS/AMPEL360/     ATA 00–05
+├── P-PROGRAMS/AMPEL360/          ATA 06–12
+├── T-TECHNOLOGIES/AMPEL360/
+│   ├── COMMON/
+│   │   ├── M-MECHANICS/          ATA 20, 51 (std practices + material library)
+│   │   ├── E1-ENVIRONMENT/       ATA 21, 30, 36 (ECS, anti-ice, pneumatic)
+│   │   ├── C2-CIRCULAR.../       ATA 28 (cryogenic cells)
+│   │   ├── E2-ENERGY/            Energy systems
+│   │   └── P-PROPULSION/         ATA 75 (air)
+│   └── SPECIFICS/{BWB,WTB}/
+├── I-INFRASTRUCTURES/AMPEL360/
+│   ├── COMMON/                   IN-10–50 (green H₂ supply chain — shared)
+│   └── SPECIFICS/{BWB,WTB}/
+└── N-NEURAL_NETWORKS/AMPEL360/
+    ├── COMMON/                   ATA 96, 98 (traceability, DPP, tokenomics)
+    └── SPECIFICS/{BWB,WTB}/
 ```
 
 ---
@@ -76,12 +141,12 @@ The boundary between SHARED and FORKED content is defined in:
 Any reclassification of a boundary entry (SHARED ↔ FORKED) requires an
 **Inheritance Boundary Change Request (IBCR)**:
 
-1. Requestor submits IBCR to `N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/`
+1. Requestor submits IBCR to `N-NEURAL_NETWORKS/AMPEL360/COMMON/ATA_96/96-70-governance-policies-and-rules/`
 2. Both programme CEs review
 3. AMPEL360 Family PM approves
 4. Boundary table in IBD-001 is updated
 
-See [IBCR Register](N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules/README.md).
+See [IBCR Register](N-NEURAL_NETWORKS/AMPEL360/COMMON/ATA_96/96-70-governance-policies-and-rules/README.md).
 
 ---
 
@@ -89,16 +154,22 @@ See [IBCR Register](N-NEURAL_NETWORKS/ATA_96/96-70-governance-policies-and-rules
 
 ```
 programme-repo/
-├── AMPEL360-COMMON/       ← Git submodule pointing here
-│   ├── O-ORGANIZATIONS/
-│   ├── P-PROGRAMS/
-│   ├── T-TECHNOLOGIES/    (shared axes only)
-│   ├── I-INFRASTRUCTURES/ (H₂ common)
-│   └── N-NEURAL_NETWORKS/
-├── T-TECHNOLOGIES/        ← Programme-specific FORKED content
-│   ├── C2-CIRCULAR_CRYOGENIC_CELLS/  (WTW: ATA 28 tri-species)
-│   ├── E1-ENVIRONMENT/               (WTW: ATA 47 cracker N₂)
-│   └── P-PROPULSION/                 (WTW: ATA 75 open fan)
+├── OPT-IN_FRAMEWORK/              ← Git submodule pointing here
+│   ├── I-INFRASTRUCTURES/AMPEL360/
+│   │   ├── COMMON/
+│   │   └── SPECIFICS/{BWB,WTB}/
+│   ├── N-NEURAL_NETWORKS/AMPEL360/
+│   │   ├── COMMON/
+│   │   └── SPECIFICS/{BWB,WTB}/
+│   ├── O-ORGANIZATIONS/AMPEL360/
+│   │   ├── COMMON/
+│   │   └── SPECIFICS/{BWB,WTB}/
+│   ├── P-PROGRAMS/AMPEL360/
+│   │   ├── COMMON/
+│   │   └── SPECIFICS/{BWB,WTB}/
+│   └── T-TECHNOLOGIES/AMPEL360/
+│       ├── COMMON/
+│       └── SPECIFICS/{BWB,WTB}/
 ├── SSOT/
 ├── PUB/
 └── ...
