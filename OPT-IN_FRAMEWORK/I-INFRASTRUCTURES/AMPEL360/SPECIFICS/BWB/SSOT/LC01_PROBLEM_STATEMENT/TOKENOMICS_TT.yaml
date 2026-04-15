@@ -1,0 +1,40 @@
+# AMPEL360 BWB Teknia Token (TT) Allocation Parameters
+# Version: v3.14
+# Scope: Per-KNOT reward distribution — BWB-specific pool
+
+allocation:
+  method: "effort_plus_impact"
+  params:
+    alpha_effort: 0.30      # 30% weight on effort
+    alpha_impact: 0.70      # 70% weight on impact
+    lambda_spillover: 0.50  # cross-KNOT spillover credit
+
+fees:
+  knu_reward: 0.005         # 0.5% distribution fee
+  transfer_pi_tier: 0.00314 # 0.314% pi-tier transfer
+  transfer_standard: 0.0099 # 0.99% standard transfer
+  transfer_large: 0.0314    # 3.14% large transfer
+
+total_pool_tt: 1110
+currency: "TT"
+version: "3.14"
+
+# Cross-programme spillover adjacency (IBD-001 Rev B §8.3)
+# Where a KNOT in the WTW programme produces evidence that reduces residual
+# uncertainty in a BWB-specific KNOT, the spillover is captured here via the
+# a_k_to_j adjacency coefficient.
+cross_programme_spillover:
+  sibling_programme: "AMPEL360-WTW"
+  adjacency_coefficients:
+    - from: "KNOT-ATA28-10-00-001"
+      to_local: "KNOT-BWB-40-10-00-001"
+      a_k_to_j: 0.25
+      note: "WTW LH2 tank sizing evidence partially applicable to BWB non-cylindrical pressure vessel"
+    - from: "KNOT-ATA28-70-00-001"
+      to_local: "KNOT-BWB-20-10-00-001"
+      a_k_to_j: 0.60
+      note: "H2 embrittlement data applicable to BWB centerbody panel material selection"
+    - from: "KNOT-ATA53-10-00-001"
+      to_local: "KNOT-BWB-40-10-00-001"
+      a_k_to_j: 0.20
+      note: "WTW fuselage diameter trade informs BWB pressure vessel cross-section"

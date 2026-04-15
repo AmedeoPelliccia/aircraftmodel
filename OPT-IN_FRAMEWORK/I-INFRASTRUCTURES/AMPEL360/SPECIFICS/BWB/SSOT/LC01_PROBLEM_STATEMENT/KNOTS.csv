@@ -1,0 +1,9 @@
+KNOT_ID,Title,Residual,Target,Pool_TT,Close_Date,Status
+KNOT-BWB-10-00-00-001,BWB Planform Sweep / Aspect Ratio Optimisation,100,10,120,2027-03-31,OPEN
+KNOT-BWB-20-10-00-001,Centerbody Skin-Stringer vs Sandwich Panel Trade,100,12,140,2027-06-30,OPEN
+KNOT-BWB-30-10-00-001,Wing-Centerbody Joint Load-Path Continuity,100,10,130,2027-06-30,OPEN
+KNOT-BWB-40-10-00-001,Non-Cylindrical Pressure Vessel Fatigue Life,100,8,180,2027-09-30,OPEN
+KNOT-BWB-50-10-00-001,Elevon Sizing and Pitch/Roll Allocation,100,10,110,2027-03-31,OPEN
+KNOT-BWB-60-10-00-001,BLI Inlet Distortion Tolerance,100,10,160,2027-09-30,OPEN
+KNOT-BWB-70-10-00-001,Emergency Egress Path Length Compliance,100,15,100,2027-03-31,OPEN
+KNOT-BWB-80-10-00-001,Body-Freedom Flutter Speed Margin,100,5,170,2027-09-30,OPEN
