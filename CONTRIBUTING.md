@@ -90,4 +90,8 @@ python tools/knu_distribution.py verify
 
 ## License
 
-Creative Commons Zero v1.0 Universal — see [LICENSE](./LICENSE).
+GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](./LICENSE).
+
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. If you use or reference this project, please cite it when practical — see [CITATION.cff](./CITATION.cff).
+
+**Notification:** If you publicly represent this project or a derivative work, please notify the maintainers or originating author when practical. This is a request for coordination and attribution, not an additional license condition. See [NOTICE](./NOTICE) for project guidance.
