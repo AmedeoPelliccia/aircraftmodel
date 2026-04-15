@@ -1,0 +1,104 @@
+# ELC_ELASTICITY_TARGETS.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-ETA
+# Date: 2026-02-23
+# Description: Programme-level elasticity targets per family, as defined in
+# §5 Step 5 and §9.1 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+# All values represent programme stretch goals for the AMPEL360 WTW.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-ETA"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+# Programme-level constraint (applies to all families)
+programme_constraints:
+  eta_elastic_minimum: 10.0        # η ≥ 10 for all systems (§9.2)
+  pacemaker_family: "C"            # Family C defines critical path
+  tc_lead_time_months: 12          # TC must be achieved ≥12 months before EIS
+  gate_pass_rate_minimum: 0.85     # Programme floor for first-attempt gate pass rate
+
+family_targets:
+
+  - family_code: "A"
+    family_name: "Structural (In-House)"
+    representative_ata: ["ATA-27", "ATA-53"]
+    eta_target: 10.0               # t_ops / TTO; minimum programme target
+    tto_max_months: 54             # Maximum acceptable TTO (programme start → EIS)
+    t_ops_min_years: 40            # Minimum in-service life
+    virtual_credit_target_pct: 35  # % of qualification evidence via simulation
+    concurrency_factor_target: 0.65  # Parallel phases / max possible
+    knu_velocity_target: 6         # KNUs ACCEPTED per month in compression zone
+    gate_pass_rate_target: 0.85    # First-attempt gate pass rate
+    reconditioning_cycles_target: 2  # Minimum reconditioning cycles over DSG
+
+  - family_code: "B"
+    family_name: "Propulsion (Co-Development)"
+    representative_ata: ["ATA-71", "ATA-72"]
+    eta_target: 10.0
+    tto_max_months: 60             # Engine co-development has longer compression zone
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 30  # Physical testing mandatory for propulsion certification
+    concurrency_factor_target: 0.60
+    knu_velocity_target: 5
+    gate_pass_rate_target: 0.85
+    reconditioning_cycles_target: 4  # Engine overhaul cycles within aircraft DSG
+
+  - family_code: "C"
+    family_name: "Novel Technology (H2/Cryo)"
+    representative_ata: ["ATA-28"]
+    eta_target: 12.0               # Stretch target; novel tech must outperform
+    tto_max_months: 48             # Aggressive compression; digital twin credit
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 40  # High simulation credit via C2 CELL digital twin
+    concurrency_factor_target: 0.65
+    knu_velocity_target: 8         # Highest KNOT velocity; pacemaker must close fast
+    gate_pass_rate_target: 0.88    # Higher standard due to novelty and safety criticality
+    reconditioning_cycles_target: 3
+
+  - family_code: "D"
+    family_name: "Spec-Driven Procurement (SFE)"
+    representative_ata: ["ATA-24"]
+    eta_target: 12.0               # Mature suppliers → faster TTO; longer service life
+    tto_max_months: 36             # Mature supply chain; short qualification campaign
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 50  # High simulation credit; mature product qualification
+    concurrency_factor_target: 0.70
+    knu_velocity_target: 10
+    gate_pass_rate_target: 0.90    # High pass rate expected for mature catalogue products
+    reconditioning_cycles_target: 4
+
+  - family_code: "E"
+    family_name: "DAL-Governed Avionics/SW"
+    representative_ata: ["ATA-31", "ATA-34"]
+    eta_target: 10.0
+    tto_max_months: 48
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 45  # Iron bird and software simulation credit
+    concurrency_factor_target: 0.65
+    knu_velocity_target: 7
+    gate_pass_rate_target: 0.87
+    reconditioning_cycles_target: 3  # Avionics technology refresh cycles
+
+  - family_code: "F"
+    family_name: "Airline-Selected (BFE)"
+    representative_ata: ["ATA-25"]
+    eta_target: 14.0               # Late configuration + catalogue parts = fastest TTO
+    tto_max_months: 24             # BFE qualification is minimal; catalogue products
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 60  # High simulation; physical testing minimal for BFE
+    concurrency_factor_target: 0.75
+    knu_velocity_target: 12
+    gate_pass_rate_target: 0.92
+    reconditioning_cycles_target: 5  # Cabin refresh cycles most frequent
+
+  - family_code: "G"
+    family_name: "AI/ML Model (Data-Driven)"
+    representative_ata: ["ATA-46"]
+    eta_target: 11.0
+    tto_max_months: 36             # Model training and tool qualification
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 70  # Model validation by simulation; high credit
+    concurrency_factor_target: 0.70
+    knu_velocity_target: 10
+    gate_pass_rate_target: 0.87
+    reconditioning_cycles_target: 4  # Model retraining and re-qualification cycles

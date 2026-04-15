@@ -1,0 +1,342 @@
+# family_C_novel_h2.yaml
+# Document ID: AMPEL360-FAM-ARCH-ELC-001-TPL-C
+# Date: 2026-02-23
+# Description: Family C lifecycle template — Novel Technology Development
+# (Cryogenic / H2). Applies to ATA-28 (C2 CELL H2 fuel system) and
+# any other novel cryogenic/hydrogen technology on the AMPEL360 WTW.
+# Reference: §8.2 of AMPEL360-FAM-ARCH-ELC-001 Rev B.
+
+document_id: "AMPEL360-FAM-ARCH-ELC-001-TPL-C"
+revision: "A"
+date: "2026-02-23"
+parent_document: "AMPEL360-FAM-ARCH-ELC-001"
+
+family_template:
+  code: "C"
+  name: "Novel Technology Development (Cryogenic / H2)"
+  applies_to: ["ATA-28", "ATA-85"]
+  classification_criteria:
+    trl_range: [3, 5]              # Novel; TRL ≤ 5 at programme start
+    supply_chain_maturity: "low"   # No established cryogenic supply chain
+    make_buy: "make"               # In-house design + specialist manufacturing partner
+    special_conditions_required: true  # SC required for cryogenic hydrogen
+    certification_basis: ["CS-25", "SC-H2", "AMC-20"]
+
+  phases:
+
+    - id: "SLC01"
+      name: "Uncertainty Register"
+      zone: "compress"
+      mandatory: true
+      content: >
+        KNOTs register: identify all known uncertainties in cryogenic H2
+        containment, distribution, boil-off management, leak detection,
+        and refuelling interface. Instantiate KNUs for each KNOT.
+        Define RACI and tokenomics weighting. Seed ELC_FAMILY_ASSIGNMENTS.
+      compression_lever: >
+        Aggressive KNOT closure via rapid prototyping at component level.
+        Use C2 CELL state vector simulations to pre-close feasibility KNOTs
+        before physical testing. Target: 6 KNUs ACCEPTED/month.
+      entry_criteria: "Programme kickoff; architectural model stack available"
+      exit_criteria: "All KNOTs registered; KNUs instantiated; RACI signed"
+      typical_duration_months: 3
+      concurrent_with: []
+
+    - id: "SLC02"
+      name: "Technology Requirements"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Define performance requirements: H2 mass flow, boil-off budget,
+        operating pressure/temperature envelope, leak rate limits, refuelling
+        interface specification. Define safety requirements: DAL allocation,
+        FHA inputs, HAZID outputs. Define cryogenic material requirements.
+        Decompose from aircraft-level LC02 requirements.
+      compression_lever: >
+        Physics-based requirements driven by thermodynamic model outputs
+        (TOP-LAP framework). Simulation-driven specs reduce requirements
+        churn. Co-develop requirements with Family B (propulsion) to align
+        energy demand and fuel delivery spec simultaneously.
+      entry_criteria: "SLC01 exit; aircraft LC02 requirements baselined"
+      exit_criteria: >
+        Requirements document baselined; DAL allocated; HAZID complete;
+        interface requirements agreed with Family A, B, D, E
+      typical_duration_months: 4
+      concurrent_with: ["SLC03"]
+
+    - id: "SLC03"
+      name: "Concept and Material Selection"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Evaluate tank topology candidates (cylindrical, toroidal, conformal).
+        Select cryogenic insulation system (MLI vs foam vs vacuum jacket).
+        Down-select H2-compatible materials for all wetted components.
+        Evaluate H2 embrittlement mitigations. Select refuelling connector
+        standard. Trade between boil-off recovery options.
+      compression_lever: >
+        Virtual trade studies using TOP-LAP TOPO phase. Down-select to
+        two concepts maximum before any physical testing. Use existing
+        cryogenic material databases to avoid re-qualifying known materials.
+        Run SLC03 concurrently with SLC02 to compress timeline by 40%.
+      entry_criteria: "SLC01 exit; preliminary architectural drivers available"
+      exit_criteria: >
+        Single preferred concept selected; materials list frozen; trades
+        documented in LC03_PRELIMINARY_DESIGN; ICD geometry baselined
+      typical_duration_months: 5
+      concurrent_with: ["SLC02"]
+
+    - id: "SLC04"
+      name: "Design Definition"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Detailed structural design of primary tank structure. Detail design
+        of distribution lines, valves, sensors, MLU manifolds. Interface
+        definition with fuselage structure (ATA-53). ICD baseline with all
+        interfacing ATA chapters. FMEA initial draft. Stress analysis inputs.
+      compression_lever: >
+        Model-Based Systems Engineering (MBSE) approach. CATIA parametric
+        model drives analysis inputs automatically. Concurrent design review
+        with Family A to eliminate design conflicts at gate rather than after.
+        Run SLC04 concurrently with SLC05 (analysis) where analysis is
+        confirmatory (not discovery).
+      entry_criteria: "SLC02 exit; SLC03 concept selected; FP-01 ICD Freeze scheduled"
+      exit_criteria: >
+        Design definition package complete; all ICDs signed; FP-01 ICD Freeze
+        achieved; stress analysis scope defined; FMEA initial issue released
+      typical_duration_months: 6
+      concurrent_with: ["SLC05"]
+
+    - id: "SLC05"
+      name: "Analysis"
+      zone: "compress"
+      mandatory: true
+      content: >
+        Structural analysis: stress, fatigue, fracture (damage tolerance for
+        H2 environment). Thermodynamic analysis: boil-off model, heat flux,
+        refuelling transients. CFD: H2 dispersion scenarios, leak plumes.
+        Safety analysis: FHA, PSSA; failure mode coverage. TypeSim integration:
+        run PROPAGATION mode for fleet-representative scenarios.
+      compression_lever: >
+        TypeSim federated API (LC05_ANALYSIS_MODELS/typesim-api) provides
+        simulation credit against physical test requirements. TOP-LAP OPER
+        and PROJ phases used for multi-physics co-simulation. Target 40%
+        virtual evidence credit. Analysis runs concurrently with SLC04
+        detailed design.
+      entry_criteria: "SLC03 concept selected; SLC04 geometry baselined"
+      exit_criteria: >
+        All safety analysis complete; DAL confirmed; PSSA approved;
+        FP-05 Safety Architecture Freeze achieved; analysis evidence
+        package assembled for SLC06 qualification entry
+      typical_duration_months: 7
+      concurrent_with: ["SLC04"]
+
+    - id: "SLC06"
+      name: "Qualification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Qualification test campaign: material coupons (H2 environment),
+        component-level testing (valves, seals, sensors), sub-assembly
+        testing (tank structural), environmental qualification (vibration,
+        temperature cycling). Special conditions compliance demonstration.
+        DO-160 environmental testing for electronic components.
+        Type test programme with EASA/FAA agreement.
+      compression_lever: >
+        Front-load virtual qualification evidence from SLC05 analysis to
+        reduce physical test campaign scope. Negotiate simulation credit
+        in certification basis (AMC-20 guidance). Parallelise material
+        qualification (running from SLC03) with system-level testing.
+      entry_criteria: >
+        SLC05 exit; safety analysis approved; test plan agreed with Authority;
+        test articles manufactured; test rigs commissioned
+      exit_criteria: >
+        All qualification test reports approved; non-conformances closed;
+        qualification evidence package (QEP) assembled; EASA/FAA agreement
+        on QEP scope
+      typical_duration_months: 12
+      concurrent_with: []
+
+    - id: "SLC07"
+      name: "System Integration"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Ground integration test: H2 system installed in fuselage ground
+        test article (GTA). Functional test of complete fuel system.
+        Refuelling interface testing with airport fuelling rig simulator.
+        Leak test campaign under worst-case pressure/temperature conditions.
+        Interface verification with Family A (structure), B (propulsion),
+        D (electrical), E (avionics fuel management computer).
+        System safety demonstration.
+      compression_lever: >
+        Digital twin pre-integration: TypeSim PROPAGATION mode identifies
+        integration issues before physical test. Reduces integration test
+        iterations. Run Family C SLC07 in the GTA concurrent with Family B
+        and E integration where structurally feasible.
+      entry_criteria: >
+        SLC06 exit; QEP approved; GTA available; all interfacing families
+        SLC06 complete; Family C is pacemaker — entry gate for LC06
+      exit_criteria: >
+        All GTA functional tests passed; leak test sign-off; integration
+        test coverage ≥ 95%; all ICDs verified; safety case updated;
+        ready for aircraft-level PMU (LC06)
+      typical_duration_months: 8
+      concurrent_with: []
+
+    - id: "SLC08"
+      name: "Certification"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Type Certificate contribution: compile H2 system certification
+        dossier. Demonstrate compliance with CS-25 + Special Conditions.
+        Flight test evidence: refuelling cycles, endurance, abnormal
+        procedures. Conformity inspections. Certification Review Items (CRIs)
+        closure. Final FMEA/FTA/CCA review.
+      compression_lever: >
+        Early Authority engagement (SLC01 onward) to pre-agree certification
+        basis reduces CRI cycle time. Front-loaded simulation evidence
+        (SLC05) provides early confidence to Authority.
+      entry_criteria: >
+        SLC07 exit; aircraft LC08 flight test programme commenced;
+        all ground test evidence accepted
+      exit_criteria: >
+        All CRIs closed; TC contribution approved; certification dossier
+        submitted; no open safety findings
+      typical_duration_months: 12
+      concurrent_with: []
+
+    - id: "SLC09"
+      name: "Infrastructure"
+      zone: "transition"
+      mandatory: true
+      content: >
+        Production ramp-up: qualify production processes for cryogenic
+        welding, insulation application, leak test procedures. Establish
+        quality management system for H2 components. Supplier qualification
+        for cryogenic hardware. Tooling and ground support equipment (GSE)
+        qualification. Refuelling infrastructure specification for customers.
+      compression_lever: >
+        Parallelise production qualification with flight test campaign
+        (SLC08). Use SLC06 component qualification evidence to accelerate
+        production process qualification.
+      entry_criteria: "SLC07 exit; aircraft LC09 industrial plan baselined"
+      exit_criteria: >
+        Production qualification complete; GSE qualified; supplier
+        qualification complete; first production article inspection (FAI)
+        complete
+      typical_duration_months: 10
+      concurrent_with: ["SLC08"]
+
+    - id: "SLC10"
+      name: "Operations"
+      zone: "extend"
+      mandatory: true
+      content: >
+        In-service monitoring: H2 system health monitoring via onboard
+        digital twin (C2 CELL state vector S_i = (M, P, T, G)).
+        Condition-based maintenance triggers from real-time sensor data.
+        Fleet data collection: boil-off rates, leak events, refuelling
+        statistics, thermal performance trends. Feed data to Family G
+        (ATA-46) AI/ML predictive models. Update digital twin with
+        as-maintained configuration.
+      compression_lever: "N/A — extension zone (maximise t_ops)"
+      entry_criteria: "EIS; aircraft LC10 commenced"
+      exit_criteria: "Reconditioning trigger OR aircraft retirement"
+      loop_back_to: "SLC11"
+      typical_duration_years: 10  # Per reconditioning interval
+
+    - id: "SLC11"
+      name: "Reconditioning"
+      zone: "extend"
+      mandatory: true
+      content: >
+        Heavy maintenance visit (HMV) scope: inspect tank internal surfaces
+        for H2 embrittlement and corrosion. Replace insulation if degraded.
+        Re-certify tank after inspection. Replace finite-life components
+        (seals, valves, sensors) per life limits. Borescope inspection of
+        internal fittings. DPP update: record all replaced parts with
+        traceability. Re-qualification test if any structural repair required.
+      compression_lever: "N/A — extension zone (maximise reconditioning cycles)"
+      entry_criteria: "Reconditioning trigger from SLC10 monitoring OR hard-time interval"
+      exit_criteria: >
+        All inspections complete; life-limited parts replaced; tank
+        re-certified; DPP updated; return-to-service (RTS) sign-off
+      loop_back_to: "SLC10"
+      typical_duration_months: 3  # Per reconditioning event
+
+    - id: "SLC12"
+      name: "Reconditioning Loop / Retirement"
+      zone: "extend"
+      mandatory: false
+      content: >
+        Final reconditioning feasibility assessment. If viable, execute
+        SLC11 for additional cycle. If not viable, initiate retirement:
+        safe H2 purging procedure, component decommissioning, DPP final
+        state record. Recover reusable materials (Ti, CFRP, MLI foils)
+        per DPP circularity requirements.
+      compression_lever: "N/A — retirement or final reconditioning cycle"
+      entry_criteria: "SLC11 exit with viability assessment"
+      exit_criteria: "Aircraft retirement complete; DPP closed; materials recovered"
+      loop_back_to: null  # Terminal state
+      typical_duration_months: 6  # If retirement
+
+  # --- Pruning Rules ---
+  pruning_rules:
+    - id: "PR-C-01"
+      condition: "all functions TRL >= 6 at SLC01 entry"
+      action: "collapse SLC03 into SLC02"
+      rationale: >
+        If all functions are already mature (TRL ≥ 6), concept selection
+        is trivial and can be absorbed into requirements phase.
+      note: "Unlikely for Family C by definition; included for completeness"
+
+    - id: "PR-C-02"
+      condition: "no special conditions required (Authority confirmed)"
+      action: "remove Special Conditions compliance sub-phase from SLC06 and SLC08"
+      rationale: >
+        SC compliance activities are a significant scope item in SLC06/08.
+        If the Authority confirms no SC is required (e.g., for a sub-system
+        that falls within existing CS-25 coverage), this scope is removed.
+
+    - id: "PR-C-03"
+      condition: "pure software component (no physical cryogenic hardware)"
+      action: "skip tooling/FAI phases within SLC09"
+      rationale: >
+        Software-only components in the H2 management system (e.g., fuel
+        management computer software) do not require production tooling
+        qualification. SLC09 is reduced to software configuration management.
+
+    - id: "PR-C-04"
+      condition: "no in-service reconfiguration planned"
+      action: "remove reconfiguration sub-phase from SLC10"
+      rationale: >
+        If the tank geometry and plumbing are fixed for the aircraft life
+        (no planned reconfiguration), the reconfiguration monitoring scope
+        is removed from the operations phase.
+
+  # --- Extension Model ---
+  extension_model:
+    loop_phases: ["SLC10", "SLC11"]
+    loop_trigger: >
+      reconditioning_interval_reached OR condition_monitor_alert
+      (from C2 CELL state vector anomaly detection, Family G predictive model)
+    max_cycles: 3
+    exit_condition: "reconditioning_not_viable OR aircraft_retirement"
+    design_service_goal_fh: 60000
+    reconditioning_interval_fh: 20000   # Reconditioning every ~20,000 FH
+    digital_twin_fidelity_required: "high"
+    dpp_granularity: "component"
+
+  # --- Elasticity Parameters (Family C defaults) ---
+  default_elasticity:
+    eta_target: 12.0
+    tto_max_months: 48
+    t_ops_min_years: 40
+    virtual_credit_target_pct: 40
+    concurrency_factor_target: 0.65
+    knu_velocity_target: 8
+    gate_pass_rate_target: 0.88
+    reconditioning_cycles_target: 3
