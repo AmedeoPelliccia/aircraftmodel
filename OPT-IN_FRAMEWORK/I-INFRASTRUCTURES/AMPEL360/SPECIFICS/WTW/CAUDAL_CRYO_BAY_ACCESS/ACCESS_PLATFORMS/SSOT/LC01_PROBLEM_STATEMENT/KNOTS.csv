@@ -1,0 +1,4 @@
+KNOT_ID,Title,Residual,Target,Pool_TT,Close_Date,Status
+KNOT-WTW-CRYO-AP-001,Caudal Cryo-Bay Access Platform Reach Envelope,100,12,80,2026-12-31,OPEN
+KNOT-WTW-CRYO-AP-002,Anti-Slip Surface Spec for LH2 Frost Conditions,100,10,60,2027-03-31,OPEN
+KNOT-WTW-CRYO-AP-003,Platform Stowage vs Turnaround Time Trade,100,15,90,2026-09-30,OPEN

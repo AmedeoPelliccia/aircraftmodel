@@ -1,0 +1,6 @@
+KNOT_ID,Title,Residual,Target,Pool_TT,Close_Date,Status
+KNOT-WTW-NH3-ST-001,NH3 Storage Tank Material Compatibility,100,10,120,2026-12-31,OPEN
+KNOT-WTW-NH3-ST-002,Ambient Boil-Off Rate vs Insulation Mass,100,12,100,2027-03-31,OPEN
+KNOT-WTW-NH3-ST-003,Double-Wall Containment Regulatory Acceptance,100,15,150,2027-06-30,OPEN
+KNOT-WTW-NH3-ST-004,Storage Capacity Sizing for Peak Turnaround,100,10,90,2026-09-30,OPEN
+KNOT-WTW-NH3-ST-005,Leak Detection Sensor Placement Optimisation,100,8,80,2027-06-30,OPEN

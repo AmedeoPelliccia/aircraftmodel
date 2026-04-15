@@ -1,0 +1,73 @@
+# WTW Turnaround Profile — Ground Operations Sequencing
+# Version: v1.0-draft
+# Scope: AMPEL360 WTW standard turnaround at H2-equipped gate
+
+turnaround:
+  aircraft: "AMPEL360-WTW"
+  target_duration_min: 25
+  gate_type: "ICAO Code C/D — H2-equipped"
+
+  phases:
+    - id: TA-01
+      name: "Arrival & chock-on"
+      duration_min: 2
+      depends_on: []
+      notes: "Nose wheel chock, ground power connect, PCA connect"
+
+    - id: TA-02
+      name: "Passenger deplane"
+      duration_min: 4
+      depends_on: [TA-01]
+      notes: "Single jet bridge, aft stairs optional"
+
+    - id: TA-03
+      name: "LH2 refueling"
+      duration_min: 15
+      depends_on: [TA-01]
+      parallel: true
+      notes: >
+        Cryogenic bowser connect, purge, fill, disconnect.
+        Safety exclusion zone active during flow.
+        Target fill rate per KNOT-IN-50-00-002.
+
+    - id: TA-04
+      name: "N2 inerting verification"
+      duration_min: 5
+      depends_on: [TA-03]
+      notes: "Post-refuel N2 blanket verification per N2-GND-20"
+
+    - id: TA-05
+      name: "NH3 cracker pre-heat (if cold)"
+      duration_min: 8
+      depends_on: [TA-01]
+      parallel: true
+      conditional: "cracker_temp < min_operating_temp"
+      notes: "Ground power assisted pre-heat of NH3 cracker unit"
+
+    - id: TA-06
+      name: "Cargo & catering"
+      duration_min: 10
+      depends_on: [TA-02]
+      parallel: true
+      notes: "Standard ULD handling, forward cargo door"
+
+    - id: TA-07
+      name: "Passenger board"
+      duration_min: 6
+      depends_on: [TA-02, TA-06]
+      notes: "Single jet bridge boarding"
+
+    - id: TA-08
+      name: "Final walk-around & chock-off"
+      duration_min: 3
+      depends_on: [TA-03, TA-04, TA-07]
+      notes: "Safety zone clear, ground equipment disconnect, push-back ready"
+
+  critical_path: [TA-01, TA-03, TA-04, TA-08]
+  critical_path_duration_min: 25
+
+  safety_constraints:
+    - "LH2 refueling exclusion zone: 10 m radius (KNOT-IN-60-00-001)"
+    - "No passenger movement during active LH2 flow (EN 17127)"
+    - "NH3 cracker ground-run only with N2 blanket verified"
+    - "Grounding and bonding verified before fuel coupling connect"

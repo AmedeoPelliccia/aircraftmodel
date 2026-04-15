@@ -1,0 +1,32 @@
+# NH3 GSE Storage — Teknia Token (TT) Allocation Parameters
+# Version: v1.0-draft
+# Scope: NH3-GSE-10 STORAGE KNOTs
+
+allocation:
+  method: "effort_plus_impact"
+  params:
+    alpha_effort: 0.35      # 35% weight on effort
+    alpha_impact: 0.65      # 65% weight on impact
+    lambda_spillover: 0.40  # cross-KNOT spillover credit
+
+fees:
+  knu_reward: 0.005         # 0.5% distribution fee
+  transfer_pi_tier: 0.00314 # 0.314% pi-tier transfer
+  transfer_standard: 0.0099 # 0.99% standard transfer
+  transfer_large: 0.0314    # 3.14% large transfer
+
+total_pool_tt: 540
+currency: "TT"
+version: "1.0"
+
+cross_programme_spillover:
+  sibling_programme: "AMPEL360-BWB"
+  adjacency_coefficients:
+    - from: "KNOT-WTW-NH3-ST-001"
+      to_sibling: "KNOT-BWB-NH3-ST-001"
+      a_k_to_j: 0.90
+      note: "NH3 material compatibility evidence fully shared — material-level"
+    - from: "KNOT-WTW-NH3-ST-005"
+      to_sibling: "KNOT-BWB-NH3-ST-005"
+      a_k_to_j: 0.85
+      note: "Leak detection sensor data applicable to BWB NH3 bay"
