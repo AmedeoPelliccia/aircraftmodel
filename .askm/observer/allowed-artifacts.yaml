@@ -36,6 +36,40 @@ allowed_artifacts:
     naming_pattern: "LC05-TRACE-SNAPSHOT-{DATE}-{SEQ}.md"
     knu_required: false
 
+  # --- CAD Module artifacts (STD-LC04-ASKM-CAD-001 Rev A) ---
+
+  - class: LC05_CAD_FEATURE_GRAPH
+    description: >
+      Canonical FeatureGraph extracted from a CAD source file.
+      Contains geometric features, parametric constraints, topological
+      counts, datums, materials, and tolerances. Read-only projection;
+      no geometry is invented (INV-CAD-O1).
+    format: json
+    placement: SSOT/LC04_DESIGN_REVIEW/cad-module/
+    naming_pattern: "feature_graph.json"
+    schema_ref: feature_graph.schema.json
+    knu_required: false
+
+  - class: LC05_CAD_GEOMETRY_PARAMS
+    description: >
+      Parametric values extracted from a CAD source model.
+      Units must match source (INV-CAD-O2). Hash integrity
+      verified (INV-CAD-O3).
+    format: yaml
+    placement: SSOT/LC04_DESIGN_REVIEW/cad-module/
+    naming_pattern: "geometry_params.yaml"
+    knu_required: false
+
+  - class: LC05_CAD_SEMANTICS
+    description: >
+      Design-level metadata extracted by the CAD observer: units,
+      coordinate system, tolerancing standard, materials, datums,
+      and manufacturing processes.
+    format: yaml
+    placement: SSOT/LC04_DESIGN_REVIEW/cad-module/
+    naming_pattern: "cad_semantics.yaml"
+    knu_required: false
+
 forbidden_artifacts:
   - class: MODEL_DELTA
     reason: "Topology mutation is DELINEANT domain exclusively"

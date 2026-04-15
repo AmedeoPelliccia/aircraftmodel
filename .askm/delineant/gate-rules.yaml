@@ -53,6 +53,40 @@ certification_gates:
     review_authority: Chief Engineer
     standards: [CS-25 Amdt 28]
 
+# --- CAD Module Gates (STD-LC04-ASKM-CAD-001 Rev A) ---
+
+  - id: GATE-CAD-01
+    trigger: "Delineant produces CAD candidate artifacts (3D/2D)"
+    node_pattern: "CAD-*"
+    qualification_required: false
+    certification_gate: null
+    risk_class: STANDARD
+    review_authority: Engineering Lead
+    standards: [ISO 1101, ASME Y14.5]
+    gate_pipeline:
+      - WDG-GEOM-SCHEMA-VALIDATE
+      - WDG-CONSTRAINT-ENVELOPE
+      - WDG-DIMENSIONAL-CHECK
+      - WDG-DRAWING-COMPLIANCE
+      - WDG-DIFF-BASELINE
+      - WDG-EXPORT-CONTROL-IP
+
+  - id: GATE-CAD-02
+    trigger: "CAD delta affects load-bearing structural geometry (ATA 51-57)"
+    node_pattern: "CAD-ATA-{51,52,53,54,55,56,57}-*"
+    qualification_required: true
+    certification_gate: LC08
+    risk_class: HIGH
+    review_authority: Chief Engineer
+    standards: [CS-25 Amdt 28, ISO 1101]
+    gate_pipeline:
+      - WDG-GEOM-SCHEMA-VALIDATE
+      - WDG-CONSTRAINT-ENVELOPE
+      - WDG-DIMENSIONAL-CHECK
+      - WDG-DRAWING-COMPLIANCE
+      - WDG-DIFF-BASELINE
+      - WDG-EXPORT-CONTROL-IP
+
 # Default gate for non-certification-impacting deltas
 default_gate:
   qualification_required: false
