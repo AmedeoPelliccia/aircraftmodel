@@ -90,4 +90,3 @@ procedure_validation:
 certification_coupling_ref: .askm/delineant/gate-rules.yaml
 
 governance_spec_ref: SSOT/LC05_ANALYSIS_MODELS/LC05-GEN-MODEL-ROLE-SPEC.md
----
