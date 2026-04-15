@@ -23,6 +23,15 @@ Mode separation is enforced at three layers:
 2. **CI workflow** — `.github/workflows/gen-model-validation.yml`
 3. **Structure validator** — `tools/ci/optin_structure_validator.py`
 
+## Defaults Configuration
+
+Default settings for agent prompts and project structure inclusion are
+defined in `.askm/defaults.yaml`. This includes:
+
+- `default_prompt`: Default text for agent prompts
+- `default_include_all_files`: Whether to include all files by default
+- `default_include_entire_project_structure`: Whether to include full project structure
+
 ## Agent Binding
 
 The `.asit/agents/gen-model-agent.yaml` registry binds agent instances

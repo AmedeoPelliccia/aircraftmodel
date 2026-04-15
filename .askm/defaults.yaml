@@ -1,0 +1,17 @@
+# .askm/defaults.yaml — Default Settings Configuration
+# Programme: ID-A360-Q100
+
+default:
+  default_prompt: "Enter your prompt here"
+  default_include_all_files: false
+  default_include_entire_project_structure: true
+
+# Agent default behavior settings
+agent_defaults:
+  response_mode: structured
+  trace_operations: true
+
+# Snapshot defaults
+snapshot_defaults:
+  output_directory: .snapshots
+  format: markdown
