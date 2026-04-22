@@ -87,14 +87,69 @@ ATA 28 C² CELL owns everything between:
 
 ## 2 · ATA 28 C² CELL Sub-Chapter Map
 
-The legacy ATA 28 sub-chapters are re-mapped to C² CELL functions:
+The legacy ATA 28 sub-chapters are re-mapped to C² CELL functions while
+preserving canonical ATA-100 / iSpec 2200 slot semantics. H₂-specific
+content lives as **named subsections under the correct slot**, not as a
+re-label of the slot itself. Reserved slots `28-50`–`28-70` are used for
+genuinely new functions and are declared in the project BREX with
+extension justification.
 
-| ATA Sub-Chapter | Legacy Title | C² CELL Function | Directory |
+| ATA Sub-Chapter | Canonical Label | C² CELL Function | Directory |
 |---|---|---|---|
+| 28-00 | General | Chapter overview & PM philosophy | [`28-00-general/`](28-00-general/) |
 | 28-10 | Storage | **PM Reservoir & Containment** | [`28-10-storage-reservoir/`](28-10-storage-reservoir/) |
 | 28-20 | Distribution | **PM Conditioning & Distribution** | [`28-20-distribution/`](28-20-distribution/) |
 | 28-30 | Dump / Jettison | **Emergency Discharge & Safe-State** | [`28-30-dump-jettison/`](28-30-dump-jettison/) |
 | 28-40 | Indicating | **State Monitoring & Diagnostics** | [`28-40-indicating/`](28-40-indicating/) |
+| 28-50 | Reserved → ext. | **H₂ Safety & Leak Detection** | [`28-50-h2-safety-and-leak-detection/`](28-50-h2-safety-and-leak-detection/) |
+| 28-60 | Reserved → ext. | **Thermal Management & Cryogenics** | [`28-60-thermal-management-cryogenics/`](28-60-thermal-management-cryogenics/) |
+| 28-70 | Reserved → ext. | **Embrittlement Monitoring** | [`28-70-embrittlement-monitoring/`](28-70-embrittlement-monitoring/) |
+| 28-80 | Reserved | Reserved as required | [`28-80-reserved-as-required/`](28-80-reserved-as-required/) |
+| 28-90 | Tables / Schemas | Cross-cutting reference data | [`28-90-tables-schemas-index/`](28-90-tables-schemas-index/) |
+
+### 2.1 Subsection Allocation (BWB vs WTW)
+
+Each subsection declares an applicability tag (PCT) defined in
+[`PUB/CSDB/APPLICABILITY/PCT-28.yaml`](../../../../../../PUB/CSDB/APPLICABILITY/PCT-28.yaml):
+
+| Subsection | PCT | Notes |
+|---|---|---|
+| `28-00-00-chapter-overview` | COMMON | |
+| `28-00-10-prime-material-philosophy` | BWB | H₂ as prime material |
+| `28-10-10-conventional-tank` | WTW | SAF / Jet-A |
+| `28-10-20-lh2-vacuum-insulated-tank` | BWB | Cryogenic vessel |
+| `28-10-30-nh3-cryo-shield-vessel` | BWB | **CONDITIONAL — pending LC04** |
+| `28-20-10-fuel-feed-lines` | COMMON | |
+| `28-20-20-lh2-transfer-and-valves` | BWB | Cryogenic lines |
+| `28-20-30-nh3-cracker-h2-feed` | BWB | **CONDITIONAL — pending LC04** |
+| `28-30-10-fuel-jettison` | WTW | Where applicable |
+| `28-40-10-quantity-indicating` | COMMON | |
+| `28-40-20-pressure-temperature` | COMMON | H₂ extended range |
+| `28-40-30-nh3-level-and-purity` | BWB | **CONDITIONAL — pending LC04** |
+| `28-50-10-hydrogen-leak-sensors` | COMMON | Any H₂ path |
+| `28-50-20-inerting-and-purge` | BWB | |
+| `28-60-10-vacuum-jacket-monitoring` | BWB | |
+| `28-60-20-pre-cool-and-conditioning` | BWB | |
+| `28-60-30-boil-off-recovery-routing` | BWB | Relocated from 28-30 |
+| `28-70-10-sensor-network` | BWB | |
+| `28-70-20-inspection-criteria` | BWB | |
+| `28-70-30-lifecycle-degradation-model` | BWB | |
+
+### 2.2 Resolution Principle
+
+> **ATA-100 slots `28-10` through `28-40` are semantically binding** —
+> their label defines the functional class of all content within, regardless
+> of technology. H₂-specific content lives as a *named subsection* under the
+> correct slot. Reserved slots (`28-50` → `28-80`) are the legitimate space
+> for functions without an ATA analogue, declared explicitly in the project
+> BREX with extension justification.
+
+### 2.3 Boil-off Recovery — Semantic Correction
+
+Boil-off recovery is a **closed-loop thermal-management** function
+(recover → reuse → vent only as fallback), not a jettison (controlled
+discard) function. It lives under `28-60-30-boil-off-recovery-routing/`,
+not under `28-30`. See that subsection's README for the full rationale.
 
 ---
 
