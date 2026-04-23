@@ -1,3 +1,84 @@
+---
+# PCT-28 — Product Conditions / Applicability for ATA-28
+#
+# Source of truth for BWB vs WTW applicability split in
+# OPT-IN_FRAMEWORK/T-TECHNOLOGIES/AMPEL360/COMMON/C2-CIRCULAR_CRYOGENIC_CELLS/ATA_28-FUEL/
+#
+# Each subsection-level data module (DM) and KNOT under ATA-28 must declare
+# one of the PCTs below in its applicability metadata.
+#
+# Conformance: iSpec 2200 §3.9 (applicability), BREX-IDA360-Q100-v0.1.
+
+schema_version: "1.0"
+chapter: "ATA-28"
+revision: "A"
+date: "2026-04-22"
+
+product_conditions:
+
+  PCT-28-BWB:
+    description: "BWB hydrogen-hybrid architecture"
+    applies_to:
+      - "28-00-10"   # prime-material philosophy
+      - "28-10-20"   # LH2 vacuum-insulated tank
+      - "28-10-30"   # NH3 cryo-shield vessel (CONDITIONAL — LC04)
+      - "28-20-20"   # LH2 transfer and valves
+      - "28-20-30"   # NH3 cracker H2 feed (CONDITIONAL — LC04)
+      - "28-40-20"   # P/T indicating (H2 extended range portion)
+      - "28-40-30"   # NH3 level and purity (CONDITIONAL — LC04)
+      - "28-50-20"   # inerting and purge
+      - "28-60"      # thermal management & cryogenics (entire slot)
+      - "28-70"      # embrittlement monitoring (entire slot)
+
+  PCT-28-WTW:
+    description: "WTW near-term certifiable architecture (SAF / Jet-A path where applicable)"
+    applies_to:
+      - "28-10-10"   # conventional tank
+      - "28-20-10"   # fuel feed lines (WTW portion)
+      - "28-30-10"   # fuel jettison
+      - "28-40-10"   # quantity indicating (WTW portion)
+
+  PCT-28-COMMON:
+    description: "Common to both BWB and WTW architectures"
+    applies_to:
+      - "28-00"      # general (chapter overview)
+      - "28-00-00"   # chapter overview
+      - "28-20-10"   # fuel feed lines (common manifold topology)
+      - "28-40-10"   # quantity indicating (common gauging)
+      - "28-40-20"   # P/T indicating (common base)
+      - "28-50-10"   # hydrogen leak sensors (any H2 path)
+      - "28-90"      # tables, schemas, index
+
+conditional:
+  # Subsections gated on LC04 trade study outcome.
+  # If the trade rejects the NH3 path, these subsections are removed
+  # and their slots returned to the reserved/unallocated state.
+  pending_lc04_trade_study:
+    - "28-10-30-nh3-cryo-shield-vessel"
+    - "28-20-30-nh3-cracker-h2-feed"
+    - "28-40-30-nh3-level-and-purity"
+
+reserved_slot_extensions:
+  # Slots used beyond their canonical ATA-100 allocation. Each must be
+  # declared in BREX-IDA360-Q100-v0.1 with extension justification per
+  # iSpec 2200 §3.9.5.
+  - slot: "28-50"
+    name: "H2 Safety and Leak Detection"
+    justification: "H2-specific safety function with no analogue in legacy ATA-28"
+  - slot: "28-60"
+    name: "Thermal Management & Cryogenics"
+    justification: "Cryogenic thermal management has no analogue in legacy ATA-28"
+  - slot: "28-70"
+    name: "Embrittlement Monitoring"
+    justification: "H2 embrittlement is a structural-degradation phenomenon with no analogue in legacy ATA-28"
+
+# Cross-references
+references:
+  ata_chapter_root: "OPT-IN_FRAMEWORK/T-TECHNOLOGIES/AMPEL360/COMMON/C2-CIRCULAR_CRYOGENIC_CELLS/ATA_28-FUEL"
+  brex: "PUB/CSDB/BREX/BREX-IDA360-Q100-v0.1.xml"
+  ibd: "AMPEL360-FAM-IBD-001 Rev B"
+---
+
 # ATA 28 — C² CELL Architecture
 
 ## Chemical Containment & Circulation · Prime Material Management
@@ -87,14 +168,69 @@ ATA 28 C² CELL owns everything between:
 
 ## 2 · ATA 28 C² CELL Sub-Chapter Map
 
-The legacy ATA 28 sub-chapters are re-mapped to C² CELL functions:
+The legacy ATA 28 sub-chapters are re-mapped to C² CELL functions while
+preserving canonical ATA-100 / iSpec 2200 slot semantics. H₂-specific
+content lives as **named subsections under the correct slot**, not as a
+re-label of the slot itself. Reserved slots `28-50`–`28-70` are used for
+genuinely new functions and are declared in the project BREX with
+extension justification.
 
-| ATA Sub-Chapter | Legacy Title | C² CELL Function | Directory |
+| ATA Sub-Chapter | Canonical Label | C² CELL Function | Directory |
 |---|---|---|---|
+| 28-00 | General | Chapter overview & PM philosophy | [`28-00-general/`](28-00-general/) |
 | 28-10 | Storage | **PM Reservoir & Containment** | [`28-10-storage-reservoir/`](28-10-storage-reservoir/) |
 | 28-20 | Distribution | **PM Conditioning & Distribution** | [`28-20-distribution/`](28-20-distribution/) |
 | 28-30 | Dump / Jettison | **Emergency Discharge & Safe-State** | [`28-30-dump-jettison/`](28-30-dump-jettison/) |
 | 28-40 | Indicating | **State Monitoring & Diagnostics** | [`28-40-indicating/`](28-40-indicating/) |
+| 28-50 | Reserved → ext. | **H₂ Safety & Leak Detection** | [`28-50-h2-safety-and-leak-detection/`](28-50-h2-safety-and-leak-detection/) |
+| 28-60 | Reserved → ext. | **Thermal Management & Cryogenics** | [`28-60-thermal-management-cryogenics/`](28-60-thermal-management-cryogenics/) |
+| 28-70 | Reserved → ext. | **Embrittlement Monitoring** | [`28-70-embrittlement-monitoring/`](28-70-embrittlement-monitoring/) |
+| 28-80 | Reserved | Reserved as required | [`28-80-reserved-as-required/`](28-80-reserved-as-required/) |
+| 28-90 | Tables / Schemas | Cross-cutting reference data | [`28-90-tables-schemas-index/`](28-90-tables-schemas-index/) |
+
+### 2.1 Subsection Allocation (BWB vs WTW)
+
+Each subsection declares an applicability tag (PCT) defined in
+[`PUB/CSDB/APPLICABILITY/PCT-28.yaml`](../../../../../../PUB/CSDB/APPLICABILITY/PCT-28.yaml):
+
+| Subsection | PCT | Notes |
+|---|---|---|
+| `28-00-00-chapter-overview` | COMMON | |
+| `28-00-10-prime-material-philosophy` | BWB | H₂ as prime material |
+| `28-10-10-conventional-tank` | WTW | SAF / Jet-A |
+| `28-10-20-lh2-vacuum-insulated-tank` | BWB | Cryogenic vessel |
+| `28-10-30-nh3-cryo-shield-vessel` | BWB | **CONDITIONAL — pending LC04** |
+| `28-20-10-fuel-feed-lines` | COMMON | |
+| `28-20-20-lh2-transfer-and-valves` | BWB | Cryogenic lines |
+| `28-20-30-nh3-cracker-h2-feed` | BWB | **CONDITIONAL — pending LC04** |
+| `28-30-10-fuel-jettison` | WTW | Where applicable |
+| `28-40-10-quantity-indicating` | COMMON | |
+| `28-40-20-pressure-temperature` | COMMON | H₂ extended range |
+| `28-40-30-nh3-level-and-purity` | BWB | **CONDITIONAL — pending LC04** |
+| `28-50-10-hydrogen-leak-sensors` | COMMON | Any H₂ path |
+| `28-50-20-inerting-and-purge` | BWB | |
+| `28-60-10-vacuum-jacket-monitoring` | BWB | |
+| `28-60-20-pre-cool-and-conditioning` | BWB | |
+| `28-60-30-boil-off-recovery-routing` | BWB | Relocated from 28-30 |
+| `28-70-10-sensor-network` | BWB | |
+| `28-70-20-inspection-criteria` | BWB | |
+| `28-70-30-lifecycle-degradation-model` | BWB | |
+
+### 2.2 Resolution Principle
+
+> **ATA-100 slots `28-10` through `28-40` are semantically binding** —
+> their label defines the functional class of all content within, regardless
+> of technology. H₂-specific content lives as a *named subsection* under the
+> correct slot. Reserved slots (`28-50` → `28-80`) are the legitimate space
+> for functions without an ATA analogue, declared explicitly in the project
+> BREX with extension justification.
+
+### 2.3 Boil-off Recovery — Semantic Correction
+
+Boil-off recovery is a **closed-loop thermal-management** function
+(recover → reuse → vent only as fallback), not a jettison (controlled
+discard) function. It lives under `28-60-30-boil-off-recovery-routing/`,
+not under `28-30`. See that subsection's README for the full rationale.
 
 ---
 
