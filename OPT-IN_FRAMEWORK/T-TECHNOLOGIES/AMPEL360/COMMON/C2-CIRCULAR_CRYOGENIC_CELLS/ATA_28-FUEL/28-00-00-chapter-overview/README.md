@@ -158,7 +158,7 @@ ATA 53 (Fuselage)         ↕ integrated tank-bay geometry (BWB / WTW variant)
 ```
 
 Variant fork (BWB vs WTW) — ATA 28 is the critical-path divergence point of
-the AMPEL360 family per [AMPEL360-FAM-IBD-001]:
+the AMPEL360 family per the [Family Inheritance Boundary Declaration (IBD-001)](../../../../../../../SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md):
 
 | Aspect | BWB (Q100) | WTW |
 |---|---|---|
@@ -209,10 +209,11 @@ This module applies to all AMPEL360 IDEALE configurations:
 - **PCT-28-WTW** — cylindrical pod, tri-species (LH₂ + NH₃ + LN₂),
   closed-loop NH₃ cracking
 
-Refer to the canonical Product Cross-Reference Table `PCT-28.yaml` in
-`PUB/CSDB/APPLICABILITY/` (per repository PCT convention) for the resolved
-applicability conditions and reserved-slot extension declarations linked to
-BREX.
+Per repository PCT convention, the resolved applicability conditions and
+reserved-slot extension declarations are authored in the canonical
+[Product Cross-Reference Table for ATA 28](../../../../../../../PUB/CSDB/APPLICABILITY/PCT-28.yaml)
+(`PUB/CSDB/APPLICABILITY/PCT-28.yaml`, to be issued in a follow-up PR) and
+linked to the [project BREX](../../../../../../../PUB/CSDB/BREX/BREX-IDA360-Q100-v0.1.xml).
 
 ---
 
@@ -220,9 +221,9 @@ BREX.
 
 | Ref | Document |
 |---|---|
-| [IBD-001] | AMPEL360-FAM-IBD-001 Rev B — Family Inheritance Boundary Declaration |
-| [BREX]    | BREX-IDA360-Q100-v0.1 — Project Business Rules Exchange |
-| [TT]      | TOKENOMICS_TT.yaml — Teknia Token allocation & spillover |
+| [IBD-001] | [AMPEL360-FAM-IBD-001 Rev B — Family Inheritance Boundary Declaration](../../../../../../../SSOT/LC04_DESIGN_REVIEW/AMPEL360-FAM-IBD-001-RevB.md) |
+| [BREX]    | [BREX-IDA360-Q100-v0.1 — Project Business Rules Exchange](../../../../../../../PUB/CSDB/BREX/BREX-IDA360-Q100-v0.1.xml) |
+| [TT]      | [TOKENOMICS_TT.yaml — Teknia Token allocation & spillover](../../../../../../../SSOT/LC01_PROBLEM_STATEMENT/TOKENOMICS_TT.yaml) |
 | [iSpec]   | ATA iSpec 2200 — ATA Chapter 28 Fuel |
 | [CS-25]   | EASA CS-25 — Large Aeroplanes (SC for H₂ systems TBD) |
 | [PARENT]  | [ATA 28 C² CELL chapter README](../README.md) |
