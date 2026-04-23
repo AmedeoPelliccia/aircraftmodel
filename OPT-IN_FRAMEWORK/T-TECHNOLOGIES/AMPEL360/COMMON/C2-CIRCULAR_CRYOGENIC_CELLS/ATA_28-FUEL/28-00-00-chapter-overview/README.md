@@ -24,8 +24,8 @@ the **C² CELL — Chemical Containment & Circulation** paradigm and provides th
 canonical map to all sub-chapter data modules (28-10, 28-20, 28-30, 28-40).
 
 The full paradigm declaration, hazard model, ICD topology, design drivers,
-references and revision history are maintained in the parent chapter README:
-[`../README.md`](../README.md). This file is the iSpec 2200-compliant
+references and revision history are maintained in the
+[parent chapter README](../README.md). This file is the iSpec 2200-compliant
 `28-00-00` landing module that other documents and IETP viewers can deep-link
 into.
 
@@ -78,7 +78,8 @@ ATA 28 is therefore re-classified from "fire-system liability" to
 **chemical-state custody**. Primary hazard shifts from **flame** to
 **phase instability**.
 
-For the full transition rationale see [`../README.md`](../README.md) §0–§1.
+For the full transition rationale see the
+[parent chapter README](../README.md), §0–§1.
 
 ---
 
@@ -98,15 +99,15 @@ Legacy ATA 28 sub-chapters re-mapped to C² CELL functions:
 
 | ATA Sub-Chapter | Legacy Title | C² CELL Function | Directory |
 |---|---|---|---|
-| 28-00 | General | **Chapter Overview** *(this module)* | [`./`](./) |
-| 28-10 | Storage | PM Reservoir & Containment | [`../28-10-storage-reservoir/`](../28-10-storage-reservoir/) |
-| 28-20 | Distribution | PM Conditioning & Distribution | [`../28-20-distribution/`](../28-20-distribution/) |
-| 28-30 | Dump / Jettison | Emergency Discharge & Safe-State | [`../28-30-dump-jettison/`](../28-30-dump-jettison/) |
-| 28-40 | Indicating | State Monitoring & Diagnostics | [`../28-40-indicating/`](../28-40-indicating/) |
+| 28-00 | General | **Chapter Overview** *(this module)* | [Chapter overview](./) |
+| 28-10 | Storage | PM Reservoir & Containment | [PM reservoir & containment](../28-10-storage-reservoir/) |
+| 28-20 | Distribution | PM Conditioning & Distribution | [PM conditioning & distribution](../28-20-distribution/) |
+| 28-30 | Dump / Jettison | Emergency Discharge & Safe-State | [Emergency discharge & safe-state](../28-30-dump-jettison/) |
+| 28-40 | Indicating | State Monitoring & Diagnostics | [State monitoring & diagnostics](../28-40-indicating/) |
 
 Variant-specific extensions (WTW closed-loop, embrittlement monitoring, tables
-& schemas) live under
-[`../ATA-28-fuel/`](../ATA-28-fuel/) — see 28-70 and 28-90.
+& schemas) live under the
+[ATA-28 fuel variant tree](../ATA-28-fuel/) — see 28-70 and 28-90.
 
 ---
 
@@ -139,7 +140,7 @@ sub-chapter data modules and across the ICD boundary to ATA 47-40.
 
 Per BREX rule **BREX-005**, all ATA 28 data modules carry
 `safetyClass="SC1"`. LH₂ modules include a `cautionRef`; NH₃ modules include a
-`warningRef`. Full hazard model: [`../README.md`](../README.md) §3.
+`warningRef`. See the [full hazard model in the parent chapter README](../README.md), §3.
 
 ---
 
@@ -224,7 +225,7 @@ BREX.
 | [TT]      | TOKENOMICS_TT.yaml — Teknia Token allocation & spillover |
 | [iSpec]   | ATA iSpec 2200 — ATA Chapter 28 Fuel |
 | [CS-25]   | EASA CS-25 — Large Aeroplanes (SC for H₂ systems TBD) |
-| [PARENT]  | [`../README.md`](../README.md) — ATA 28 C² CELL chapter README |
+| [PARENT]  | [ATA 28 C² CELL chapter README](../README.md) |
 
 ---
 
