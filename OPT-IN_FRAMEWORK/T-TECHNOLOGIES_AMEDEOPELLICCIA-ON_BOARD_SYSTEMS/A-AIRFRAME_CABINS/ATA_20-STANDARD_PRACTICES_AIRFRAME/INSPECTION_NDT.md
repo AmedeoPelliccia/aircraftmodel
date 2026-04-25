@@ -124,6 +124,27 @@ Any repair that relies on bonding integrity (adhesive, wet layup, prepreg) **sha
 
 ---
 
+## 6) Preliminary EIS Baseline Repair Task Example
+
+The following table provides a worked example of the baseline inspection sequence for a metallic structural repair performed during the Entry Into Service (EIS) period. It illustrates how the invocation matrix in §2 is applied for the first scheduled maintenance visit post-delivery.
+
+> **EIS context:** EIS baseline tasks are defined at LC01 and shall remain unchanged until the first design review gate (LC04). Deviations require a Change Request against this document (see `README.md` §9).
+
+| Task | Minimum Required Inspection | Condition / Escalation Trigger |
+|------|-----------------------------|-------------------------------|
+| Any structural repair (metallic) | Visual (GVI) + applicable NDT per §3 | Additional NDT if in fatigue zone |
+| — if repair is in a fatigue-critical zone | GVI + DVI + Eddy Current (ET) at all fastener holes within repair area | Mandatory: operator Level II ET (EN4179/NAS410) |
+| — if repair involves corrosion removal | GVI + dimensional check + Dye Penetrant (PT) | Confirm Class 1/2 limits per `REPAIR_ACCEPTABILITY.md` before close-up |
+| — if bonded patch or wet layup involved | Process monitoring log + UT bond-line verification | Tap test insufficient for primary structure (see §3.5) |
+
+**EIS-specific rules:**
+
+1. All EIS metallic repairs shall be recorded in the aircraft technical log and cross-referenced to the applicable SRM repair scheme number.
+2. The NDT method selected shall be documented on the repair record form (Ref: `REPAIR_ACCEPTABILITY.md` §4).
+3. If a repair falls within a fatigue-critical zone identified in the Fatigue / Damage Tolerance inspection programme (ATA 57 — see variant-specific overlays), the next scheduled inspection interval shall be reduced by 50 % for the first inspection cycle after EIS.
+
+---
+
 ## Related Documents
 
 - [ATA 20 README](README.md)
