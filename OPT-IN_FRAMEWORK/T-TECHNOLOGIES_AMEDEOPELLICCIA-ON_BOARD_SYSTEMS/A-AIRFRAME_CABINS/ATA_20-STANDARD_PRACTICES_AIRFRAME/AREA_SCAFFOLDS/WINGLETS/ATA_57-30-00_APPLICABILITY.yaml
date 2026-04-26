@@ -1,0 +1,17 @@
+---
+# ATA_57-30-00 — WINGLETS Product Applicability
+sns: "57-30-00"
+ata_chapter: 57
+ata_subject: 30
+ata_unit: "00"
+title: "Winglets / Wing-Tip — Product Applicability"
+variant_scope: BOTH
+applicability:
+  - product_condition: "PCT-57-BWB"
+    description: "AMPEL360 Q100 BWB variant — outboard winglet region (neutral structural primitives)"
+    applies: true
+  - product_condition: "PCT-57-WTW"
+    description: "AMPEL360 Q100 WTW variant — conventional winglet outboard of wing tip"
+    applies: true
+lc_gate: LC01
+authority: "T-TECHNOLOGIES / A-AIRFRAME_CABINS / ATA_20-STANDARD_PRACTICES_AIRFRAME"

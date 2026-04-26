@@ -1,6 +1,7 @@
-# ATA 20 — Inspection Invocation Rules and NDT Method Selection Guidance
+# ATA 51-70-60 — Inspection Invocation Rules and NDT Method Selection Guidance
 
-**Doc ID:** T-A-ATA20-NDT-001
+**SNS:** ATA 51-70-60 (Structures Standard Practices — Repair — Inspection and NDT)
+**Doc ID:** T-A-ATA51-70-60-001
 **Lifecycle:** LC04 (planned increment)
 **Parent:** [ATA 20 README](README.md)
 
@@ -99,28 +100,7 @@ Defines when and how inspection methods are invoked for airframe structural work
 
 ---
 
-## 4) Repair Bonding Integrity — Mandatory Verification
-
-Any repair that relies on **bonding integrity**, including **adhesive bonding, wet layup, prepreg repair, co-cure, or secondary-bonded repair**, shall include mandatory verification of the bonding process and final bond condition before release to service.
-
-| Verification step | Mandatory requirement | Evidence required |
-|-------------------|-----------------------|-------------------|
-| Process monitoring | Record and review cure-cycle parameters, including temperature, pressure, vacuum level, dwell time, ramp rate, and hold duration, as applicable to the repair scheme. | Cure log, vacuum log, pressure log, thermocouple record, equipment calibration status |
-| Post-cure visual inspection | Inspect the repaired area for voids, porosity, resin starvation, resin richness, edge lift, incomplete cure, colour anomaly, tackiness, contamination, wrinkles, bridging, or delamination indications. | Visual inspection record, photographs where required, inspector sign-off |
-| NDT verification | Perform approved NDT, such as ultrasonic testing (UT), through-transmission ultrasonic (TTU), tap test, thermography, or other approved method, to verify bond-line continuity and absence of unacceptable disbond or delamination. | NDT report, scan record, equipment settings, certified inspector identification |
-| Acceptance criteria | Accept or reject the repair strictly against the applicable repair scheme, SRM, engineering order, or approved NDT acceptance standard. | Acceptance statement, reference to approved limits, disposition of defects |
-
-### Release Gate
-
-The repair shall **not be released to service** unless all required bonding-integrity verification records are complete, reviewed, and accepted by authorized personnel.
-
-### Controlled Requirement Text
-
-> Repairs relying on adhesive bonding, wet layup, prepreg, co-cure, or secondary bonding shall not be released to service without documented evidence of cure-cycle compliance, post-cure visual inspection, and approved NDT bond-line verification. All records shall be reviewed and accepted by authorised personnel prior to close-up of the repair area. Non-conformances identified during verification shall be dispositioned under the applicable repair scheme, SRM, or engineering order before release.
-
----
-
-## 5) Inspector Qualification Requirements (minimum)
+## 4) Inspector Qualification Requirements (minimum)
 
 | NDT Method | Minimum Qualification |
 |-----------|----------------------|
@@ -132,7 +112,7 @@ The repair shall **not be released to service** unless all required bonding-inte
 
 ---
 
-## 6) Preliminary EIS Baseline Repair Task Example
+## 5) Preliminary EIS Baseline Repair Task Example
 
 The following table provides a worked example of the baseline inspection sequence for a metallic structural repair performed during the Entry Into Service (EIS) period. It illustrates how the invocation matrix in §2 is applied for the first scheduled maintenance visit post-delivery.
 
@@ -142,13 +122,13 @@ The following table provides a worked example of the baseline inspection sequenc
 |------|-----------------------------|-------------------------------|
 | Any structural repair (metallic) | Visual (GVI) + applicable NDT per §3 | Additional NDT if in fatigue zone |
 | — if repair is in a fatigue-critical zone | GVI + DVI + Eddy Current (ET) at all fastener holes within repair area | Mandatory: operator Level II ET (EN4179/NAS410) |
-| — if repair involves corrosion removal | GVI + dimensional check + Dye Penetrant (PT) | Confirm Class 1/2 limits per `REPAIR_ACCEPTABILITY.md` before close-up |
+| — if repair involves corrosion removal | GVI + dimensional check + Dye Penetrant (PT) | Confirm Class 1/2 limits per `ATA_51-70-00_REPAIR_ACCEPTABILITY.md` before close-up |
 | — if bonded patch or wet layup involved | Process monitoring log + UT bond-line verification | Tap test insufficient for primary structure (see §3.5) |
 
 **EIS-specific rules:**
 
 1. All EIS metallic repairs shall be recorded in the aircraft technical log and cross-referenced to the applicable SRM repair scheme number.
-2. The NDT method selected shall be documented on the repair record form (Ref: `REPAIR_ACCEPTABILITY.md` §4).
+2. The NDT method selected shall be documented on the repair record form (Ref: `ATA_51-70-00_REPAIR_ACCEPTABILITY.md` §4).
 3. If a repair falls within a fatigue-critical zone identified in the Fatigue / Damage Tolerance inspection programme (ATA 57 — see variant-specific overlays), the next scheduled inspection interval shall be reduced by 50 % for the first inspection cycle after EIS.
 
 ---
@@ -156,6 +136,7 @@ The following table provides a worked example of the baseline inspection sequenc
 ## Related Documents
 
 - [ATA 20 README](README.md)
-- [REPAIR_ACCEPTABILITY.md](REPAIR_ACCEPTABILITY.md)
-- [STANDARDS_MATERIALS.md](STANDARDS_MATERIALS.md)
+- [ATA_51-70-00_REPAIR_ACCEPTABILITY.md](ATA_51-70-00_REPAIR_ACCEPTABILITY.md)
+- [ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md](ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md)
+- [ATA_51-30-00_STANDARDS_MATERIALS.md](ATA_51-30-00_STANDARDS_MATERIALS.md)
 - [ATA 51 — Structures General](../ATA_51-STRUCTURES_GENERAL/README.md)

@@ -1,6 +1,7 @@
-# ATA 20 — Approved Material Families, Handling, and Compatibility Rules
+# ATA 51-30-00 — Approved Material Families, Handling, and Compatibility Rules
 
-**Doc ID:** T-A-ATA20-MAT-001
+**SNS:** ATA 51-30-00 (Structures Standard Practices — Materials)
+**Doc ID:** T-A-ATA51-30-00-001
 **Lifecycle:** LC03 (planned increment)
 **Parent:** [ATA 20 README](README.md)
 

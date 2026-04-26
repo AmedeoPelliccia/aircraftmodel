@@ -1,6 +1,7 @@
-# ATA 20 — Damage Taxonomy, Repair Acceptability Flow, and Escalation Triggers
+# ATA 51-70-00 — Damage Taxonomy, Repair Acceptability Flow, and Escalation Triggers
 
-**Doc ID:** T-A-ATA20-REP-001
+**SNS:** ATA 51-70-00 (Structures Standard Practices — Repair)
+**Doc ID:** T-A-ATA51-70-00-001
 **Lifecycle:** LC04 (planned increment)
 **Parent:** [ATA 20 README](README.md)
 

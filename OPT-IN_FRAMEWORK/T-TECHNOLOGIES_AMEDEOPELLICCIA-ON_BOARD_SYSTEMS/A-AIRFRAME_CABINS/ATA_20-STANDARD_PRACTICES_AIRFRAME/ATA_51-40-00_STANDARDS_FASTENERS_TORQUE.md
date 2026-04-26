@@ -1,6 +1,7 @@
-# ATA 20 — Fastener Practices, Hole Quality, Torque and Locking Rules
+# ATA 51-40-00 — Fastener Practices, Hole Quality, Torque and Locking Rules
 
-**Doc ID:** T-A-ATA20-FAST-001
+**SNS:** ATA 51-40-00 (Structures Standard Practices — Fasteners)
+**Doc ID:** T-A-ATA51-40-00-001
 **Lifecycle:** LC03 (planned increment)
 **Parent:** [ATA 20 README](README.md)
 
