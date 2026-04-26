@@ -101,14 +101,22 @@ Defines when and how inspection methods are invoked for airframe structural work
 
 ## 4) Repair Bonding Integrity — Mandatory Verification
 
-Any repair that relies on bonding integrity (adhesive, wet layup, prepreg) **shall** include:
+Any repair that relies on **bonding integrity**, including **adhesive bonding, wet layup, prepreg repair, co-cure, or secondary-bonded repair**, shall include mandatory verification of the bonding process and final bond condition before release to service.
 
-| Step | Requirement |
-|------|-------------|
-| Process monitoring | Temperature, pressure, and vacuum log during cure |
-| Post-cure visual | Inspect for voids, porosity, incomplete cure (colour, tack) |
-| NDT (UT/TTU) | Verify bond line continuity to approved procedure |
-| Acceptance criteria | Per repair scheme or SRM NDT acceptance standard |
+| Verification step | Mandatory requirement | Evidence required |
+|-------------------|-----------------------|-------------------|
+| Process monitoring | Record and review cure-cycle parameters, including temperature, pressure, vacuum level, dwell time, ramp rate, and hold duration, as applicable to the repair scheme. | Cure log, vacuum log, pressure log, thermocouple record, equipment calibration status |
+| Post-cure visual inspection | Inspect the repaired area for voids, porosity, resin starvation, resin richness, edge lift, incomplete cure, colour anomaly, tackiness, contamination, wrinkles, bridging, or delamination indications. | Visual inspection record, photographs where required, inspector sign-off |
+| NDT verification | Perform approved NDT, such as ultrasonic testing (UT), through-transmission ultrasonic (TTU), tap test, thermography, or other approved method, to verify bond-line continuity and absence of unacceptable disbond or delamination. | NDT report, scan record, equipment settings, certified inspector identification |
+| Acceptance criteria | Accept or reject the repair strictly against the applicable repair scheme, SRM, engineering order, or approved NDT acceptance standard. | Acceptance statement, reference to approved limits, disposition of defects |
+
+### Release Gate
+
+The repair shall **not be released to service** unless all required bonding-integrity verification records are complete, reviewed, and accepted by authorized personnel.
+
+### Controlled Requirement Text
+
+> Repairs relying on adhesive bonding, wet layup, prepreg, co-cure, or secondary bonding shall not be released to service without documented evidence of cure-cycle compliance, post-cure visual inspection, and approved NDT bond-line verification. All records shall be reviewed and accepted by authorised personnel prior to close-up of the repair area. Non-conformances identified during verification shall be dispositioned under the applicable repair scheme, SRM, or engineering order before release.
 
 ---
 
