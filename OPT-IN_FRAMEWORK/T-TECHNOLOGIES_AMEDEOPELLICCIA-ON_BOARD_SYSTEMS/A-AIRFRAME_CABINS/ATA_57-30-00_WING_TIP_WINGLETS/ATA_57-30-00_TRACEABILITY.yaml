@@ -1,10 +1,12 @@
 ---
 # ATA_57-30-00 — WINGLETS Requirement Traceability
 sns: "57-30-00"
+ata_sns: "57-30-00"
+ata_section: "30"
+ata_subject: "00"
+ata_title: "Wing-Tip Winglets — Requirement Traceability"
+document_role: "traceability"
 ata_chapter: 57
-ata_subject: 30
-ata_unit: "00"
-title: "Winglets / Wing-Tip — Requirement Traceability"
 variant_scope: BOTH
 lc_gate: LC01
 entries:

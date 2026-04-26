@@ -1,3 +1,12 @@
+---
+ata_sns: "53-50-80"
+ata_chapter: "53"
+ata_section: "50"
+ata_subject: "80"
+ata_title: "Electrical Bonding and Lightning Continuity — Blend Zone Centrebody Interface"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 53-50-80 — Blend Zone Electrical Bonding and Lightning Continuity
 
 **SNS:** ATA 53-50-80 (Fuselage — Blend Zone — Electrical Bonding / Lightning Continuity)

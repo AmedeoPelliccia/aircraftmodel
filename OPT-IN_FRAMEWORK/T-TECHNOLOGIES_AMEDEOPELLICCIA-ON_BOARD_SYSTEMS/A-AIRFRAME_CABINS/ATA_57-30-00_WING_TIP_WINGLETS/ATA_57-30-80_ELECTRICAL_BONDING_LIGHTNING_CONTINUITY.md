@@ -1,3 +1,12 @@
+---
+ata_sns: "57-30-80"
+ata_chapter: "57"
+ata_section: "30"
+ata_subject: "80"
+ata_title: "Electrical Bonding and Lightning Continuity — Wing-Tip Winglets"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 57-30-80 — Winglets Electrical Bonding and Lightning Continuity
 
 **SNS:** ATA 57-30-80 (Wings — Winglets — Electrical Bonding / Lightning Continuity)

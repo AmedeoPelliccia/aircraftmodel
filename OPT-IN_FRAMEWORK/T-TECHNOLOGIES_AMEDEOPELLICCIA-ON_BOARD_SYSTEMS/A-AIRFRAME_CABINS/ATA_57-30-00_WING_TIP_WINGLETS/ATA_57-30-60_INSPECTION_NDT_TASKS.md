@@ -1,3 +1,12 @@
+---
+ata_sns: "57-30-60"
+ata_chapter: "57"
+ata_section: "30"
+ata_subject: "60"
+ata_title: "Inspection and NDT Tasks — Wing-Tip Winglets"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 57-30-60 — Winglets Inspection and NDT Tasks
 
 **SNS:** ATA 57-30-60 (Wings — Winglets — Inspection and NDT)

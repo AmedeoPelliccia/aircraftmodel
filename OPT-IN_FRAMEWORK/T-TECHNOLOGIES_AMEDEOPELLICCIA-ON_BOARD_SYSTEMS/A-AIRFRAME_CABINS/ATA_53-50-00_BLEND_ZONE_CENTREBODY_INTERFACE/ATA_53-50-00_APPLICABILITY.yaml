@@ -1,10 +1,12 @@
 ---
 # ATA_53-50-00 — BLEND_ZONE Product Applicability
 sns: "53-50-00"
+ata_sns: "53-50-00"
+ata_section: "50"
+ata_subject: "00"
+ata_title: "Blend Zone Centrebody Interface — Product Applicability"
+document_role: "applicability"
 ata_chapter: 53
-ata_subject: 50
-ata_unit: "00"
-title: "Blend Zone Local Structures — Product Applicability"
 variant_scope: BWB
 applicability:
   - product_condition: "PCT-53-BWB"

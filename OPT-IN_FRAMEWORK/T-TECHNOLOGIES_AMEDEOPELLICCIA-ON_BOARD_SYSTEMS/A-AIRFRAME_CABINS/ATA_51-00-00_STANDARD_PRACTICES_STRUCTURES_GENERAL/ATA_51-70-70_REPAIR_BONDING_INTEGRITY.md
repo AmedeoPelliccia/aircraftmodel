@@ -1,3 +1,12 @@
+---
+ata_sns: "51-70-70"
+ata_chapter: "51"
+ata_section: "70"
+ata_subject: "70"
+ata_title: "Repair Bonding Integrity — Standard Practices and Structures General"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 51-70-70 — Repair Bonding Integrity — Mandatory Verification
 
 **SNS:** ATA 51-70-70 (Structures Standard Practices — Repair — Bonding Integrity)

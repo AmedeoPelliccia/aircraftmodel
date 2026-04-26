@@ -1,3 +1,12 @@
+---
+ata_sns: "53-50-70"
+ata_chapter: "53"
+ata_section: "50"
+ata_subject: "70"
+ata_title: "Repair Bonding Integrity — Blend Zone Centrebody Interface"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 53-50-70 — Blend Zone Repair Bonding Integrity
 
 **SNS:** ATA 53-50-70 (Fuselage — Blend Zone — Repair and Bonding Integrity)

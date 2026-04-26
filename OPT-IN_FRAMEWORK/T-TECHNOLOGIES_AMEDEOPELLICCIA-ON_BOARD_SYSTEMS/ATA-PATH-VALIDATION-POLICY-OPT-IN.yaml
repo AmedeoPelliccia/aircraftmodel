@@ -1,0 +1,210 @@
+---
+# ATA Path-Containment Validation Policy — OPT-IN Framework
+# =============================================================
+# This file is the locked baseline for repository structural validation rules.
+# Front-matter generation and metadata enforcement depend on this policy being
+# locked first. Status: locked-baseline / do not modify without a Change Request.
+
+policy_id: "ATA-PATH-VALIDATION-POLICY-OPT-IN"
+version: "0.2.0"
+status: "locked-baseline"
+lc_gate: LC01
+doc_id: "T-POLICY-ATA-PATH-001"
+
+scope:
+  root_path: "OPT-IN_FRAMEWORK/T-TECHNOLOGIES_AMEDEOPELLICCIA-ON_BOARD_SYSTEMS"
+  standard: "ATA iSpec 2200-aligned SNS"
+  principle: "Repository containment shall follow ATA chapter ownership."
+
+definitions:
+  ata_root_folder_pattern: "^ATA_(?<root_chapter>[0-9]{2})-[0-9]{2}-[0-9]{2}_[A-Z0-9_\\-]+$"
+  ata_file_pattern: "^ATA_(?<file_sns>[0-9]{2}-[0-9]{2}-[0-9]{2})_[A-Z0-9_\\-]+\\.(md|yaml|yml|json)$"
+  ata_sns_pattern: "^[0-9]{2}-[0-9]{2}-[0-9]{2}$"
+
+rules:
+
+  - id: "ROOT-CHAPTER-CONSISTENCY"
+    severity: "error"
+    statement: >
+      Every technical file containing ata_sns shall be located under a first-level
+      ATA root folder with the same ATA chapter.
+    condition: >
+      root_folder = ATA_<CH>-..;
+      file.metadata.ata_chapter must equal <CH>;
+      file.metadata.ata_sns[0:2] must equal <CH>.
+    invalid_example:
+      path: "ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md"
+      reason: "ATA 57 technical content is contained under ATA 20 root."
+    valid_example:
+      path: "ATA_57-30-00_WING_TIP_WINGLETS/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md"
+
+  - id: "ATA-20-NO-STRUCTURAL-CROSS-CONTAINMENT"
+    severity: "error"
+    statement: >
+      ATA 20 root shall not contain ATA 51, ATA 53, ATA 55, ATA 56, or ATA 57
+      technical artefacts.
+    applies_to_root: "ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED"
+    forbidden_ata_chapters:
+      - "51"
+      - "53"
+      - "55"
+      - "56"
+      - "57"
+    allowed_content:
+      - "README.md"
+      - "ATA_20-00-00_TRACEABILITY.yaml"
+      - "governance"
+      - "routing"
+      - "cross_reference_index"
+    rule: "Cross-reference is allowed. Cross-containment is not allowed."
+
+  - id: "TECHNICAL-FILE-REQUIRES-SNS"
+    severity: "error"
+    statement: >
+      Technical aircraft content shall declare ata_sns, ata_chapter, ata_section,
+      ata_subject, and ata_title.
+    applies_to_document_roles:
+      - "standard"
+      - "technical_requirement"
+      - "inspection_task"
+      - "repair_rule"
+      - "applicability"
+      - "traceability"
+    required_metadata:
+      - "ata_sns"
+      - "ata_chapter"
+      - "ata_section"
+      - "ata_subject"
+      - "ata_title"
+
+  - id: "FILENAME-SNS-METADATA-MATCH"
+    severity: "error"
+    statement: >
+      If a file name begins with ATA_<SNS>_, the SNS in the filename shall match
+      metadata.ata_sns exactly.
+    condition: >
+      filename_sns == metadata.ata_sns
+    valid_example:
+      filename: "ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md"
+      metadata_ata_sns: "51-70-70"
+
+  - id: "NO-SNS-FOR-CSDB-S1000D-MAPPING"
+    severity: "error"
+    statement: >
+      CSDB/S1000D mapping files are administrative publication artefacts and shall
+      not claim ATA SNS ownership.
+    applies_to_files:
+      - "CSDB_S1000D_MAP.yaml"
+    forbidden_metadata:
+      - "ata_sns"
+      - "ata_chapter"
+      - "ata_section"
+      - "ata_subject"
+    required_metadata:
+      - "document_role"
+      - "ata_sns_context"
+      - "not_ata_subject"
+      - "sns_authority"
+    required_values:
+      document_role: "publication_mapping"
+      not_ata_subject: true
+      sns_authority: "Programme administrative file; not an ATA subject"
+
+  - id: "SUBJECT-80-RESERVED-FOR-ELECTRICAL-BONDING"
+    severity: "error"
+    statement: >
+      Subject 80 is reserved for Electrical Bonding / Lightning Continuity in
+      local structural scaffolds.
+    reserved_subjects:
+      "53-50-80": "Electrical Bonding / Lightning Continuity"
+      "57-30-80": "Electrical Bonding / Lightning Continuity"
+    forbidden_use:
+      - "CSDB mapping"
+      - "S1000D mapping"
+      - "publication mapping"
+      - "administrative routing"
+
+  - id: "LOCAL-STRUCTURE-MUST-CROSS-REFERENCE-SHARED-PRACTICES"
+    severity: "error"
+    statement: >
+      Local structural implementation chapters shall cross-reference ATA 20 and
+      relevant ATA 51 standard-practice owners.
+    applies_to_chapters:
+      - "53"
+      - "57"
+    minimum_cross_references:
+      - "20-00-00"
+      - "51-20-00"
+      - "51-30-00"
+      - "51-40-00"
+      - "51-70-00"
+    conditional_cross_references:
+      electrical_bonding_or_lightning_continuity:
+        - "51-80-00"
+
+  - id: "PROGRAMME-CONTROLLED-SUBJECT-FLAG"
+    severity: "error"
+    statement: >
+      Programme-defined subject-level extensions shall declare
+      programme_controlled_subject: true.
+    applies_to_subjects:
+      - "51-70-60"
+      - "51-70-70"
+      - "53-50-60"
+      - "53-50-70"
+      - "53-50-80"
+      - "57-30-60"
+      - "57-30-70"
+      - "57-30-80"
+    required_metadata:
+      programme_controlled_subject: true
+
+locked_containment_summary:
+  statement: >
+    ATA_20 shall not contain ATA_51, ATA_53, ATA_55, ATA_56, or ATA_57 technical artefacts.
+    ATA ownership must be visible in the first-level repository path.
+  cross_reference: "allowed"
+  cross_containment: "prohibited"
+
+baseline_tree:
+  root: "OPT-IN_FRAMEWORK/T-TECHNOLOGIES_AMEDEOPELLICCIA-ON_BOARD_SYSTEMS/A-AIRFRAME_CABINS"
+  directories:
+    - path: "ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED"
+      files: ["README.md", "ATA_20-00-00_TRACEABILITY.yaml"]
+      ata_chapter: 20
+      content_type: "governance_only"
+    - path: "ATA_51-00-00_STANDARD_PRACTICES_STRUCTURES_GENERAL"
+      files:
+        - "README.md"
+        - "ATA_51-20-00_STANDARDS_SURFACE_TREATMENTS.md"
+        - "ATA_51-30-00_STANDARDS_MATERIALS.md"
+        - "ATA_51-40-00_STANDARDS_FASTENERS_TORQUE.md"
+        - "ATA_51-70-00_REPAIR_ACCEPTABILITY.md"
+        - "ATA_51-70-60_INSPECTION_NDT.md"
+        - "ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md"
+      ata_chapter: 51
+      content_type: "structural_standard_practices"
+    - path: "ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE"
+      files:
+        - "README.md"
+        - "ATA_53-50-00_APPLICABILITY.yaml"
+        - "ATA_53-50-00_TRACEABILITY.yaml"
+        - "ATA_53-50-60_INSPECTION_NDT_TASKS.md"
+        - "ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md"
+        - "ATA_53-50-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md"
+        - "CSDB_S1000D_MAP.yaml"
+      ata_chapter: 53
+      content_type: "local_structural_implementation"
+      applicability: "BWB"
+    - path: "ATA_57-30-00_WING_TIP_WINGLETS"
+      files:
+        - "README.md"
+        - "ATA_57-30-00_APPLICABILITY.yaml"
+        - "ATA_57-30-00_TRACEABILITY.yaml"
+        - "ATA_57-30-60_INSPECTION_NDT_TASKS.md"
+        - "ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md"
+        - "ATA_57-30-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md"
+        - "CSDB_S1000D_MAP.yaml"
+      ata_chapter: 57
+      content_type: "local_structural_implementation"
+      applicability: "BOTH"

@@ -1,3 +1,12 @@
+---
+ata_sns: "57-30-70"
+ata_chapter: "57"
+ata_section: "30"
+ata_subject: "70"
+ata_title: "Repair Bonding Integrity — Wing-Tip Winglets"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 57-30-70 — Winglets Repair Bonding Integrity
 
 **SNS:** ATA 57-30-70 (Wings — Winglets — Repair and Bonding Integrity)

@@ -1,3 +1,12 @@
+---
+ata_sns: "53-50-60"
+ata_chapter: "53"
+ata_section: "50"
+ata_subject: "60"
+ata_title: "Inspection and NDT Tasks — Blend Zone Centrebody Interface"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 53-50-60 — Blend Zone Inspection and NDT Tasks
 
 **SNS:** ATA 53-50-60 (Fuselage — Blend Zone — Inspection and NDT)

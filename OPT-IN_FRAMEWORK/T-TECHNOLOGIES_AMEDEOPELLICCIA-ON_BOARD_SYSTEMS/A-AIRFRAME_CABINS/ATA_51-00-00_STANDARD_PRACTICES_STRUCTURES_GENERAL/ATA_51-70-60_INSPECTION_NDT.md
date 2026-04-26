@@ -1,3 +1,12 @@
+---
+ata_sns: "51-70-60"
+ata_chapter: "51"
+ata_section: "70"
+ata_subject: "60"
+ata_title: "Inspection and NDT — Standard Practices and Structures General"
+programme_controlled_subject: true
+document_role: "standard"
+---
 # ATA 51-70-60 — Inspection Invocation Rules and NDT Method Selection Guidance
 
 **SNS:** ATA 51-70-60 (Structures Standard Practices — Repair — Inspection and NDT)

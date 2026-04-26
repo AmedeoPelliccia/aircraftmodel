@@ -1,10 +1,12 @@
 ---
 # ATA_53-50-00 — BLEND_ZONE Requirement Traceability
 sns: "53-50-00"
+ata_sns: "53-50-00"
+ata_section: "50"
+ata_subject: "00"
+ata_title: "Blend Zone Centrebody Interface — Requirement Traceability"
+document_role: "traceability"
 ata_chapter: 53
-ata_subject: 50
-ata_unit: "00"
-title: "Blend Zone Local Structures — Requirement Traceability"
 variant_scope: BWB
 lc_gate: LC01
 entries:

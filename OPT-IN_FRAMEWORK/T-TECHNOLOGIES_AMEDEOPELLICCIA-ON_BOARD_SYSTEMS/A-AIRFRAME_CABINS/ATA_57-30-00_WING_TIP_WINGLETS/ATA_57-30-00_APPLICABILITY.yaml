@@ -1,10 +1,12 @@
 ---
 # ATA_57-30-00 — WINGLETS Product Applicability
 sns: "57-30-00"
+ata_sns: "57-30-00"
+ata_section: "30"
+ata_subject: "00"
+ata_title: "Wing-Tip Winglets — Product Applicability"
+document_role: "applicability"
 ata_chapter: 57
-ata_subject: 30
-ata_unit: "00"
-title: "Winglets / Wing-Tip — Product Applicability"
 variant_scope: BOTH
 applicability:
   - product_condition: "PCT-57-BWB"
