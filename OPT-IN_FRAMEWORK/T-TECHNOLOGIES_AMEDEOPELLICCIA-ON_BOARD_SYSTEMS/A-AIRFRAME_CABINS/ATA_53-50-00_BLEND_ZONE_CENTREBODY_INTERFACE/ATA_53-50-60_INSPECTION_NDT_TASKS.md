@@ -38,6 +38,6 @@ These requirements overlay and supplement the shared ATA 51-70-60 NDT guidance. 
 
 ## Related Documents
 
-- [ATA_51-70-60_INSPECTION_NDT.md](../../ATA_51-70-60_INSPECTION_NDT.md) — Shared baseline NDT guidance
+- [ATA_51-70-60_INSPECTION_NDT.md](../ATA_51-00-00_STANDARD_PRACTICES_STRUCTURES_GENERAL/ATA_51-70-60_INSPECTION_NDT.md) — Shared baseline NDT guidance
 - [ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md](ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md) — Blend zone bonding integrity
 - [ATA_53-50-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md](ATA_53-50-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md) — Electrical bonding

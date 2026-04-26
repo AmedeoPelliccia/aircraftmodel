@@ -1,0 +1,39 @@
+---
+# ATA_20-00-00 — Standard Practices Airframe Shared — Chapter Traceability
+sns: "20-00-00"
+ata_chapter: 20
+ata_subject: "00"
+ata_unit: "00"
+title: "Standard Practices – Airframe Shared Governance — Chapter Traceability"
+boundary: SHARED
+lc_gate: LC01
+doc_id: "T-A-ATA20-00-00-TRACE-001"
+
+containment_policy:
+  rule: "Repository containment shall follow ATA ownership"
+  constraint: "No file under ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED/ may carry ata_chapter in {51, 53, 57}"
+  cross_reference: ALLOWED
+  cross_containment: NOT_ALLOWED
+
+chapter_delegation:
+  - owning_chapter: 51
+    title: "Standard Practices and Structures – General"
+    path: "../ATA_51-00-00_STANDARD_PRACTICES_STRUCTURES_GENERAL/"
+    subjects_covered: [20, 30, 40, 70]
+    delegation_note: "Materials, fasteners, surface treatments, repair, NDT, bonding integrity"
+
+  - owning_chapter: 53
+    title: "Fuselage — Blend Zone / Centrebody Interface"
+    path: "../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/"
+    subjects_covered: [60, 70, 80]
+    delegation_note: "Local structural inspection, repair bonding, electrical bonding — BWB only"
+    applicability: BWB
+
+  - owning_chapter: 57
+    title: "Wings — Wing-Tip / Winglets"
+    path: "../ATA_57-30-00_WING_TIP_WINGLETS/"
+    subjects_covered: [60, 70, 80]
+    delegation_note: "Local structural inspection, repair bonding, electrical bonding — WTW and BWB"
+    applicability: BOTH
+
+open_items: []

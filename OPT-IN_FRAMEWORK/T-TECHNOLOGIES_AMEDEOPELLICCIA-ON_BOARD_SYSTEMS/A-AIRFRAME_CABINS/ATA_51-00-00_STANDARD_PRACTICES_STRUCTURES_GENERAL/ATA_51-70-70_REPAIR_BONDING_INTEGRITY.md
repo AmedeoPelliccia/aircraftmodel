@@ -3,7 +3,7 @@
 **SNS:** ATA 51-70-70 (Structures Standard Practices — Repair — Bonding Integrity)
 **Doc ID:** T-A-ATA51-70-70-001
 **Lifecycle:** LC04 (planned increment)
-**Parent:** [ATA 20 README](README.md)
+**Parent:** [ATA 51 README](README.md)
 
 ---
 
@@ -57,18 +57,18 @@ The repair shall **not be released to service** unless all required bonding-inte
 
 ## 5) Area-Specific Overlays
 
-For local area implementations (BLEND_ZONE, WINGLETS), bonding integrity requirements are additionally governed by the applicable AREA_SCAFFOLDS sub-document:
+For local area implementations (BLEND_ZONE, WINGLETS), bonding integrity requirements are additionally governed by the applicable chapter document:
 
 | Structural area | Applicable overlay |
 |----------------|--------------------|
-| Fuselage-to-wing blend zone (BWB) | [AREA_SCAFFOLDS/BLEND_ZONE/ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md](AREA_SCAFFOLDS/BLEND_ZONE/ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md) |
-| Winglets (BWB/WTW outboard) | [AREA_SCAFFOLDS/WINGLETS/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md](AREA_SCAFFOLDS/WINGLETS/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md) |
+| Fuselage-to-wing blend zone (BWB) | [../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md](../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/ATA_53-50-70_REPAIR_BONDING_INTEGRITY.md) |
+| Winglets (BWB/WTW outboard) | [../ATA_57-30-00_WING_TIP_WINGLETS/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md](../ATA_57-30-00_WING_TIP_WINGLETS/ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md) |
 
 ---
 
 ## Related Documents
 
-- [ATA 20 README](README.md)
+- [ATA 51 README](README.md)
 - [ATA_51-70-60_INSPECTION_NDT.md](ATA_51-70-60_INSPECTION_NDT.md)
 - [ATA_51-70-00_REPAIR_ACCEPTABILITY.md](ATA_51-70-00_REPAIR_ACCEPTABILITY.md)
-- [ATA 51 — Structures General](../ATA_51-STRUCTURES_GENERAL/README.md)
+- [ATA 20 governance](../ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED/README.md)

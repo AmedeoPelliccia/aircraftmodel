@@ -3,7 +3,7 @@
 **SNS:** ATA 51-70-60 (Structures Standard Practices — Repair — Inspection and NDT)
 **Doc ID:** T-A-ATA51-70-60-001
 **Lifecycle:** LC04 (planned increment)
-**Parent:** [ATA 20 README](README.md)
+**Parent:** [ATA 51 README](README.md)
 
 ---
 
@@ -135,8 +135,8 @@ The following table provides a worked example of the baseline inspection sequenc
 
 ## Related Documents
 
-- [ATA 20 README](README.md)
+- [ATA 51 README](README.md)
 - [ATA_51-70-00_REPAIR_ACCEPTABILITY.md](ATA_51-70-00_REPAIR_ACCEPTABILITY.md)
 - [ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md](ATA_51-70-70_REPAIR_BONDING_INTEGRITY.md)
 - [ATA_51-30-00_STANDARDS_MATERIALS.md](ATA_51-30-00_STANDARDS_MATERIALS.md)
-- [ATA 51 — Structures General](../ATA_51-STRUCTURES_GENERAL/README.md)
+- [ATA 20 governance](../ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED/README.md)

@@ -3,7 +3,7 @@
 **SNS:** ATA 51-70-00 (Structures Standard Practices — Repair)
 **Doc ID:** T-A-ATA51-70-00-001
 **Lifecycle:** LC04 (planned increment)
-**Parent:** [ATA 20 README](README.md)
+**Parent:** [ATA 51 README](README.md)
 
 ---
 

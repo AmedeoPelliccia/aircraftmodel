@@ -14,7 +14,7 @@ Defines winglet-specific inspection tasks and NDT invocation rules for the outbo
 
 These requirements overlay and supplement the shared ATA 51-70-60 NDT guidance. Where this document adds a more restrictive requirement, this document governs. Where no specific winglet rule exists, the ATA 51-70-60 baseline applies.
 
-> **BWB note:** For BWB variant winglets, the blend-zone inboard boundary condition shall be applied for any inspection task that extends to within 300 mm of the blend-zone outboard boundary. See `../BLEND_ZONE/ATA_53-50-60_INSPECTION_NDT_TASKS.md`.
+> **BWB note:** For BWB variant winglets, the blend-zone inboard boundary condition shall be applied for any inspection task that extends to within 300 mm of the blend-zone outboard boundary. See `../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/ATA_53-50-60_INSPECTION_NDT_TASKS.md`.
 
 ---
 
@@ -41,7 +41,7 @@ These requirements overlay and supplement the shared ATA 51-70-60 NDT guidance. 
 
 ## Related Documents
 
-- [ATA_51-70-60_INSPECTION_NDT.md](../../ATA_51-70-60_INSPECTION_NDT.md) — Shared baseline NDT guidance
+- [ATA_51-70-60_INSPECTION_NDT.md](../ATA_51-00-00_STANDARD_PRACTICES_STRUCTURES_GENERAL/ATA_51-70-60_INSPECTION_NDT.md) — Shared baseline NDT guidance
 - [ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md](ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md) — Winglet bonding integrity
 - [ATA_57-30-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md](ATA_57-30-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md) — Electrical bonding
-- [../BLEND_ZONE/ATA_53-50-60_INSPECTION_NDT_TASKS.md](../BLEND_ZONE/ATA_53-50-60_INSPECTION_NDT_TASKS.md) — Blend zone NDT (BWB inboard boundary)
+- [../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/ATA_53-50-60_INSPECTION_NDT_TASKS.md](../ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE/ATA_53-50-60_INSPECTION_NDT_TASKS.md) — Blend zone NDT (BWB inboard boundary)

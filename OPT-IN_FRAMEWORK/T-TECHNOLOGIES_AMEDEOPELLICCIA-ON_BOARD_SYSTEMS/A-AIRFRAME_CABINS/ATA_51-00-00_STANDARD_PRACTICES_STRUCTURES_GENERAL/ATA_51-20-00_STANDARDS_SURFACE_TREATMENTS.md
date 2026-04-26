@@ -3,7 +3,7 @@
 **SNS:** ATA 51-20-00 (Structures Standard Practices — Surface Treatments)
 **Doc ID:** T-A-ATA51-20-00-001
 **Lifecycle:** LC03 (planned increment)
-**Parent:** [ATA 20 README](README.md)
+**Parent:** [ATA 51 README](README.md)
 
 ---
 

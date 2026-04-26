@@ -1,0 +1,47 @@
+---
+# CSDB_S1000D_MAP — WING_TIP_WINGLETS Publication Mapping (Administrative File)
+#
+# IMPORTANT: This file is a programme administrative artefact for CSDB/S1000D publication mapping.
+# It is NOT an ATA SNS subject. Subject 80 at ATA 57-30-80 is reserved exclusively for
+# Electrical Bonding / Lightning Continuity technical content.
+#
+# Validation rules applied:
+#   - Technical aircraft content requires ata_sns.
+#   - Publication mapping shall NOT use ata_sns.
+#   - Publication mapping shall use ata_sns_context only.
+
+document_role: "publication_mapping"
+ata_sns_context: "57-30"
+not_ata_subject: true
+sns_authority: "Programme administrative file; not an ATA subject"
+
+title: "WING_TIP_WINGLETS CSDB / S1000D Publication Mapping"
+area: "A-AIRFRAME_CABINS / ATA_57-30-00_WING_TIP_WINGLETS"
+variant_scope: BOTH
+
+mappings:
+  - source_doc: "ATA_57-30-60_INSPECTION_NDT_TASKS.md"
+    s1000d_dm_code: "DMC-AMPEL360-A-57-30-60-00A-040A-A"
+    ata_sns: "57-30-60"
+    info_code: "040"
+    info_name: "Inspection NDT Tasks — Wing-Tip Winglets"
+    pub_type: "AMM"
+    status: PLANNED
+
+  - source_doc: "ATA_57-30-70_REPAIR_BONDING_INTEGRITY.md"
+    s1000d_dm_code: "DMC-AMPEL360-A-57-30-70-00A-040A-A"
+    ata_sns: "57-30-70"
+    info_code: "040"
+    info_name: "Repair Bonding Integrity — Wing-Tip Winglets"
+    pub_type: "SRM"
+    status: PLANNED
+
+  - source_doc: "ATA_57-30-80_ELECTRICAL_BONDING_LIGHTNING_CONTINUITY.md"
+    s1000d_dm_code: "DMC-AMPEL360-A-57-30-80-00A-040A-A"
+    ata_sns: "57-30-80"
+    info_code: "040"
+    info_name: "Electrical Bonding / Lightning Continuity — Wing-Tip Winglets"
+    pub_type: "AMM"
+    status: PLANNED
+
+lc_gate: LC01
