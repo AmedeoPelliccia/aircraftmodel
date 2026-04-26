@@ -1,3 +1,12 @@
+---
+ata_sns: "51-70-00"
+ata_chapter: "51"
+ata_section: "70"
+ata_subject: "00"
+ata_title: "Repair Acceptability — Standard Practices and Structures General"
+programme_controlled_subject: true
+document_role: "repair_rule"
+---
 # ATA 51-70-00 — Damage Taxonomy, Repair Acceptability Flow, and Escalation Triggers
 
 **SNS:** ATA 51-70-00 (Structures Standard Practices — Repair)
@@ -117,8 +126,8 @@ Every repair event **shall** be documented with:
 
 ## Related Documents
 
-- [ATA 20 README](README.md)
-- [INSPECTION_NDT.md](INSPECTION_NDT.md)
-- [STANDARDS_MATERIALS.md](STANDARDS_MATERIALS.md)
-- [STANDARDS_FASTENERS_TORQUE.md](STANDARDS_FASTENERS_TORQUE.md)
-- [ATA 51 — Structures General](../ATA_51-STRUCTURES_GENERAL/README.md)
+- [ATA 51 README](README.md)
+- [ATA_51-70-60_INSPECTION_NDT.md](ATA_51-70-60_INSPECTION_NDT.md)
+- [ATA_51-30-00_STANDARDS_MATERIALS.md](ATA_51-30-00_STANDARDS_MATERIALS.md)
+- [ATA_51-40-00_STANDARDS_FASTENERS_TORQUE.md](ATA_51-40-00_STANDARDS_FASTENERS_TORQUE.md)
+- [ATA 20 governance](../ATA_20-00-00_STANDARD_PRACTICES_AIRFRAME_SHARED/README.md)

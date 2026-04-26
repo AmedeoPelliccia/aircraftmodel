@@ -16,7 +16,7 @@ not_ata_subject: true
 sns_authority: "Programme administrative file; not an ATA subject"
 
 title: "BLEND_ZONE CSDB / S1000D Publication Mapping"
-area: "ATA_20-STANDARD_PRACTICES_AIRFRAME / AREA_SCAFFOLDS / BLEND_ZONE"
+area: "A-AIRFRAME_CABINS / ATA_53-50-00_BLEND_ZONE_CENTREBODY_INTERFACE"
 variant_scope: BWB
 
 mappings:
