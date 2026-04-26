@@ -1,0 +1,45 @@
+---
+# ICD_LIST.yaml — ATA50 WTW Interfaces
+programme: AMPEL360-WTW
+ata_chapter: "50"
+
+icds:
+  - icd_id: ICD-WTW-50-001
+    file: ICD_WTW_COMPARTMENT_ENVELOPE_001.md
+    delta_id: DELTA-WTW-50-001
+    subject: Belly-hold compartment envelope (circular fuselage cross-section)
+    interfaces_with: [ATA53-fuselage-frames, ATA25-cargo-floor]
+    status: TBD
+    lc_gate: LC03
+
+  - icd_id: ICD-WTW-50-002
+    file: ICD_WTW_ACCESS_POINTS_001.md
+    delta_id: DELTA-WTW-50-002
+    subject: Cargo door geometry, sill height, latch/hinge pin ICD
+    interfaces_with: [ATA52-cargo-doors, ATA53-door-surround-frames]
+    status: TBD
+    lc_gate: LC03
+
+  - icd_id: ICD-WTW-50-003
+    file: ICD_WTW_LINER_ATTACHMENTS_001.md
+    delta_id: DELTA-WTW-50-003
+    subject: Liner attachment rail/clip pattern on circular skin frames
+    interfaces_with: [ATA53-frames, ATA20-fastener-standard]
+    status: TBD
+    lc_gate: LC04
+
+  - icd_id: ICD-WTW-50-004
+    file: ICD_WTW_DRAIN_VENT_001.md
+    delta_id: DELTA-WTW-50-004
+    subject: Drain mast and vent port penetration coordinates in lower skin
+    interfaces_with: [ATA53-fuselage-skin, ATA29-hydraulic-drain]
+    status: TBD
+    lc_gate: LC04
+
+  - icd_id: ICD-WTW-50-005
+    file: ICD_WTW_FIRE_CONTAINMENT_IF_001.md
+    delta_id: DELTA-WTW-50-005
+    subject: Fire containment liner panel attachment and sealant ICD
+    interfaces_with: [ATA26-fire-protection, ATA20-sealant-standard]
+    status: TBD
+    lc_gate: LC04

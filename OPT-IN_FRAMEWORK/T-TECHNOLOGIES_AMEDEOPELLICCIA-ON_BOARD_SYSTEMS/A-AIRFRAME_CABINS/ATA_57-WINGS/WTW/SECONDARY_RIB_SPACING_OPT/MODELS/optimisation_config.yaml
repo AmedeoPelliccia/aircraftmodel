@@ -1,0 +1,79 @@
+# ATA 57 Wings — WTW Rib Spacing Optimisation Configuration
+# Doc ID: T-A-ATA57-WTW-RIBOPT-CFG-001
+# Status: DRAFT
+# Scope: Genetic algorithm optimisation parameters for WTW rib spacing optimisation
+
+optimisation:
+  algorithm: GENETIC_ALGORITHM
+  doc_id: T-A-ATA57-WTW-RIBOPT-CFG-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+  random_seed: 42  # fixed seed for deterministic reproducibility (REQ-WTW-57-RIBOPT-002)
+
+# Problem definition
+problem:
+  n_bays_total: 16
+  n_bays_optimisable: 10
+  register_bits: 8
+  chromosome_length_bits: 80  # 10 bays × 8 bits
+  objective: MINIMISE_STRUCTURAL_MASS
+  secondary_objective: MAXIMISE_MIN_FATIGUE_LIFE_MARGIN
+  secondary_priority: LEXICOGRAPHIC  # applied only if primary objectives are equal
+
+# Genetic algorithm parameters
+ga:
+  population_size: 200
+  n_generations: 500
+  crossover_probability: 0.80
+  crossover_type: UNIFORM
+  mutation_probability_per_bit: 0.005  # (1 / chromosome_length) ≈ 0.0125 typical; set lower for conservative convergence
+  selection_type: TOURNAMENT
+  tournament_k: 3
+  elitism: true
+  n_elites: 5  # top 5 individuals carried unchanged to next generation
+  convergence_tolerance: 1.0e-4  # fractional mass change over last 50 generations
+  early_stopping_generations: 50
+
+# Constraint enforcement
+constraints:
+  method: PENALTY
+  fatigue_penalty_weight: 1.0e6  # large penalty for fatigue violation
+  divergence_penalty_weight: 1.0e6  # large penalty for divergence violation
+  buckling_penalty_weight: 5.0e5
+  boundary_enforcement: HARD  # fixed bay registers are clamped regardless of GA
+
+# Constraint parameters
+constraint_params:
+  fatigue:
+    n_min_cycles: 80000
+    spectrum_ref: "TBD — AMPEL360 WTW gust spectrum"
+    scatter_factor_basis: B_BASIS
+    scatter_factor_gamma: 2.0
+  divergence:
+    v_divergence_factor: 1.15  # ≥ 1.15 × VD (CS-25.629)
+    v_d_ref: TBD  # design dive speed, frozen at LC57-02
+    aeroelastic_model_ref: "TBD — FEM/DLM model"
+  buckling:
+    load_factor_limit: 1.0  # at DLL
+    analysis_method: CLASSICAL_PLATE_THEORY  # or FEM if required
+    cfrp_knockdown_ref: "TBD — approved material data"
+
+# Output configuration
+output:
+  record_format: YAML
+  fields:
+    - run_id
+    - register_vector
+    - spacing_mm_per_bay
+    - predicted_mass_kg
+    - fatigue_life_margin_pct_per_bay
+    - divergence_margin_pct
+    - constraints_satisfied
+    - sha256_of_config_and_models
+  archive_location: "VERIFICATION_EVIDENCE/"
+  sha256_hash_inputs:
+    - optimisation_config.yaml
+    - rib_bay_definition.yaml
+    - constraint_params
+    - random_seed

@@ -1,0 +1,153 @@
+# ATA 57 Wings — WTW Rib Bay Definition
+# Doc ID: T-A-ATA57-WTW-RIBOPT-BAYD-001
+# Status: DRAFT
+# Scope: Defines all rib bays for WTW rib spacing optimisation.
+#        Fixed bays are excluded from optimisation; free bays are optimised via 8-bit register.
+
+programme: AMPEL360_WTW
+ata_chapter: 57
+variant: WTW
+doc_id: T-A-ATA57-WTW-RIBOPT-BAYD-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+
+encoding_ref: "STD_RIB_SPACING_ENCODING.md"
+register_width_bits: 8
+
+# Wing semi-span reference: full semi-span = 1.0 (non-dimensional)
+# Spanwise station = non-dimensional eta of outboard rib face for each bay
+
+rib_bays:
+  # Root zone (fixed — wing-fuselage attach rib)
+  - bay_id: RB-001
+    spanwise_eta_outboard: 0.050
+    fixed: true
+    fixed_reason: Wing-body attach rib (front spar + rear spar stubs)
+    register_value: null
+    spacing_mm: TBD
+    notes: Root rib. Position governed by fuselage frame pitch FR-XX (TBD).
+
+  # Inner bay (optimisable, fatigue-constrained zone)
+  - bay_id: RB-002
+    spanwise_eta_outboard: 0.100
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Inner wing optimisable bay.
+
+  - bay_id: RB-003
+    spanwise_eta_outboard: 0.150
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Inner wing optimisable bay.
+
+  - bay_id: RB-004
+    spanwise_eta_outboard: 0.200
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Inner wing optimisable bay.
+
+  # Main tank bay boundary (fixed — fuel/LH2 tank rib)
+  - bay_id: RB-005
+    spanwise_eta_outboard: 0.250
+    fixed: true
+    fixed_reason: Inboard tank boundary rib (fuel/LH2 variant sealed interface)
+    register_value: null
+    spacing_mm: TBD
+    notes: Tank boundary. Position governed by ATA 28 / fuel system interface.
+
+  # Mid inner zone (optimisable)
+  - bay_id: RB-006
+    spanwise_eta_outboard: 0.310
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Mid inner optimisable bay.
+
+  - bay_id: RB-007
+    spanwise_eta_outboard: 0.370
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Mid inner optimisable bay.
+
+  # Access panel bay (fixed minimum pitch enforced)
+  - bay_id: RB-008
+    spanwise_eta_outboard: 0.420
+    fixed: true
+    fixed_reason: Access panel bay (min pitch for maintenance access enforced per WI)
+    register_value: null
+    spacing_mm: TBD
+    notes: Access rib. Minimum clearance for panel removal required.
+
+  # Mid outer zone (optimisable, divergence-constrained)
+  - bay_id: RB-009
+    spanwise_eta_outboard: 0.500
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Mid outer optimisable bay — divergence constraint expected binding.
+
+  - bay_id: RB-010
+    spanwise_eta_outboard: 0.580
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Mid outer optimisable bay — divergence constraint expected binding.
+
+  - bay_id: RB-011
+    spanwise_eta_outboard: 0.660
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Mid outer optimisable bay.
+
+  - bay_id: RB-012
+    spanwise_eta_outboard: 0.740
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Outer wing optimisable bay.
+
+  # Outer tank boundary (fixed — outboard fuel tank rib)
+  - bay_id: RB-013
+    spanwise_eta_outboard: 0.800
+    fixed: true
+    fixed_reason: Outboard tank boundary rib
+    register_value: null
+    spacing_mm: TBD
+    notes: Outboard fuel tank interface rib.
+
+  # Outboard zone (optimisable, divergence-dominant)
+  - bay_id: RB-014
+    spanwise_eta_outboard: 0.860
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Outboard optimisable bay — aeroelastic divergence critical.
+
+  - bay_id: RB-015
+    spanwise_eta_outboard: 0.920
+    fixed: false
+    register_value: TBD
+    spacing_mm: TBD
+    notes: Outboard optimisable bay.
+
+  # Tip rib (fixed)
+  - bay_id: RB-016
+    spanwise_eta_outboard: 1.000
+    fixed: true
+    fixed_reason: Tip rib (winglet / tip device interface)
+    register_value: null
+    spacing_mm: TBD
+    notes: Tip rib. Position governed by winglet interface ICD.
+
+# Total: 16 rib bays (10 optimisable, 6 fixed)
+summary:
+  total_bays: 16
+  optimisable_bays: 10
+  fixed_bays: 6
+  optimisation_vector_length_bits: 80  # 10 bays × 8 bits

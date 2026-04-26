@@ -1,0 +1,68 @@
+id: ATA44_BWB_DELTA_LOG
+doc_id: T-A-ATA44-BWB-001
+variant: BWB
+baseline_ref: T-A-ATA44-001
+
+entries:
+  - change_id: CHG-0001
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-001
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — distributed ZC placement"
+    lc_gate: LC01
+    notes: "No quantitative ZC position data introduced yet"
+
+  - change_id: CHG-0002
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-002
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — radial + bay zone definition"
+    lc_gate: LC01
+    notes: "Zone boundaries TBD at LC03"
+
+  - change_id: CHG-0003
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-003
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — AFDX network segmentation"
+    lc_gate: LC01
+    notes: "Per-bay AFDX segment topology TBD at LC03"
+
+  - change_id: CHG-0004
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-004
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — inter-bay harness routing envelope"
+    lc_gate: LC01
+    notes: "Spar bay penetration coordinates TBD at LC03"
+
+  - change_id: CHG-0005
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-005
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — network endpoint register"
+    lc_gate: LC01
+    notes: "VL/port/bridge address allocation TBD at LC03"
+
+  - change_id: CHG-0006
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-006
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — distributed IFE node placement"
+    lc_gate: LC01
+    notes: "IFE node FS/BL/WL TBD at LC03"
+
+  - change_id: CHG-0007
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-BWB-44-007
+    change_type: ADD
+    summary: "Create initial BWB overlay scaffold — bay-partitioned monitoring topology"
+    lc_gate: LC01
+    notes: "Sensor count and positions TBD at LC03"

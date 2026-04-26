@@ -1,0 +1,85 @@
+# ATA 57 BWB — Winglet Member Spacing Optimisation Requirements
+# Doc ID: T-A-ATA57-BWB-WGLT-REQ-001
+# Status: DRAFT
+
+schema_version: "1.0"
+ata_chapter: 57
+variant: BWB
+sub_area: WINGLETS
+doc_id: T-A-ATA57-BWB-WGLT-REQ-001
+revision: A
+date: "2026-02-24"
+lc_registry_ref: "../../LC57_PHASE_REGISTRY.yaml"
+
+requirements:
+  - req_id: BWB-57-WG-001
+    title: Member spacing encoding conformance
+    shall: >
+      The winglet member spacing optimisation module SHALL encode all bay spacing design variables
+      as 8-bit integer registers (values 0–255) per the encoding standard defined in
+      STD_MEMBER_SPACING_8BIT_ENCODING.md. Member primitives SHALL use neutral names
+      (member_spanwise, member_chordwise) with region: outboard aliasing.
+    rationale: >
+      8-bit discretisation ensures reproducibility and consistent encoding with the
+      WTW rib spacing and BWB blend zone TDF optimisation modules. Neutral naming
+      maintains geometry independence for different winglet planform configurations.
+    cs25_ref: CS-25.571, CS-25.629
+    verification: Analysis — review of register pack format against encoding standard
+    lc_gate: LC57-03
+
+  - req_id: BWB-57-WG-002
+    title: Inboard boundary condition from blend zone
+    shall: >
+      The winglet member spacing optimisation SHALL use the blend zone outboard stiffness
+      (from BLEND_ZONE/SECONDARY_TOPOLOGY_FIELD_OPT/) as the inboard structural boundary
+      condition at the winglet root (η ≈ 0.85). The two optimisation modules SHALL be
+      co-ordinated to ensure structural continuity at the blend zone / winglet interface.
+    rationale: >
+      The BWB blend zone and winglet form a structurally continuous system. Optimising
+      each independently with incompatible boundary conditions would produce a discontinuity
+      at the interface that cannot be certified.
+    cs25_ref: CS-25.301, CS-25.305
+    verification: Analysis — interface compatibility check at η = 0.85 boundary
+    lc_gate: LC57-04
+
+  - req_id: BWB-57-WG-003
+    title: Fatigue life constraint compliance
+    shall: >
+      The member spacing register pack SHALL satisfy the fatigue life constraint C-FATIGUE
+      defined in CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md: Miner damage sum D ≤ 0.5
+      (= 1.0 / γ, γ = 2.0) for 80,000 flight cycles at the AMPEL360 BWB winglet load spectrum.
+    rationale: >
+      CS-25.571(a) requires damage-tolerant structure. Winglet loads include local gust
+      response amplification; the winglet fatigue spectrum must be separately defined from
+      the main wing spectrum.
+    cs25_ref: CS-25.571(a)
+    verification: Analysis — ANALYSIS_WINGLET_FATIGUE_CHECK.md
+    lc_gate: LC57-04
+
+  - req_id: BWB-57-WG-004
+    title: Aeroelastic divergence constraint compliance
+    shall: >
+      The member spacing register pack SHALL satisfy the aeroelastic divergence constraint
+      C-DIVERGENCE: V_div ≥ 1.15 × VD per CS-25.629(d), evaluated by DLM eigenvalue analysis
+      of the winglet bending/torsion stiffness matrix with inboard boundary from blend zone.
+    rationale: >
+      CS-25.629(d) requires demonstration of adequate divergence margin. The winglet
+      torsional stiffness is directly governed by member spacing and must be maintained
+      above the divergence threshold. The blend zone inboard stiffness is a key input.
+    cs25_ref: CS-25.629(d)
+    verification: Analysis — ANALYSIS_WINGLET_DIVERGENCE_CHECK.md
+    lc_gate: LC57-05
+
+  - req_id: BWB-57-WG-005
+    title: Member spacing optimisation determinism and reproducibility
+    shall: >
+      The winglet member spacing optimisation solver SHALL be deterministic and reproducible:
+      identical inputs (bay definitions, load spectrum, constraint bounds, solver config)
+      SHALL produce identical register packs on repeated runs. A SHA-256 hash of the
+      register pack SHALL be recorded per solver run.
+    rationale: >
+      Certification traceability requires unique identification of the design variable set.
+      Non-deterministic solvers cannot produce traceable register pack versions.
+    cs25_ref: CS-25.571, CS-25.629
+    verification: Test — TEST_WINGLET_DETERMINISM.md
+    lc_gate: LC57-11

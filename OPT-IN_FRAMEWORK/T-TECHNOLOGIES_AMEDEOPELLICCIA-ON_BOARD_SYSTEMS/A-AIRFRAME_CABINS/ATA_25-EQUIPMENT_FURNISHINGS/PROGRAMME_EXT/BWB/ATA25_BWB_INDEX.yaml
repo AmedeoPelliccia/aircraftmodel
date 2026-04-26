@@ -1,0 +1,101 @@
+id: ATA25_BWB_INDEX
+doc_id: T-A-ATA25-BWB-001
+status: DRAFT
+revision: RevA
+lifecycle_state: DRAFT
+variant: BWB
+baseline_ref: T-A-ATA25-001
+
+items:
+  - delta_id: DELTA-BWB-25-001
+    ata_subchapter: "25-20"
+    title: "Cabin envelope and monument interfaces (BWB)"
+    type: [ICD, REQ]
+    files:
+      - ATA25_BWB_INTERFACES/ICD_BWB_CABIN_ENVELOPE_001.md
+      - ATA25_BWB_INTERFACES/ICD_BWB_MONUMENT_INTERFACES_001.md
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_200_PASSENGER_COMPARTMENT.yaml
+    rationale: "BWB cabin geometry changes envelope, floor grid, and installation constraints vs WTW circular fuselage"
+    impact:
+      safety: medium
+      certification: "CS-25.561/25.562/25.785/25.853 (as applicable)"
+      publications: "S1000D installation and inspection procedures"
+
+  - delta_id: DELTA-BWB-25-002
+    ata_subchapter: "25-20"
+    title: "Floor grid attach philosophy (BWB)"
+    type: [ICD, REQ]
+    files:
+      - ATA25_BWB_INTERFACES/ICD_BWB_FLOOR_GRID_ATTACH_001.md
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_200_PASSENGER_COMPARTMENT.yaml
+    rationale: "BWB distributed floor structure uses grid attach rather than conventional seat-track rails"
+    impact:
+      safety: high
+      certification: "CS-25.561, CS-25.562"
+      publications: "S1000D installation procedures"
+
+  - delta_id: DELTA-BWB-25-003
+    ata_subchapter: "25-30"
+    title: "Galley/lavatory monument load paths (BWB)"
+    type: [ICD, REQ, EVI]
+    files:
+      - ATA25_BWB_INTERFACES/ICD_BWB_MONUMENT_INTERFACES_001.md
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_300_GALLEYS.yaml
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_400_LAVATORIES.yaml
+      - ATA25_BWB_VERIFICATION_EVIDENCE/ANALYSIS_BWB_MONUMENT_LOADPATHS_25_561.md
+    rationale: "BWB monuments anchor to composite torque-box structure; load paths differ fundamentally from tube-and-wing"
+    impact:
+      safety: high
+      certification: "CS-25.561"
+      publications: "ATA 53 structural ICD"
+
+  - delta_id: DELTA-BWB-25-004
+    ata_subchapter: "25-20"
+    title: "Stowage distribution and CG management (BWB)"
+    type: [ICD, REQ]
+    files:
+      - ATA25_BWB_INTERFACES/ICD_BWB_STOWAGE_DISTRIBUTION_001.md
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_200_PASSENGER_COMPARTMENT.yaml
+    rationale: "BWB stowage spans multiple bays; CG shift from bin loading must be managed differently"
+    impact:
+      safety: medium
+      certification: "CS-25.785"
+      publications: "Weight and balance manual"
+
+  - delta_id: DELTA-BWB-25-005
+    ata_subchapter: "25-60"
+    title: "Emergency egress clearances (BWB)"
+    type: [ICD, REQ, EVI]
+    files:
+      - ATA25_BWB_INTERFACES/ICD_BWB_EGRESS_CLEARANCES_001.md
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_600_EMERGENCY_EQUIPMENT.yaml
+      - ATA25_BWB_VERIFICATION_EVIDENCE/TEST_BWB_EGRESS_DEMONSTRATION.md
+    rationale: "BWB multi-zone cabin with radial aisle flow drives unique evacuation geometry requirements"
+    impact:
+      safety: high
+      certification: "CS-25.803, CS-25.810"
+      publications: "Cabin crew emergency procedures"
+
+  - delta_id: DELTA-BWB-25-006
+    ata_subchapter: "25-10"
+    title: "Flight compartment integration (BWB)"
+    type: [REQ]
+    files:
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_100_FLIGHT_COMPARTMENT.yaml
+    rationale: "BWB integrated flight deck embedded in wing body; structural and access interfaces differ from WTW"
+    impact:
+      safety: high
+      certification: "CS-25.561, CS-25.562, CS-25.1411"
+      publications: "Flight deck maintenance procedures"
+
+  - delta_id: DELTA-BWB-25-007
+    ata_subchapter: "25-50"
+    title: "Cargo liner attachment (BWB lower body)"
+    type: [REQ]
+    files:
+      - ATA25_BWB_REQUIREMENTS/REQ_BWB_25_500_CARGO_LINERS.yaml
+    rationale: "BWB lower-body cargo volume is distributed across the wing body; liner attachment to composite skin differs"
+    impact:
+      safety: medium
+      certification: "CS-25.853"
+      publications: "ATA 52 doors interface"

@@ -1,0 +1,82 @@
+---
+# BWB ATA 22-30 — Auto-Thrust Delta Requirements
+doc_id: T-A2-ATA22-BWB-REQ-22-300
+ata_sub_chapter: "22-30"
+overlay_id: ATA22-BWB-OVERLAY-001
+delta_refs: [DELTA-BWB-22-005]
+baseline_ref: "../../.."
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  Auto-thrust delta requirements for the AMPEL360 Q100 BWB.
+  These requirements supplement SHARED 22-30 requirements with BWB-specific
+  4-engine management and asymmetric thrust compensation constraints.
+  All quantitative thresholds are TBD (LC03).
+
+requirements:
+  - req_id: BWB-22-300-001
+    shall: >
+      The auto-thrust system shall independently control and monitor the
+      thrust of all four (4) engines. The auto-thrust computer shall
+      communicate individual thrust demands to each of the four FADECs
+      (ENG1–ENG4) via the interfaces defined in
+      ICD_BWB_PROPULSION_GUIDANCE_COUPLING_001.md.
+    rationale: >
+      The SHARED baseline assumes a 2-engine layout with symmetric thrust
+      management. The BWB 4-engine configuration requires individual
+      channel management to enable asymmetric thrust compensation and
+      engine-out handling. This is the core delta from DELTA-BWB-22-005.
+    cs25_ref: "CS-25.1329"
+    verification: Test, Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-300-002
+    shall: >
+      The auto-thrust system shall implement an asymmetric thrust
+      compensation function that: (a) detects inter-engine thrust
+      asymmetry exceeding TBD kN (LC03); (b) commands differential
+      thrust correction to minimise yaw and roll moments about the
+      aircraft centreline; and (c) limits the yaw moment contribution
+      from thrust asymmetry to TBD N·m (LC03) during normal autoflight.
+    rationale: >
+      With 4 engines positioned outboard of the centreline, any thrust
+      mismatch creates yaw and roll moments. Uncompensated asymmetry
+      would require autoflight to use effector authority for yaw correction,
+      reducing stability margins. Active compensation preserves control
+      authority for guidance.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-300-003
+    shall: >
+      Following failure of one engine during autoflight, the auto-thrust
+      system shall reconfigure to manage the remaining three engines,
+      commanding thrust redistribution to minimise net yaw and roll
+      asymmetry within TBD seconds (LC03). The autopilot shall remain
+      engaged unless the residual asymmetry exceeds the autopilot authority
+      limit defined in REQ_BWB_22_100_AUTOPILOT_AND_FD.yaml.
+    rationale: >
+      Engine-out during autoflight must not result in inadvertent autopilot
+      disengagement unless necessary. Rapid thrust redistribution reduces
+      workload and preserves autoflight availability.
+    cs25_ref: "CS-25.1329"
+    verification: Test, Analysis
+    lc_gate: LC04
+
+  - req_id: BWB-22-300-004
+    shall: >
+      The auto-thrust system shall provide individual engine-out alerting
+      to the flight crew within TBD seconds (LC03) of engine failure
+      detection during autoflight engagement, consistent with EICAS/ECAM
+      alert priority defined in ATA 31/45.
+    rationale: >
+      CS-25.1302 requires timely and unambiguous crew alerting for
+      safety-significant events. Engine-out during autoflight is a
+      significant event requiring crew awareness.
+    cs25_ref: "CS-25.1302"
+    verification: Test
+    lc_gate: LC04

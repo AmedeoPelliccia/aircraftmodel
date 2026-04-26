@@ -1,0 +1,85 @@
+# ATA 57 — Wings — WTW Variant Layer Delta Index
+# Doc ID: T-A-ATA57-WTW-IDX-001
+# Status: DRAFT
+# Scope: SSOT for all WTW-specific deviations from ATA 57 SHARED baseline
+
+overlay:
+  ata_chapter: 57
+  variant: WTW
+  doc_id: T-A-ATA57-WTW-IDX-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+  shared_baseline_ref: "../README.md"
+
+overlay_rule: |
+  This index is the Single Source of Truth (SSOT) for all WTW deviations
+  from the ATA 57 SHARED baseline. No SHARED content shall be duplicated here.
+  All entries are delta statements with traceable references.
+
+deltas:
+  - delta_id: DELTA-WTW-57-001
+    title: Conventional swept CFRP wing primary structure
+    type: ΔARCH
+    description: >
+      WTW uses a conventional swept wing box with CFRP skin panels, CFRP spars,
+      and aluminium/titanium rib structures. This differs from BWB, where wing
+      and body are structurally integrated. SHARED baseline ATA 57 is neutral;
+      WTW-specific geometry, rib spacing registers, and attach-point topology
+      are defined in this overlay.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-WTW-57-002
+    title: Rib spacing optimisation (8-bit discrete register)
+    type: ΔREQ
+    description: >
+      WTW rib spacing is optimised via a secondary module (SECONDARY_RIB_SPACING_OPT/)
+      using discrete 8-bit registers per rib bay. Constraints are fatigue life
+      (minimum 80,000 flight cycles) and aeroelastic divergence speed margin
+      (≥ 15% above VD/MD). SHARED baseline does not specify rib spacing rules.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-WTW-57-003
+    title: Wing-fuselage attach philosophy (conventional stub-spar)
+    type: ΔICD
+    description: >
+      WTW uses conventional stub-spar wing-fuselage attach with four main fittings
+      (front spar, rear spar, lower chord, upper chord). Load transfer path is via
+      pin-jointed fittings into fuselage frames at FR-XX/FR-YY (TBD). This is
+      WTW-specific; BWB has no equivalent discrete attach.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-WTW-57-004
+    title: Control surface interface (aileron and spoileron)
+    type: ΔICD
+    description: >
+      WTW aileron and spoileron hinge-line and actuator hard-point geometry are
+      defined by this overlay. Hinge-line orientation follows wing rear spar sweep.
+      Actuator attach brackets are metallic (Ti-6Al-4V) bonded+bolted to CFRP rear spar.
+    lc_gate: LC57-03
+    status: OPEN
+
+  - delta_id: DELTA-WTW-57-005
+    title: Fuel/LH₂ tank integration provisions
+    type: ΔICD
+    description: >
+      WTW wing tanks use sealed CFRP wet wing configuration. LH₂ variant provisions
+      include thermally isolated bay sections and additional rib sealing compound.
+      Rib spacing register must account for LH₂ tank bay boundaries (minimum bay
+      length ≥ TBD mm to accommodate cryogenic insulation blanket).
+    lc_gate: LC57-05
+    status: OPEN
+
+  - delta_id: DELTA-WTW-57-006
+    title: Maintenance plan registry hook
+    type: ΔMAINT
+    description: >
+      WTW wing maintenance classification uses the SSOT maintenance plan registry
+      under MAINTENANCE/MAINT_PLAN_REGISTRY.yaml. Repair categories (structural,
+      cosmetic, nested composite), spare part classification, supplier responsibility,
+      and material circularity tier are registered here per CS-25.1529 / AMM linkage.
+    lc_gate: LC57-13
+    status: OPEN

@@ -1,0 +1,64 @@
+id: REQ_BWB_25_600_EMERGENCY_EQUIPMENT
+doc_id: T-A-ATA25-BWB-REQ-600
+ata_subchapter: "25-60"
+variant: BWB
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-BWB-25-005
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-600-001
+    title: "Emergency exit count, type, and distribution (BWB)"
+    shall: >
+      The BWB variant shall provide emergency exits of type and number compliant with
+      CS-25.803 for the certified maximum passenger capacity, with exits distributed
+      to serve multi-zone cabin areas per the BWB radial evacuation model.
+      Exit locations shall be per ICD_BWB_EGRESS_CLEARANCES_001.md.
+    rationale: "BWB multi-zone radial cabin evacuation differs from tube-and-wing; exit distribution must be re-analysed."
+    verification: Compliance matrix + physical inspection + evacuation analysis
+    cs25_ref: "CS-25.803"
+    lc_gate: LC03
+
+  - req_id: BWB-25-600-002
+    title: "Emergency floor path lighting — BWB radial aisles"
+    shall: >
+      Emergency floor path lighting shall guide passengers radially towards the
+      nearest exit in the BWB multi-zone cabin layout. Lighting path shall be
+      continuous to all exits for all zone configurations.
+      Lighting bus connection per ATA 24 BWB electrical ICD.
+    rationale: "BWB radial egress requires different floor-path geometry than fore-aft linear lighting."
+    verification: Functional test (illumination level per CS-25.810) in all lighting failure modes
+    cs25_ref: "CS-25.810"
+    lc_gate: LC04
+
+  - req_id: BWB-25-600-003
+    title: "Safety equipment stowage — BWB multi-zone"
+    shall: >
+      Life vests, portable O₂, first-aid kits, and crash axe shall be stowed at
+      BWB-variant zonal locations (one set per cabin zone, per ICD_BWB_EGRESS_CLEARANCES_001.md)
+      and be retrievable in ≤TBD seconds.
+    rationale: "BWB wide planform means centralised stowage is not accessible from all zones; per-zone stowage required."
+    verification: Functional inspection (each zone)
+    cs25_ref: "CS-25.1411"
+    lc_gate: LC04
+
+  - req_id: BWB-25-600-004
+    title: "Evacuation slide / slide-raft provision (BWB)"
+    shall: >
+      Each BWB Type A and Type C exit shall be equipped with an approved evacuation
+      slide or slide-raft per CS-25.809. BWB exit orientation (potentially at leading
+      or trailing edge of wing body) shall be accounted for in slide deployment geometry.
+    rationale: "BWB exit geometry and orientation at non-conventional locations drives unique slide deployment envelope."
+    verification: Ground demonstration (CS-25.809) + inspection
+    cs25_ref: "CS-25.809"
+    lc_gate: LC06
+
+  - req_id: BWB-25-600-005
+    title: "Egress clearance — floor fitting-free zone at exits"
+    shall: >
+      No floor fitting, seat track, or monument shall be located within TBD mm
+      (radial) of any emergency exit sill (see ICD_BWB_EGRESS_CLEARANCES_001.md).
+    rationale: "BWB radial flow geometry; obstructions in radial clearance zone increase evacuation time."
+    verification: Dimensional inspection (each exit)
+    lc_gate: LC03

@@ -1,0 +1,72 @@
+---
+# REQ_WTW_50_000_GENERAL.yaml
+# AMPEL360 WTW — ATA 50 General requirements (WTW delta)
+programme: AMPEL360-WTW
+ata_subchapter: "50-000"
+title: General
+baseline_ref: ATA50-SHARED §2
+
+requirements:
+  - req_id: WTW-50-000-001
+    shall: >
+      The WTW cargo compartment envelope shall conform to the circular fuselage
+      inner mould line as defined in ICD-WTW-50-001, with usable floor width
+      and height as established at LC03.
+    rationale: >
+      WTW uses a circular fuselage; available cargo envelope is constrained by
+      the curvature of the pressure vessel, unlike BWB flat-floor planform.
+    cs25_ref: CS-25.365
+    delta_ref: DELTA-WTW-50-001
+    verification: Analysis (loads) + Inspection (dimensional)
+    lc_gate: LC03
+
+  - req_id: WTW-50-000-002
+    shall: >
+      All WTW cargo compartment liner panels shall be curved to match the
+      fuselage inner mould line radius within the tolerance defined in
+      ICD-WTW-50-003.
+    rationale: >
+      Flat panels specified in SHARED baseline are not applicable to the
+      circular WTW cross-section; gaps at liner seams must remain within fire
+      containment limits.
+    cs25_ref: CS-25.855
+    delta_ref: DELTA-WTW-50-003
+    verification: Inspection
+    lc_gate: LC04
+
+  - req_id: WTW-50-000-003
+    shall: >
+      Cargo net/restraint attach fittings shall be designed to introduce loads
+      into fuselage floor frames per CS-25.787 and CS-25.561, with load limits
+      defined at LC05.
+    rationale: >
+      WTW cargo floor structure uses keel beam and lower frame attachments;
+      load introduction points are WTW-specific.
+    cs25_ref: CS-25.787
+    delta_ref: DELTA-WTW-50-006
+    verification: Analysis (FEA)
+    lc_gate: LC05
+
+  - req_id: WTW-50-000-004
+    shall: >
+      Retention of items of mass in the WTW cargo holds shall meet CS-25.789
+      under all load conditions defined in the WTW loads envelope.
+    rationale: >
+      Load factors per WTW structural sizing; values differ from BWB mass
+      cases due to different CG envelope and manoeuvre loads.
+    cs25_ref: CS-25.789
+    delta_ref: DELTA-WTW-50-006
+    verification: Analysis
+    lc_gate: LC05
+
+  - req_id: WTW-50-000-005
+    shall: >
+      Access to required safety equipment in cargo compartments shall be
+      maintained per CS-25.1411 with clear-opening dimensions per ICD-WTW-50-002.
+    rationale: >
+      Cargo door clear opening constrains accessibility; WTW opening dimensions
+      must be verified against CS-25.1411 ergonomic requirements.
+    cs25_ref: CS-25.1411
+    delta_ref: DELTA-WTW-50-002
+    verification: Inspection
+    lc_gate: LC04

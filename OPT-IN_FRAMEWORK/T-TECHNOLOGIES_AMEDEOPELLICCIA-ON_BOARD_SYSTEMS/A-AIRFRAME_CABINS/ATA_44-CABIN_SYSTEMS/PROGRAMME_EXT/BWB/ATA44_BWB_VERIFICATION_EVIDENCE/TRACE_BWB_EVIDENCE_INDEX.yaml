@@ -1,0 +1,68 @@
+id: TRACE_BWB_EVIDENCE_INDEX
+doc_id: T-A-ATA44-BWB-EVI-000
+variant: BWB
+status: DRAFT
+revision: RevA
+
+evidence_objects:
+  - evi_id: EVI-BWB-44-001
+    type: analysis
+    title: "BWB Distributed CMS Safety Analysis (FHA/FTA) — CS-25.1309"
+    file: ANALYSIS_BWB_CMS_SAFETY_1309.md
+    delta_refs: [DELTA-BWB-44-001, DELTA-BWB-44-002, DELTA-BWB-44-003]
+    req_refs: [BWB-44-100-001, BWB-44-100-002, BWB-44-100-003, BWB-44-100-004]
+    cs25_refs: ["CS-25.1309"]
+    lc_gate: LC05
+    status: STUB
+
+  - evi_id: EVI-BWB-44-002
+    type: test
+    title: "BWB CMS Functional Test (bay isolation, smoke detection per bay) — CS-25.854"
+    file: TEST_BWB_CMS_FUNCTIONAL_44_10.md
+    delta_refs: [DELTA-BWB-44-007]
+    req_refs: [BWB-44-500-001, BWB-44-500-002, BWB-44-500-003]
+    cs25_refs: ["CS-25.854"]
+    lc_gate: LC06
+    status: STUB
+
+  - evi_id: EVI-BWB-44-003
+    type: test
+    title: "BWB IFE Bay Node Flammability Test — CS-25.853"
+    file: TEST_BWB_IFE_FLAMMABILITY_853.md
+    delta_refs: [DELTA-BWB-44-006]
+    req_refs: [BWB-44-200-003]
+    cs25_refs: ["CS-25.853"]
+    lc_gate: LC07
+    status: STUB
+
+  - evi_id: EVI-BWB-44-004
+    type: test
+    title: "BWB ARINC 664 Per-Bay Network Conformance Test"
+    file: TEST_BWB_NETWORK_CONFORMANCE.md
+    delta_refs: [DELTA-BWB-44-003, DELTA-BWB-44-005]
+    req_refs: [BWB-44-100-003]
+    cs25_refs: []
+    arinc_refs: ["ARINC 664 Part 7"]
+    lc_gate: LC07
+    status: STUB
+
+  - evi_id: EVI-BWB-44-005
+    type: test
+    title: "BWB External Comm RF Compliance Test — ETSI EN 303 360"
+    file: TEST_BWB_RF_COMPLIANCE.md
+    delta_refs: [DELTA-BWB-44-001]
+    req_refs: [BWB-44-300-002]
+    cs25_refs: []
+    etsi_refs: ["ETSI EN 303 360"]
+    lc_gate: LC07
+    status: STUB
+
+  - evi_id: EVI-BWB-44-006
+    type: inspection
+    title: "BWB CMS Inter-Bay Wiring QA Inspection — CS-25.1353"
+    file: INSPECTION_BWB_WIRING_QA.md
+    delta_refs: [DELTA-BWB-44-004]
+    req_refs: [BWB-44-100-005, BWB-44-000-003]
+    cs25_refs: ["CS-25.1353"]
+    lc_gate: LC06
+    status: STUB

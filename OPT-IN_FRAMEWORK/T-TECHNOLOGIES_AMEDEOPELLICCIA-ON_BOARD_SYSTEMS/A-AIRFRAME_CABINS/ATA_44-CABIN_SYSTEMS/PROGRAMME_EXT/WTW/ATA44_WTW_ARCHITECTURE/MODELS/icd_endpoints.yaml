@@ -1,0 +1,81 @@
+id: ATA44_WTW_ICD_ENDPOINTS
+doc_id: T-A-ATA44-WTW-ICD-004
+variant: WTW
+status: DRAFT
+revision: RevA
+protocol: "ARINC 664 Part 7 (AFDX)"
+note: "Port/VL numbers TBD at LC03 from ARINC 664 network design tool output"
+
+endpoints:
+  - node_id: CMC
+    node_type: Controller
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD  # Cabin domain AFDX address
+    data_flows:
+      - to: CAC
+        type: heartbeat_primary_failover
+      - to: IFE_SVR
+        type: CMS_IFE_command
+      - to: CSU_01
+        type: zone_command_status
+      - to: CSU_02
+        type: zone_command_status
+
+  - node_id: CAC
+    node_type: Controller
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD
+    data_flows:
+      - to: CMC
+        type: heartbeat_failover
+      - to: CSU_03
+        type: zone_command_status
+      - to: CSU_04
+        type: zone_command_status
+
+  - node_id: IFE_SVR
+    node_type: IFE_Server
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD
+    data_flows:
+      - to: CMC
+        type: IFE_content_status
+      - to: CSU_01
+        type: IFE_stream_Z1
+      - to: CSU_02
+        type: IFE_stream_Z2
+      - to: CSU_03
+        type: IFE_stream_Z3
+      - to: CSU_04
+        type: IFE_stream_Z4
+
+  - node_id: CSU_01
+    node_type: CabinSatelliteUnit
+    zone: Z1
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD
+
+  - node_id: CSU_02
+    node_type: CabinSatelliteUnit
+    zone: Z2
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD
+
+  - node_id: CSU_03
+    node_type: CabinSatelliteUnit
+    zone: Z3
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD
+
+  - node_id: CSU_04
+    node_type: CabinSatelliteUnit
+    zone: Z4
+    vl_id: TBD
+    port: TBD
+    ip_address: TBD

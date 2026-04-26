@@ -1,0 +1,92 @@
+---
+# BWB ATA 22-00 — General Delta Requirements
+doc_id: T-A2-ATA22-BWB-REQ-22-000
+ata_sub_chapter: "22-00"
+overlay_id: ATA22-BWB-OVERLAY-001
+delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-002, DELTA-BWB-22-003, DELTA-BWB-22-004, DELTA-BWB-22-005]
+baseline_ref: "../../.."
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  General autoflight delta requirements for the AMPEL360 Q100 BWB variant.
+  These requirements supplement the SHARED 22-00 general requirements.
+  All quantitative thresholds are TBD (LC03) unless stated.
+
+requirements:
+  - req_id: BWB-22-000-001
+    shall: >
+      The BWB autoflight system shall be designed as a delta overlay on the
+      ATA 22 SHARED baseline, adding only those functions and constraints
+      required for the BWB flying-wing planform and not covered by the
+      SHARED baseline.
+    rationale: >
+      Ensures modularity and traceability. Prevents duplication of SHARED
+      baseline content and maintains a clean delta separation.
+    cs25_ref: "CS-25.1302"
+    verification: Review
+    lc_gate: LC01
+
+  - req_id: BWB-22-000-002
+    shall: >
+      The BWB autoflight system shall present flight-crew interfaces and
+      mode annunciations consistent with the SHARED baseline, except for
+      new BWB-specific modes (e.g., CA-RECONFIG, NDI-ENGAGE) which shall
+      be clearly identified and documented in the Flight Crew Operating
+      Manual supplement.
+    rationale: >
+      CS-25.1302 requires that installed equipment not increase flight crew
+      workload due to novel interface elements without adequate documentation
+      and training provision.
+    cs25_ref: "CS-25.1302"
+    verification: Review, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-000-003
+    shall: >
+      The BWB autoflight system shall be assessed for safety in accordance
+      with CS-25.1309 using an Aircraft-Level Functional Hazard Assessment
+      (FHA) and System Safety Assessment (SSA) that explicitly cover
+      BWB-specific failure modes including: effector loss combinations
+      (DELTA-BWB-22-001), NDI divergence (DELTA-BWB-22-002), envelope
+      protection failures (DELTA-BWB-22-003), and asymmetric thrust
+      (DELTA-BWB-22-005).
+    rationale: >
+      BWB failure modes differ materially from conventional aircraft due to
+      the distributed effector array and non-linear control laws. A
+      dedicated FHA/SSA is required to demonstrate compliance.
+    cs25_ref: "CS-25.1309"
+    verification: Analysis
+    lc_gate: LC04
+
+  - req_id: BWB-22-000-004
+    shall: >
+      All BWB autoflight software functions shall be developed to DO-178C
+      Design Assurance Level B (DAL-B) as a minimum, unless a lower
+      classification is justified by a fault tree analysis showing the
+      function cannot contribute to a Hazardous or Catastrophic failure
+      condition.
+    rationale: >
+      CS-25.1309 FHA expected to classify loss of autoflight as Hazardous
+      (10^-7 per flight hour), mandating DAL-B. NDI and control allocation
+      are considered safety-critical functions.
+    cs25_ref: "CS-25.1309"
+    verification: Review, Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-000-005
+    shall: >
+      The BWB autoflight architecture shall be compatible with Special
+      Condition SC-FCS-001 where the non-linear dynamic inversion control
+      law exceeds the scope of conventional CS-25.1329 means of compliance.
+      Applicability shall be confirmed with the certifying authority no
+      later than LC03.
+    rationale: >
+      NDI-based control laws may require special conditions beyond AMC
+      CS-25.1329 means of compliance, particularly for robustness
+      demonstration under non-linear aerodynamic conditions.
+    cs25_ref: "CS-25.1329"
+    verification: Review
+    lc_gate: LC03

@@ -1,0 +1,62 @@
+# ATA 57 — Wings — BWB Winglets Delta Change Log
+# Doc ID: T-A-ATA57-BWB-WGLT-DCL-001
+# Status: DRAFT
+
+overlay:
+  ata_chapter: 57
+  variant: BWB
+  sub_area: WINGLETS
+  doc_id: T-A-ATA57-BWB-WGLT-DCL-001
+  revision: A
+  date: "2026-02-24"
+  status: DRAFT
+
+changes:
+  - change_id: CHG-0001
+    delta_ref: DELTA-BWB-57-WG-001
+    title: Initial scaffold — winglet neutral member topology
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-01
+    description: Initial creation of WINGLETS sub-area. Established overlay rule, ARCH delta for neutral member primitives with outboard region aliasing.
+    affected_files:
+      - README.md
+      - ATA57_BWB_WINGLET_INDEX.yaml
+      - "../LC57_PHASE_REGISTRY.yaml"
+
+  - change_id: CHG-0002
+    delta_ref: DELTA-BWB-57-WG-002
+    title: Member spacing 8-bit encoding standard
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-03
+    description: Added SECONDARY_MEMBER_SPACING_OPT/ module with 8-bit encoding standard, bay definitions, example register pack, and optimisation configuration.
+    affected_files:
+      - SECONDARY_MEMBER_SPACING_OPT/STD_MEMBER_SPACING_8BIT_ENCODING.md
+      - SECONDARY_MEMBER_SPACING_OPT/MODELS/member_bay_definition.yaml
+      - SECONDARY_MEMBER_SPACING_OPT/MODELS/member_spacing_registers.example.yaml
+      - SECONDARY_MEMBER_SPACING_OPT/MODELS/optimisation_config.yaml
+
+  - change_id: CHG-0003
+    delta_ref: DELTA-BWB-57-WG-003
+    title: Fatigue and divergence constraints plus requirements
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-04
+    description: Added fatigue and aeroelastic divergence constraints document and requirements pack for winglet member spacing optimisation.
+    affected_files:
+      - SECONDARY_MEMBER_SPACING_OPT/CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md
+      - SECONDARY_MEMBER_SPACING_OPT/REQ_BWB_57_WINGLET_MEMBER_OPT.yaml
+
+  - change_id: CHG-0004
+    delta_ref: DELTA-BWB-57-WG-005
+    title: Verification evidence stubs
+    author: copilot
+    date: "2026-02-24"
+    lc_gate: LC57-11
+    description: Added verification evidence stubs for fatigue check, divergence check, and determinism test.
+    affected_files:
+      - SECONDARY_MEMBER_SPACING_OPT/VERIFICATION_EVIDENCE/TRACE_BWB_WINGLET_EVIDENCE_INDEX.yaml
+      - SECONDARY_MEMBER_SPACING_OPT/VERIFICATION_EVIDENCE/ANALYSIS_WINGLET_FATIGUE_CHECK.md
+      - SECONDARY_MEMBER_SPACING_OPT/VERIFICATION_EVIDENCE/ANALYSIS_WINGLET_DIVERGENCE_CHECK.md
+      - SECONDARY_MEMBER_SPACING_OPT/VERIFICATION_EVIDENCE/TEST_WINGLET_DETERMINISM.md

@@ -1,0 +1,48 @@
+---
+# REQ_WTW_50_200_ACCESSORY_COMPARTMENTS.yaml
+# AMPEL360 WTW — ATA 50-200 Accessory Compartments (WTW delta)
+programme: AMPEL360-WTW
+ata_subchapter: "50-200"
+title: Accessory Compartments
+baseline_ref: ATA50-SHARED §4
+
+requirements:
+  - req_id: WTW-50-200-001
+    shall: >
+      WTW accessory compartments (E/E bay, avionics, optional crew rest) shall
+      be located within the fuselage according to the WTW zone definition. Each
+      compartment envelope shall respect the circular fuselage cross-section
+      constraints per ICD-WTW-50-001.
+    rationale: >
+      Accessory compartment placement is WTW-specific; the circular cross-section
+      limits lateral extent differently from BWB.
+    cs25_ref: CS-25.831
+    delta_ref: DELTA-WTW-50-001
+    verification: Inspection (dimensional)
+    lc_gate: LC03
+
+  - req_id: WTW-50-200-002
+    shall: >
+      Drainage from WTW accessory compartments shall be routed to drain mast
+      penetrations per ICD-WTW-50-004. No drain path shall breach a Class C
+      cargo compartment liner boundary without a qualified penetration fitting.
+    rationale: >
+      Cross-compartment drain routing is a certification compliance issue;
+      WTW routing differs from BWB due to belly-hold geometry.
+    cs25_ref: CS-25.1001
+    delta_ref: DELTA-WTW-50-004
+    verification: Inspection
+    lc_gate: LC04
+
+  - req_id: WTW-50-200-003
+    shall: >
+      Ventilation of WTW accessory compartments shall be provided per CS-25.1103
+      using vent ports defined in ICD-WTW-50-004. Vent flow rate shall be TBD
+      (LC04) l/min minimum.
+    rationale: >
+      Ventilation is mandated for occupied and equipment compartments; WTW
+      vent port locations are driven by the circular fuselage geometry.
+    cs25_ref: CS-25.1103
+    delta_ref: DELTA-WTW-50-004
+    verification: Test (flow measurement) + Inspection
+    lc_gate: LC04

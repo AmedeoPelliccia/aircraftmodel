@@ -1,0 +1,39 @@
+id: ATA44_BWB_ICD_LIST
+doc_id: T-A-ATA44-BWB-ICD-000
+variant: BWB
+
+icds:
+  - icd_id: ICD-BWB-44-001
+    title: "BWB Zone Controller placement envelope"
+    file: ICD_BWB_CONTROLLER_PLACEMENT_001.md
+    delta_ref: DELTA-BWB-44-001
+    interfaces_with: [ATA 53, ATA 24]
+    status: DRAFT
+
+  - icd_id: ICD-BWB-44-002
+    title: "BWB ARINC 664 per-bay network segmentation + Bay Bridge Unit (BBU) topology"
+    file: ICD_BWB_NETWORK_SEGMENTATION_001.md
+    delta_ref: DELTA-BWB-44-003
+    interfaces_with: [ATA 24, ATA 46]
+    status: DRAFT
+
+  - icd_id: ICD-BWB-44-003
+    title: "BWB ARINC 664 endpoint register (per-bay segment)"
+    file: ICD_BWB_NETWORK_ENDPOINTS_001.md
+    delta_ref: DELTA-BWB-44-005
+    interfaces_with: [ATA 46]
+    status: DRAFT
+
+  - icd_id: ICD-BWB-44-004
+    title: "BWB inter-bay harness routing envelope (spar bay penetrations)"
+    file: ICD_BWB_HARNESS_ROUTING_001.md
+    delta_ref: DELTA-BWB-44-004
+    interfaces_with: [ATA 53, ATA 24]
+    status: DRAFT
+
+  - icd_id: ICD-BWB-44-005
+    title: "BWB distributed IFE Bay Node (IBN) placement"
+    file: ICD_BWB_IFE_PLACEMENT_001.md
+    delta_ref: DELTA-BWB-44-006
+    interfaces_with: [ATA 25, ATA 23]
+    status: DRAFT

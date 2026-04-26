@@ -1,0 +1,51 @@
+---
+# ICD_LIST.yaml
+# AMPEL360 BWB — ATA 50 Programme Extension Overlay — ICD Registry
+
+icd_list:
+  programme: AMPEL360-BWB
+  ata_chapter: "50"
+  overlay: PROGRAMME_EXT/BWB
+
+  icds:
+    - icd_id: ICD-BWB-50-001
+      file: ICD_BWB_COMPARTMENT_ENVELOPE_001.md
+      delta_ref: DELTA-BWB-50-001
+      subject: Multi-bay flat-deck cargo compartment envelope
+      lc_gate: LC03
+      status: TBD
+
+    - icd_id: ICD-BWB-50-002
+      file: ICD_BWB_ACCESS_POINTS_001.md
+      delta_ref: DELTA-BWB-50-002
+      subject: Side-access cargo door geometry and latch/hinge per bay
+      lc_gate: LC03
+      status: TBD
+
+    - icd_id: ICD-BWB-50-003
+      file: ICD_BWB_LINER_ATTACHMENTS_001.md
+      delta_ref: DELTA-BWB-50-003
+      subject: Flat-panel liner attachment scheme (spar-boundary aware)
+      lc_gate: LC04
+      status: TBD
+
+    - icd_id: ICD-BWB-50-004
+      file: ICD_BWB_DRAIN_VENT_001.md
+      delta_ref: DELTA-BWB-50-004
+      subject: Distributed drain/vent routing via spar bay penetrations
+      lc_gate: LC04
+      status: TBD
+
+    - icd_id: ICD-BWB-50-005
+      file: ICD_BWB_FIRE_CONTAINMENT_IF_001.md
+      delta_ref: DELTA-BWB-50-005
+      subject: Bay-partitioned fire containment liner interfaces
+      lc_gate: LC04
+      status: TBD
+
+    - icd_id: ICD-BWB-50-006
+      file: ICD_BWB_BAY_BOUNDARY_ACCESS_001.md
+      delta_ref: DELTA-BWB-50-007
+      subject: Bay-to-bay access provisions through spar penetrations
+      lc_gate: LC05
+      status: TBD

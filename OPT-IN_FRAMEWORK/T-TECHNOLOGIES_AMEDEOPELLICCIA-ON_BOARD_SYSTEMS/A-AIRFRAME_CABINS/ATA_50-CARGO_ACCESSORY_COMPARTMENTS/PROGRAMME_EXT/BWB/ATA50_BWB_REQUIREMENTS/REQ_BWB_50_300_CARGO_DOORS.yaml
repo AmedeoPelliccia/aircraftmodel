@@ -1,0 +1,62 @@
+---
+# REQ_BWB_50_300_CARGO_DOORS.yaml
+# AMPEL360 BWB — ATA 50-300 Cargo Door Requirements (BWB-only deltas)
+
+requirements:
+  ata_subchapter: "50-300"
+  programme: AMPEL360-BWB
+  overlay: PROGRAMME_EXT/BWB
+
+  reqs:
+    - req_id: BWB-50-300-001
+      shall: >
+        Each cargo bay SHALL have a dedicated side-access (wing lower surface)
+        cargo door per ICD-BWB-50-002. The door SHALL open outward (plug-type)
+        and SHALL NOT open toward the ground or inward.
+      rationale: >
+        BWB side-access configuration requires outward-plug doors. The
+        WTW upward-opening belly plug configuration is not applicable.
+      cs25_ref: CS-25.783
+      verification: Inspection — INSPECTION_BWB_ACCESS_POINTS.md
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC03
+
+    - req_id: BWB-50-300-002
+      shall: >
+        Cargo door clear opening dimensions per bay SHALL meet the minimum
+        requirements for loading/unloading standard unit load devices (ULDs)
+        intended for that bay. Minimum dimensions are TBD at LC03.
+      rationale: >
+        Door opening must accommodate the cargo unit type planned for each bay
+        without damage to the unit or aircraft structure.
+      cs25_ref: N/A
+      verification: Inspection — ICD-BWB-50-002 dimensions at LC03
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC03
+
+    - req_id: BWB-50-300-003
+      shall: >
+        Cargo door latch mechanism SHALL provide a ground-locking pin position
+        operable from outside the aircraft. The pin SHALL prevent inadvertent
+        door opening during ground loading operations.
+      rationale: >
+        Safety requirement for ground operations. BWB side-access door
+        configuration requires an external locking provision accessible to
+        ground crew.
+      cs25_ref: CS-25.783
+      verification: Inspection — INSPECTION_BWB_ACCESS_POINTS.md
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC04
+
+    - req_id: BWB-50-300-004
+      shall: >
+        Each cargo door SHALL be integrated with the aircraft door warning
+        system. An open-door indication SHALL be provided on the flight deck
+        and at ground crew station per aircraft system architecture.
+      rationale: >
+        Per CS-25.783, door-open warnings are required for all cargo doors.
+        BWB multi-bay configuration requires per-door warning signals.
+      cs25_ref: CS-25.783
+      verification: Test — functional door warning test (TBD)
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC05

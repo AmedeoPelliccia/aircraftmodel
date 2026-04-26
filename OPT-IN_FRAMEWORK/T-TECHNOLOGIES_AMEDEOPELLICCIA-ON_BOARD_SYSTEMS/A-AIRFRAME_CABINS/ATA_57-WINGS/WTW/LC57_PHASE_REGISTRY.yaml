@@ -1,0 +1,104 @@
+# ATA 57 Wings — WTW Lifecycle Phase Registry
+# Doc ID: T-A-ATA57-WTW-LC57-REG-001
+# Status: DRAFT
+# Scope: Defines custom lifecycle phase IDs (LC57-01 through LC57-13) for the AMPEL360 WTW wing programme
+
+programme: AMPEL360_WTW
+ata_chapter: 57
+variant: WTW
+doc_id: T-A-ATA57-WTW-LC57-REG-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+
+phases:
+  - id: LC57-01
+    name: Conceptual_Design
+    description: Wing planform concept, sweep/span/AR trade space, aeroelastic tailoring strategy
+    entry_criteria: Programme launch authority
+    exit_criteria: PDR-ready wing planform + aeroelastic trade results
+    gate_review: Conceptual Wing Review (CWR)
+
+  - id: LC57-02
+    name: Preliminary_Design
+    description: Structural layout, rib/spar bay count, material selection (CFRP primary + Al/Ti fittings), joint philosophy
+    entry_criteria: LC57-01 exit gate passed
+    exit_criteria: Preliminary structural model (FEM L1) + rib count bounded
+    gate_review: Preliminary Wing Review (PWR)
+
+  - id: LC57-03
+    name: Detailed_Design
+    description: Rib spacing optimisation (8-bit discrete register, fatigue + divergence constrained), joint design, fastener torque spec
+    entry_criteria: LC57-02 exit gate passed
+    exit_criteria: Released engineering drawings + rib spacing register frozen
+    gate_review: Detailed Design Review (DDR-57)
+
+  - id: LC57-04
+    name: Stress_Analysis
+    description: FEM build, static/fatigue/damage-tolerance substantiation, rib spacing sensitivity analysis
+    entry_criteria: Released design (LC57-03 exited)
+    exit_criteria: Approved stress substantiation package
+    gate_review: Stress Substantiation Review (SSR)
+
+  - id: LC57-05
+    name: Aeroelastic_Analysis
+    description: Flutter, divergence, aileron reversal margins; verification of rib spacing effect on divergence speed margin
+    entry_criteria: FEM L2 available (LC57-04 in progress)
+    exit_criteria: Aeroelastic clearance report (EAS/TAS margins > CS-25.629 requirements)
+    gate_review: Aeroelastic Clearance Review (ACR)
+
+  - id: LC57-06
+    name: Manufacture
+    description: Skin panel cure cycle qualification, spar assembly sequences, rib attach fastening torque records
+    entry_criteria: LC57-03 exit gate passed
+    exit_criteria: First article inspection (FAI) complete
+    gate_review: Manufacturing Readiness Review (MRR-57)
+
+  - id: LC57-07
+    name: Wing_Box_Assembly
+    description: Wing-box integration, control surface installation, systems pre-installation
+    entry_criteria: LC57-06 FAI accepted
+    exit_criteria: Wing-box assembly inspection report signed
+    gate_review: Assembly Inspection Review (AIR-57)
+
+  - id: LC57-08
+    name: Systems_Integration
+    description: Fuel/LH₂ systems integration, wiring routing through rib lightening holes, sealant application
+    entry_criteria: LC57-07 exit gate passed
+    exit_criteria: Systems installation QA record complete
+    gate_review: Systems Integration Review (SIR-57)
+
+  - id: LC57-09
+    name: Structural_Test
+    description: Wing bending test (100% DLL + 150% DUL), fatigue coupon campaign, rib-to-spar joint bearing strength
+    entry_criteria: Stress package approved (LC57-04)
+    exit_criteria: Test reports issued; all pass criteria met
+    gate_review: Structural Test Review (STR-57)
+
+  - id: LC57-10
+    name: Flight_Test
+    description: Aeroelastic flight envelope expansion, flutter margin demonstration, aileron reversal check
+    entry_criteria: LC57-09 static test passed
+    exit_criteria: Flight test reports accepted by Authority
+    gate_review: Flight Test Review (FTR-57)
+
+  - id: LC57-11
+    name: Certification
+    description: CS-25 Subpart C + Appendix J (fatigue/damage-tolerance) substantiation package submission
+    entry_criteria: LC57-10 flight test data accepted
+    exit_criteria: Type Certificate / TC Supplement issued
+    gate_review: Certification Review (CR-57)
+
+  - id: LC57-12
+    name: Production
+    description: Production rate authority, tooling qualification, first-article production wing inspection
+    entry_criteria: LC57-11 certificate issued
+    exit_criteria: Production conformity inspection report
+    gate_review: Production Readiness Review (PRR-57)
+
+  - id: LC57-13
+    name: In_Service
+    description: CPCP (Corrosion Prevention Control Programme), repair classification, supplier circularity registry, spare part management
+    entry_criteria: EIS reached
+    exit_criteria: Ongoing — reviewed at each C-check cycle
+    gate_review: In-Service Review (ISR-57)

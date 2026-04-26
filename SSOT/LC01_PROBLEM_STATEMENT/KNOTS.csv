@@ -13,4 +13,6 @@ KNOT-ATA53-10-00-001,Fuselage Diameter Trade (3.5 m vs 3.76 m),100,15,100,2026-0
 KNOT-ATA32-10-00-001,Landing Gear Yehudi Interference / Relocation Mass,100,15,90,2026-12-31,OPEN
 KNOT-ATA55-10-00-001,CG Envelope T-tail vs Canard for Aft-Tank Management,100,15,110,2026-12-31,OPEN
 KNOT-ATA25-50-00-001,NH3 Containment Zone Crashworthiness,100,12,100,2027-06-30,OPEN
+KNOT-ATA00-00-001,WTW Configuration Viability Gate (aggregates OI-1 to OI-5),100,10,150,2027-03-31,OPEN
+KNOT-ATA00-00-002,LH2 Volumetric Accommodation — WTW Stretch Penalty vs BWB,100,15,120,2026-09-30,OPEN
 KNOT-ATA96-70-00-001,GEN-MODEL Observer/Delineant Role Governance,100,10,80,2026-06-30,OPEN

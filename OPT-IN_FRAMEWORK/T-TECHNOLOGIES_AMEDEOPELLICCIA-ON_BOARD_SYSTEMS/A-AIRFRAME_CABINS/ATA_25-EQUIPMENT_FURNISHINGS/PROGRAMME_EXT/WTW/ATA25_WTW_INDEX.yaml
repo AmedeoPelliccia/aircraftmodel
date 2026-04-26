@@ -1,0 +1,83 @@
+id: ATA25_WTW_INDEX
+doc_id: T-A-ATA25-WTW-001
+status: DRAFT
+revision: RevA
+lifecycle_state: DRAFT
+variant: WTW
+baseline_ref: T-A-ATA25-001
+
+items:
+  - delta_id: DELTA-WTW-25-001
+    ata_subchapter: "25-20"
+    title: "Passenger compartment installation constraints (WTW)"
+    type: [REQ, ICD]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_200_PASS_COMPARTMENT.yaml
+      - ATA25_WTW_INTERFACES/ICD_WTW_CABIN_GEOM_001.md
+    rationale: "WTW cabin envelope and access differ vs BWB (circular cross-section, frame/stringer access)"
+    impact:
+      safety: medium
+      certification: "CS-25.853, CS-25.561 (as applicable)"
+      publications: "S1000D procedural reuse"
+
+  - delta_id: DELTA-WTW-25-002
+    ata_subchapter: "25-10"
+    title: "Flight compartment equipment installation constraints (WTW)"
+    type: [REQ, ICD]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_100_FLT_COMPARTMENT.yaml
+      - ATA25_WTW_INTERFACES/ICD_WTW_ATTACH_POINTS_001.md
+    rationale: "WTW flight deck geometry and seat attachment differ from BWB flight deck"
+    impact:
+      safety: high
+      certification: "CS-25.561, CS-25.562"
+      publications: "S1000D procedural reuse"
+
+  - delta_id: DELTA-WTW-25-003
+    ata_subchapter: "25-30"
+    title: "Galley installation constraints (WTW)"
+    type: [REQ]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_300_GALLEY.yaml
+    rationale: "WTW galley bays defined by fuselage section breaks and floor beam spacing"
+    impact:
+      safety: low
+      certification: "CS-25.853"
+      publications: "Galley IPC and maintenance procedures"
+
+  - delta_id: DELTA-WTW-25-004
+    ata_subchapter: "25-40"
+    title: "Lavatory installation constraints (WTW)"
+    type: [REQ]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_400_LAVATORY.yaml
+    rationale: "WTW lavatory envelope constrained by circular fuselage; drain routing differs"
+    impact:
+      safety: low
+      certification: "CS-25.853"
+      publications: "ATA 38 interface"
+
+  - delta_id: DELTA-WTW-25-005
+    ata_subchapter: "25-60"
+    title: "Emergency equipment installation (WTW)"
+    type: [REQ, EVI]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_600_EMERGENCY_EQUIP.yaml
+      - ATA25_WTW_VERIFICATION_EVIDENCE/INSPECTION_WTW_EMERGENCY_EQUIP.md
+    rationale: "WTW emergency exit access and equipment stowage locations are variant-specific"
+    impact:
+      safety: high
+      certification: "CS-25.803, CS-25.810, CS-25.1411"
+      publications: "Cabin crew emergency procedures"
+
+  - delta_id: DELTA-WTW-25-006
+    ata_subchapter: "25-50"
+    title: "Cargo compartment liners (WTW)"
+    type: [REQ]
+    files:
+      - ATA25_WTW_REQUIREMENTS/REQ_WTW_25_500_CARGO_LINERS.yaml
+    rationale: "WTW lower lobe cargo volume and liner attachment differ from BWB distributed cargo bays"
+    impact:
+      safety: medium
+      certification: "CS-25.853"
+      publications: "ATA 52 doors interface"

@@ -1,0 +1,76 @@
+---
+# BWB ATA 22-20 — FMS Guidance Delta Requirements
+doc_id: T-A2-ATA22-BWB-REQ-22-200
+ata_sub_chapter: "22-20"
+overlay_id: ATA22-BWB-OVERLAY-001
+delta_refs: [DELTA-BWB-22-004]
+baseline_ref: "../../.."
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  FMS guidance delta requirements for the AMPEL360 Q100 BWB.
+  These requirements supplement SHARED 22-20 requirements with BWB-specific
+  performance polar and flight profile optimisation constraints.
+  All quantitative thresholds are TBD (LC03).
+
+requirements:
+  - req_id: BWB-22-200-001
+    shall: >
+      The FMS shall use BWB-specific aerodynamic performance tables (L/D
+      vs Mach, altitude, and aircraft weight) for all VNAV speed and
+      altitude optimisation functions including: ECON speed schedule,
+      optimum cruise altitude, step climb criteria, and descent profile
+      management. These tables shall be distinct from and shall not be
+      overwritten by any WTW performance dataset.
+    rationale: >
+      The BWB aerodynamic polar differs materially from WTW due to the
+      flying-wing planform. Using WTW performance tables for BWB would
+      result in sub-optimal cruise performance and potentially incorrect
+      VNAV guidance targets. This is the core delta from DELTA-BWB-22-004.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-200-002
+    shall: >
+      The BWB FMS ECON Mach number shall be derived from the BWB cost
+      index (CI) and the BWB L/D polar, yielding a value of TBD Mach
+      (LC03). The FMS shall alert the crew if a manually selected Mach
+      deviates from ECON by more than TBD (LC04).
+    rationale: >
+      The BWB optimum cruise Mach is likely different from WTW due to
+      different profile drag characteristics of the blended wing body.
+      The crew alert threshold ensures awareness of fuel penalty when
+      off-ECON speed.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-200-003
+    shall: >
+      The FMS shall compute step climb recommendations using BWB weight/
+      altitude/temperature (WAT) performance data. Step climb altitude
+      increments and trigger weights are TBD (LC03).
+    rationale: >
+      BWB step-climb crossover weights and altitudes may differ from WTW
+      because of the different lift curve slope and cruise polar shape.
+      Incorrect step-climb recommendations lead to fuel burn penalties.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-200-004
+    shall: >
+      The FMS shall provide VNAV descent profile management using a BWB-
+      specific drag polar. The top-of-descent point and idle descent profile
+      shall be computed from BWB specific glide performance. Values TBD (LC03).
+    rationale: >
+      BWB descent performance (glide ratio at idle thrust) differs from WTW.
+      Incorrect top-of-descent computation could result in arriving at
+      destination above or below the cleared descent profile.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis, Test
+    lc_gate: LC04

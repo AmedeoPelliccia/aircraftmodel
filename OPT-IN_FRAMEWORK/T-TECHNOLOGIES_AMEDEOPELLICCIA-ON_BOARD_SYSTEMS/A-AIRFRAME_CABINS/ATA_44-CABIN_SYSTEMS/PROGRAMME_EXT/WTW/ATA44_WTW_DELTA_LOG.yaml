@@ -1,0 +1,68 @@
+id: ATA44_WTW_DELTA_LOG
+doc_id: T-A-ATA44-WTW-001
+variant: WTW
+baseline_ref: T-A-ATA44-001
+
+entries:
+  - change_id: CHG-0001
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-001
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold for ATA 44 — CMS controller placement"
+    lc_gate: LC01
+    notes: "No quantitative LRU position data introduced yet"
+
+  - change_id: CHG-0002
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-002
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — cabin zone definition and network topology"
+    lc_gate: LC01
+    notes: "Zone boundary coordinates TBD at LC03"
+
+  - change_id: CHG-0003
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-003
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — wiring route envelopes"
+    lc_gate: LC01
+    notes: "Harness routing envelope coordinates TBD at LC03"
+
+  - change_id: CHG-0004
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-004
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — network endpoint definitions"
+    lc_gate: LC01
+    notes: "ARINC 664 endpoint address allocation TBD at LC03"
+
+  - change_id: CHG-0005
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-005
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — IFE server and satellite unit placement"
+    lc_gate: LC01
+    notes: "No installation position data yet"
+
+  - change_id: CHG-0006
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-006
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — external communication antenna placement"
+    lc_gate: LC01
+    notes: "Antenna locations TBD at LC03"
+
+  - change_id: CHG-0007
+    date: 2026-02-24
+    author: STK_ENG
+    delta_id: DELTA-WTW-44-007
+    change_type: ADD
+    summary: "Create initial WTW overlay scaffold — cabin monitoring sensor topology"
+    lc_gate: LC01
+    notes: "Sensor count and positions TBD at LC03"

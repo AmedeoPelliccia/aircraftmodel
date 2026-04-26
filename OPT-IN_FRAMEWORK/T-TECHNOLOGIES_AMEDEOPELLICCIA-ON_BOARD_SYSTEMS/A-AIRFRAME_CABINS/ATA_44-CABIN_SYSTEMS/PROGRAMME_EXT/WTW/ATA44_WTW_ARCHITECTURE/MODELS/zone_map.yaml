@@ -1,0 +1,51 @@
+id: ATA44_WTW_ZONE_MAP
+doc_id: T-A-ATA44-WTW-ARCH-002
+variant: WTW
+status: DRAFT
+revision: RevA
+note: "Zone boundary FS values TBD at LC03 from cabin layout drawing"
+
+zones:
+  - zone_id: Z1
+    name: "Forward Cabin"
+    csu_id: CSU-01
+    controller: CMC
+    fs_fwd: TBD
+    fs_aft: TBD
+    bl_fwd: N/A  # Full-width zone (tube fuselage)
+    pax_nominal: TBD
+    galley: FWD
+    lavatory: FWD
+
+  - zone_id: Z2
+    name: "Mid-Forward Cabin"
+    csu_id: CSU-02
+    controller: CMC
+    fs_fwd: TBD
+    fs_aft: TBD
+    bl_fwd: N/A
+    pax_nominal: TBD
+    galley: null
+    lavatory: null
+
+  - zone_id: Z3
+    name: "Mid-Aft Cabin"
+    csu_id: CSU-03
+    controller: CAC
+    fs_fwd: TBD
+    fs_aft: TBD
+    bl_fwd: N/A
+    pax_nominal: TBD
+    galley: null
+    lavatory: MID
+
+  - zone_id: Z4
+    name: "Aft Cabin"
+    csu_id: CSU-04
+    controller: CAC
+    fs_fwd: TBD
+    fs_aft: TBD
+    bl_fwd: N/A
+    pax_nominal: TBD
+    galley: AFT
+    lavatory: AFT

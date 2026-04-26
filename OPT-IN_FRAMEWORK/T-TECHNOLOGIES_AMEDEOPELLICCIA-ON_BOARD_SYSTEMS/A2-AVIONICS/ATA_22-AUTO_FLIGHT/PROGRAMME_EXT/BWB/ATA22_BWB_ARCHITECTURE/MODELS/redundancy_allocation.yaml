@@ -1,0 +1,61 @@
+---
+# BWB Redundancy Allocation — Stub
+doc_id: T-A2-ATA22-BWB-REDUND-001
+delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-002]
+status: STUB
+lc_gate: LC04
+date_created: "2026-02-24"
+
+description: >
+  Stub allocation of FCC and actuator redundancy for the AMPEL360 Q100 BWB
+  autoflight system. Captures BWB-specific redundancy considerations beyond
+  the SHARED baseline. Detailed allocation deferred to LC04 pending FCC
+  platform selection and actuator sizing.
+
+fcc_redundancy:
+  architecture: TBD  # e.g. triplex, dual-dual — LC02/LC04
+  voting_logic: TBD  # LC04
+  dissimilarity_required: TBD  # DO-178C / SC-FCS-001 TBD LC03
+  ndi_module_redundancy: >
+    NDI inner loop hosted on FCC. Redundancy level must match DAL-B
+    software classification. Physical redundancy approach TBD (LC04).
+  dal_level: B  # DO-178C DAL-B confirmed
+
+actuator_redundancy:
+  policy: >
+    Each effector segment (IE, ME, OE, SP) shall have independent actuator
+    channels. Minimum channel redundancy per segment TBD at LC04.
+  inboard_elevon:
+    channels_per_side: TBD  # LC04
+    failure_mode: TBD
+  mid_elevon:
+    channels_per_side: TBD  # LC04
+    failure_mode: TBD
+  outboard_elevon:
+    channels_per_side: TBD  # LC04
+    failure_mode: TBD
+  spoileron:
+    channels_per_side: TBD  # LC04
+    failure_mode: TBD
+
+power_supply_segregation:
+  approach: TBD  # LC04
+  notes: "4-engine electrical generation redundancy interfaces with ATA 24"
+
+cs25_1309_target:
+  autoflight_loss_probability: TBD  # Extremely remote — CS-25.1309 LC04 FHA
+  autoflight_malfunction_probability: TBD  # LC04
+
+open_items:
+  - id: OI-RED-001
+    description: "FCC platform and redundancy architecture selection"
+    lc_gate: LC02
+  - id: OI-RED-002
+    description: "Actuator channel count per effector from CS-25.1309 FHA"
+    lc_gate: LC04
+  - id: OI-RED-003
+    description: "Power supply segregation scheme"
+    lc_gate: LC04
+  - id: OI-RED-004
+    description: "NDI module dissimilarity requirement from SC-FCS-001 review"
+    lc_gate: LC03

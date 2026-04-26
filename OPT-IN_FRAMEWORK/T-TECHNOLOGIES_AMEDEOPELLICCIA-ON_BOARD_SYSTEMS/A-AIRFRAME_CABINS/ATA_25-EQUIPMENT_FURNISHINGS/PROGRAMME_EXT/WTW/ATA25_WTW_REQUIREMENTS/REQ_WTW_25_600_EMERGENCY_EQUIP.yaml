@@ -1,0 +1,52 @@
+id: REQ_WTW_25_600_EMERGENCY_EQUIP
+doc_id: T-A-ATA25-WTW-REQ-600
+ata_subchapter: "25-60"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-005
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-600-001
+    title: "Emergency exit count and type — WTW"
+    shall: >
+      The WTW variant shall provide emergency exits of type and number compliant with
+      CS-25.803 for the certified maximum passenger capacity. Exit locations shall be
+      as defined in Type Design emergency exit map (TBD at LC03).
+    rationale: "WTW cabin length and door spacing differ from BWB; exit count/type is variant-specific."
+    verification: Compliance matrix review + physical inspection
+    cs25_ref: "CS-25.803"
+    lc_gate: LC03
+
+  - req_id: WTW-25-600-002
+    title: "Emergency exit lighting — WTW"
+    shall: >
+      Emergency exit floor path lighting and exit marking shall comply with CS-25.810
+      for WTW cabin layout. Lighting bus connection shall be per ATA 24 WTW electrical ICD.
+    rationale: "WTW cabin aisle geometry and exit spacing drive lighting layout."
+    verification: Functional test (illumination level per CS-25.810)
+    cs25_ref: "CS-25.810"
+    lc_gate: LC04
+
+  - req_id: WTW-25-600-003
+    title: "Safety equipment stowage accessibility — WTW"
+    shall: >
+      Life vests, portable O₂, first-aid kits, and crash axe shall be stowed in
+      WTW-variant designated locations and be retrievable in ≤TBD seconds.
+      Stowage locations shall be per INSPECTION_WTW_EMERGENCY_EQUIP.md.
+    rationale: "CS-25.1411 accessibility; WTW stowage positions differ from BWB."
+    verification: Functional inspection
+    cs25_ref: "CS-25.1411"
+    lc_gate: LC04
+
+  - req_id: WTW-25-600-004
+    title: "Evacuation slide / slide-raft provision — WTW"
+    shall: >
+      Each WTW Type A and Type C exit shall be equipped with an approved
+      evacuation slide or slide-raft per CS-25.809. Arming and disarming
+      interface shall be per ATA 52 door ICD.
+    rationale: "WTW exit types and door geometry drive slide selection."
+    verification: Ground demonstration (CS-25.809) + inspection
+    cs25_ref: "CS-25.809"
+    lc_gate: LC06

@@ -1,0 +1,42 @@
+id: REQ_BWB_44_100
+subchapter: "44-10"
+title: "Cabin Core System — BWB Distributed ZC and Bay Bridge Architecture"
+variant: BWB
+revision: RevA
+lc_gate: LC01
+
+requirements:
+  - req_id: BWB-44-100-001
+    shall: "Each spar bay SHALL have at least one independent Zone Controller (ZC) pair installed within that bay."
+    rationale: "ZC failure must not affect cabin management in adjacent bays. Bay-autonomous operation required."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC04
+
+  - req_id: BWB-44-100-002
+    shall: "Each ZC SHALL maintain bay-local PA announcement, smoke event detection, and cabin call routing independently of Bay Bridge Unit (BBU) availability."
+    rationale: "BBU loss must not degrade safety-essential CMS functions. Fire/smoke alarms must be locally processed."
+    cs25_ref: "CS-25.1309, CS-25.854"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: BWB-44-100-003
+    shall: "Adjacent spar bays SHALL be connected by a Bay Bridge Unit (BBU) providing ARINC 664 inter-domain bridging. Maximum one BBU per bay boundary."
+    rationale: "CMS status propagation and PA synchronisation across bays requires inter-bay bridging. Prohibits daisy-chain amplification of latency."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC04
+
+  - req_id: BWB-44-100-004
+    shall: "The end-to-end latency from smoke event trigger to all-bay PA announcement initiation SHALL be less than TBD ms [LC04 gate]."
+    rationale: "PA synchronisation across bays required for emergency announcements. Latency budget TBD from BBU and AFDX bridge characterisation."
+    cs25_ref: "CS-25.1309"
+    verification: analysis
+    lc_gate: LC04
+
+  - req_id: BWB-44-100-005
+    shall: "Each ZC SHALL be electrically bonded to the local bay structure with a resistance of ≤2.5 mΩ."
+    rationale: "EMC bonding requirement per ATA 20 standard practices. Distributed ZC topology requires per-bay bonding verification."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC06

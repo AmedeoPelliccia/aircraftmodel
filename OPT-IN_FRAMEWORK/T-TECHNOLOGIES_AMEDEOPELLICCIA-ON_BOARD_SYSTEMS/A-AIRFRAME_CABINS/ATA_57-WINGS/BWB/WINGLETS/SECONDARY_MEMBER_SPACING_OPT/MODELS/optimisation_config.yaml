@@ -1,0 +1,65 @@
+# ATA 57 BWB — Winglet Member Spacing Optimisation Solver Configuration
+# Doc ID: T-A-ATA57-BWB-WGLT-SOLV-001
+# Status: DRAFT
+
+schema_version: "1.0"
+variant: BWB
+sub_area: WINGLETS
+doc_id: T-A-ATA57-BWB-WGLT-SOLV-001
+revision: A
+date: "2026-02-24"
+
+algorithm: Genetic_Algorithm_Integer
+description: >
+  GA with integer chromosome (8-bit register per bay). Same framework as WTW rib spacing
+  and BWB blend zone TDF optimisers for consistency. Deterministic via fixed seed.
+
+solver_parameters:
+  population_size: 150
+  generations: 400
+  random_seed: 42           # fixed for determinism/reproducibility (BWB-57-WG-005)
+  tournament_size: 3
+  crossover_rate: 0.85
+  mutation_rate: 0.03       # slightly higher than blend zone (fewer bays, more exploration needed)
+  mutation_type: integer_pm_step
+  mutation_step: 8
+  elitism: true
+  elite_count: 5
+
+objective:
+  type: minimise
+  metric: total_winglet_structural_mass
+  secondary_objective: minimise_tip_deflection  # lexicographic tiebreak
+
+constraints:
+  - id: C-FATIGUE
+    type: inequality_leq
+    expression: D_Miner(r) <= 0.5
+    ref: CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md#fatigue-life-constraint
+  - id: C-DIVERGENCE
+    type: inequality_geq
+    expression: V_div(r) / VD >= 1.15
+    ref: CONSTRAINTS_FATIGUE_AND_DIVERGENCE.md#aeroelastic-divergence-constraint
+  - id: C-FIXED_ROOT
+    type: equality
+    expression: r[root_attach] == 255
+    ref: STD_MEMBER_SPACING_8BIT_ENCODING.md#boundary-conditions
+  - id: C-FIXED_TIP
+    type: equality
+    expression: r[tip_cap] == 0
+    ref: STD_MEMBER_SPACING_8BIT_ENCODING.md#boundary-conditions
+  - id: C-ACCESS_PANEL
+    type: inequality_geq
+    expression: r[access_panel_bay] >= 192
+    ref: STD_MEMBER_SPACING_8BIT_ENCODING.md#boundary-conditions
+
+boundary_condition:
+  inboard_stiffness_source: "../../../BLEND_ZONE/SECONDARY_TOPOLOGY_FIELD_OPT/MODELS/tdf_register_map.example.yaml"
+  inboard_eta: 0.85
+  description: Blend zone outboard stiffness at η=0.85 used as winglet root boundary condition
+
+governance:
+  hash_algorithm: SHA-256
+  hash_inputs: all registers where hash_input=true
+  hash_output_field: register_pack.governance_hash
+  record_location: VERIFICATION_EVIDENCE/TRACE_BWB_WINGLET_EVIDENCE_INDEX.yaml

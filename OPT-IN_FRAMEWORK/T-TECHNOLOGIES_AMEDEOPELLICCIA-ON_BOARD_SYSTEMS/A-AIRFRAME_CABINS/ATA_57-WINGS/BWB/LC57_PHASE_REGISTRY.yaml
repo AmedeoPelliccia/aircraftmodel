@@ -1,0 +1,105 @@
+# ATA 57 Wings — BWB Lifecycle Phase Registry
+# Doc ID: T-A-ATA57-BWB-LC57-REG-001
+# Status: DRAFT
+# Scope: Defines custom lifecycle phase IDs (LC57-01 through LC57-13) for the AMPEL360 BWB wing programme
+# Note: Both BLEND_ZONE/ and WINGLETS/ reference this registry. Do not duplicate.
+
+programme: AMPEL360_BWB
+ata_chapter: 57
+variant: BWB
+doc_id: T-A-ATA57-BWB-LC57-REG-001
+revision: A
+date: "2026-02-24"
+status: DRAFT
+
+phases:
+  - id: LC57-01
+    name: Conceptual_Design
+    description: BWB planform concept, blended-wing-body geometry definition, topology design field (TDF) initial bounds, winglet height/sweep trade
+    entry_criteria: Programme launch authority
+    exit_criteria: PDR-ready BWB planform + TDF initial bounds + winglet geometry envelope
+    gate_review: Conceptual Wing Review (CWR-BWB)
+
+  - id: LC57-02
+    name: Preliminary_Design
+    description: Structural layout definition — TDF patch grid for blend zone, spar/stringer arrangement for winglets, bay segmentation, material selection (CFRP primary)
+    entry_criteria: LC57-01 exit gate passed
+    exit_criteria: Preliminary structural model (FEM L1) + TDF patch grid bounded + winglet member count bounded
+    gate_review: Preliminary Wing Review (PWR-BWB)
+
+  - id: LC57-03
+    name: Detailed_Design
+    description: TDF optimisation (8-bit discrete register per patch, fatigue + divergence constrained); winglet member spacing optimisation (8-bit register, fatigue + divergence); joint design; fastener torque spec
+    entry_criteria: LC57-02 exit gate passed
+    exit_criteria: Released engineering drawings + TDF register frozen + winglet member spacing register frozen
+    gate_review: Detailed Design Review (DDR-57-BWB)
+
+  - id: LC57-04
+    name: Stress_Analysis
+    description: FEM build, static/fatigue/damage-tolerance substantiation, TDF patch sensitivity analysis, winglet load redistribution
+    entry_criteria: Released design (LC57-03 exited)
+    exit_criteria: Approved stress substantiation package
+    gate_review: Stress Substantiation Review (SSR-BWB)
+
+  - id: LC57-05
+    name: Aeroelastic_Analysis
+    description: Flutter, divergence, winglet tip load redistribution; verification of TDF effect on divergence speed margin; winglet aeroelastic clearance
+    entry_criteria: FEM L2 available (LC57-04 in progress)
+    exit_criteria: Aeroelastic clearance report (EAS/TAS margins > CS-25.629 requirements)
+    gate_review: Aeroelastic Clearance Review (ACR-BWB)
+
+  - id: LC57-06
+    name: Manufacture
+    description: Blend zone CFRP layup qualification (complex curvature), winglet skin panel cure cycle qualification, spar assembly sequences
+    entry_criteria: LC57-03 exit gate passed
+    exit_criteria: First article inspection (FAI) complete
+    gate_review: Manufacturing Readiness Review (MRR-57-BWB)
+
+  - id: LC57-07
+    name: Wing_Body_Assembly
+    description: BWB wing-body integration (no discrete wing attach), blend zone structural continuity inspection, winglet installation
+    entry_criteria: LC57-06 FAI accepted
+    exit_criteria: Wing-body assembly inspection report signed
+    gate_review: Assembly Inspection Review (AIR-57-BWB)
+
+  - id: LC57-08
+    name: Systems_Integration
+    description: Fuel system integration through blend zone bay structure, wiring routing, sealant application at TDF patch boundaries
+    entry_criteria: LC57-07 exit gate passed
+    exit_criteria: Systems installation QA record complete
+    gate_review: Systems Integration Review (SIR-57-BWB)
+
+  - id: LC57-09
+    name: Structural_Test
+    description: Blend zone bending/torsion test, winglet tip load test (100% DLL + 150% DUL), TDF patch fatigue coupon campaign
+    entry_criteria: Stress package approved (LC57-04)
+    exit_criteria: Test reports issued; all pass criteria met
+    gate_review: Structural Test Review (STR-57-BWB)
+
+  - id: LC57-10
+    name: Flight_Test
+    description: BWB aeroelastic envelope expansion, winglet flutter/divergence demonstration, TDF load path verification via strain gauge data
+    entry_criteria: LC57-09 static test passed
+    exit_criteria: Flight test reports accepted by Authority
+    gate_review: Flight Test Review (FTR-57-BWB)
+
+  - id: LC57-11
+    name: Certification
+    description: CS-25 Subpart C + Appendix J substantiation for blend zone and winglet; TDF register traceability to certification evidence
+    entry_criteria: LC57-10 flight test data accepted
+    exit_criteria: Type Certificate / TC Supplement issued
+    gate_review: Certification Review (CR-57-BWB)
+
+  - id: LC57-12
+    name: Production
+    description: Production rate authority, blend zone layup tooling qualification, winglet assembly line qualification
+    entry_criteria: LC57-11 certificate issued
+    exit_criteria: Production conformity inspection report
+    gate_review: Production Readiness Review (PRR-57-BWB)
+
+  - id: LC57-13
+    name: In_Service
+    description: CPCP for blend zone and winglet panels, TDF register update on structural repair, supplier circularity registry
+    entry_criteria: EIS reached
+    exit_criteria: Ongoing — reviewed at each C-check cycle
+    gate_review: In-Service Review (ISR-57-BWB)

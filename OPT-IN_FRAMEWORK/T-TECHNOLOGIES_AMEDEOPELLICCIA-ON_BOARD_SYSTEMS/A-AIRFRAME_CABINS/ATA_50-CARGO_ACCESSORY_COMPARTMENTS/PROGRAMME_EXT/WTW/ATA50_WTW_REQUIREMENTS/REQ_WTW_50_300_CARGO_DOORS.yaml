@@ -1,0 +1,47 @@
+---
+# REQ_WTW_50_300_CARGO_DOORS.yaml
+# AMPEL360 WTW — ATA 50-300 Cargo Access Doors (WTW delta)
+programme: AMPEL360-WTW
+ata_subchapter: "50-300"
+title: Cargo Access Doors
+baseline_ref: ATA50-SHARED §5
+
+requirements:
+  - req_id: WTW-50-300-001
+    shall: >
+      WTW forward and aft cargo doors shall provide a clear opening not less than
+      the dimensions defined in ICD-WTW-50-002. Door actuation shall be
+      electro-hydraulic per ATA 29 power reference.
+    rationale: >
+      Clear opening drives container/pallet compatibility and ground handling
+      equipment interface. WTW dimensions are constrained by circular fuselage.
+    cs25_ref: CS-25.783
+    delta_ref: DELTA-WTW-50-002
+    verification: Inspection (dimensional)
+    lc_gate: LC03
+
+  - req_id: WTW-50-300-002
+    shall: >
+      WTW cargo door latching system shall provide positive closure indication
+      and shall meet the structural requirements of CS-25.783 at the hinge and
+      latch load limits per ICD-WTW-50-002.
+    rationale: >
+      Cargo door latch structural integrity is a certification requirement;
+      WTW-specific latch load limits must be derived from fuselage frame sizing.
+    cs25_ref: CS-25.783
+    delta_ref: DELTA-WTW-50-002
+    verification: Analysis (loads) + Test (proof load)
+    lc_gate: LC04
+
+  - req_id: WTW-50-300-003
+    shall: >
+      A ground locking pin shall be installed on each WTW cargo door sill
+      fitting to prevent unintended closure during ground loading operations.
+      Pin interface per ICD-WTW-50-002.
+    rationale: >
+      Ground operations safety; WTW upward-opening plug door requires positive
+      locking during loading to prevent injury.
+    cs25_ref: CS-25.783
+    delta_ref: DELTA-WTW-50-002
+    verification: Inspection + Functional test
+    lc_gate: LC04

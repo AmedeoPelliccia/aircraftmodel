@@ -1,0 +1,41 @@
+id: REQ_BWB_25_500_CARGO_LINERS
+doc_id: T-A-ATA25-BWB-REQ-500
+ata_subchapter: "25-50"
+variant: BWB
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-BWB-25-007
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-500-001
+    title: "Cargo liner attachment — BWB lower body composite structure"
+    shall: >
+      Cargo compartment liner panels shall be attached to BWB lower-body composite
+      frames and skin per approved attachment scheme (PN and spacing TBD at LC03).
+      Liner attachment shall not penetrate the pressure vessel composite skin without
+      an approved sealed fastener scheme (ATA 53 approval required).
+    rationale: "BWB lower body uses composite co-cured skin panels; liner attachment differs from WTW aluminium lower lobe."
+    verification: Dimensional inspection + assembly compliance check
+    lc_gate: LC03
+
+  - req_id: BWB-25-500-002
+    title: "Cargo liner flammability (BWB)"
+    shall: >
+      All BWB cargo compartment liner materials shall meet CS-25.853 class C (or as
+      specified in Type Design for BWB). Material qualification records shall be
+      registered in TEST_BWB_FLAMMABILITY_25_853.md.
+    rationale: "BWB composite cargo bay structure requires compatible liner materials."
+    verification: Test per CS-25.853 Appendix F
+    cs25_ref: "CS-25.853"
+    lc_gate: LC06
+
+  - req_id: BWB-25-500-003
+    title: "Cargo bay liner – access panel clearance (BWB)"
+    shall: >
+      Cargo liner panels shall maintain minimum TBD mm clearance to all access panels,
+      maintenance hatches, and structural inspection ports in the BWB lower body.
+      BWB has distributed maintenance access in lower composite bays (ATA 52/ATA 53).
+    rationale: "BWB maintenance access philosophy differs from conventional aft cargo door; distributed panel removal must not be impeded by liners."
+    verification: Dimensional inspection with panels removed and reinstalled
+    lc_gate: LC03

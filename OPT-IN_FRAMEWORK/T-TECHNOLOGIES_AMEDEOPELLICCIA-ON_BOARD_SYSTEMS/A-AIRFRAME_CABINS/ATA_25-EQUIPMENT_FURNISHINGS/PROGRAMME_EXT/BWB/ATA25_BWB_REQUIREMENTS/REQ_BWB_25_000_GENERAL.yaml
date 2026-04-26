@@ -1,0 +1,38 @@
+id: REQ_BWB_25_000_GENERAL
+doc_id: T-A-ATA25-BWB-REQ-000
+ata_subchapter: "25-00"
+variant: BWB
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: BWB-25-000-001
+    title: "Overlay non-duplication"
+    shall: >
+      BWB-specific ATA 25 content shall supplement, not duplicate, SHARED baseline
+      content in the ATA_25 root. Where BWB-specific thresholds differ from SHARED,
+      the BWB threshold governs for AMPEL360 BWB.
+    rationale: "Prevents configuration drift between SHARED and variant-specific content."
+    verification: Configuration audit (CM)
+    lc_gate: LC01
+
+  - req_id: BWB-25-000-002
+    title: "CS-25 applicability"
+    shall: >
+      All BWB ATA 25 equipment installations shall comply with applicable CS-25
+      regulations (as listed in ATA25_BWB_COMPLIANCE_MATRIX.md) and any special
+      conditions applicable to the AMPEL360 BWB type design basis.
+    rationale: "Type certification basis governs per normative hierarchy. BWB may have novel/unusual design special conditions."
+    verification: Compliance matrix review
+    lc_gate: LC01
+
+  - req_id: BWB-25-000-003
+    title: "Bay-bridging prohibition"
+    shall: >
+      No equipment, monument, or structure shall bridge adjacent spar bays without
+      an approved bay-bridging scheme (floating interface, structural penetration, or
+      approved floating connection). Bay boundaries per ICD_BWB_CABIN_ENVELOPE_001.md.
+    rationale: "BWB spar bays are structurally and thermally/fire-zone isolated; bridging without approval risks structural and fire-containment integrity."
+    verification: Engineering review + drawing compliance check
+    lc_gate: LC02

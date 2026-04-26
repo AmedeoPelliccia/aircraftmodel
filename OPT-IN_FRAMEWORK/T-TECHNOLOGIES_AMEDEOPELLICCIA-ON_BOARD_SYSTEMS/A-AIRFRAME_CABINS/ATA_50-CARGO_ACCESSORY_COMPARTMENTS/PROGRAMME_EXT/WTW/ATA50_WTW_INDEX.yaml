@@ -1,0 +1,61 @@
+---
+# ATA50_WTW_INDEX.yaml
+# AMPEL360 WTW — ATA 50 Programme Extension Overlay Index
+# Revision: LC01 scaffold
+
+overlay:
+  programme: AMPEL360-WTW
+  ata_chapter: "50"
+  ata_title: Cargo & Accessory Compartments
+  baseline_path: "../../"
+  overlay_rule: >
+    This index lists only WTW-specific deltas. No SHARED baseline content
+    is reproduced. Each delta references the affected baseline clause.
+
+deltas:
+  - delta_id: DELTA-WTW-50-001
+    title: Circular fuselage belly-hold envelope constraints
+    type: ΔICD
+    baseline_ref: ATA50-SHARED §3
+    icd_file: ATA50_WTW_INTERFACES/ICD_WTW_COMPARTMENT_ENVELOPE_001.md
+    lc_gate: LC03
+    status: TBD
+
+  - delta_id: DELTA-WTW-50-002
+    title: Cargo access door geometry and latch/hinge ICD
+    type: ΔICD
+    baseline_ref: ATA50-SHARED §4
+    icd_file: ATA50_WTW_INTERFACES/ICD_WTW_ACCESS_POINTS_001.md
+    lc_gate: LC03
+    status: TBD
+
+  - delta_id: DELTA-WTW-50-003
+    title: Liner attachment rail/clip pattern for circular cross-section
+    type: ΔICD
+    baseline_ref: ATA50-SHARED §5
+    icd_file: ATA50_WTW_INTERFACES/ICD_WTW_LINER_ATTACHMENTS_001.md
+    lc_gate: LC04
+    status: TBD
+
+  - delta_id: DELTA-WTW-50-004
+    title: Drain and vent path routing in lower fuselage skin
+    type: ΔICD
+    baseline_ref: ATA50-SHARED §6
+    icd_file: ATA50_WTW_INTERFACES/ICD_WTW_DRAIN_VENT_001.md
+    lc_gate: LC04
+    status: TBD
+
+  - delta_id: DELTA-WTW-50-005
+    title: Fire containment liner interfaces (CS-25.855/856)
+    type: ΔICD
+    baseline_ref: ATA50-SHARED §7
+    icd_file: ATA50_WTW_INTERFACES/ICD_WTW_FIRE_CONTAINMENT_IF_001.md
+    lc_gate: LC04
+    status: TBD
+
+  - delta_id: DELTA-WTW-50-006
+    title: Belly-hold net/restraint attach interfaces
+    type: ΔREQ+ΔICD
+    baseline_ref: ATA50-SHARED §8
+    lc_gate: LC05
+    status: TBD

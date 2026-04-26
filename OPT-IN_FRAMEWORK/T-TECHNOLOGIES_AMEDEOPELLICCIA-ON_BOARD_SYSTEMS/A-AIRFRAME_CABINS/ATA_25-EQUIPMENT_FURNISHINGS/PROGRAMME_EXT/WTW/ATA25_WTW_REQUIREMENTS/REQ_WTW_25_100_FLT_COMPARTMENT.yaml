@@ -1,0 +1,39 @@
+id: REQ_WTW_25_100_FLT_COMPARTMENT
+doc_id: T-A-ATA25-WTW-REQ-100
+ata_subchapter: "25-10"
+variant: WTW
+status: DRAFT
+revision: RevA
+delta_ref: DELTA-WTW-25-002
+baseline_ref: T-A-ATA25-001
+
+requirements:
+  - req_id: WTW-25-100-001
+    title: "Flight deck seat attach — WTW seat track compatibility"
+    shall: >
+      Flight deck crew seats shall be installed on WTW-variant seat tracks
+      (type TBD, see ICD_WTW_ATTACH_POINTS_001.md) and demonstrate CS-25.562
+      dynamic test compliance using WTW-specific track geometry.
+    rationale: "WTW flight deck floor geometry differs from BWB; generic seat track data insufficient."
+    verification: Analysis (CS-25.562) + Test (if analysis not sufficient)
+    cs25_ref: "CS-25.562"
+    lc_gate: LC03
+
+  - req_id: WTW-25-100-002
+    title: "Flight deck headroom"
+    shall: >
+      Installed flight deck equipment height shall not reduce occupant egress path
+      height below TBD mm (from Type Design cabin data).
+    rationale: "WTW flight deck crown geometry constrains max equipment height."
+    verification: Dimensional inspection
+    lc_gate: LC03
+
+  - req_id: WTW-25-100-003
+    title: "Flight deck emergency equipment stowage"
+    shall: >
+      Emergency equipment stowage locations in the WTW flight deck shall be accessible
+      in ≤TBD seconds by a seated crew member with harness fastened.
+    rationale: "CS-25.1411 accessibility; WTW cockpit layout may differ from BWB."
+    verification: Inspection / functional demonstration
+    cs25_ref: "CS-25.1411"
+    lc_gate: LC04

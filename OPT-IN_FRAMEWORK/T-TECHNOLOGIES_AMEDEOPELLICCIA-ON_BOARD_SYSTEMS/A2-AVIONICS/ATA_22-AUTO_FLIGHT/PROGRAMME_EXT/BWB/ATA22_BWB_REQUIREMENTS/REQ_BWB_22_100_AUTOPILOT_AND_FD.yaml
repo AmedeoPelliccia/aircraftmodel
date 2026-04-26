@@ -1,0 +1,108 @@
+---
+# BWB ATA 22-10 — Autopilot and Flight Director Delta Requirements
+doc_id: T-A2-ATA22-BWB-REQ-22-100
+ata_sub_chapter: "22-10"
+overlay_id: ATA22-BWB-OVERLAY-001
+delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-002]
+baseline_ref: "../../.."
+status: DRAFT
+lc_gate: LC01
+date_created: "2026-02-24"
+author: AmedeoPelliccia
+
+description: >
+  Autopilot and flight director delta requirements for the AMPEL360 Q100 BWB.
+  These requirements supplement SHARED 22-10 requirements with BWB-specific
+  control law (NDI) and effector allocation (CA) constraints.
+  All quantitative thresholds are TBD (LC03).
+
+requirements:
+  - req_id: BWB-22-100-001
+    shall: >
+      The BWB autopilot shall implement an explicit model-following
+      Non-Linear Dynamic Inversion (NDI) inner loop to decouple pitch
+      and heave axes, compensating for the non-linear pitch-heave coupling
+      characteristic of the swept flying-wing planform.
+    rationale: >
+      Linear control laws as used in the SHARED baseline are insufficient
+      for the BWB planform where pitch and heave axes are strongly coupled
+      non-linearly. NDI provides an explicit inversion of the aerodynamic
+      model to achieve decoupled control. This is the key architectural
+      delta from DELTA-BWB-22-002.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-100-002
+    shall: >
+      The NDI inner loop shall be augmented with a robustness controller
+      (method TBD at LC03, candidates: H∞, μ-synthesis) to maintain
+      stability and performance over the full flight envelope and in the
+      presence of aerodynamic model uncertainties of TBD magnitude.
+    rationale: >
+      NDI exact-model-following performance degrades with aerodynamic
+      modelling errors. Robustness augmentation is required to demonstrate
+      CS-25.1329 and CS-25.143 compliance across all operating conditions.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-100-003
+    shall: >
+      The autopilot shall translate pitch, roll, and yaw moment demands
+      from the NDI inner loop through a control allocation module,
+      distributing demands across the distributed elevon/spoileron effector
+      array in accordance with the effector map defined in
+      MODELS/effector_map.yaml.
+    rationale: >
+      There is no conventional elevator or aileron on the BWB. All autoflight
+      surface demands must be resolved through control allocation to the
+      distributed trailing-edge array. This is the core delta from
+      DELTA-BWB-22-001.
+    cs25_ref: "CS-25.1329"
+    verification: Analysis, Test
+    lc_gate: LC03
+
+  - req_id: BWB-22-100-004
+    shall: >
+      The autopilot shall disengage and provide an unambiguous flight crew
+      alert within TBD milliseconds (LC03) when: (a) NDI inner loop
+      inversion error exceeds TBD threshold (LC03); or (b) the control
+      allocation solver fails to find a feasible solution within TBD
+      iterations (LC03); or (c) any failure condition classified as
+      Hazardous or Catastrophic in the BWB FHA is detected.
+    rationale: >
+      CS-25.1329(d) requires warning at autopilot disconnect. BWB-specific
+      failure modes (NDI divergence, control allocation infeasibility) must
+      be monitored in addition to SHARED baseline disconnect conditions.
+    cs25_ref: "CS-25.1329(d)"
+    verification: Test, Analysis
+    lc_gate: LC03
+
+  - req_id: BWB-22-100-005
+    shall: >
+      Following autopilot disengagement, the BWB aircraft shall be
+      controllable manually by the flight crew using the NDI-derived
+      control laws in manual reversion (non-autoflight) mode, with a
+      maximum stick force gradient deviation from nominal of TBD N/g (LC03).
+    rationale: >
+      CS-25.1329(b) requires that autoflight override forces be within
+      limits. For BWB, the transition between autoflight and manual control
+      must not introduce transients that exceed handling quality limits.
+    cs25_ref: "CS-25.1329(b)"
+    verification: Test
+    lc_gate: LC06
+
+  - req_id: BWB-22-100-006
+    shall: >
+      The flight director shall display guidance cues derived from the
+      NDI outer loop guidance demands. Cue scaling shall account for the
+      BWB different pitch-to-flight-path coupling ratio compared to
+      conventional aircraft. Scaling values are TBD (LC03).
+    rationale: >
+      The BWB pitch-to-flight-path gain differs from conventional aircraft.
+      SHARED flight director cue scaling may not be appropriate and could
+      induce pilot-induced oscillations (PIO) if not corrected.
+    cs25_ref: "CS-25.1302"
+    verification: Analysis, Test
+    lc_gate: LC04

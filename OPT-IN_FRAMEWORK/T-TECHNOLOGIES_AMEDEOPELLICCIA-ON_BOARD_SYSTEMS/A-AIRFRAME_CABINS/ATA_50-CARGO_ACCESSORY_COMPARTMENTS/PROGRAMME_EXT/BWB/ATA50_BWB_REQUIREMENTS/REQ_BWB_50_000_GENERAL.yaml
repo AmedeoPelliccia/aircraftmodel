@@ -1,0 +1,76 @@
+---
+# REQ_BWB_50_000_GENERAL.yaml
+# AMPEL360 BWB — ATA 50 General Requirements (BWB-only deltas)
+
+requirements:
+  ata_subchapter: "50-000"
+  programme: AMPEL360-BWB
+  overlay: PROGRAMME_EXT/BWB
+
+  reqs:
+    - req_id: BWB-50-000-001
+      shall: >
+        The BWB cargo compartment total usable volume across all structural bays
+        SHALL meet the design payload requirement defined in the aircraft
+        performance specification.
+      rationale: >
+        BWB distributed multi-bay architecture must achieve equivalent cargo
+        volume to justify payload capability vs. WTW.
+      cs25_ref: CS-25.365
+      verification: Analysis — ANALYSIS_BWB_COMPARTMENT_LOADS.md
+      delta_ref: DELTA-BWB-50-001
+      lc_gate: LC03
+
+    - req_id: BWB-50-000-002
+      shall: >
+        Each structural bay SHALL have an independent cargo compartment
+        envelope definition referenced to spar-bounded coordinates, as defined
+        in ICD-BWB-50-001.
+      rationale: >
+        Per-bay envelope definition is required because the BWB planform
+        geometry varies between bays. A single envelope definition is not
+        adequate.
+      cs25_ref: N/A
+      verification: Inspection — bay coordinate data at LC03
+      delta_ref: DELTA-BWB-50-001
+      lc_gate: LC03
+
+    - req_id: BWB-50-000-003
+      shall: >
+        No single cargo container, liner panel, or restraint net SHALL bridge
+        more than one structural bay boundary (spar web). Each item SHALL be
+        fully contained within a single bay.
+      rationale: >
+        Spar bay integrity for fire containment, structural load distribution
+        and maintenance access requires that no element spans a spar boundary.
+        This is the fundamental BWB planform constraint for ATA 50.
+      cs25_ref: CS-25.855 / CS-25.857
+      verification: Inspection — installation records at LC04
+      delta_ref: DELTA-BWB-50-001 / DELTA-BWB-50-003 / DELTA-BWB-50-005
+      lc_gate: LC04
+
+    - req_id: BWB-50-000-004
+      shall: >
+        Cargo restraint net attach fittings SHALL be located at spar frame
+        floor nodes within each bay. Load introduction into composite spar
+        web SHALL use metallic inserts approved by Stress at LC05.
+      rationale: >
+        Composite spar webs require metallic inserts for concentrated load
+        introduction. Direct attachment to bare CFRP web is not permitted.
+      cs25_ref: CS-25.787 / CS-25.789 / CS-25.561
+      verification: Analysis — ANALYSIS_BWB_CARGO_RESTRAINT_25_787.md
+      delta_ref: DELTA-BWB-50-006
+      lc_gate: LC05
+
+    - req_id: BWB-50-000-005
+      shall: >
+        Emergency equipment access to each cargo bay SHALL be possible through
+        the bay access door without requiring tools or the removal of cargo
+        items per CS-25.1411.
+      rationale: >
+        Emergency access must be maintained in each bay independently, as
+        the BWB configuration does not have a continuous cargo hold corridor.
+      cs25_ref: CS-25.1411
+      verification: Inspection — INSPECTION_BWB_ACCESS_POINTS.md
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC04

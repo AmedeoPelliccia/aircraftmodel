@@ -1,0 +1,19 @@
+---
+# ATA_53-50-00 — BLEND_ZONE Product Applicability
+sns: "53-50-00"
+ata_sns: "53-50-00"
+ata_section: "50"
+ata_subject: "00"
+ata_title: "Blend Zone Centrebody Interface — Product Applicability"
+document_role: "applicability"
+ata_chapter: 53
+variant_scope: BWB
+applicability:
+  - product_condition: "PCT-53-BWB"
+    description: "AMPEL360 Q100 BWB variant — blend zone structural area"
+    applies: true
+  - product_condition: "PCT-53-WTW"
+    description: "AMPEL360 Q100 WTW variant — conventional fuselage, no blend zone"
+    applies: false
+lc_gate: LC01
+authority: "T-TECHNOLOGIES / A-AIRFRAME_CABINS / ATA_20-STANDARD_PRACTICES_AIRFRAME"

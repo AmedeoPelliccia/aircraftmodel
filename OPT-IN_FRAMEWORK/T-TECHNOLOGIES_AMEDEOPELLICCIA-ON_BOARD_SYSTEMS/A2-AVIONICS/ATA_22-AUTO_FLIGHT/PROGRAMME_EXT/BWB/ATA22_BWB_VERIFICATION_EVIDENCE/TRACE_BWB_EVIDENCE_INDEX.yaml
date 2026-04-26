@@ -1,0 +1,92 @@
+---
+# BWB Verification Evidence Index
+doc_id: T-A2-ATA22-BWB-TRACE-001
+overlay_id: ATA22-BWB-OVERLAY-001
+status: STUB
+lc_gate: LC01
+date_created: "2026-02-24"
+
+description: >
+  Master index of verification evidence items for ATA 22 BWB delta overlay.
+  All entries are stubs. Evidence content is deferred to stated LC gates.
+
+evidence_index:
+  overlay: ATA22-BWB-OVERLAY-001
+
+  entries:
+    - ev_id: EV-BWB-22-001
+      type: ANALYSIS
+      title: "BWB Autoflight System Safety Assessment (CS-25.1309)"
+      file: ANALYSIS_BWB_AUTOFLIGHT_SAFETY_CS25_1309.md
+      delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-002, DELTA-BWB-22-003, DELTA-BWB-22-005]
+      req_ids: [BWB-22-000-003, BWB-22-000-004]
+      cs25_ref: "CS-25.1309"
+      method: FHA + SSA
+      status: STUB
+      lc_gate: LC04
+      notes: >
+        Requires BWB aerodynamic model and FCC architecture at LC03.
+        FHA to be submitted to certifying authority at LC04.
+
+    - ev_id: EV-BWB-22-002
+      type: ANALYSIS
+      title: "BWB NDI Control Law Stability Analysis (CS-25.1329, CS-25.143)"
+      file: ANALYSIS_BWB_CONTROL_LAW_STABILITY_CS25_1329.md
+      delta_refs: [DELTA-BWB-22-002]
+      req_ids: [BWB-22-100-001, BWB-22-100-002]
+      cs25_ref: "CS-25.1329"
+      method: Analytical (gain/phase margins for NDI + robustness augmentation)
+      status: STUB
+      lc_gate: LC03
+      notes: >
+        Requires non-linear aerodynamic model. Robustness analysis method
+        (H∞ / μ-synthesis) TBD at LC03.
+
+    - ev_id: EV-BWB-22-003
+      type: TEST
+      title: "BWB Autoflight Functional Test (CS-25.1329, CS-25.1302)"
+      file: TEST_BWB_AUTOFLIGHT_FUNCTIONAL.md
+      delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-002, DELTA-BWB-22-005]
+      req_ids: [BWB-22-100-003, BWB-22-100-004, BWB-22-300-001, BWB-22-300-002]
+      cs25_ref: "CS-25.1329"
+      method: Iron-bird / simulator / flight test
+      status: STUB
+      lc_gate: LC06
+      notes: >
+        Iron-bird test at LC05 for control allocation and AT coupling.
+        Flight test at LC06 for final evidence.
+
+    - ev_id: EV-BWB-22-004
+      type: TEST
+      title: "BWB Envelope Protection Test (CS-25.143(f), CS-25.253)"
+      file: TEST_BWB_ENVELOPE_PROTECTION.md
+      delta_refs: [DELTA-BWB-22-003]
+      req_ids: [BWB-22-400-001, BWB-22-400-002, BWB-22-400-003, BWB-22-400-004]
+      cs25_ref: "CS-25.143(f)"
+      method: Simulator (boundary verification) + flight test
+      status: STUB
+      lc_gate: LC06
+      notes: >
+        Alpha/beta limits require aerodynamic model at LC03.
+        High-speed flutter boundary requires dedicated flutter test at LC06.
+
+    - ev_id: EV-BWB-22-005
+      type: INSPECTION
+      title: "BWB Autoflight Wiring and Installation Inspection"
+      file: INSPECTION_BWB_AUTOFLIGHT_WIRING.md
+      delta_refs: [DELTA-BWB-22-001, DELTA-BWB-22-005]
+      req_ids: [BWB-22-000-004]
+      cs25_ref: "CS-25.1329"
+      method: Physical inspection per AMM
+      status: STUB
+      lc_gate: LC07
+      notes: >
+        Covers FCC–FCS bus wiring (effector channels) and FCC–FADEC
+        wiring (4 engine channels). Wire routing segregation per
+        AC 25.1309 physical separation requirements.
+
+coverage_matrix:
+  notes: >
+    Full requirement-to-evidence traceability matrix is maintained in
+    ATA22_BWB_COMPLIANCE_MATRIX.md. This index provides the evidence
+    master list; the compliance matrix provides the cross-reference.

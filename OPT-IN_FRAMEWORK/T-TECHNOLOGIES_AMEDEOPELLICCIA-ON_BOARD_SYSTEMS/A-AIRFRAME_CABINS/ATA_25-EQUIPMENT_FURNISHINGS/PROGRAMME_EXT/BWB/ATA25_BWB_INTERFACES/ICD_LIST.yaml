@@ -1,0 +1,64 @@
+id: ATA25_BWB_ICD_LIST
+doc_id: T-A-ATA25-BWB-ICD-000
+variant: BWB
+status: DRAFT
+revision: RevA
+
+icds:
+  - icd_id: T-A-ATA25-BWB-ICD-001
+    title: "BWB Cabin Envelope"
+    file: ICD_BWB_CABIN_ENVELOPE_001.md
+    delta_ref: DELTA-BWB-25-001
+    ata_subchapter: "25-20"
+    interfaces_with:
+      - ATA_53  # BWB torque-box structure (cabin bay frames)
+      - ATA_21  # ECS ducting routing in flat-floor zones
+      - ATA_44  # Cabin systems topology across bays
+    status: DRAFT
+    lc_gate_for_data: LC03
+
+  - icd_id: T-A-ATA25-BWB-ICD-002
+    title: "BWB Floor Grid Attach Points"
+    file: ICD_BWB_FLOOR_GRID_ATTACH_001.md
+    delta_ref: DELTA-BWB-25-002
+    ata_subchapter: "25-20"
+    interfaces_with:
+      - ATA_53  # Distributed floor grid and spar caps
+      - ATA_24  # Seat power outlet locations
+      - ATA_38  # Plumbing drain routing through floor
+    status: DRAFT
+    lc_gate_for_data: LC03
+
+  - icd_id: T-A-ATA25-BWB-ICD-003
+    title: "BWB Monument Structural Interfaces"
+    file: ICD_BWB_MONUMENT_INTERFACES_001.md
+    delta_ref: DELTA-BWB-25-003
+    ata_subchapter: "25-30"
+    interfaces_with:
+      - ATA_53  # Composite torque-box attach for monuments
+      - ATA_38  # Water/waste monument connections
+      - ATA_26  # Fire detection/suppression monument zone
+    status: DRAFT
+    lc_gate_for_data: LC03
+
+  - icd_id: T-A-ATA25-BWB-ICD-004
+    title: "BWB Stowage Distribution Zones"
+    file: ICD_BWB_STOWAGE_DISTRIBUTION_001.md
+    delta_ref: DELTA-BWB-25-004
+    ata_subchapter: "25-20"
+    interfaces_with:
+      - ATA_53  # Crown/soffit attach for overhead bins across span
+      - ATA_44  # Cabin management stowage-weight feed
+    status: DRAFT
+    lc_gate_for_data: LC03
+
+  - icd_id: T-A-ATA25-BWB-ICD-005
+    title: "BWB Egress Clearance Envelopes"
+    file: ICD_BWB_EGRESS_CLEARANCES_001.md
+    delta_ref: DELTA-BWB-25-005
+    ata_subchapter: "25-60"
+    interfaces_with:
+      - ATA_52  # Door/exit locations and envelope
+      - ATA_33  # Emergency lighting path
+    status: DRAFT
+    lc_gate_for_data: LC03

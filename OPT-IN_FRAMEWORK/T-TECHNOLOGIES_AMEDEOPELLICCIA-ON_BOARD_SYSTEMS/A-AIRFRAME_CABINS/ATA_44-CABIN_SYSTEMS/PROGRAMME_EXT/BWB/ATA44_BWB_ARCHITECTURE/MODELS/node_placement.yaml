@@ -1,0 +1,71 @@
+id: ATA44_BWB_NODE_PLACEMENT
+doc_id: T-A-ATA44-BWB-ARCH-001
+variant: BWB
+status: DRAFT
+revision: RevA
+note: "Node FS/BL/WL TBD at LC03 from 3D model. N_bays TBD from structural design."
+
+zone_controllers:
+  - node_id: ZC-01
+    bay_id: Bay1
+    node_type: ZoneController
+    redundancy: pair
+    fs: TBD
+    bl: TBD
+    wl: TBD
+    access_panel: TBD
+
+  - node_id: ZC-02
+    bay_id: Bay2
+    node_type: ZoneController
+    redundancy: pair
+    fs: TBD
+    bl: TBD
+    wl: TBD
+    access_panel: TBD
+
+  - node_id: ZC-03
+    bay_id: Bay3
+    node_type: ZoneController
+    redundancy: pair
+    fs: TBD
+    bl: TBD
+    wl: TBD
+    access_panel: TBD
+
+bay_bridge_units:
+  - node_id: BBU-01
+    between_bays: [Bay1, Bay2]
+    node_type: BayBridgeUnit
+    fs: TBD  # At spar bay 1/2 structural boundary
+    bl: TBD
+    wl: TBD
+
+  - node_id: BBU-02
+    between_bays: [Bay2, Bay3]
+    node_type: BayBridgeUnit
+    fs: TBD
+    bl: TBD
+    wl: TBD
+
+ife_nodes:
+  - node_id: IBN-01
+    bay_id: Bay1
+    node_type: IFE_BayNode
+    fs: TBD
+    bl: TBD
+    wl: TBD
+
+  - node_id: IBN-02
+    bay_id: Bay2
+    node_type: IFE_BayNode
+    fs: TBD
+    bl: TBD
+    wl: TBD
+
+  - node_id: IBN-03
+    bay_id: Bay3
+    node_type: IFE_BayNode
+    fs: TBD
+    bl: TBD
+    wl: TBD

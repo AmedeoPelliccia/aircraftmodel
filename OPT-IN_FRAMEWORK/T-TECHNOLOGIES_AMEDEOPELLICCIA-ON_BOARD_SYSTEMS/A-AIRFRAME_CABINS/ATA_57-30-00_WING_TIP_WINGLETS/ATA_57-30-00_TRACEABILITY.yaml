@@ -1,0 +1,34 @@
+---
+# ATA_57-30-00 — WINGLETS Requirement Traceability
+sns: "57-30-00"
+ata_sns: "57-30-00"
+ata_section: "30"
+ata_subject: "00"
+ata_title: "Wing-Tip Winglets — Requirement Traceability"
+document_role: "traceability"
+ata_chapter: 57
+variant_scope: BOTH
+lc_gate: LC01
+entries:
+  - req_id: "WG-57-30-001"
+    shall: >
+      The winglet structural scaffold shall provide traceability from ATA 51 standard practice
+      requirements to local area inspection, repair, and bonding integrity tasks for both
+      WTW and BWB variants.
+    parent_sns: "51-70-00"
+    local_sns: "57-30-60 / 57-30-70"
+    status: OPEN
+  - req_id: "WG-57-30-002"
+    shall: >
+      Electrical bonding and lightning continuity requirements for winglets shall be
+      documented at SNS 57-30-80 and shall not be mixed with CSDB publication mapping artefacts.
+    parent_sns: "51-80-00"
+    local_sns: "57-30-80"
+    status: OPEN
+  - req_id: "WG-57-30-003"
+    shall: >
+      The blend-zone inboard boundary condition for BWB winglets shall be referenced in
+      all inspection and repair tasks that extend inboard of the outboard wing-tip boundary.
+    parent_sns: "53-50-00"
+    local_sns: "57-30-60 / 57-30-70"
+    status: OPEN

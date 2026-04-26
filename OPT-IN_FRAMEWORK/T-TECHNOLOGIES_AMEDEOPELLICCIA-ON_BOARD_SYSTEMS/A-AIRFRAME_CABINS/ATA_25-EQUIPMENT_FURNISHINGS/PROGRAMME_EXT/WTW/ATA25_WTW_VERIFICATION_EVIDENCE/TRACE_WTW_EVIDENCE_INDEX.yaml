@@ -1,0 +1,48 @@
+id: TRACE_WTW_EVIDENCE_INDEX
+doc_id: T-A-ATA25-WTW-EVI-000
+variant: WTW
+status: DRAFT
+revision: RevA
+
+evidence_objects:
+  - evi_id: T-A-ATA25-WTW-EVI-001
+    title: "WTW Cabin Interior Flammability Test Record"
+    file: TEST_WTW_FLAMMABILITY_25_853.md
+    type: TEST
+    delta_refs: [DELTA-WTW-25-001, DELTA-WTW-25-003, DELTA-WTW-25-004, DELTA-WTW-25-006]
+    req_refs:
+      - WTW-25-200-003
+      - WTW-25-300-002
+      - WTW-25-400-003
+      - WTW-25-500-002
+    cs25_refs: ["CS-25.853"]
+    method: "Test per CS-25 Appendix F Part I / Part II as applicable"
+    status: OPEN
+    lc_gate: LC06
+
+  - evi_id: T-A-ATA25-WTW-EVI-002
+    title: "WTW Seat Load Analysis (CS-25.561 / 25.562)"
+    file: ANALYSIS_WTW_SEAT_LOADS_25_561.md
+    type: ANALYSIS
+    delta_refs: [DELTA-WTW-25-001, DELTA-WTW-25-002]
+    req_refs:
+      - WTW-25-100-001
+      - WTW-25-200-001
+    cs25_refs: ["CS-25.561", "CS-25.562"]
+    method: "Static and dynamic load analysis using WTW seat track geometry"
+    status: OPEN
+    lc_gate: LC05
+
+  - evi_id: T-A-ATA25-WTW-EVI-003
+    title: "WTW Emergency Equipment Inspection Record"
+    file: INSPECTION_WTW_EMERGENCY_EQUIP.md
+    type: INSPECTION
+    delta_refs: [DELTA-WTW-25-005]
+    req_refs:
+      - WTW-25-600-001
+      - WTW-25-600-002
+      - WTW-25-600-003
+    cs25_refs: ["CS-25.803", "CS-25.810", "CS-25.1411"]
+    method: "Physical inspection + functional demonstration"
+    status: OPEN
+    lc_gate: LC06

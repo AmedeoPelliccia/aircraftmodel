@@ -1,0 +1,50 @@
+---
+# REQ_BWB_50_200_ACCESSORY_COMPARTMENTS.yaml
+# AMPEL360 BWB — ATA 50-200 Accessory Compartment Requirements (BWB-only deltas)
+
+requirements:
+  ata_subchapter: "50-200"
+  programme: AMPEL360-BWB
+  overlay: PROGRAMME_EXT/BWB
+
+  reqs:
+    - req_id: BWB-50-200-001
+      shall: >
+        Accessory compartments integrated within the BWB wing-box structure
+        SHALL be accessible without entry into a cargo bay that is loaded or
+        sealed for flight.
+      rationale: >
+        BWB planform places accessory systems in close proximity to cargo bays
+        due to the distributed architecture. Maintenance access routes must
+        not require displacement of cargo.
+      cs25_ref: CS-25.1411
+      verification: Inspection — INSPECTION_BWB_ACCESS_POINTS.md
+      delta_ref: DELTA-BWB-50-002
+      lc_gate: LC04
+
+    - req_id: BWB-50-200-002
+      shall: >
+        Drain provisions for accessory compartments within the wing-box SHALL
+        route to the same per-bay spar penetration drain fitting as the cargo
+        bay drain per ICD-BWB-50-004.
+      rationale: >
+        Minimises spar web penetrations by sharing drain routing infrastructure
+        between cargo and accessory compartments within the same bay.
+      cs25_ref: CS-25.1001
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04
+
+    - req_id: BWB-50-200-003
+      shall: >
+        Ventilation of accessory compartments SHALL be provided via the
+        per-bay vent path defined in ICD-BWB-50-004, maintaining required
+        air change rates per CS-25.1103.
+      rationale: >
+        Accessory compartment ventilation in BWB planform integrates with the
+        per-bay distributed vent infrastructure to avoid additional spar
+        penetrations.
+      cs25_ref: CS-25.1103
+      verification: Inspection — INSPECTION_BWB_DRAIN_VENT.md
+      delta_ref: DELTA-BWB-50-004
+      lc_gate: LC04

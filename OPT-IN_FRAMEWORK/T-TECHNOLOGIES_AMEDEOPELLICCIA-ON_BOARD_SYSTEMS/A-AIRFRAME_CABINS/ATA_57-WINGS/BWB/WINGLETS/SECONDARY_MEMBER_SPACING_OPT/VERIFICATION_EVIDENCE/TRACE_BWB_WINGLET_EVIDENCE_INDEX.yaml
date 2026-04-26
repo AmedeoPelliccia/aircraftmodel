@@ -1,0 +1,41 @@
+# ATA 57 BWB — Winglets Member Spacing Evidence Trace Index
+# Doc ID: T-A-ATA57-BWB-WGLT-VE-IDX-001
+# Status: DRAFT
+
+schema_version: "1.0"
+variant: BWB
+sub_area: WINGLETS
+doc_id: T-A-ATA57-BWB-WGLT-VE-IDX-001
+revision: A
+date: "2026-02-24"
+
+evidence_items:
+  - evidence_id: EVI-BWB-57-WG-001
+    title: Winglet member spacing fatigue life check analysis
+    type: Analysis
+    req_ref: BWB-57-WG-003
+    regulation: CS-25.571(a)
+    delta_ref: DELTA-BWB-57-WG-003
+    file: ANALYSIS_WINGLET_FATIGUE_CHECK.md
+    status: OPEN
+    lc_gate: LC57-04
+
+  - evidence_id: EVI-BWB-57-WG-002
+    title: Winglet member spacing aeroelastic divergence check analysis
+    type: Analysis
+    req_ref: BWB-57-WG-004
+    regulation: CS-25.629(d)
+    delta_ref: DELTA-BWB-57-WG-004
+    file: ANALYSIS_WINGLET_DIVERGENCE_CHECK.md
+    status: OPEN
+    lc_gate: LC57-05
+
+  - evidence_id: EVI-BWB-57-WG-003
+    title: Winglet member spacing optimisation determinism and reproducibility test
+    type: Test
+    req_ref: BWB-57-WG-005
+    regulation: CS-25.571, CS-25.629
+    delta_ref: DELTA-BWB-57-WG-005
+    file: TEST_WINGLET_DETERMINISM.md
+    status: OPEN
+    lc_gate: LC57-11

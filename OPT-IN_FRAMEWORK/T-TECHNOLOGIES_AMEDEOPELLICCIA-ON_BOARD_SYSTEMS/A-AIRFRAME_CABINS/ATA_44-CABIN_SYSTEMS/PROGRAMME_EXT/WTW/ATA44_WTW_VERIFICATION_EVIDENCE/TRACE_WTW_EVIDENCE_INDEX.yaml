@@ -1,0 +1,60 @@
+id: TRACE_WTW_EVIDENCE_INDEX
+doc_id: T-A-ATA44-WTW-EVI-INDEX
+variant: WTW
+status: DRAFT
+revision: RevA
+
+evidence_items:
+  - evi_id: T-A-ATA44-WTW-EVI-001
+    file: ANALYSIS_WTW_CMS_SAFETY_1309.md
+    delta_refs: [DELTA-WTW-44-001, DELTA-WTW-44-002]
+    req_refs: [WTW-44-100-001, WTW-44-100-002, WTW-44-000-002]
+    standard: CS-25.1309
+    type: analysis
+    status: OPEN
+    target_lc: LC05
+
+  - evi_id: T-A-ATA44-WTW-EVI-002
+    file: TEST_WTW_CMS_FUNCTIONAL_44_10.md
+    delta_refs: [DELTA-WTW-44-007]
+    req_refs: [WTW-44-500-001, WTW-44-600-002]
+    standard: "CS-25.854, ED-14G Section 20"
+    type: test
+    status: OPEN
+    target_lc: LC06
+
+  - evi_id: T-A-ATA44-WTW-EVI-003
+    file: TEST_WTW_IFE_FLAMMABILITY_853.md
+    delta_refs: [DELTA-WTW-44-005]
+    req_refs: [WTW-44-200-003]
+    standard: CS-25.853
+    type: test
+    status: OPEN
+    target_lc: LC07
+
+  - evi_id: T-A-ATA44-WTW-EVI-004
+    file: TEST_WTW_NETWORK_CONFORMANCE.md
+    delta_refs: [DELTA-WTW-44-004]
+    req_refs: [WTW-44-100-005]
+    standard: "ARINC 664 Part 7"
+    type: test
+    status: OPEN
+    target_lc: LC07
+
+  - evi_id: T-A-ATA44-WTW-EVI-005
+    file: TEST_WTW_RF_COMPLIANCE.md
+    delta_refs: [DELTA-WTW-44-006]
+    req_refs: [WTW-44-300-002, WTW-44-300-003]
+    standard: "ETSI EN 303 360"
+    type: test
+    status: OPEN
+    target_lc: LC07
+
+  - evi_id: T-A-ATA44-WTW-EVI-006
+    file: INSPECTION_WTW_WIRING_QA.md
+    delta_refs: [DELTA-WTW-44-003]
+    req_refs: [WTW-44-100-004, WTW-44-000-003]
+    standard: CS-25.1353
+    type: inspection
+    status: OPEN
+    target_lc: LC06

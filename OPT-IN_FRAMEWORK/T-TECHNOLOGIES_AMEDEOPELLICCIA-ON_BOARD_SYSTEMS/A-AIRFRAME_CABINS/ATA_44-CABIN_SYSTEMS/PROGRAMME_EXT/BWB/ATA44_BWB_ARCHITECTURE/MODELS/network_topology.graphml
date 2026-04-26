@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ATA44 BWB Network Topology — STUB (LC01)
+     Populate with actual node/edge data at LC03 from systems architect.
+     Format: GraphML (yEd compatible)
+     Doc ID: T-A-ATA44-BWB-ARCH-003
+     NOTE: N_bays TBD. Stub shows 3 bays with BBU bridges.
+-->
+<graphml xmlns="http://graphml.graphdrawing.org/graphml">
+  <key id="d0" for="node" attr.name="label" attr.type="string"/>
+  <key id="d1" for="edge" attr.name="protocol" attr.type="string"/>
+  <key id="d2" for="node" attr.name="bay" attr.type="string"/>
+
+  <graph id="BWB_CMS_Topology" edgedefault="undirected">
+
+    <!-- Bay 1 Segment (SEG-01) -->
+    <node id="ZC_01"><data key="d0">Zone Controller Bay 1 (ZC-01)</data><data key="d2">Bay1</data></node>
+    <node id="IBN_01"><data key="d0">IFE Bay Node 1 (IBN-01)</data><data key="d2">Bay1</data></node>
+    <node id="CSU_01A"><data key="d0">CSU-01A Zone Z1-Port</data><data key="d2">Bay1</data></node>
+    <node id="CSU_01B"><data key="d0">CSU-01B Zone Z1-Stbd</data><data key="d2">Bay1</data></node>
+
+    <!-- Bay 2 Segment (SEG-02) -->
+    <node id="ZC_02"><data key="d0">Zone Controller Bay 2 (ZC-02)</data><data key="d2">Bay2</data></node>
+    <node id="IBN_02"><data key="d0">IFE Bay Node 2 (IBN-02)</data><data key="d2">Bay2</data></node>
+    <node id="CSU_02A"><data key="d0">CSU-02A Zone Z2-Port</data><data key="d2">Bay2</data></node>
+    <node id="CSU_02B"><data key="d0">CSU-02B Zone Z2-Stbd</data><data key="d2">Bay2</data></node>
+
+    <!-- Bay 3 Segment (SEG-03) -->
+    <node id="ZC_03"><data key="d0">Zone Controller Bay 3 (ZC-03)</data><data key="d2">Bay3</data></node>
+    <node id="IBN_03"><data key="d0">IFE Bay Node 3 (IBN-03)</data><data key="d2">Bay3</data></node>
+    <node id="CSU_03A"><data key="d0">CSU-03A Zone Z3-Port</data><data key="d2">Bay3</data></node>
+    <node id="CSU_03B"><data key="d0">CSU-03B Zone Z3-Stbd</data><data key="d2">Bay3</data></node>
+
+    <!-- Bay Bridge Units -->
+    <node id="BBU_01"><data key="d0">Bay Bridge Unit BBU-01 (Bay1–Bay2)</data><data key="d2">Boundary_1_2</data></node>
+    <node id="BBU_02"><data key="d0">Bay Bridge Unit BBU-02 (Bay2–Bay3)</data><data key="d2">Boundary_2_3</data></node>
+
+    <!-- Bay 1 intra-segment edges (AFDX SEG-01) -->
+    <edge source="ZC_01" target="CSU_01A"><data key="d1">ARINC664-AFDX-SEG01</data></edge>
+    <edge source="ZC_01" target="CSU_01B"><data key="d1">ARINC664-AFDX-SEG01</data></edge>
+    <edge source="ZC_01" target="IBN_01"><data key="d1">ARINC664-AFDX-SEG01</data></edge>
+    <edge source="ZC_01" target="BBU_01"><data key="d1">ARINC664-AFDX-SEG01</data></edge>
+
+    <!-- Bay 2 intra-segment edges (AFDX SEG-02) -->
+    <edge source="ZC_02" target="CSU_02A"><data key="d1">ARINC664-AFDX-SEG02</data></edge>
+    <edge source="ZC_02" target="CSU_02B"><data key="d1">ARINC664-AFDX-SEG02</data></edge>
+    <edge source="ZC_02" target="IBN_02"><data key="d1">ARINC664-AFDX-SEG02</data></edge>
+    <edge source="ZC_02" target="BBU_01"><data key="d1">ARINC664-AFDX-SEG02</data></edge>
+    <edge source="ZC_02" target="BBU_02"><data key="d1">ARINC664-AFDX-SEG02</data></edge>
+
+    <!-- Bay 3 intra-segment edges (AFDX SEG-03) -->
+    <edge source="ZC_03" target="CSU_03A"><data key="d1">ARINC664-AFDX-SEG03</data></edge>
+    <edge source="ZC_03" target="CSU_03B"><data key="d1">ARINC664-AFDX-SEG03</data></edge>
+    <edge source="ZC_03" target="IBN_03"><data key="d1">ARINC664-AFDX-SEG03</data></edge>
+    <edge source="ZC_03" target="BBU_02"><data key="d1">ARINC664-AFDX-SEG03</data></edge>
+
+  </graph>
+</graphml>

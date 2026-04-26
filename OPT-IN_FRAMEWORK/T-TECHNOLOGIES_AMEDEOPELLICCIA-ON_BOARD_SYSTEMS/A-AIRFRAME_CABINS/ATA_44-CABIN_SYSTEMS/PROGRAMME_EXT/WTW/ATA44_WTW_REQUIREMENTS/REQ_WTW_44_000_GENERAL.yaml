@@ -1,0 +1,35 @@
+id: REQ_WTW_44_000_GENERAL
+doc_id: T-A-ATA44-WTW-REQ-000
+ata_subchapter: "44-00"
+variant: WTW
+status: DRAFT
+revision: RevA
+baseline_ref: T-A-ATA44-001
+
+requirements:
+  - req_id: WTW-44-000-001
+    shall: "The WTW CMS shall conform to the SHARED ATA 44 baseline (T-A-ATA44-001) except
+            where explicitly superseded by delta statements in this overlay."
+    rationale: "Establishes precedence rule; avoids duplication of SHARED content."
+    cs25_ref: null
+    verification: analysis
+    lc_gate: LC01
+
+  - req_id: WTW-44-000-002
+    shall: "All WTW ATA 44 LRUs shall satisfy ED-14G (DO-160G) environmental qualification
+            appropriate to their installation location (Equipment Category per ED-14G Table 1-2)."
+    rationale: "Environmental qualification is installation-location-dependent; WTW E/E bay
+                category may differ from BWB equivalent position."
+    cs25_ref: "CS-25.1309"
+    verification: test
+    lc_gate: LC06
+
+  - req_id: WTW-44-000-003
+    shall: "Wiring separation between WTW ATA 44 harnesses and other aircraft systems shall
+            meet CS-25.1353 requirements. Minimum separation from fuel system lines shall be
+            TBD mm — to be determined at LC04."
+    rationale: "WTW harness routing is longitudinal (crown/sidewall); no fuel system in
+                cabin crown, but proximity to ATA 26 loops and ATA 28 filler necks must be checked."
+    cs25_ref: "CS-25.1353"
+    verification: inspection
+    lc_gate: LC04
