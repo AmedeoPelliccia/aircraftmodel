@@ -27,7 +27,7 @@ jobs:
         run: |
           PR_BODY="${{ github.event.pull_request.body }}"
           PR_TITLE="${{ github.event.pull_request.title }}"
-          if echo "$PR_TITLE $PR_BODY" | grep -qE 'KNU-[A-Z0-9-]+'; then
+          if echo "$PR_TITLE $PR_BODY" | grep -qE 'KNU-ATA[0-9]{2}-[0-9]{2}-[0-9]{3}'; then
             echo "knu_found=true" >> "$GITHUB_OUTPUT"
           else
             echo "knu_found=false" >> "$GITHUB_OUTPUT"

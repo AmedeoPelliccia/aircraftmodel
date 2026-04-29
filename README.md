@@ -528,7 +528,7 @@ See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full contributor loop.
 ```
 1. CLAIM  → Assign a KNU ID from SSOT/LC01_PROBLEM_STATEMENT/KNU_PLAN.csv
 2. DRAFT  → Develop engineering artifact in SSOT/LCxx/ — include KNU ID in header
-3. PUB    → Author S1000D DM in PUB/CSDB/DM/ if KNU_Type = PUB (BREX-validated)
+3. PUB    → Author S1000D DM in PUB/CSDB/DM/ if KNU_TYPE = PUB (BREX-validated)
 4. TRACE  → Pre-commit hook enforces KNU ID presence in LC02–LC14 artifacts
 5. PR     → Include KNU ID in PR title/body → CI auto-awards TT on merge
 ```
